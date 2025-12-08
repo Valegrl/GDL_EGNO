@@ -157,25 +157,31 @@ def main():
     optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     scheduler = StepLR(optimizer, step_size=2500, gamma=0.5)
 
-    results = {'epochs': [], 'loss': [], 'train loss': []}
+    results = {'epochs': [], 'loss': [], 'train loss': [], 'val loss': [], 'test loss': [],
+                'train a_mse': [], 'val a_mse': [], 'test a_mse': []}
     best_val_loss = 1e8
     best_test_loss = 1e8
     best_epoch = 0
     best_train_loss = 1e8
     for epoch in range(args.epochs):
-        train_loss = train(model, optimizer, epoch, loader_train)
+        train_loss, train_a_mse = train(model, optimizer, epoch, loader_train)
         results['train loss'].append(train_loss)
+        results['train a_mse'].append(train_a_mse)
         if epoch % args.test_interval == 0:
-            val_loss = train(model, optimizer, epoch, loader_val, backprop=False)
-            test_loss = train(model, optimizer, epoch, loader_test, backprop=False)
+            val_loss, val_a_mse = train(model, optimizer, epoch, loader_val, backprop=False)
+            test_loss, test_a_mse = train(model, optimizer, epoch, loader_test, backprop=False)
             results['epochs'].append(epoch)
             results['loss'].append(test_loss)
+            results['val loss'].append(val_loss)
+            results['test loss'].append(test_loss)
+            results['val a_mse'].append(val_a_mse)
+            results['test a_mse'].append(test_a_mse)
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
                 best_test_loss = test_loss
                 best_train_loss = train_loss
                 best_epoch = epoch
-                # torch.save(model.state_dict(), args.outf + '/' + 'saved_model.pth')
+                torch.save(model.state_dict(), args.outf + '/' + 'saved_model.pth')
             print("*** Best Val Loss: %.5f \t Best Test Loss: %.5f \t Best apoch %d"
                   % (best_val_loss, best_test_loss, best_epoch))
         scheduler.step()
@@ -192,7 +198,7 @@ def train(model, optimizer, epoch, loader, backprop=True):
     else:
         model.eval()
 
-    res = {'epoch': epoch, 'loss': 0, 'counter': 0}
+    res = {'epoch': epoch, 'loss': 0, 'a_mse': 0, 'counter': 0}
 
     for batch_idx, data in enumerate(loader):
         batch_size, n_nodes, _ = data[0].size()
@@ -225,26 +231,31 @@ def train(model, optimizer, epoch, loader, backprop=True):
 
         losses = loss_mse(loc_pred, loc_end).view(args.num_timesteps, batch_size * n_nodes, 3)
         losses = torch.mean(losses, dim=(1, 2))
-        loss = torch.mean(losses)
+        loss = torch.mean(losses)  # A-MSE: average over all timesteps
+        f_mse = losses[-1]  # F-MSE: final timestep only
 
         if backprop:
             loss.backward()
             optimizer.step()
-        res['loss'] += losses[-1].item()*batch_size
+        res['loss'] += f_mse.item()*batch_size  # F-MSE for backward compat
+        res['a_mse'] += loss.item()*batch_size  # A-MSE
         res['counter'] += batch_size
 
     if not backprop:
         prefix = "==> "
     else:
         prefix = ""
-    print('%s epoch %d avg loss: %.5f' % (prefix+loader.dataset.partition, epoch, res['loss'] / res['counter']))
+    print('%s epoch %d avg loss: %.5f (A-MSE: %.5f)' % (prefix+loader.dataset.partition, epoch, 
+          res['loss'] / res['counter'], res['a_mse'] / res['counter']))
 
-    return res['loss'] / res['counter']
+    return res['loss'] / res['counter'], res['a_mse'] / res['counter']
 
 
 if __name__ == "__main__":
     best_train_loss, best_val_loss, best_test_loss, best_epoch = main()
-    print("best_train = %.6f" % best_train_loss)
-    print("best_val = %.6f" % best_val_loss)
-    print("best_test = %.6f" % best_test_loss)
+    print("best_train_f_mse = %.6f" % best_train_loss)
+    print("best_val_f_mse = %.6f" % best_val_loss)
+    print("best_test_f_mse = %.6f" % best_test_loss)
     print("best_epoch = %d" % best_epoch)
+    print("best_train_f_mse = %.6f, best_val_f_mse = %.6f, best_test_f_mse = %.6f, best_epoch = %d"
+          % (best_train_loss, best_val_loss, best_test_loss, best_epoch))

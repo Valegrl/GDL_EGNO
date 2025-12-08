@@ -1,9 +1,11 @@
 import argparse
 from argparse import Namespace
+import sys
 import torch
 import torch.utils.data
 from simulation.dataset_simple import NBodyDynamicsDataset as SimulationDataset
 from model.egno import EGNO
+from model.physics_constraints import PhysicsInformedLoss
 from utils import EarlyStopping
 import os
 from torch import nn, optim
@@ -26,6 +28,8 @@ parser.add_argument('--log_interval', type=int, default=1, metavar='N',
                     help='how many batches to wait before logging training status')
 parser.add_argument('--test_interval', type=int, default=5, metavar='N',
                     help='how many epochs to wait before logging test')
+parser.add_argument('--patience', type=int, default=50, metavar='N',
+                    help='early stopping patience (epochs without improvement)')
 parser.add_argument('--outf', type=str, default='exp_results', metavar='N',
                     help='folder to output the json log file')
 parser.add_argument('--lr', type=float, default=5e-4, metavar='N',
@@ -67,10 +71,31 @@ parser.add_argument('--time_emb_dim', type=int, default=32,
 parser.add_argument('--num_modes', type=int, default=2,
                     help='The number of modes.')
 
+# Temporal discretization
+parser.add_argument('--use_last_snapshots', action='store_true', default=False,
+                    help='Use EGNO-L (last P snapshots) instead of EGNO-U (uniform sampling)')
+
+# Physics-informed constraint parameters
+parser.add_argument('--lambda_momentum', type=float, default=0.0,
+                    help='Weight for momentum conservation loss (0 to disable)')
+parser.add_argument('--max_physics_loss', type=float, default=10.0,
+                    help='Maximum physics loss contribution (prevents domination)')
+parser.add_argument('--physics_warmup_epochs', type=int, default=0,
+                    help='Number of epochs to linearly ramp up physics loss')
+parser.add_argument('--grad_clip', type=float, default=0.0,
+                    help='Gradient clipping max norm (0 to disable)')
+parser.add_argument('--grad_clip_value', type=float, default=0.0,
+                    help='Gradient clipping by value (0 to disable)')
+
 time_exp_dic = {'time': 0, 'counter': 0}
 
-
+# Parse command line arguments first
 args = parser.parse_args()
+
+# Store command-line overrides before loading config
+cli_seed = args.seed if '--seed' in sys.argv else None
+cli_exp_name = args.exp_name if '--exp_name' in sys.argv else None
+
 if args.config_by_file is not None:
     if len(args.config_by_file) == 0:
         job_param_path = './configs/config_simulation_simple_no.json'
@@ -82,6 +107,12 @@ if args.config_by_file is not None:
         args = vars(args)
         args.update((k, v) for k, v in hyper_params.items() if k in args)
         args = Namespace(**args)
+    
+    # Apply command-line overrides after config loading
+    if cli_seed is not None:
+        args.seed = cli_seed
+    if cli_exp_name is not None:
+        args.exp_name = cli_exp_name
 
 args.cuda = not args.no_cuda and torch.cuda.is_available()
 
@@ -109,18 +140,24 @@ def main():
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
 
+    # Check if physics constraints are enabled
+    use_physics = args.lambda_momentum > 0
+    
     dataset_train = SimulationDataset(partition='train', max_samples=args.max_training_samples,
-                                      data_dir=args.data_dir, num_timesteps=args.num_timesteps)
+                                      data_dir=args.data_dir, num_timesteps=args.num_timesteps,
+                                      return_velocities=use_physics, use_last_snapshots=args.use_last_snapshots)
     loader_train = torch.utils.data.DataLoader(dataset_train, batch_size=args.batch_size, shuffle=True, drop_last=True,
                                                num_workers=0)
 
     dataset_val = SimulationDataset(partition='val',
-                                    data_dir=args.data_dir, num_timesteps=args.num_timesteps)
+                                    data_dir=args.data_dir, num_timesteps=args.num_timesteps,
+                                    return_velocities=use_physics, use_last_snapshots=args.use_last_snapshots)
     loader_val = torch.utils.data.DataLoader(dataset_val, batch_size=args.batch_size, shuffle=False, drop_last=False,
                                              num_workers=0)
 
     dataset_test = SimulationDataset(partition='test',
-                                     data_dir=args.data_dir, num_timesteps=args.num_timesteps)
+                                     data_dir=args.data_dir, num_timesteps=args.num_timesteps,
+                                     return_velocities=use_physics, use_last_snapshots=args.use_last_snapshots)
     loader_test = torch.utils.data.DataLoader(dataset_test, batch_size=args.batch_size, shuffle=False, drop_last=False,
                                               num_workers=0)
 
@@ -131,31 +168,63 @@ def main():
     else:
         raise NotImplementedError('Unknown model:', args.model)
 
+    # Initialize physics-informed loss if enabled
+    physics_loss_fn = None
+    if use_physics:
+        physics_loss_fn = PhysicsInformedLoss(
+            lambda_momentum=args.lambda_momentum,
+            warmup_epochs=args.physics_warmup_epochs,
+            max_physics_loss=args.max_physics_loss
+        )
+        print(f"Physics-informed training enabled:")
+        print(f"  - Momentum conservation weight: {args.lambda_momentum}")
+        print(f"  - Max physics loss: {args.max_physics_loss}")
+        if args.physics_warmup_epochs > 0:
+            print(f"  - Warmup epochs: {args.physics_warmup_epochs}")
+
     print(model)
     optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    
     model_save_path = args.outf + '/' + args.exp_name + '/' + 'saved_model.pth'
     print(f'Model saved to {model_save_path}')
-    early_stopping = EarlyStopping(patience=50, verbose=True, path=model_save_path)
+    early_stopping = EarlyStopping(patience=args.patience, verbose=True, path=model_save_path)
 
-    results = {'eval epoch': [], 'val loss': [], 'test loss': [], 'train loss': []}
+    results = {'eval epoch': [], 'val loss': [], 'test loss': [], 'train loss': [],
+               'val loss amse': [], 'test loss amse': [], 'train loss amse': []}
+    # Add physics loss tracking if enabled
+    if use_physics:
+        results['momentum_loss'] = []
+    
     best_val_loss = 1e8
     best_test_loss = 1e8
     best_epoch = 0
     best_train_loss = 1e8
+    best_test_amse = 1e8
     for epoch in range(0, args.epochs):
-        train_loss = train(model, optimizer, epoch, loader_train)
+        # Update physics loss warmup
+        if physics_loss_fn is not None:
+            physics_loss_fn.set_epoch(epoch)
+        
+        train_loss, train_loss_amse, physics_losses = train(model, optimizer, epoch, loader_train, physics_loss_fn=physics_loss_fn)
         results['train loss'].append(train_loss)
+        results['train loss amse'].append(train_loss_amse)
+        if use_physics and physics_losses:
+            results['momentum_loss'].append(physics_losses.get('momentum', 0))
+            
         if epoch % args.test_interval == 0:
-            val_loss = train(model, optimizer, epoch, loader_val, backprop=False)
-            test_loss = train(model, optimizer, epoch, loader_test, backprop=False)
+            val_loss, val_loss_amse, _ = train(model, optimizer, epoch, loader_val, backprop=False, physics_loss_fn=physics_loss_fn)
+            test_loss, test_loss_amse, _ = train(model, optimizer, epoch, loader_test, backprop=False, physics_loss_fn=physics_loss_fn)
 
             results['eval epoch'].append(epoch)
             results['val loss'].append(val_loss)
             results['test loss'].append(test_loss)
+            results['val loss amse'].append(val_loss_amse)
+            results['test loss amse'].append(test_loss_amse)
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
                 best_test_loss = test_loss
                 best_train_loss = train_loss
+                best_test_amse = test_loss_amse
                 best_epoch = epoch
                 # Save model is move to early stopping.
             print("*** Best Val Loss: %.5f \t Best Test Loss: %.5f \t Best epoch %d"
@@ -168,28 +237,40 @@ def main():
         json_object = json.dumps(results, indent=4)
         with open(args.outf + "/" + args.exp_name + "/loss.json", "w") as outfile:
             outfile.write(json_object)
-    return best_train_loss, best_val_loss, best_test_loss, best_epoch
+    return best_train_loss, best_val_loss, best_test_loss, best_test_amse, best_epoch
 
 
-def train(model, optimizer, epoch, loader, backprop=True):
+def train(model, optimizer, epoch, loader, backprop=True, physics_loss_fn=None):
     if backprop:
         model.train()
     else:
         model.eval()
 
-    res = {'epoch': epoch, 'loss': 0, 'counter': 0, 'lp_loss': 0}
+    res = {'epoch': epoch, 'loss': 0, 'counter': 0, 'lp_loss': 0, 'loss_amse': 0}
+    physics_res = {'momentum': 0, 'count': 0}
+    use_physics = physics_loss_fn is not None
 
     for batch_idx, data in enumerate(loader):
         data = [d.to(device) for d in data]
-        loc, vel, edge_attr, charges, loc_end = data
+        
+        # Unpack data - now includes target velocities if physics constraints enabled
+        if use_physics:
+            loc, vel, edge_attr, charges, loc_end, _ = data
+        else:
+            loc, vel, edge_attr, charges, loc_end = data
+            
         n_nodes = 5
         loc_mean = loc.mean(dim=1, keepdim=True).repeat(1, n_nodes, 1).view(-1, loc.size(2))  # [BN, 3]
 
+        # Store initial velocities for physics constraints
+        vel_init = vel.clone()
+        
         loc = loc.view(-1, loc.shape[-1])
         vel = vel.view(-1, vel.shape[-1])
         edge_attr = edge_attr.view(-1, edge_attr.shape[-1])
         batch_size = loc.shape[0] // n_nodes
         loc_end = loc_end.view(batch_size * n_nodes, args.num_timesteps, 3).transpose(0, 1).contiguous().view(-1, 3)
+        
         edges = loader.dataset.get_edges(batch_size, n_nodes)
         edges = [edges[0].to(device), edges[1].to(device)]
 
@@ -204,32 +285,81 @@ def train(model, optimizer, epoch, loader, backprop=True):
         else:
             raise Exception("Wrong model")
 
+        # Standard MSE loss on positions
         losses = loss_mse(loc_pred, loc_end).view(args.num_timesteps, batch_size * n_nodes, 3)
         losses = torch.mean(losses, dim=(1, 2))
         loss = torch.mean(losses)
+        
+        # Track both F-MSE (final timestep) and A-MSE (average over all timesteps)
+        f_mse = losses[-1]  # Final MSE
+        a_mse = loss  # Average MSE
+        
+        # Add physics-informed losses if enabled
+        physics_losses = {}
+        if use_physics and backprop:
+            # Get the final timestep predictions for physics loss computation
+            # vel_pred is [T * B * N, 3], we want the last timestep
+            vel_pred_final = vel_pred.view(args.num_timesteps, batch_size * n_nodes, 3)[-1]  # [B*N, 3]
+            
+            # Flatten initial velocities
+            vel_init_flat = vel_init.view(-1, 3)
+            
+            physics_loss, physics_losses = physics_loss_fn.compute_physics_losses(
+                vel_init=vel_init_flat,
+                vel_pred=vel_pred_final,
+                n_nodes=n_nodes,
+                batch_size=batch_size
+            )
+            
+            loss = loss + physics_loss
+            
+            # Track physics losses
+            physics_res['momentum'] += physics_losses.get('momentum', 0) * batch_size
+            physics_res['count'] += batch_size
 
         if backprop:
             loss.backward()
+            
+            # Gradient clipping to prevent spikes
+            if args.grad_clip > 0:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), args.grad_clip)
+            if args.grad_clip_value > 0:
+                torch.nn.utils.clip_grad_value_(model.parameters(), args.grad_clip_value)
+            
             optimizer.step()
-        res['loss'] += losses[-1].item() * batch_size
+        res['loss'] += f_mse.item() * batch_size
+        res['loss_amse'] += a_mse.item() * batch_size
         res['counter'] += batch_size
 
     if not backprop:
         prefix = "==> "
     else:
         prefix = ""
-    print('%s epoch %d avg loss: %.5f avg lploss: %.5f'
-          % (prefix+loader.dataset.partition, epoch, res['loss'] / res['counter'], res['lp_loss'] / res['counter']))
+    
+    # Print physics losses if enabled
+    physics_log = ""
+    avg_physics_losses = {}
+    if use_physics and physics_res['count'] > 0:
+        avg_momentum = physics_res['momentum'] / physics_res['count']
+        physics_log = f" | P_loss: {avg_momentum:.5f}"
+        avg_physics_losses = {
+            'momentum': avg_momentum
+        }
+    
+    print('%s epoch %d avg loss: %.5f avg lploss: %.5f%s'
+          % (prefix+loader.dataset.partition, epoch, res['loss'] / res['counter'], 
+             res['lp_loss'] / res['counter'], physics_log))
 
-    return res['loss'] / res['counter']
+    return res['loss'] / res['counter'], res['loss_amse'] / res['counter'], avg_physics_losses
 
 
 if __name__ == "__main__":
-    best_train_loss, best_val_loss, best_test_loss, best_epoch = main()
-    print("best_train = %.6f" % best_train_loss)
-    print("best_val = %.6f" % best_val_loss)
-    print("best_test = %.6f" % best_test_loss)
+    best_train_loss, best_val_loss, best_test_loss, best_test_amse, best_epoch = main()
+    print("best_train_f_mse = %.6f" % best_train_loss)
+    print("best_val_f_mse = %.6f" % best_val_loss)
+    print("best_test_f_mse = %.6f" % best_test_loss)
+    print("best_test_a_mse = %.6f" % best_test_amse)
     print("best_epoch = %d" % best_epoch)
-    print("best_train = %.6f, best_val = %.6f, best_test = %.6f, best_epoch = %d"
-          % (best_train_loss, best_val_loss, best_test_loss, best_epoch))
+    print("best_train_f_mse = %.6f, best_val_f_mse = %.6f, best_test_f_mse = %.6f, best_test_a_mse = %.6f, best_epoch = %d"
+          % (best_train_loss, best_val_loss, best_test_loss, best_test_amse, best_epoch))
 

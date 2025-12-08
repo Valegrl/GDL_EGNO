@@ -142,26 +142,34 @@ def main():
     print(f'Model saved to {model_save_path}')
     early_stopping = EarlyStopping(patience=50, verbose=True, path=model_save_path)
 
-    results = {'eval epoch': [], 'val loss': [], 'test loss': [], 'train loss': []}
+    results = {'eval epoch': [], 'val loss': [], 'test loss': [], 'train loss': [],
+               'val loss amse': [], 'test loss amse': [], 'train loss amse': []}
     best_val_loss = 1e8
     best_test_loss = 1e8
     best_epoch = 0
     best_train_loss = 1e8
+    best_train_amse = 1e8
+    best_test_amse = 1e8
     best_lp_loss = 1e8
     for epoch in range(0, args.epochs):
-        train_loss, lp_loss = train(model, optimizer, epoch, loader_train)
+        train_loss, train_loss_amse, lp_loss = train(model, optimizer, epoch, loader_train)
         results['train loss'].append(train_loss)
+        results['train loss amse'].append(train_loss_amse)
         if epoch % args.test_interval == 0:
-            val_loss, _ = train(model, optimizer, epoch, loader_val, backprop=False)
-            test_loss, _ = train(model, optimizer, epoch, loader_test, backprop=False)
+            val_loss, val_loss_amse, _ = train(model, optimizer, epoch, loader_val, backprop=False)
+            test_loss, test_loss_amse, _ = train(model, optimizer, epoch, loader_test, backprop=False)
 
             results['eval epoch'].append(epoch)
             results['val loss'].append(val_loss)
             results['test loss'].append(test_loss)
+            results['val loss amse'].append(val_loss_amse)
+            results['test loss amse'].append(test_loss_amse)
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
                 best_test_loss = test_loss
                 best_train_loss = train_loss
+                best_train_amse = train_loss_amse
+                best_test_amse = test_loss_amse
                 best_epoch = epoch
                 best_lp_loss = lp_loss
             print("*** Best Val Loss: %.5f \t Best Test Loss: %.5f \t Best epoch %d"
@@ -174,7 +182,7 @@ def main():
         json_object = json.dumps(results, indent=4)
         with open(args.outf + "/" + args.exp_name + "/loss.json", "w") as outfile:
             outfile.write(json_object)
-    return best_train_loss, best_val_loss, best_test_loss, best_epoch, best_lp_loss
+    return best_train_loss, best_val_loss, best_test_loss, best_test_amse, best_epoch, best_lp_loss
 
 
 def train(model, optimizer, epoch, loader, backprop=True):
@@ -183,7 +191,7 @@ def train(model, optimizer, epoch, loader, backprop=True):
     else:
         model.eval()
 
-    res = {'epoch': epoch, 'loss': 0, 'counter': 0, 'lp_loss': 0}
+    res = {'epoch': epoch, 'loss': 0, 'counter': 0, 'lp_loss': 0, 'loss_a': 0}
 
     for batch_idx, data in enumerate(loader):
         batch_size, n_nodes, _ = data[0].size()
@@ -222,30 +230,36 @@ def train(model, optimizer, epoch, loader, backprop=True):
         losses = loss_mse(loc_pred, loc_end).view(args.num_timesteps, batch_size * n_nodes, 3)
         losses = torch.mean(losses, dim=(1, 2))
         loss = torch.mean(losses)
+        
+        # Track both F-MSE (final timestep) and A-MSE (average over all timesteps)
+        f_mse = losses[-1]  # Final MSE
+        a_mse = loss  # Average MSE
 
         if backprop:
             loss.backward()
             optimizer.step()
-        res['loss'] += losses[-1].item()*batch_size
+        res['loss'] += f_mse.item()*batch_size
+        res['loss_a'] += a_mse.item()*batch_size
         res['counter'] += batch_size
 
     if not backprop:
         prefix = "==> "
     else:
         prefix = ""
-    print('%s epoch %d avg loss: %.5f avg lploss: %.5f'
-          % (prefix+loader.dataset.partition, epoch, res['loss'] / res['counter'], res['lp_loss'] / res['counter']))
+    print('%s epoch %d avg loss: %.5f (A-MSE: %.5f) avg lploss: %.5f'
+          % (prefix+loader.dataset.partition, epoch, res['loss'] / res['counter'], res['loss_a'] / res['counter'], res['lp_loss'] / res['counter']))
 
-    return res['loss'] / res['counter'], res['lp_loss'] / res['counter']
+    return res['loss'] / res['counter'], res['loss_a'] / res['counter'], res['lp_loss'] / res['counter']
 
 
 if __name__ == "__main__":
-    best_train_loss, best_val_loss, best_test_loss, best_epoch, best_lp_loss = main()
-    print("best_train = %.6f" % best_train_loss)
+    best_train_loss, best_val_loss, best_test_loss, best_test_amse, best_epoch, best_lp_loss = main()
+    print("best_train_f_mse = %.6f" % best_train_loss)
     print("best_lp = %.6f" % best_lp_loss)
-    print("best_val = %.6f" % best_val_loss)
-    print("best_test = %.6f" % best_test_loss)
+    print("best_val_f_mse = %.6f" % best_val_loss)
+    print("best_test_f_mse = %.6f" % best_test_loss)
+    print("best_test_a_mse = %.6f" % best_test_amse)
     print("best_epoch = %d" % best_epoch)
-    print("best_train = %.6f, best_lp = %.6f, best_val = %.6f, best_test = %.6f, best_epoch = %d"
-          % (best_train_loss, best_lp_loss, best_val_loss, best_test_loss, best_epoch))
+    print("best_train_f_mse = %.6f, best_lp = %.6f, best_val_f_mse = %.6f, best_test_f_mse = %.6f, best_test_a_mse = %.6f, best_epoch = %d"
+          % (best_train_loss, best_lp_loss, best_val_loss, best_test_loss, best_test_amse, best_epoch))
 
