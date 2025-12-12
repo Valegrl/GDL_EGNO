@@ -1,0 +1,2123 @@
+Running N-body with momentum conservation for seed 2
+Job ID: 3843512, Array Task ID: 2
+Namespace(batch_size=100, config_by_file='configs/nbody_momentum_seed2.json', cuda=True, data_dir='simulation/dataset', decoder_layer=1, dropout=0.5, epochs=5000, exp_name='nbody_momentum_seed2', flat=False, grad_clip=0.5, grad_clip_value=0.1, interaction_layer=3, lambda_link=1, lambda_momentum=0.001, log_interval=1, lr=0.0001, max_physics_loss=0.01, max_training_samples=3000, model='egno', n_cluster=3, n_layers=4, nf=64, no_cuda=False, norm=False, num_modes=2, num_timesteps=5, outf='exp_results', patience=50, physics_warmup_epochs=50, pooling_layer=3, seed=2, test_interval=5, time_emb_dim=32, use_last_snapshots=False, weight_decay=1e-08)
+Physics-informed training enabled:
+  - Momentum conservation weight: 0.001
+  - Max physics loss: 0.01
+  - Warmup epochs: 50
+EGNO(
+  (layers): ModuleList(
+    (0-3): 4 x EGNN_Layer(
+      (edge_message_net): InvariantScalarNet(
+        (activation): SiLU()
+        (scalar_net): BaseMLP(
+          (mlp): Sequential(
+            (0): Linear(in_features=131, out_features=64, bias=True)
+            (1): SiLU()
+            (2): Linear(in_features=64, out_features=64, bias=True)
+            (3): SiLU()
+          )
+        )
+      )
+      (coord_net): BaseMLP(
+        (mlp): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): SiLU()
+          (2): Linear(in_features=64, out_features=1, bias=True)
+        )
+      )
+      (node_v_net): BaseMLP(
+        (mlp): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): SiLU()
+          (2): Linear(in_features=64, out_features=1, bias=True)
+        )
+      )
+      (node_net): BaseMLP(
+        (mlp): Sequential(
+          (0): Linear(in_features=128, out_features=64, bias=True)
+          (1): SiLU()
+          (2): Linear(in_features=64, out_features=64, bias=True)
+        )
+      )
+    )
+  )
+  (embedding): Linear(in_features=33, out_features=64, bias=True)
+  (time_conv_modules): ModuleList(
+    (0-3): 4 x TimeConv(
+      (t_conv): SpectralConv1d()
+      (act): LeakyReLU(negative_slope=0.01)
+    )
+  )
+  (time_conv_x_modules): ModuleList(
+    (0-3): 4 x TimeConv_x(
+      (t_conv): SpectralConv1d_x()
+    )
+  )
+)
+Model saved to exp_results/nbody_momentum_seed2/saved_model.pth
+train epoch 0 avg loss: 13.00179 avg lploss: 0.00000 | Mom_loss: 0.062537
+==> val epoch 0 avg loss: 0.15163 avg lploss: 0.00000 | Mom_loss: 0.067762
+==> test epoch 0 avg loss: 0.16884 avg lploss: 0.00000 | Mom_loss: 0.067813
+*** Best Val Loss: 0.15163 	 Best Test Loss: 0.16884 	 Best epoch 0
+Validation loss decreased (inf --> 0.151628).  Saving model ...
+train epoch 1 avg loss: 0.08947 avg lploss: 0.00000 | Mom_loss: 0.073085
+train epoch 2 avg loss: 0.06366 avg lploss: 0.00000 | Mom_loss: 0.074939
+train epoch 3 avg loss: 0.05876 avg lploss: 0.00000 | Mom_loss: 0.075589
+train epoch 4 avg loss: 0.05813 avg lploss: 0.00000 | Mom_loss: 0.077313
+train epoch 5 avg loss: 0.05830 avg lploss: 0.00000 | Mom_loss: 0.078443
+==> val epoch 5 avg loss: 0.05449 avg lploss: 0.00000 | Mom_loss: 0.078862
+==> test epoch 5 avg loss: 0.05247 avg lploss: 0.00000 | Mom_loss: 0.078733
+*** Best Val Loss: 0.05449 	 Best Test Loss: 0.05247 	 Best epoch 5
+Validation loss decreased (0.151628 --> 0.054494).  Saving model ...
+train epoch 6 avg loss: 0.05456 avg lploss: 0.00000 | Mom_loss: 0.078200
+train epoch 7 avg loss: 0.05238 avg lploss: 0.00000 | Mom_loss: 0.080247
+train epoch 8 avg loss: 0.05143 avg lploss: 0.00000 | Mom_loss: 0.082084
+train epoch 9 avg loss: 0.05052 avg lploss: 0.00000 | Mom_loss: 0.083649
+train epoch 10 avg loss: 0.04970 avg lploss: 0.00000 | Mom_loss: 0.085509
+==> val epoch 10 avg loss: 0.04897 avg lploss: 0.00000 | Mom_loss: 0.086616
+==> test epoch 10 avg loss: 0.04689 avg lploss: 0.00000 | Mom_loss: 0.086391
+*** Best Val Loss: 0.04897 	 Best Test Loss: 0.04689 	 Best epoch 10
+Validation loss decreased (0.054494 --> 0.048973).  Saving model ...
+train epoch 11 avg loss: 0.04821 avg lploss: 0.00000 | Mom_loss: 0.087301
+train epoch 12 avg loss: 0.04790 avg lploss: 0.00000 | Mom_loss: 0.088980
+train epoch 13 avg loss: 0.04727 avg lploss: 0.00000 | Mom_loss: 0.090340
+train epoch 14 avg loss: 0.04582 avg lploss: 0.00000 | Mom_loss: 0.091068
+train epoch 15 avg loss: 0.04455 avg lploss: 0.00000 | Mom_loss: 0.094202
+==> val epoch 15 avg loss: 0.04378 avg lploss: 0.00000 | Mom_loss: 0.096009
+==> test epoch 15 avg loss: 0.04189 avg lploss: 0.00000 | Mom_loss: 0.095728
+*** Best Val Loss: 0.04378 	 Best Test Loss: 0.04189 	 Best epoch 15
+Validation loss decreased (0.048973 --> 0.043780).  Saving model ...
+train epoch 16 avg loss: 0.04315 avg lploss: 0.00000 | Mom_loss: 0.096617
+train epoch 17 avg loss: 0.04213 avg lploss: 0.00000 | Mom_loss: 0.099043
+train epoch 18 avg loss: 0.04119 avg lploss: 0.00000 | Mom_loss: 0.101564
+train epoch 19 avg loss: 0.03972 avg lploss: 0.00000 | Mom_loss: 0.103559
+train epoch 20 avg loss: 0.03892 avg lploss: 0.00000 | Mom_loss: 0.105261
+==> val epoch 20 avg loss: 0.03840 avg lploss: 0.00000 | Mom_loss: 0.106201
+==> test epoch 20 avg loss: 0.03728 avg lploss: 0.00000 | Mom_loss: 0.105814
+*** Best Val Loss: 0.03840 	 Best Test Loss: 0.03728 	 Best epoch 20
+Validation loss decreased (0.043780 --> 0.038402).  Saving model ...
+train epoch 21 avg loss: 0.03726 avg lploss: 0.00000 | Mom_loss: 0.106969
+train epoch 22 avg loss: 0.03599 avg lploss: 0.00000 | Mom_loss: 0.109215
+train epoch 23 avg loss: 0.03449 avg lploss: 0.00000 | Mom_loss: 0.111038
+train epoch 24 avg loss: 0.03259 avg lploss: 0.00000 | Mom_loss: 0.112152
+train epoch 25 avg loss: 0.03091 avg lploss: 0.00000 | Mom_loss: 0.113858
+==> val epoch 25 avg loss: 0.03009 avg lploss: 0.00000 | Mom_loss: 0.114345
+==> test epoch 25 avg loss: 0.02943 avg lploss: 0.00000 | Mom_loss: 0.113833
+*** Best Val Loss: 0.03009 	 Best Test Loss: 0.02943 	 Best epoch 25
+Validation loss decreased (0.038402 --> 0.030092).  Saving model ...
+train epoch 26 avg loss: 0.03008 avg lploss: 0.00000 | Mom_loss: 0.113564
+train epoch 27 avg loss: 0.02852 avg lploss: 0.00000 | Mom_loss: 0.113823
+train epoch 28 avg loss: 0.02841 avg lploss: 0.00000 | Mom_loss: 0.112326
+train epoch 29 avg loss: 0.02675 avg lploss: 0.00000 | Mom_loss: 0.110982
+train epoch 30 avg loss: 0.02553 avg lploss: 0.00000 | Mom_loss: 0.109740
+==> val epoch 30 avg loss: 0.02420 avg lploss: 0.00000 | Mom_loss: 0.109433
+==> test epoch 30 avg loss: 0.02356 avg lploss: 0.00000 | Mom_loss: 0.108811
+*** Best Val Loss: 0.02420 	 Best Test Loss: 0.02356 	 Best epoch 30
+Validation loss decreased (0.030092 --> 0.024202).  Saving model ...
+train epoch 31 avg loss: 0.02584 avg lploss: 0.00000 | Mom_loss: 0.108765
+train epoch 32 avg loss: 0.02352 avg lploss: 0.00000 | Mom_loss: 0.106671
+train epoch 33 avg loss: 0.02259 avg lploss: 0.00000 | Mom_loss: 0.105815
+train epoch 34 avg loss: 0.02118 avg lploss: 0.00000 | Mom_loss: 0.104092
+train epoch 35 avg loss: 0.02022 avg lploss: 0.00000 | Mom_loss: 0.103028
+==> val epoch 35 avg loss: 0.01975 avg lploss: 0.00000 | Mom_loss: 0.103316
+==> test epoch 35 avg loss: 0.01900 avg lploss: 0.00000 | Mom_loss: 0.102665
+*** Best Val Loss: 0.01975 	 Best Test Loss: 0.01900 	 Best epoch 35
+Validation loss decreased (0.024202 --> 0.019752).  Saving model ...
+train epoch 36 avg loss: 0.01916 avg lploss: 0.00000 | Mom_loss: 0.102204
+train epoch 37 avg loss: 0.01842 avg lploss: 0.00000 | Mom_loss: 0.101783
+train epoch 38 avg loss: 0.01796 avg lploss: 0.00000 | Mom_loss: 0.100772
+train epoch 39 avg loss: 0.01796 avg lploss: 0.00000 | Mom_loss: 0.100885
+train epoch 40 avg loss: 0.01763 avg lploss: 0.00000 | Mom_loss: 0.100145
+==> val epoch 40 avg loss: 0.01855 avg lploss: 0.00000 | Mom_loss: 0.100532
+==> test epoch 40 avg loss: 0.01814 avg lploss: 0.00000 | Mom_loss: 0.099908
+*** Best Val Loss: 0.01855 	 Best Test Loss: 0.01814 	 Best epoch 40
+Validation loss decreased (0.019752 --> 0.018549).  Saving model ...
+train epoch 41 avg loss: 0.01936 avg lploss: 0.00000 | Mom_loss: 0.099902
+train epoch 42 avg loss: 0.01766 avg lploss: 0.00000 | Mom_loss: 0.099595
+train epoch 43 avg loss: 0.01692 avg lploss: 0.00000 | Mom_loss: 0.099177
+train epoch 44 avg loss: 0.01629 avg lploss: 0.00000 | Mom_loss: 0.098864
+train epoch 45 avg loss: 0.01748 avg lploss: 0.00000 | Mom_loss: 0.099088
+==> val epoch 45 avg loss: 0.01888 avg lploss: 0.00000 | Mom_loss: 0.099974
+==> test epoch 45 avg loss: 0.01848 avg lploss: 0.00000 | Mom_loss: 0.099422
+*** Best Val Loss: 0.01855 	 Best Test Loss: 0.01814 	 Best epoch 40
+EarlyStopping counter: 1 out of 50
+train epoch 46 avg loss: 0.01663 avg lploss: 0.00000 | Mom_loss: 0.099014
+train epoch 47 avg loss: 0.01636 avg lploss: 0.00000 | Mom_loss: 0.099359
+train epoch 48 avg loss: 0.01636 avg lploss: 0.00000 | Mom_loss: 0.098832
+train epoch 49 avg loss: 0.01608 avg lploss: 0.00000 | Mom_loss: 0.099211
+train epoch 50 avg loss: 0.01582 avg lploss: 0.00000 | Mom_loss: 0.099188
+==> val epoch 50 avg loss: 0.01530 avg lploss: 0.00000 | Mom_loss: 0.099182
+==> test epoch 50 avg loss: 0.01457 avg lploss: 0.00000 | Mom_loss: 0.098624
+*** Best Val Loss: 0.01530 	 Best Test Loss: 0.01457 	 Best epoch 50
+Validation loss decreased (0.018549 --> 0.015299).  Saving model ...
+train epoch 51 avg loss: 0.01598 avg lploss: 0.00000 | Mom_loss: 0.099268
+train epoch 52 avg loss: 0.01562 avg lploss: 0.00000 | Mom_loss: 0.099189
+train epoch 53 avg loss: 0.01524 avg lploss: 0.00000 | Mom_loss: 0.099379
+train epoch 54 avg loss: 0.01514 avg lploss: 0.00000 | Mom_loss: 0.099468
+train epoch 55 avg loss: 0.01527 avg lploss: 0.00000 | Mom_loss: 0.100415
+==> val epoch 55 avg loss: 0.01504 avg lploss: 0.00000 | Mom_loss: 0.101169
+==> test epoch 55 avg loss: 0.01418 avg lploss: 0.00000 | Mom_loss: 0.100628
+*** Best Val Loss: 0.01504 	 Best Test Loss: 0.01418 	 Best epoch 55
+Validation loss decreased (0.015299 --> 0.015036).  Saving model ...
+train epoch 56 avg loss: 0.01573 avg lploss: 0.00000 | Mom_loss: 0.100380
+train epoch 57 avg loss: 0.01489 avg lploss: 0.00000 | Mom_loss: 0.100470
+train epoch 58 avg loss: 0.01482 avg lploss: 0.00000 | Mom_loss: 0.100872
+train epoch 59 avg loss: 0.01483 avg lploss: 0.00000 | Mom_loss: 0.101393
+train epoch 60 avg loss: 0.01463 avg lploss: 0.00000 | Mom_loss: 0.101722
+==> val epoch 60 avg loss: 0.01522 avg lploss: 0.00000 | Mom_loss: 0.101568
+==> test epoch 60 avg loss: 0.01419 avg lploss: 0.00000 | Mom_loss: 0.101030
+*** Best Val Loss: 0.01504 	 Best Test Loss: 0.01418 	 Best epoch 55
+EarlyStopping counter: 1 out of 50
+train epoch 61 avg loss: 0.01475 avg lploss: 0.00000 | Mom_loss: 0.102082
+train epoch 62 avg loss: 0.01598 avg lploss: 0.00000 | Mom_loss: 0.102550
+train epoch 63 avg loss: 0.01489 avg lploss: 0.00000 | Mom_loss: 0.102190
+train epoch 64 avg loss: 0.01443 avg lploss: 0.00000 | Mom_loss: 0.102526
+train epoch 65 avg loss: 0.01421 avg lploss: 0.00000 | Mom_loss: 0.102585
+==> val epoch 65 avg loss: 0.01414 avg lploss: 0.00000 | Mom_loss: 0.104356
+==> test epoch 65 avg loss: 0.01307 avg lploss: 0.00000 | Mom_loss: 0.103844
+*** Best Val Loss: 0.01414 	 Best Test Loss: 0.01307 	 Best epoch 65
+Validation loss decreased (0.015036 --> 0.014143).  Saving model ...
+train epoch 66 avg loss: 0.01427 avg lploss: 0.00000 | Mom_loss: 0.103382
+train epoch 67 avg loss: 0.01416 avg lploss: 0.00000 | Mom_loss: 0.103889
+train epoch 68 avg loss: 0.01456 avg lploss: 0.00000 | Mom_loss: 0.103782
+train epoch 69 avg loss: 0.01426 avg lploss: 0.00000 | Mom_loss: 0.104139
+train epoch 70 avg loss: 0.01455 avg lploss: 0.00000 | Mom_loss: 0.104109
+==> val epoch 70 avg loss: 0.01415 avg lploss: 0.00000 | Mom_loss: 0.105232
+==> test epoch 70 avg loss: 0.01309 avg lploss: 0.00000 | Mom_loss: 0.104705
+*** Best Val Loss: 0.01414 	 Best Test Loss: 0.01307 	 Best epoch 65
+EarlyStopping counter: 1 out of 50
+train epoch 71 avg loss: 0.01454 avg lploss: 0.00000 | Mom_loss: 0.104286
+train epoch 72 avg loss: 0.01391 avg lploss: 0.00000 | Mom_loss: 0.104767
+train epoch 73 avg loss: 0.01420 avg lploss: 0.00000 | Mom_loss: 0.104707
+train epoch 74 avg loss: 0.01403 avg lploss: 0.00000 | Mom_loss: 0.105234
+train epoch 75 avg loss: 0.01376 avg lploss: 0.00000 | Mom_loss: 0.105311
+==> val epoch 75 avg loss: 0.01374 avg lploss: 0.00000 | Mom_loss: 0.105697
+==> test epoch 75 avg loss: 0.01265 avg lploss: 0.00000 | Mom_loss: 0.105167
+*** Best Val Loss: 0.01374 	 Best Test Loss: 0.01265 	 Best epoch 75
+Validation loss decreased (0.014143 --> 0.013737).  Saving model ...
+train epoch 76 avg loss: 0.01380 avg lploss: 0.00000 | Mom_loss: 0.105726
+train epoch 77 avg loss: 0.01384 avg lploss: 0.00000 | Mom_loss: 0.106122
+train epoch 78 avg loss: 0.01448 avg lploss: 0.00000 | Mom_loss: 0.106097
+train epoch 79 avg loss: 0.01362 avg lploss: 0.00000 | Mom_loss: 0.106277
+train epoch 80 avg loss: 0.01377 avg lploss: 0.00000 | Mom_loss: 0.106480
+==> val epoch 80 avg loss: 0.01480 avg lploss: 0.00000 | Mom_loss: 0.107060
+==> test epoch 80 avg loss: 0.01398 avg lploss: 0.00000 | Mom_loss: 0.106572
+*** Best Val Loss: 0.01374 	 Best Test Loss: 0.01265 	 Best epoch 75
+EarlyStopping counter: 1 out of 50
+train epoch 81 avg loss: 0.01369 avg lploss: 0.00000 | Mom_loss: 0.106746
+train epoch 82 avg loss: 0.01346 avg lploss: 0.00000 | Mom_loss: 0.106994
+train epoch 83 avg loss: 0.01330 avg lploss: 0.00000 | Mom_loss: 0.107203
+train epoch 84 avg loss: 0.01333 avg lploss: 0.00000 | Mom_loss: 0.107434
+train epoch 85 avg loss: 0.01337 avg lploss: 0.00000 | Mom_loss: 0.107621
+==> val epoch 85 avg loss: 0.01320 avg lploss: 0.00000 | Mom_loss: 0.108183
+==> test epoch 85 avg loss: 0.01216 avg lploss: 0.00000 | Mom_loss: 0.107679
+*** Best Val Loss: 0.01320 	 Best Test Loss: 0.01216 	 Best epoch 85
+Validation loss decreased (0.013737 --> 0.013198).  Saving model ...
+train epoch 86 avg loss: 0.01319 avg lploss: 0.00000 | Mom_loss: 0.107855
+train epoch 87 avg loss: 0.01311 avg lploss: 0.00000 | Mom_loss: 0.107599
+train epoch 88 avg loss: 0.01306 avg lploss: 0.00000 | Mom_loss: 0.108352
+train epoch 89 avg loss: 0.01324 avg lploss: 0.00000 | Mom_loss: 0.108499
+train epoch 90 avg loss: 0.01323 avg lploss: 0.00000 | Mom_loss: 0.108850
+==> val epoch 90 avg loss: 0.01364 avg lploss: 0.00000 | Mom_loss: 0.107751
+==> test epoch 90 avg loss: 0.01268 avg lploss: 0.00000 | Mom_loss: 0.107225
+*** Best Val Loss: 0.01320 	 Best Test Loss: 0.01216 	 Best epoch 85
+EarlyStopping counter: 1 out of 50
+train epoch 91 avg loss: 0.01336 avg lploss: 0.00000 | Mom_loss: 0.108705
+train epoch 92 avg loss: 0.01358 avg lploss: 0.00000 | Mom_loss: 0.108885
+train epoch 93 avg loss: 0.01304 avg lploss: 0.00000 | Mom_loss: 0.108887
+train epoch 94 avg loss: 0.01309 avg lploss: 0.00000 | Mom_loss: 0.108925
+train epoch 95 avg loss: 0.01314 avg lploss: 0.00000 | Mom_loss: 0.108973
+==> val epoch 95 avg loss: 0.01382 avg lploss: 0.00000 | Mom_loss: 0.109775
+==> test epoch 95 avg loss: 0.01308 avg lploss: 0.00000 | Mom_loss: 0.109222
+*** Best Val Loss: 0.01320 	 Best Test Loss: 0.01216 	 Best epoch 85
+EarlyStopping counter: 2 out of 50
+train epoch 96 avg loss: 0.01302 avg lploss: 0.00000 | Mom_loss: 0.108972
+train epoch 97 avg loss: 0.01322 avg lploss: 0.00000 | Mom_loss: 0.108718
+train epoch 98 avg loss: 0.01265 avg lploss: 0.00000 | Mom_loss: 0.109311
+train epoch 99 avg loss: 0.01275 avg lploss: 0.00000 | Mom_loss: 0.109120
+train epoch 100 avg loss: 0.01274 avg lploss: 0.00000 | Mom_loss: 0.108981
+==> val epoch 100 avg loss: 0.01271 avg lploss: 0.00000 | Mom_loss: 0.108930
+==> test epoch 100 avg loss: 0.01178 avg lploss: 0.00000 | Mom_loss: 0.108378
+*** Best Val Loss: 0.01271 	 Best Test Loss: 0.01178 	 Best epoch 100
+Validation loss decreased (0.013198 --> 0.012713).  Saving model ...
+train epoch 101 avg loss: 0.01263 avg lploss: 0.00000 | Mom_loss: 0.109017
+train epoch 102 avg loss: 0.01303 avg lploss: 0.00000 | Mom_loss: 0.108708
+train epoch 103 avg loss: 0.01296 avg lploss: 0.00000 | Mom_loss: 0.109059
+train epoch 104 avg loss: 0.01256 avg lploss: 0.00000 | Mom_loss: 0.109096
+train epoch 105 avg loss: 0.01265 avg lploss: 0.00000 | Mom_loss: 0.109141
+==> val epoch 105 avg loss: 0.01256 avg lploss: 0.00000 | Mom_loss: 0.110487
+==> test epoch 105 avg loss: 0.01165 avg lploss: 0.00000 | Mom_loss: 0.109933
+*** Best Val Loss: 0.01256 	 Best Test Loss: 0.01165 	 Best epoch 105
+Validation loss decreased (0.012713 --> 0.012563).  Saving model ...
+train epoch 106 avg loss: 0.01244 avg lploss: 0.00000 | Mom_loss: 0.109490
+train epoch 107 avg loss: 0.01272 avg lploss: 0.00000 | Mom_loss: 0.109238
+train epoch 108 avg loss: 0.01232 avg lploss: 0.00000 | Mom_loss: 0.109838
+train epoch 109 avg loss: 0.01229 avg lploss: 0.00000 | Mom_loss: 0.109931
+train epoch 110 avg loss: 0.01243 avg lploss: 0.00000 | Mom_loss: 0.109974
+==> val epoch 110 avg loss: 0.01279 avg lploss: 0.00000 | Mom_loss: 0.110376
+==> test epoch 110 avg loss: 0.01194 avg lploss: 0.00000 | Mom_loss: 0.109796
+*** Best Val Loss: 0.01256 	 Best Test Loss: 0.01165 	 Best epoch 105
+EarlyStopping counter: 1 out of 50
+train epoch 111 avg loss: 0.01226 avg lploss: 0.00000 | Mom_loss: 0.110191
+train epoch 112 avg loss: 0.01219 avg lploss: 0.00000 | Mom_loss: 0.110559
+train epoch 113 avg loss: 0.01338 avg lploss: 0.00000 | Mom_loss: 0.110459
+train epoch 114 avg loss: 0.01239 avg lploss: 0.00000 | Mom_loss: 0.110439
+train epoch 115 avg loss: 0.01287 avg lploss: 0.00000 | Mom_loss: 0.111007
+==> val epoch 115 avg loss: 0.01201 avg lploss: 0.00000 | Mom_loss: 0.110714
+==> test epoch 115 avg loss: 0.01119 avg lploss: 0.00000 | Mom_loss: 0.110128
+*** Best Val Loss: 0.01201 	 Best Test Loss: 0.01119 	 Best epoch 115
+Validation loss decreased (0.012563 --> 0.012006).  Saving model ...
+train epoch 116 avg loss: 0.01193 avg lploss: 0.00000 | Mom_loss: 0.110403
+train epoch 117 avg loss: 0.01225 avg lploss: 0.00000 | Mom_loss: 0.110685
+train epoch 118 avg loss: 0.01207 avg lploss: 0.00000 | Mom_loss: 0.111101
+train epoch 119 avg loss: 0.01201 avg lploss: 0.00000 | Mom_loss: 0.111024
+train epoch 120 avg loss: 0.01248 avg lploss: 0.00000 | Mom_loss: 0.111356
+==> val epoch 120 avg loss: 0.01190 avg lploss: 0.00000 | Mom_loss: 0.111443
+==> test epoch 120 avg loss: 0.01111 avg lploss: 0.00000 | Mom_loss: 0.110848
+*** Best Val Loss: 0.01190 	 Best Test Loss: 0.01111 	 Best epoch 120
+Validation loss decreased (0.012006 --> 0.011901).  Saving model ...
+train epoch 121 avg loss: 0.01308 avg lploss: 0.00000 | Mom_loss: 0.110890
+train epoch 122 avg loss: 0.01220 avg lploss: 0.00000 | Mom_loss: 0.110964
+train epoch 123 avg loss: 0.01282 avg lploss: 0.00000 | Mom_loss: 0.110906
+train epoch 124 avg loss: 0.01220 avg lploss: 0.00000 | Mom_loss: 0.110901
+train epoch 125 avg loss: 0.01181 avg lploss: 0.00000 | Mom_loss: 0.110832
+==> val epoch 125 avg loss: 0.01177 avg lploss: 0.00000 | Mom_loss: 0.111906
+==> test epoch 125 avg loss: 0.01100 avg lploss: 0.00000 | Mom_loss: 0.111308
+*** Best Val Loss: 0.01177 	 Best Test Loss: 0.01100 	 Best epoch 125
+Validation loss decreased (0.011901 --> 0.011765).  Saving model ...
+train epoch 126 avg loss: 0.01176 avg lploss: 0.00000 | Mom_loss: 0.111063
+train epoch 127 avg loss: 0.01180 avg lploss: 0.00000 | Mom_loss: 0.111120
+train epoch 128 avg loss: 0.01173 avg lploss: 0.00000 | Mom_loss: 0.110924
+train epoch 129 avg loss: 0.01177 avg lploss: 0.00000 | Mom_loss: 0.111416
+train epoch 130 avg loss: 0.01171 avg lploss: 0.00000 | Mom_loss: 0.111841
+==> val epoch 130 avg loss: 0.01157 avg lploss: 0.00000 | Mom_loss: 0.112653
+==> test epoch 130 avg loss: 0.01080 avg lploss: 0.00000 | Mom_loss: 0.112048
+*** Best Val Loss: 0.01157 	 Best Test Loss: 0.01080 	 Best epoch 130
+Validation loss decreased (0.011765 --> 0.011575).  Saving model ...
+train epoch 131 avg loss: 0.01223 avg lploss: 0.00000 | Mom_loss: 0.111857
+train epoch 132 avg loss: 0.01153 avg lploss: 0.00000 | Mom_loss: 0.112108
+train epoch 133 avg loss: 0.01149 avg lploss: 0.00000 | Mom_loss: 0.112286
+train epoch 134 avg loss: 0.01191 avg lploss: 0.00000 | Mom_loss: 0.112717
+train epoch 135 avg loss: 0.01192 avg lploss: 0.00000 | Mom_loss: 0.112434
+==> val epoch 135 avg loss: 0.01176 avg lploss: 0.00000 | Mom_loss: 0.113257
+==> test epoch 135 avg loss: 0.01107 avg lploss: 0.00000 | Mom_loss: 0.112645
+*** Best Val Loss: 0.01157 	 Best Test Loss: 0.01080 	 Best epoch 130
+EarlyStopping counter: 1 out of 50
+train epoch 136 avg loss: 0.01177 avg lploss: 0.00000 | Mom_loss: 0.112494
+train epoch 137 avg loss: 0.01154 avg lploss: 0.00000 | Mom_loss: 0.112611
+train epoch 138 avg loss: 0.01134 avg lploss: 0.00000 | Mom_loss: 0.112335
+train epoch 139 avg loss: 0.01137 avg lploss: 0.00000 | Mom_loss: 0.113017
+train epoch 140 avg loss: 0.01129 avg lploss: 0.00000 | Mom_loss: 0.113202
+==> val epoch 140 avg loss: 0.01142 avg lploss: 0.00000 | Mom_loss: 0.113746
+==> test epoch 140 avg loss: 0.01063 avg lploss: 0.00000 | Mom_loss: 0.113138
+*** Best Val Loss: 0.01142 	 Best Test Loss: 0.01063 	 Best epoch 140
+Validation loss decreased (0.011575 --> 0.011418).  Saving model ...
+train epoch 141 avg loss: 0.01127 avg lploss: 0.00000 | Mom_loss: 0.113266
+train epoch 142 avg loss: 0.01143 avg lploss: 0.00000 | Mom_loss: 0.113648
+train epoch 143 avg loss: 0.01141 avg lploss: 0.00000 | Mom_loss: 0.113673
+train epoch 144 avg loss: 0.01125 avg lploss: 0.00000 | Mom_loss: 0.113950
+train epoch 145 avg loss: 0.01150 avg lploss: 0.00000 | Mom_loss: 0.114026
+==> val epoch 145 avg loss: 0.01159 avg lploss: 0.00000 | Mom_loss: 0.113713
+==> test epoch 145 avg loss: 0.01104 avg lploss: 0.00000 | Mom_loss: 0.113103
+*** Best Val Loss: 0.01142 	 Best Test Loss: 0.01063 	 Best epoch 140
+EarlyStopping counter: 1 out of 50
+train epoch 146 avg loss: 0.01150 avg lploss: 0.00000 | Mom_loss: 0.113295
+train epoch 147 avg loss: 0.01141 avg lploss: 0.00000 | Mom_loss: 0.113808
+train epoch 148 avg loss: 0.01170 avg lploss: 0.00000 | Mom_loss: 0.113838
+train epoch 149 avg loss: 0.01105 avg lploss: 0.00000 | Mom_loss: 0.114029
+train epoch 150 avg loss: 0.01125 avg lploss: 0.00000 | Mom_loss: 0.114199
+==> val epoch 150 avg loss: 0.01161 avg lploss: 0.00000 | Mom_loss: 0.114542
+==> test epoch 150 avg loss: 0.01108 avg lploss: 0.00000 | Mom_loss: 0.113919
+*** Best Val Loss: 0.01142 	 Best Test Loss: 0.01063 	 Best epoch 140
+EarlyStopping counter: 2 out of 50
+train epoch 151 avg loss: 0.01139 avg lploss: 0.00000 | Mom_loss: 0.114024
+train epoch 152 avg loss: 0.01109 avg lploss: 0.00000 | Mom_loss: 0.114162
+train epoch 153 avg loss: 0.01107 avg lploss: 0.00000 | Mom_loss: 0.114413
+train epoch 154 avg loss: 0.01103 avg lploss: 0.00000 | Mom_loss: 0.114211
+train epoch 155 avg loss: 0.01107 avg lploss: 0.00000 | Mom_loss: 0.114786
+==> val epoch 155 avg loss: 0.01091 avg lploss: 0.00000 | Mom_loss: 0.115475
+==> test epoch 155 avg loss: 0.01020 avg lploss: 0.00000 | Mom_loss: 0.114892
+*** Best Val Loss: 0.01091 	 Best Test Loss: 0.01020 	 Best epoch 155
+Validation loss decreased (0.011418 --> 0.010906).  Saving model ...
+train epoch 156 avg loss: 0.01086 avg lploss: 0.00000 | Mom_loss: 0.114611
+train epoch 157 avg loss: 0.01076 avg lploss: 0.00000 | Mom_loss: 0.114750
+train epoch 158 avg loss: 0.01098 avg lploss: 0.00000 | Mom_loss: 0.114547
+train epoch 159 avg loss: 0.01087 avg lploss: 0.00000 | Mom_loss: 0.114589
+train epoch 160 avg loss: 0.01075 avg lploss: 0.00000 | Mom_loss: 0.114468
+==> val epoch 160 avg loss: 0.01085 avg lploss: 0.00000 | Mom_loss: 0.115850
+==> test epoch 160 avg loss: 0.01020 avg lploss: 0.00000 | Mom_loss: 0.115260
+*** Best Val Loss: 0.01085 	 Best Test Loss: 0.01020 	 Best epoch 160
+Validation loss decreased (0.010906 --> 0.010850).  Saving model ...
+train epoch 161 avg loss: 0.01065 avg lploss: 0.00000 | Mom_loss: 0.114826
+train epoch 162 avg loss: 0.01059 avg lploss: 0.00000 | Mom_loss: 0.114813
+train epoch 163 avg loss: 0.01077 avg lploss: 0.00000 | Mom_loss: 0.114646
+train epoch 164 avg loss: 0.01176 avg lploss: 0.00000 | Mom_loss: 0.114646
+train epoch 165 avg loss: 0.01067 avg lploss: 0.00000 | Mom_loss: 0.114591
+==> val epoch 165 avg loss: 0.01046 avg lploss: 0.00000 | Mom_loss: 0.115605
+==> test epoch 165 avg loss: 0.00987 avg lploss: 0.00000 | Mom_loss: 0.115035
+*** Best Val Loss: 0.01046 	 Best Test Loss: 0.00987 	 Best epoch 165
+Validation loss decreased (0.010850 --> 0.010458).  Saving model ...
+train epoch 166 avg loss: 0.01048 avg lploss: 0.00000 | Mom_loss: 0.114729
+train epoch 167 avg loss: 0.01045 avg lploss: 0.00000 | Mom_loss: 0.115022
+train epoch 168 avg loss: 0.01038 avg lploss: 0.00000 | Mom_loss: 0.114757
+train epoch 169 avg loss: 0.01047 avg lploss: 0.00000 | Mom_loss: 0.114922
+train epoch 170 avg loss: 0.01178 avg lploss: 0.00000 | Mom_loss: 0.114391
+==> val epoch 170 avg loss: 0.01224 avg lploss: 0.00000 | Mom_loss: 0.115084
+==> test epoch 170 avg loss: 0.01182 avg lploss: 0.00000 | Mom_loss: 0.114486
+*** Best Val Loss: 0.01046 	 Best Test Loss: 0.00987 	 Best epoch 165
+EarlyStopping counter: 1 out of 50
+train epoch 171 avg loss: 0.01082 avg lploss: 0.00000 | Mom_loss: 0.114088
+train epoch 172 avg loss: 0.01054 avg lploss: 0.00000 | Mom_loss: 0.114088
+train epoch 173 avg loss: 0.01085 avg lploss: 0.00000 | Mom_loss: 0.114180
+train epoch 174 avg loss: 0.01046 avg lploss: 0.00000 | Mom_loss: 0.113794
+train epoch 175 avg loss: 0.01026 avg lploss: 0.00000 | Mom_loss: 0.113937
+==> val epoch 175 avg loss: 0.01035 avg lploss: 0.00000 | Mom_loss: 0.113931
+==> test epoch 175 avg loss: 0.00978 avg lploss: 0.00000 | Mom_loss: 0.113395
+*** Best Val Loss: 0.01035 	 Best Test Loss: 0.00978 	 Best epoch 175
+Validation loss decreased (0.010458 --> 0.010352).  Saving model ...
+train epoch 176 avg loss: 0.01031 avg lploss: 0.00000 | Mom_loss: 0.113680
+train epoch 177 avg loss: 0.01024 avg lploss: 0.00000 | Mom_loss: 0.113683
+train epoch 178 avg loss: 0.01043 avg lploss: 0.00000 | Mom_loss: 0.113090
+train epoch 179 avg loss: 0.01025 avg lploss: 0.00000 | Mom_loss: 0.112928
+train epoch 180 avg loss: 0.01037 avg lploss: 0.00000 | Mom_loss: 0.112844
+==> val epoch 180 avg loss: 0.01021 avg lploss: 0.00000 | Mom_loss: 0.113278
+==> test epoch 180 avg loss: 0.00965 avg lploss: 0.00000 | Mom_loss: 0.112749
+*** Best Val Loss: 0.01021 	 Best Test Loss: 0.00965 	 Best epoch 180
+Validation loss decreased (0.010352 --> 0.010210).  Saving model ...
+train epoch 181 avg loss: 0.01035 avg lploss: 0.00000 | Mom_loss: 0.112899
+train epoch 182 avg loss: 0.01019 avg lploss: 0.00000 | Mom_loss: 0.112704
+train epoch 183 avg loss: 0.01036 avg lploss: 0.00000 | Mom_loss: 0.112751
+train epoch 184 avg loss: 0.01004 avg lploss: 0.00000 | Mom_loss: 0.112717
+train epoch 185 avg loss: 0.01033 avg lploss: 0.00000 | Mom_loss: 0.112273
+==> val epoch 185 avg loss: 0.01005 avg lploss: 0.00000 | Mom_loss: 0.113035
+==> test epoch 185 avg loss: 0.00945 avg lploss: 0.00000 | Mom_loss: 0.112524
+*** Best Val Loss: 0.01005 	 Best Test Loss: 0.00945 	 Best epoch 185
+Validation loss decreased (0.010210 --> 0.010049).  Saving model ...
+train epoch 186 avg loss: 0.00996 avg lploss: 0.00000 | Mom_loss: 0.111849
+train epoch 187 avg loss: 0.01020 avg lploss: 0.00000 | Mom_loss: 0.112056
+train epoch 188 avg loss: 0.01007 avg lploss: 0.00000 | Mom_loss: 0.111735
+train epoch 189 avg loss: 0.00998 avg lploss: 0.00000 | Mom_loss: 0.111299
+train epoch 190 avg loss: 0.00992 avg lploss: 0.00000 | Mom_loss: 0.111599
+==> val epoch 190 avg loss: 0.00979 avg lploss: 0.00000 | Mom_loss: 0.111701
+==> test epoch 190 avg loss: 0.00922 avg lploss: 0.00000 | Mom_loss: 0.111205
+*** Best Val Loss: 0.00979 	 Best Test Loss: 0.00922 	 Best epoch 190
+Validation loss decreased (0.010049 --> 0.009793).  Saving model ...
+train epoch 191 avg loss: 0.00976 avg lploss: 0.00000 | Mom_loss: 0.111460
+train epoch 192 avg loss: 0.00973 avg lploss: 0.00000 | Mom_loss: 0.111393
+train epoch 193 avg loss: 0.00999 avg lploss: 0.00000 | Mom_loss: 0.111230
+train epoch 194 avg loss: 0.00985 avg lploss: 0.00000 | Mom_loss: 0.110722
+train epoch 195 avg loss: 0.00983 avg lploss: 0.00000 | Mom_loss: 0.110730
+==> val epoch 195 avg loss: 0.00993 avg lploss: 0.00000 | Mom_loss: 0.111770
+==> test epoch 195 avg loss: 0.00932 avg lploss: 0.00000 | Mom_loss: 0.111295
+*** Best Val Loss: 0.00979 	 Best Test Loss: 0.00922 	 Best epoch 190
+EarlyStopping counter: 1 out of 50
+train epoch 196 avg loss: 0.00969 avg lploss: 0.00000 | Mom_loss: 0.110599
+train epoch 197 avg loss: 0.00965 avg lploss: 0.00000 | Mom_loss: 0.110638
+train epoch 198 avg loss: 0.00972 avg lploss: 0.00000 | Mom_loss: 0.110519
+train epoch 199 avg loss: 0.00982 avg lploss: 0.00000 | Mom_loss: 0.109971
+train epoch 200 avg loss: 0.00974 avg lploss: 0.00000 | Mom_loss: 0.109915
+==> val epoch 200 avg loss: 0.00955 avg lploss: 0.00000 | Mom_loss: 0.110524
+==> test epoch 200 avg loss: 0.00899 avg lploss: 0.00000 | Mom_loss: 0.110060
+*** Best Val Loss: 0.00955 	 Best Test Loss: 0.00899 	 Best epoch 200
+Validation loss decreased (0.009793 --> 0.009546).  Saving model ...
+train epoch 201 avg loss: 0.00959 avg lploss: 0.00000 | Mom_loss: 0.109905
+train epoch 202 avg loss: 0.00973 avg lploss: 0.00000 | Mom_loss: 0.109710
+train epoch 203 avg loss: 0.01055 avg lploss: 0.00000 | Mom_loss: 0.109808
+train epoch 204 avg loss: 0.01067 avg lploss: 0.00000 | Mom_loss: 0.109392
+train epoch 205 avg loss: 0.01014 avg lploss: 0.00000 | Mom_loss: 0.108830
+==> val epoch 205 avg loss: 0.00964 avg lploss: 0.00000 | Mom_loss: 0.110104
+==> test epoch 205 avg loss: 0.00900 avg lploss: 0.00000 | Mom_loss: 0.109657
+*** Best Val Loss: 0.00955 	 Best Test Loss: 0.00899 	 Best epoch 200
+EarlyStopping counter: 1 out of 50
+train epoch 206 avg loss: 0.00985 avg lploss: 0.00000 | Mom_loss: 0.108794
+train epoch 207 avg loss: 0.00950 avg lploss: 0.00000 | Mom_loss: 0.108262
+train epoch 208 avg loss: 0.00948 avg lploss: 0.00000 | Mom_loss: 0.108330
+train epoch 209 avg loss: 0.00962 avg lploss: 0.00000 | Mom_loss: 0.108275
+train epoch 210 avg loss: 0.00959 avg lploss: 0.00000 | Mom_loss: 0.107947
+==> val epoch 210 avg loss: 0.00977 avg lploss: 0.00000 | Mom_loss: 0.107525
+==> test epoch 210 avg loss: 0.00924 avg lploss: 0.00000 | Mom_loss: 0.107092
+*** Best Val Loss: 0.00955 	 Best Test Loss: 0.00899 	 Best epoch 200
+EarlyStopping counter: 2 out of 50
+train epoch 211 avg loss: 0.00944 avg lploss: 0.00000 | Mom_loss: 0.107830
+train epoch 212 avg loss: 0.00945 avg lploss: 0.00000 | Mom_loss: 0.107677
+train epoch 213 avg loss: 0.00940 avg lploss: 0.00000 | Mom_loss: 0.107724
+train epoch 214 avg loss: 0.00951 avg lploss: 0.00000 | Mom_loss: 0.107349
+train epoch 215 avg loss: 0.00963 avg lploss: 0.00000 | Mom_loss: 0.107401
+==> val epoch 215 avg loss: 0.00979 avg lploss: 0.00000 | Mom_loss: 0.108168
+==> test epoch 215 avg loss: 0.00937 avg lploss: 0.00000 | Mom_loss: 0.107755
+*** Best Val Loss: 0.00955 	 Best Test Loss: 0.00899 	 Best epoch 200
+EarlyStopping counter: 3 out of 50
+train epoch 216 avg loss: 0.00958 avg lploss: 0.00000 | Mom_loss: 0.106912
+train epoch 217 avg loss: 0.00948 avg lploss: 0.00000 | Mom_loss: 0.107133
+train epoch 218 avg loss: 0.00930 avg lploss: 0.00000 | Mom_loss: 0.107048
+train epoch 219 avg loss: 0.00926 avg lploss: 0.00000 | Mom_loss: 0.106905
+train epoch 220 avg loss: 0.00948 avg lploss: 0.00000 | Mom_loss: 0.106366
+==> val epoch 220 avg loss: 0.00986 avg lploss: 0.00000 | Mom_loss: 0.105872
+==> test epoch 220 avg loss: 0.00928 avg lploss: 0.00000 | Mom_loss: 0.105475
+*** Best Val Loss: 0.00955 	 Best Test Loss: 0.00899 	 Best epoch 200
+EarlyStopping counter: 4 out of 50
+train epoch 221 avg loss: 0.00953 avg lploss: 0.00000 | Mom_loss: 0.105866
+train epoch 222 avg loss: 0.00941 avg lploss: 0.00000 | Mom_loss: 0.106033
+train epoch 223 avg loss: 0.00922 avg lploss: 0.00000 | Mom_loss: 0.105736
+train epoch 224 avg loss: 0.00914 avg lploss: 0.00000 | Mom_loss: 0.105817
+train epoch 225 avg loss: 0.00927 avg lploss: 0.00000 | Mom_loss: 0.105727
+==> val epoch 225 avg loss: 0.00917 avg lploss: 0.00000 | Mom_loss: 0.106118
+==> test epoch 225 avg loss: 0.00861 avg lploss: 0.00000 | Mom_loss: 0.105737
+*** Best Val Loss: 0.00917 	 Best Test Loss: 0.00861 	 Best epoch 225
+Validation loss decreased (0.009546 --> 0.009172).  Saving model ...
+train epoch 226 avg loss: 0.00942 avg lploss: 0.00000 | Mom_loss: 0.105369
+train epoch 227 avg loss: 0.00918 avg lploss: 0.00000 | Mom_loss: 0.105373
+train epoch 228 avg loss: 0.00910 avg lploss: 0.00000 | Mom_loss: 0.105540
+train epoch 229 avg loss: 0.00924 avg lploss: 0.00000 | Mom_loss: 0.105205
+train epoch 230 avg loss: 0.00923 avg lploss: 0.00000 | Mom_loss: 0.105079
+==> val epoch 230 avg loss: 0.00911 avg lploss: 0.00000 | Mom_loss: 0.105586
+==> test epoch 230 avg loss: 0.00855 avg lploss: 0.00000 | Mom_loss: 0.105174
+*** Best Val Loss: 0.00911 	 Best Test Loss: 0.00855 	 Best epoch 230
+Validation loss decreased (0.009172 --> 0.009110).  Saving model ...
+train epoch 231 avg loss: 0.00924 avg lploss: 0.00000 | Mom_loss: 0.104672
+train epoch 232 avg loss: 0.00907 avg lploss: 0.00000 | Mom_loss: 0.104619
+train epoch 233 avg loss: 0.00902 avg lploss: 0.00000 | Mom_loss: 0.104450
+train epoch 234 avg loss: 0.00910 avg lploss: 0.00000 | Mom_loss: 0.104519
+train epoch 235 avg loss: 0.00903 avg lploss: 0.00000 | Mom_loss: 0.104588
+==> val epoch 235 avg loss: 0.00908 avg lploss: 0.00000 | Mom_loss: 0.104365
+==> test epoch 235 avg loss: 0.00865 avg lploss: 0.00000 | Mom_loss: 0.104018
+*** Best Val Loss: 0.00908 	 Best Test Loss: 0.00865 	 Best epoch 235
+Validation loss decreased (0.009110 --> 0.009080).  Saving model ...
+train epoch 236 avg loss: 0.00909 avg lploss: 0.00000 | Mom_loss: 0.103980
+train epoch 237 avg loss: 0.00899 avg lploss: 0.00000 | Mom_loss: 0.104104
+train epoch 238 avg loss: 0.00925 avg lploss: 0.00000 | Mom_loss: 0.103940
+train epoch 239 avg loss: 0.00902 avg lploss: 0.00000 | Mom_loss: 0.103776
+train epoch 240 avg loss: 0.00911 avg lploss: 0.00000 | Mom_loss: 0.103833
+==> val epoch 240 avg loss: 0.00928 avg lploss: 0.00000 | Mom_loss: 0.104395
+==> test epoch 240 avg loss: 0.00892 avg lploss: 0.00000 | Mom_loss: 0.104008
+*** Best Val Loss: 0.00908 	 Best Test Loss: 0.00865 	 Best epoch 235
+EarlyStopping counter: 1 out of 50
+train epoch 241 avg loss: 0.00935 avg lploss: 0.00000 | Mom_loss: 0.103558
+train epoch 242 avg loss: 0.00894 avg lploss: 0.00000 | Mom_loss: 0.103370
+train epoch 243 avg loss: 0.00904 avg lploss: 0.00000 | Mom_loss: 0.103144
+train epoch 244 avg loss: 0.00887 avg lploss: 0.00000 | Mom_loss: 0.102721
+train epoch 245 avg loss: 0.00895 avg lploss: 0.00000 | Mom_loss: 0.102924
+==> val epoch 245 avg loss: 0.00903 avg lploss: 0.00000 | Mom_loss: 0.103852
+==> test epoch 245 avg loss: 0.00858 avg lploss: 0.00000 | Mom_loss: 0.103476
+*** Best Val Loss: 0.00903 	 Best Test Loss: 0.00858 	 Best epoch 245
+Validation loss decreased (0.009080 --> 0.009030).  Saving model ...
+train epoch 246 avg loss: 0.00894 avg lploss: 0.00000 | Mom_loss: 0.102692
+train epoch 247 avg loss: 0.00893 avg lploss: 0.00000 | Mom_loss: 0.102488
+train epoch 248 avg loss: 0.00874 avg lploss: 0.00000 | Mom_loss: 0.102701
+train epoch 249 avg loss: 0.00865 avg lploss: 0.00000 | Mom_loss: 0.102472
+train epoch 250 avg loss: 0.00865 avg lploss: 0.00000 | Mom_loss: 0.102368
+==> val epoch 250 avg loss: 0.00881 avg lploss: 0.00000 | Mom_loss: 0.103194
+==> test epoch 250 avg loss: 0.00842 avg lploss: 0.00000 | Mom_loss: 0.102845
+*** Best Val Loss: 0.00881 	 Best Test Loss: 0.00842 	 Best epoch 250
+Validation loss decreased (0.009030 --> 0.008812).  Saving model ...
+train epoch 251 avg loss: 0.00876 avg lploss: 0.00000 | Mom_loss: 0.102216
+train epoch 252 avg loss: 0.00889 avg lploss: 0.00000 | Mom_loss: 0.102325
+train epoch 253 avg loss: 0.00880 avg lploss: 0.00000 | Mom_loss: 0.102488
+train epoch 254 avg loss: 0.00881 avg lploss: 0.00000 | Mom_loss: 0.102194
+train epoch 255 avg loss: 0.00876 avg lploss: 0.00000 | Mom_loss: 0.102147
+==> val epoch 255 avg loss: 0.00886 avg lploss: 0.00000 | Mom_loss: 0.102466
+==> test epoch 255 avg loss: 0.00833 avg lploss: 0.00000 | Mom_loss: 0.102117
+*** Best Val Loss: 0.00881 	 Best Test Loss: 0.00842 	 Best epoch 250
+EarlyStopping counter: 1 out of 50
+train epoch 256 avg loss: 0.00868 avg lploss: 0.00000 | Mom_loss: 0.101933
+train epoch 257 avg loss: 0.00863 avg lploss: 0.00000 | Mom_loss: 0.102353
+train epoch 258 avg loss: 0.00855 avg lploss: 0.00000 | Mom_loss: 0.101921
+train epoch 259 avg loss: 0.00866 avg lploss: 0.00000 | Mom_loss: 0.102222
+train epoch 260 avg loss: 0.00877 avg lploss: 0.00000 | Mom_loss: 0.101758
+==> val epoch 260 avg loss: 0.00862 avg lploss: 0.00000 | Mom_loss: 0.101806
+==> test epoch 260 avg loss: 0.00814 avg lploss: 0.00000 | Mom_loss: 0.101458
+*** Best Val Loss: 0.00862 	 Best Test Loss: 0.00814 	 Best epoch 260
+Validation loss decreased (0.008812 --> 0.008616).  Saving model ...
+train epoch 261 avg loss: 0.00863 avg lploss: 0.00000 | Mom_loss: 0.101801
+train epoch 262 avg loss: 0.00844 avg lploss: 0.00000 | Mom_loss: 0.101882
+train epoch 263 avg loss: 0.00856 avg lploss: 0.00000 | Mom_loss: 0.101618
+train epoch 264 avg loss: 0.00867 avg lploss: 0.00000 | Mom_loss: 0.101396
+train epoch 265 avg loss: 0.00857 avg lploss: 0.00000 | Mom_loss: 0.100827
+==> val epoch 265 avg loss: 0.00856 avg lploss: 0.00000 | Mom_loss: 0.101470
+==> test epoch 265 avg loss: 0.00799 avg lploss: 0.00000 | Mom_loss: 0.101135
+*** Best Val Loss: 0.00856 	 Best Test Loss: 0.00799 	 Best epoch 265
+Validation loss decreased (0.008616 --> 0.008564).  Saving model ...
+train epoch 266 avg loss: 0.00840 avg lploss: 0.00000 | Mom_loss: 0.101166
+train epoch 267 avg loss: 0.00841 avg lploss: 0.00000 | Mom_loss: 0.101141
+train epoch 268 avg loss: 0.00846 avg lploss: 0.00000 | Mom_loss: 0.100976
+train epoch 269 avg loss: 0.00843 avg lploss: 0.00000 | Mom_loss: 0.101147
+train epoch 270 avg loss: 0.00851 avg lploss: 0.00000 | Mom_loss: 0.100896
+==> val epoch 270 avg loss: 0.00858 avg lploss: 0.00000 | Mom_loss: 0.101330
+==> test epoch 270 avg loss: 0.00824 avg lploss: 0.00000 | Mom_loss: 0.101002
+*** Best Val Loss: 0.00856 	 Best Test Loss: 0.00799 	 Best epoch 265
+EarlyStopping counter: 1 out of 50
+train epoch 271 avg loss: 0.00858 avg lploss: 0.00000 | Mom_loss: 0.100981
+train epoch 272 avg loss: 0.00915 avg lploss: 0.00000 | Mom_loss: 0.100907
+train epoch 273 avg loss: 0.00836 avg lploss: 0.00000 | Mom_loss: 0.100683
+train epoch 274 avg loss: 0.00845 avg lploss: 0.00000 | Mom_loss: 0.100373
+train epoch 275 avg loss: 0.00839 avg lploss: 0.00000 | Mom_loss: 0.100327
+==> val epoch 275 avg loss: 0.00853 avg lploss: 0.00000 | Mom_loss: 0.100846
+==> test epoch 275 avg loss: 0.00812 avg lploss: 0.00000 | Mom_loss: 0.100504
+*** Best Val Loss: 0.00853 	 Best Test Loss: 0.00812 	 Best epoch 275
+Validation loss decreased (0.008564 --> 0.008528).  Saving model ...
+train epoch 276 avg loss: 0.00833 avg lploss: 0.00000 | Mom_loss: 0.100306
+train epoch 277 avg loss: 0.00831 avg lploss: 0.00000 | Mom_loss: 0.100412
+train epoch 278 avg loss: 0.00832 avg lploss: 0.00000 | Mom_loss: 0.100443
+train epoch 279 avg loss: 0.00836 avg lploss: 0.00000 | Mom_loss: 0.100083
+train epoch 280 avg loss: 0.00842 avg lploss: 0.00000 | Mom_loss: 0.100411
+==> val epoch 280 avg loss: 0.00856 avg lploss: 0.00000 | Mom_loss: 0.101157
+==> test epoch 280 avg loss: 0.00811 avg lploss: 0.00000 | Mom_loss: 0.100843
+*** Best Val Loss: 0.00853 	 Best Test Loss: 0.00812 	 Best epoch 275
+EarlyStopping counter: 1 out of 50
+train epoch 281 avg loss: 0.00820 avg lploss: 0.00000 | Mom_loss: 0.100079
+train epoch 282 avg loss: 0.00833 avg lploss: 0.00000 | Mom_loss: 0.100142
+train epoch 283 avg loss: 0.00833 avg lploss: 0.00000 | Mom_loss: 0.100181
+train epoch 284 avg loss: 0.00815 avg lploss: 0.00000 | Mom_loss: 0.100038
+train epoch 285 avg loss: 0.00834 avg lploss: 0.00000 | Mom_loss: 0.099866
+==> val epoch 285 avg loss: 0.00846 avg lploss: 0.00000 | Mom_loss: 0.100080
+==> test epoch 285 avg loss: 0.00807 avg lploss: 0.00000 | Mom_loss: 0.099768
+*** Best Val Loss: 0.00846 	 Best Test Loss: 0.00807 	 Best epoch 285
+Validation loss decreased (0.008528 --> 0.008459).  Saving model ...
+train epoch 286 avg loss: 0.00839 avg lploss: 0.00000 | Mom_loss: 0.099903
+train epoch 287 avg loss: 0.00826 avg lploss: 0.00000 | Mom_loss: 0.099790
+train epoch 288 avg loss: 0.00818 avg lploss: 0.00000 | Mom_loss: 0.099586
+train epoch 289 avg loss: 0.00818 avg lploss: 0.00000 | Mom_loss: 0.099687
+train epoch 290 avg loss: 0.00839 avg lploss: 0.00000 | Mom_loss: 0.099602
+==> val epoch 290 avg loss: 0.00860 avg lploss: 0.00000 | Mom_loss: 0.099670
+==> test epoch 290 avg loss: 0.00819 avg lploss: 0.00000 | Mom_loss: 0.099360
+*** Best Val Loss: 0.00846 	 Best Test Loss: 0.00807 	 Best epoch 285
+EarlyStopping counter: 1 out of 50
+train epoch 291 avg loss: 0.00827 avg lploss: 0.00000 | Mom_loss: 0.099569
+train epoch 292 avg loss: 0.00820 avg lploss: 0.00000 | Mom_loss: 0.099350
+train epoch 293 avg loss: 0.00817 avg lploss: 0.00000 | Mom_loss: 0.099422
+train epoch 294 avg loss: 0.00819 avg lploss: 0.00000 | Mom_loss: 0.099490
+train epoch 295 avg loss: 0.00815 avg lploss: 0.00000 | Mom_loss: 0.099467
+==> val epoch 295 avg loss: 0.00835 avg lploss: 0.00000 | Mom_loss: 0.099770
+==> test epoch 295 avg loss: 0.00805 avg lploss: 0.00000 | Mom_loss: 0.099449
+*** Best Val Loss: 0.00835 	 Best Test Loss: 0.00805 	 Best epoch 295
+Validation loss decreased (0.008459 --> 0.008346).  Saving model ...
+train epoch 296 avg loss: 0.00829 avg lploss: 0.00000 | Mom_loss: 0.099343
+train epoch 297 avg loss: 0.00815 avg lploss: 0.00000 | Mom_loss: 0.099369
+train epoch 298 avg loss: 0.00799 avg lploss: 0.00000 | Mom_loss: 0.099311
+train epoch 299 avg loss: 0.00800 avg lploss: 0.00000 | Mom_loss: 0.099151
+train epoch 300 avg loss: 0.00825 avg lploss: 0.00000 | Mom_loss: 0.099398
+==> val epoch 300 avg loss: 0.00843 avg lploss: 0.00000 | Mom_loss: 0.099483
+==> test epoch 300 avg loss: 0.00804 avg lploss: 0.00000 | Mom_loss: 0.099179
+*** Best Val Loss: 0.00835 	 Best Test Loss: 0.00805 	 Best epoch 295
+EarlyStopping counter: 1 out of 50
+train epoch 301 avg loss: 0.00811 avg lploss: 0.00000 | Mom_loss: 0.098999
+train epoch 302 avg loss: 0.00823 avg lploss: 0.00000 | Mom_loss: 0.098511
+train epoch 303 avg loss: 0.00813 avg lploss: 0.00000 | Mom_loss: 0.098319
+train epoch 304 avg loss: 0.00799 avg lploss: 0.00000 | Mom_loss: 0.098392
+train epoch 305 avg loss: 0.00811 avg lploss: 0.00000 | Mom_loss: 0.098532
+==> val epoch 305 avg loss: 0.00824 avg lploss: 0.00000 | Mom_loss: 0.098758
+==> test epoch 305 avg loss: 0.00789 avg lploss: 0.00000 | Mom_loss: 0.098455
+*** Best Val Loss: 0.00824 	 Best Test Loss: 0.00789 	 Best epoch 305
+Validation loss decreased (0.008346 --> 0.008238).  Saving model ...
+train epoch 306 avg loss: 0.00831 avg lploss: 0.00000 | Mom_loss: 0.098265
+train epoch 307 avg loss: 0.00815 avg lploss: 0.00000 | Mom_loss: 0.098380
+train epoch 308 avg loss: 0.00813 avg lploss: 0.00000 | Mom_loss: 0.098061
+train epoch 309 avg loss: 0.00807 avg lploss: 0.00000 | Mom_loss: 0.097962
+train epoch 310 avg loss: 0.00799 avg lploss: 0.00000 | Mom_loss: 0.097269
+==> val epoch 310 avg loss: 0.00844 avg lploss: 0.00000 | Mom_loss: 0.097978
+==> test epoch 310 avg loss: 0.00810 avg lploss: 0.00000 | Mom_loss: 0.097668
+*** Best Val Loss: 0.00824 	 Best Test Loss: 0.00789 	 Best epoch 305
+EarlyStopping counter: 1 out of 50
+train epoch 311 avg loss: 0.00802 avg lploss: 0.00000 | Mom_loss: 0.097705
+train epoch 312 avg loss: 0.00802 avg lploss: 0.00000 | Mom_loss: 0.097904
+train epoch 313 avg loss: 0.00810 avg lploss: 0.00000 | Mom_loss: 0.097433
+train epoch 314 avg loss: 0.00789 avg lploss: 0.00000 | Mom_loss: 0.097446
+train epoch 315 avg loss: 0.00785 avg lploss: 0.00000 | Mom_loss: 0.097658
+==> val epoch 315 avg loss: 0.00794 avg lploss: 0.00000 | Mom_loss: 0.098064
+==> test epoch 315 avg loss: 0.00769 avg lploss: 0.00000 | Mom_loss: 0.097763
+*** Best Val Loss: 0.00794 	 Best Test Loss: 0.00769 	 Best epoch 315
+Validation loss decreased (0.008238 --> 0.007936).  Saving model ...
+train epoch 316 avg loss: 0.00774 avg lploss: 0.00000 | Mom_loss: 0.097620
+train epoch 317 avg loss: 0.00791 avg lploss: 0.00000 | Mom_loss: 0.097430
+train epoch 318 avg loss: 0.00790 avg lploss: 0.00000 | Mom_loss: 0.097613
+train epoch 319 avg loss: 0.00808 avg lploss: 0.00000 | Mom_loss: 0.097372
+train epoch 320 avg loss: 0.00795 avg lploss: 0.00000 | Mom_loss: 0.097126
+==> val epoch 320 avg loss: 0.00824 avg lploss: 0.00000 | Mom_loss: 0.098171
+==> test epoch 320 avg loss: 0.00779 avg lploss: 0.00000 | Mom_loss: 0.097867
+*** Best Val Loss: 0.00794 	 Best Test Loss: 0.00769 	 Best epoch 315
+EarlyStopping counter: 1 out of 50
+train epoch 321 avg loss: 0.00802 avg lploss: 0.00000 | Mom_loss: 0.095993
+train epoch 322 avg loss: 0.00813 avg lploss: 0.00000 | Mom_loss: 0.095896
+train epoch 323 avg loss: 0.00790 avg lploss: 0.00000 | Mom_loss: 0.096079
+train epoch 324 avg loss: 0.00789 avg lploss: 0.00000 | Mom_loss: 0.096218
+train epoch 325 avg loss: 0.00785 avg lploss: 0.00000 | Mom_loss: 0.096075
+==> val epoch 325 avg loss: 0.00802 avg lploss: 0.00000 | Mom_loss: 0.097315
+==> test epoch 325 avg loss: 0.00773 avg lploss: 0.00000 | Mom_loss: 0.097019
+*** Best Val Loss: 0.00794 	 Best Test Loss: 0.00769 	 Best epoch 315
+EarlyStopping counter: 2 out of 50
+train epoch 326 avg loss: 0.00781 avg lploss: 0.00000 | Mom_loss: 0.096521
+train epoch 327 avg loss: 0.00775 avg lploss: 0.00000 | Mom_loss: 0.096116
+train epoch 328 avg loss: 0.00768 avg lploss: 0.00000 | Mom_loss: 0.096430
+train epoch 329 avg loss: 0.00777 avg lploss: 0.00000 | Mom_loss: 0.096373
+train epoch 330 avg loss: 0.00764 avg lploss: 0.00000 | Mom_loss: 0.096371
+==> val epoch 330 avg loss: 0.00787 avg lploss: 0.00000 | Mom_loss: 0.097272
+==> test epoch 330 avg loss: 0.00758 avg lploss: 0.00000 | Mom_loss: 0.096975
+*** Best Val Loss: 0.00787 	 Best Test Loss: 0.00758 	 Best epoch 330
+Validation loss decreased (0.007936 --> 0.007868).  Saving model ...
+train epoch 331 avg loss: 0.00765 avg lploss: 0.00000 | Mom_loss: 0.096715
+train epoch 332 avg loss: 0.00764 avg lploss: 0.00000 | Mom_loss: 0.096242
+train epoch 333 avg loss: 0.00779 avg lploss: 0.00000 | Mom_loss: 0.096483
+train epoch 334 avg loss: 0.00777 avg lploss: 0.00000 | Mom_loss: 0.096274
+train epoch 335 avg loss: 0.00775 avg lploss: 0.00000 | Mom_loss: 0.096313
+==> val epoch 335 avg loss: 0.00792 avg lploss: 0.00000 | Mom_loss: 0.097026
+==> test epoch 335 avg loss: 0.00773 avg lploss: 0.00000 | Mom_loss: 0.096745
+*** Best Val Loss: 0.00787 	 Best Test Loss: 0.00758 	 Best epoch 330
+EarlyStopping counter: 1 out of 50
+train epoch 336 avg loss: 0.00802 avg lploss: 0.00000 | Mom_loss: 0.096369
+train epoch 337 avg loss: 0.00767 avg lploss: 0.00000 | Mom_loss: 0.095959
+train epoch 338 avg loss: 0.00765 avg lploss: 0.00000 | Mom_loss: 0.096161
+train epoch 339 avg loss: 0.00757 avg lploss: 0.00000 | Mom_loss: 0.096127
+train epoch 340 avg loss: 0.00756 avg lploss: 0.00000 | Mom_loss: 0.096107
+==> val epoch 340 avg loss: 0.00783 avg lploss: 0.00000 | Mom_loss: 0.096706
+==> test epoch 340 avg loss: 0.00753 avg lploss: 0.00000 | Mom_loss: 0.096433
+*** Best Val Loss: 0.00783 	 Best Test Loss: 0.00753 	 Best epoch 340
+Validation loss decreased (0.007868 --> 0.007833).  Saving model ...
+train epoch 341 avg loss: 0.00768 avg lploss: 0.00000 | Mom_loss: 0.096152
+train epoch 342 avg loss: 0.00790 avg lploss: 0.00000 | Mom_loss: 0.096292
+train epoch 343 avg loss: 0.00758 avg lploss: 0.00000 | Mom_loss: 0.096347
+train epoch 344 avg loss: 0.00772 avg lploss: 0.00000 | Mom_loss: 0.096102
+train epoch 345 avg loss: 0.00759 avg lploss: 0.00000 | Mom_loss: 0.095761
+==> val epoch 345 avg loss: 0.00779 avg lploss: 0.00000 | Mom_loss: 0.096325
+==> test epoch 345 avg loss: 0.00753 avg lploss: 0.00000 | Mom_loss: 0.096050
+*** Best Val Loss: 0.00779 	 Best Test Loss: 0.00753 	 Best epoch 345
+Validation loss decreased (0.007833 --> 0.007788).  Saving model ...
+train epoch 346 avg loss: 0.00761 avg lploss: 0.00000 | Mom_loss: 0.096086
+train epoch 347 avg loss: 0.00754 avg lploss: 0.00000 | Mom_loss: 0.096090
+train epoch 348 avg loss: 0.00770 avg lploss: 0.00000 | Mom_loss: 0.096055
+train epoch 349 avg loss: 0.00774 avg lploss: 0.00000 | Mom_loss: 0.095819
+train epoch 350 avg loss: 0.00761 avg lploss: 0.00000 | Mom_loss: 0.095825
+==> val epoch 350 avg loss: 0.00771 avg lploss: 0.00000 | Mom_loss: 0.095859
+==> test epoch 350 avg loss: 0.00752 avg lploss: 0.00000 | Mom_loss: 0.095591
+*** Best Val Loss: 0.00771 	 Best Test Loss: 0.00752 	 Best epoch 350
+Validation loss decreased (0.007788 --> 0.007715).  Saving model ...
+train epoch 351 avg loss: 0.00749 avg lploss: 0.00000 | Mom_loss: 0.096010
+train epoch 352 avg loss: 0.00780 avg lploss: 0.00000 | Mom_loss: 0.096259
+train epoch 353 avg loss: 0.00811 avg lploss: 0.00000 | Mom_loss: 0.096061
+train epoch 354 avg loss: 0.00756 avg lploss: 0.00000 | Mom_loss: 0.095924
+train epoch 355 avg loss: 0.00757 avg lploss: 0.00000 | Mom_loss: 0.095848
+==> val epoch 355 avg loss: 0.00773 avg lploss: 0.00000 | Mom_loss: 0.096269
+==> test epoch 355 avg loss: 0.00749 avg lploss: 0.00000 | Mom_loss: 0.095997
+*** Best Val Loss: 0.00771 	 Best Test Loss: 0.00752 	 Best epoch 350
+EarlyStopping counter: 1 out of 50
+train epoch 356 avg loss: 0.00750 avg lploss: 0.00000 | Mom_loss: 0.095959
+train epoch 357 avg loss: 0.00756 avg lploss: 0.00000 | Mom_loss: 0.095585
+train epoch 358 avg loss: 0.00760 avg lploss: 0.00000 | Mom_loss: 0.095643
+train epoch 359 avg loss: 0.00763 avg lploss: 0.00000 | Mom_loss: 0.095712
+train epoch 360 avg loss: 0.00742 avg lploss: 0.00000 | Mom_loss: 0.095692
+==> val epoch 360 avg loss: 0.00766 avg lploss: 0.00000 | Mom_loss: 0.095609
+==> test epoch 360 avg loss: 0.00743 avg lploss: 0.00000 | Mom_loss: 0.095337
+*** Best Val Loss: 0.00766 	 Best Test Loss: 0.00743 	 Best epoch 360
+Validation loss decreased (0.007715 --> 0.007658).  Saving model ...
+train epoch 361 avg loss: 0.00738 avg lploss: 0.00000 | Mom_loss: 0.095451
+train epoch 362 avg loss: 0.00739 avg lploss: 0.00000 | Mom_loss: 0.095179
+train epoch 363 avg loss: 0.00732 avg lploss: 0.00000 | Mom_loss: 0.095398
+train epoch 364 avg loss: 0.00746 avg lploss: 0.00000 | Mom_loss: 0.095458
+train epoch 365 avg loss: 0.00735 avg lploss: 0.00000 | Mom_loss: 0.095446
+==> val epoch 365 avg loss: 0.00780 avg lploss: 0.00000 | Mom_loss: 0.095860
+==> test epoch 365 avg loss: 0.00751 avg lploss: 0.00000 | Mom_loss: 0.095596
+*** Best Val Loss: 0.00766 	 Best Test Loss: 0.00743 	 Best epoch 360
+EarlyStopping counter: 1 out of 50
+train epoch 366 avg loss: 0.00729 avg lploss: 0.00000 | Mom_loss: 0.095567
+train epoch 367 avg loss: 0.00725 avg lploss: 0.00000 | Mom_loss: 0.095467
+train epoch 368 avg loss: 0.00733 avg lploss: 0.00000 | Mom_loss: 0.095733
+train epoch 369 avg loss: 0.00737 avg lploss: 0.00000 | Mom_loss: 0.095416
+train epoch 370 avg loss: 0.00730 avg lploss: 0.00000 | Mom_loss: 0.095364
+==> val epoch 370 avg loss: 0.00772 avg lploss: 0.00000 | Mom_loss: 0.095760
+==> test epoch 370 avg loss: 0.00750 avg lploss: 0.00000 | Mom_loss: 0.095493
+*** Best Val Loss: 0.00766 	 Best Test Loss: 0.00743 	 Best epoch 360
+EarlyStopping counter: 2 out of 50
+train epoch 371 avg loss: 0.00735 avg lploss: 0.00000 | Mom_loss: 0.095595
+train epoch 372 avg loss: 0.00744 avg lploss: 0.00000 | Mom_loss: 0.095446
+train epoch 373 avg loss: 0.00737 avg lploss: 0.00000 | Mom_loss: 0.095502
+train epoch 374 avg loss: 0.00739 avg lploss: 0.00000 | Mom_loss: 0.095718
+train epoch 375 avg loss: 0.00730 avg lploss: 0.00000 | Mom_loss: 0.095443
+==> val epoch 375 avg loss: 0.00776 avg lploss: 0.00000 | Mom_loss: 0.095459
+==> test epoch 375 avg loss: 0.00738 avg lploss: 0.00000 | Mom_loss: 0.095194
+*** Best Val Loss: 0.00766 	 Best Test Loss: 0.00743 	 Best epoch 360
+EarlyStopping counter: 3 out of 50
+train epoch 376 avg loss: 0.00740 avg lploss: 0.00000 | Mom_loss: 0.095440
+train epoch 377 avg loss: 0.00724 avg lploss: 0.00000 | Mom_loss: 0.095544
+train epoch 378 avg loss: 0.00721 avg lploss: 0.00000 | Mom_loss: 0.095439
+train epoch 379 avg loss: 0.00713 avg lploss: 0.00000 | Mom_loss: 0.095653
+train epoch 380 avg loss: 0.00721 avg lploss: 0.00000 | Mom_loss: 0.095322
+==> val epoch 380 avg loss: 0.00749 avg lploss: 0.00000 | Mom_loss: 0.095669
+==> test epoch 380 avg loss: 0.00723 avg lploss: 0.00000 | Mom_loss: 0.095419
+*** Best Val Loss: 0.00749 	 Best Test Loss: 0.00723 	 Best epoch 380
+Validation loss decreased (0.007658 --> 0.007492).  Saving model ...
+train epoch 381 avg loss: 0.00714 avg lploss: 0.00000 | Mom_loss: 0.095606
+train epoch 382 avg loss: 0.00707 avg lploss: 0.00000 | Mom_loss: 0.095314
+train epoch 383 avg loss: 0.00725 avg lploss: 0.00000 | Mom_loss: 0.095813
+train epoch 384 avg loss: 0.00731 avg lploss: 0.00000 | Mom_loss: 0.096006
+train epoch 385 avg loss: 0.00739 avg lploss: 0.00000 | Mom_loss: 0.095785
+==> val epoch 385 avg loss: 0.00768 avg lploss: 0.00000 | Mom_loss: 0.096326
+==> test epoch 385 avg loss: 0.00754 avg lploss: 0.00000 | Mom_loss: 0.096058
+*** Best Val Loss: 0.00749 	 Best Test Loss: 0.00723 	 Best epoch 380
+EarlyStopping counter: 1 out of 50
+train epoch 386 avg loss: 0.00709 avg lploss: 0.00000 | Mom_loss: 0.096038
+train epoch 387 avg loss: 0.00721 avg lploss: 0.00000 | Mom_loss: 0.095928
+train epoch 388 avg loss: 0.00708 avg lploss: 0.00000 | Mom_loss: 0.095977
+train epoch 389 avg loss: 0.00737 avg lploss: 0.00000 | Mom_loss: 0.096075
+train epoch 390 avg loss: 0.00715 avg lploss: 0.00000 | Mom_loss: 0.095953
+==> val epoch 390 avg loss: 0.00745 avg lploss: 0.00000 | Mom_loss: 0.095532
+==> test epoch 390 avg loss: 0.00716 avg lploss: 0.00000 | Mom_loss: 0.095279
+*** Best Val Loss: 0.00745 	 Best Test Loss: 0.00716 	 Best epoch 390
+Validation loss decreased (0.007492 --> 0.007450).  Saving model ...
+train epoch 391 avg loss: 0.00709 avg lploss: 0.00000 | Mom_loss: 0.095567
+train epoch 392 avg loss: 0.00715 avg lploss: 0.00000 | Mom_loss: 0.096079
+train epoch 393 avg loss: 0.00704 avg lploss: 0.00000 | Mom_loss: 0.096172
+train epoch 394 avg loss: 0.00716 avg lploss: 0.00000 | Mom_loss: 0.095786
+train epoch 395 avg loss: 0.00723 avg lploss: 0.00000 | Mom_loss: 0.095817
+==> val epoch 395 avg loss: 0.00737 avg lploss: 0.00000 | Mom_loss: 0.096557
+==> test epoch 395 avg loss: 0.00712 avg lploss: 0.00000 | Mom_loss: 0.096291
+*** Best Val Loss: 0.00737 	 Best Test Loss: 0.00712 	 Best epoch 395
+Validation loss decreased (0.007450 --> 0.007368).  Saving model ...
+train epoch 396 avg loss: 0.00704 avg lploss: 0.00000 | Mom_loss: 0.096044
+train epoch 397 avg loss: 0.00711 avg lploss: 0.00000 | Mom_loss: 0.095868
+train epoch 398 avg loss: 0.00700 avg lploss: 0.00000 | Mom_loss: 0.095872
+train epoch 399 avg loss: 0.00719 avg lploss: 0.00000 | Mom_loss: 0.095983
+train epoch 400 avg loss: 0.00743 avg lploss: 0.00000 | Mom_loss: 0.095792
+==> val epoch 400 avg loss: 0.00767 avg lploss: 0.00000 | Mom_loss: 0.096772
+==> test epoch 400 avg loss: 0.00744 avg lploss: 0.00000 | Mom_loss: 0.096507
+*** Best Val Loss: 0.00737 	 Best Test Loss: 0.00712 	 Best epoch 395
+EarlyStopping counter: 1 out of 50
+train epoch 401 avg loss: 0.00706 avg lploss: 0.00000 | Mom_loss: 0.095758
+train epoch 402 avg loss: 0.00722 avg lploss: 0.00000 | Mom_loss: 0.095524
+train epoch 403 avg loss: 0.00698 avg lploss: 0.00000 | Mom_loss: 0.095151
+train epoch 404 avg loss: 0.00701 avg lploss: 0.00000 | Mom_loss: 0.095366
+train epoch 405 avg loss: 0.00712 avg lploss: 0.00000 | Mom_loss: 0.095404
+==> val epoch 405 avg loss: 0.00798 avg lploss: 0.00000 | Mom_loss: 0.095387
+==> test epoch 405 avg loss: 0.00773 avg lploss: 0.00000 | Mom_loss: 0.095135
+*** Best Val Loss: 0.00737 	 Best Test Loss: 0.00712 	 Best epoch 395
+EarlyStopping counter: 2 out of 50
+train epoch 406 avg loss: 0.00718 avg lploss: 0.00000 | Mom_loss: 0.094980
+train epoch 407 avg loss: 0.00701 avg lploss: 0.00000 | Mom_loss: 0.095048
+train epoch 408 avg loss: 0.00694 avg lploss: 0.00000 | Mom_loss: 0.095085
+train epoch 409 avg loss: 0.00691 avg lploss: 0.00000 | Mom_loss: 0.095490
+train epoch 410 avg loss: 0.00687 avg lploss: 0.00000 | Mom_loss: 0.095400
+==> val epoch 410 avg loss: 0.00727 avg lploss: 0.00000 | Mom_loss: 0.095791
+==> test epoch 410 avg loss: 0.00695 avg lploss: 0.00000 | Mom_loss: 0.095508
+*** Best Val Loss: 0.00727 	 Best Test Loss: 0.00695 	 Best epoch 410
+Validation loss decreased (0.007368 --> 0.007266).  Saving model ...
+train epoch 411 avg loss: 0.00684 avg lploss: 0.00000 | Mom_loss: 0.095599
+train epoch 412 avg loss: 0.00694 avg lploss: 0.00000 | Mom_loss: 0.095701
+train epoch 413 avg loss: 0.00688 avg lploss: 0.00000 | Mom_loss: 0.095688
+train epoch 414 avg loss: 0.00690 avg lploss: 0.00000 | Mom_loss: 0.095784
+train epoch 415 avg loss: 0.00681 avg lploss: 0.00000 | Mom_loss: 0.095978
+==> val epoch 415 avg loss: 0.00735 avg lploss: 0.00000 | Mom_loss: 0.096068
+==> test epoch 415 avg loss: 0.00706 avg lploss: 0.00000 | Mom_loss: 0.095814
+*** Best Val Loss: 0.00727 	 Best Test Loss: 0.00695 	 Best epoch 410
+EarlyStopping counter: 1 out of 50
+train epoch 416 avg loss: 0.00677 avg lploss: 0.00000 | Mom_loss: 0.096016
+train epoch 417 avg loss: 0.00684 avg lploss: 0.00000 | Mom_loss: 0.096235
+train epoch 418 avg loss: 0.00698 avg lploss: 0.00000 | Mom_loss: 0.096360
+train epoch 419 avg loss: 0.00704 avg lploss: 0.00000 | Mom_loss: 0.096779
+train epoch 420 avg loss: 0.00694 avg lploss: 0.00000 | Mom_loss: 0.096403
+==> val epoch 420 avg loss: 0.00749 avg lploss: 0.00000 | Mom_loss: 0.096746
+==> test epoch 420 avg loss: 0.00711 avg lploss: 0.00000 | Mom_loss: 0.096460
+*** Best Val Loss: 0.00727 	 Best Test Loss: 0.00695 	 Best epoch 410
+EarlyStopping counter: 2 out of 50
+train epoch 421 avg loss: 0.00686 avg lploss: 0.00000 | Mom_loss: 0.096415
+train epoch 422 avg loss: 0.00677 avg lploss: 0.00000 | Mom_loss: 0.096336
+train epoch 423 avg loss: 0.00699 avg lploss: 0.00000 | Mom_loss: 0.096202
+train epoch 424 avg loss: 0.00690 avg lploss: 0.00000 | Mom_loss: 0.096600
+train epoch 425 avg loss: 0.00679 avg lploss: 0.00000 | Mom_loss: 0.096546
+==> val epoch 425 avg loss: 0.00773 avg lploss: 0.00000 | Mom_loss: 0.096884
+==> test epoch 425 avg loss: 0.00741 avg lploss: 0.00000 | Mom_loss: 0.096587
+*** Best Val Loss: 0.00727 	 Best Test Loss: 0.00695 	 Best epoch 410
+EarlyStopping counter: 3 out of 50
+train epoch 426 avg loss: 0.00681 avg lploss: 0.00000 | Mom_loss: 0.096713
+train epoch 427 avg loss: 0.00669 avg lploss: 0.00000 | Mom_loss: 0.096542
+train epoch 428 avg loss: 0.00666 avg lploss: 0.00000 | Mom_loss: 0.096832
+train epoch 429 avg loss: 0.00679 avg lploss: 0.00000 | Mom_loss: 0.096894
+train epoch 430 avg loss: 0.00670 avg lploss: 0.00000 | Mom_loss: 0.097203
+==> val epoch 430 avg loss: 0.00726 avg lploss: 0.00000 | Mom_loss: 0.097577
+==> test epoch 430 avg loss: 0.00693 avg lploss: 0.00000 | Mom_loss: 0.097284
+*** Best Val Loss: 0.00726 	 Best Test Loss: 0.00693 	 Best epoch 430
+Validation loss decreased (0.007266 --> 0.007259).  Saving model ...
+train epoch 431 avg loss: 0.00691 avg lploss: 0.00000 | Mom_loss: 0.096865
+train epoch 432 avg loss: 0.00671 avg lploss: 0.00000 | Mom_loss: 0.097168
+train epoch 433 avg loss: 0.00672 avg lploss: 0.00000 | Mom_loss: 0.097310
+train epoch 434 avg loss: 0.00663 avg lploss: 0.00000 | Mom_loss: 0.097497
+train epoch 435 avg loss: 0.00674 avg lploss: 0.00000 | Mom_loss: 0.097308
+==> val epoch 435 avg loss: 0.00726 avg lploss: 0.00000 | Mom_loss: 0.097853
+==> test epoch 435 avg loss: 0.00707 avg lploss: 0.00000 | Mom_loss: 0.097563
+*** Best Val Loss: 0.00726 	 Best Test Loss: 0.00707 	 Best epoch 435
+Validation loss decreased (0.007259 --> 0.007257).  Saving model ...
+train epoch 436 avg loss: 0.00657 avg lploss: 0.00000 | Mom_loss: 0.097703
+train epoch 437 avg loss: 0.00673 avg lploss: 0.00000 | Mom_loss: 0.097470
+train epoch 438 avg loss: 0.00676 avg lploss: 0.00000 | Mom_loss: 0.097435
+train epoch 439 avg loss: 0.00669 avg lploss: 0.00000 | Mom_loss: 0.097327
+train epoch 440 avg loss: 0.00663 avg lploss: 0.00000 | Mom_loss: 0.097445
+==> val epoch 440 avg loss: 0.00724 avg lploss: 0.00000 | Mom_loss: 0.098079
+==> test epoch 440 avg loss: 0.00692 avg lploss: 0.00000 | Mom_loss: 0.097770
+*** Best Val Loss: 0.00724 	 Best Test Loss: 0.00692 	 Best epoch 440
+Validation loss decreased (0.007257 --> 0.007244).  Saving model ...
+train epoch 441 avg loss: 0.00654 avg lploss: 0.00000 | Mom_loss: 0.097602
+train epoch 442 avg loss: 0.00670 avg lploss: 0.00000 | Mom_loss: 0.097938
+train epoch 443 avg loss: 0.00656 avg lploss: 0.00000 | Mom_loss: 0.098091
+train epoch 444 avg loss: 0.00666 avg lploss: 0.00000 | Mom_loss: 0.098268
+train epoch 445 avg loss: 0.00659 avg lploss: 0.00000 | Mom_loss: 0.098101
+==> val epoch 445 avg loss: 0.00703 avg lploss: 0.00000 | Mom_loss: 0.099223
+==> test epoch 445 avg loss: 0.00670 avg lploss: 0.00000 | Mom_loss: 0.098906
+*** Best Val Loss: 0.00703 	 Best Test Loss: 0.00670 	 Best epoch 445
+Validation loss decreased (0.007244 --> 0.007035).  Saving model ...
+train epoch 446 avg loss: 0.00653 avg lploss: 0.00000 | Mom_loss: 0.098245
+train epoch 447 avg loss: 0.00655 avg lploss: 0.00000 | Mom_loss: 0.098440
+train epoch 448 avg loss: 0.00653 avg lploss: 0.00000 | Mom_loss: 0.098714
+train epoch 449 avg loss: 0.00647 avg lploss: 0.00000 | Mom_loss: 0.099099
+train epoch 450 avg loss: 0.00650 avg lploss: 0.00000 | Mom_loss: 0.098895
+==> val epoch 450 avg loss: 0.00729 avg lploss: 0.00000 | Mom_loss: 0.099031
+==> test epoch 450 avg loss: 0.00690 avg lploss: 0.00000 | Mom_loss: 0.098744
+*** Best Val Loss: 0.00703 	 Best Test Loss: 0.00670 	 Best epoch 445
+EarlyStopping counter: 1 out of 50
+train epoch 451 avg loss: 0.00666 avg lploss: 0.00000 | Mom_loss: 0.099361
+train epoch 452 avg loss: 0.00673 avg lploss: 0.00000 | Mom_loss: 0.099174
+train epoch 453 avg loss: 0.00728 avg lploss: 0.00000 | Mom_loss: 0.099029
+train epoch 454 avg loss: 0.00670 avg lploss: 0.00000 | Mom_loss: 0.098895
+train epoch 455 avg loss: 0.00665 avg lploss: 0.00000 | Mom_loss: 0.099155
+==> val epoch 455 avg loss: 0.00712 avg lploss: 0.00000 | Mom_loss: 0.099534
+==> test epoch 455 avg loss: 0.00680 avg lploss: 0.00000 | Mom_loss: 0.099217
+*** Best Val Loss: 0.00703 	 Best Test Loss: 0.00670 	 Best epoch 445
+EarlyStopping counter: 2 out of 50
+train epoch 456 avg loss: 0.00663 avg lploss: 0.00000 | Mom_loss: 0.099330
+train epoch 457 avg loss: 0.00660 avg lploss: 0.00000 | Mom_loss: 0.099183
+train epoch 458 avg loss: 0.00662 avg lploss: 0.00000 | Mom_loss: 0.099567
+train epoch 459 avg loss: 0.00664 avg lploss: 0.00000 | Mom_loss: 0.099000
+train epoch 460 avg loss: 0.00673 avg lploss: 0.00000 | Mom_loss: 0.099504
+==> val epoch 460 avg loss: 0.00720 avg lploss: 0.00000 | Mom_loss: 0.100787
+==> test epoch 460 avg loss: 0.00691 avg lploss: 0.00000 | Mom_loss: 0.100441
+*** Best Val Loss: 0.00703 	 Best Test Loss: 0.00670 	 Best epoch 445
+EarlyStopping counter: 3 out of 50
+train epoch 461 avg loss: 0.00654 avg lploss: 0.00000 | Mom_loss: 0.099852
+train epoch 462 avg loss: 0.00634 avg lploss: 0.00000 | Mom_loss: 0.099658
+train epoch 463 avg loss: 0.00652 avg lploss: 0.00000 | Mom_loss: 0.099713
+train epoch 464 avg loss: 0.00662 avg lploss: 0.00000 | Mom_loss: 0.100066
+train epoch 465 avg loss: 0.00652 avg lploss: 0.00000 | Mom_loss: 0.099628
+==> val epoch 465 avg loss: 0.00695 avg lploss: 0.00000 | Mom_loss: 0.100256
+==> test epoch 465 avg loss: 0.00658 avg lploss: 0.00000 | Mom_loss: 0.099925
+*** Best Val Loss: 0.00695 	 Best Test Loss: 0.00658 	 Best epoch 465
+Validation loss decreased (0.007035 --> 0.006951).  Saving model ...
+train epoch 466 avg loss: 0.00652 avg lploss: 0.00000 | Mom_loss: 0.100083
+train epoch 467 avg loss: 0.00648 avg lploss: 0.00000 | Mom_loss: 0.100249
+train epoch 468 avg loss: 0.00638 avg lploss: 0.00000 | Mom_loss: 0.100423
+train epoch 469 avg loss: 0.00633 avg lploss: 0.00000 | Mom_loss: 0.100739
+train epoch 470 avg loss: 0.00628 avg lploss: 0.00000 | Mom_loss: 0.100707
+==> val epoch 470 avg loss: 0.00718 avg lploss: 0.00000 | Mom_loss: 0.101161
+==> test epoch 470 avg loss: 0.00684 avg lploss: 0.00000 | Mom_loss: 0.100827
+*** Best Val Loss: 0.00695 	 Best Test Loss: 0.00658 	 Best epoch 465
+EarlyStopping counter: 1 out of 50
+train epoch 471 avg loss: 0.00632 avg lploss: 0.00000 | Mom_loss: 0.100534
+train epoch 472 avg loss: 0.00640 avg lploss: 0.00000 | Mom_loss: 0.101189
+train epoch 473 avg loss: 0.00631 avg lploss: 0.00000 | Mom_loss: 0.101144
+train epoch 474 avg loss: 0.00628 avg lploss: 0.00000 | Mom_loss: 0.101448
+train epoch 475 avg loss: 0.00627 avg lploss: 0.00000 | Mom_loss: 0.101369
+==> val epoch 475 avg loss: 0.00710 avg lploss: 0.00000 | Mom_loss: 0.102978
+==> test epoch 475 avg loss: 0.00681 avg lploss: 0.00000 | Mom_loss: 0.102592
+*** Best Val Loss: 0.00695 	 Best Test Loss: 0.00658 	 Best epoch 465
+EarlyStopping counter: 2 out of 50
+train epoch 476 avg loss: 0.00639 avg lploss: 0.00000 | Mom_loss: 0.101513
+train epoch 477 avg loss: 0.00640 avg lploss: 0.00000 | Mom_loss: 0.101350
+train epoch 478 avg loss: 0.00639 avg lploss: 0.00000 | Mom_loss: 0.101484
+train epoch 479 avg loss: 0.00626 avg lploss: 0.00000 | Mom_loss: 0.101844
+train epoch 480 avg loss: 0.00629 avg lploss: 0.00000 | Mom_loss: 0.102131
+==> val epoch 480 avg loss: 0.00714 avg lploss: 0.00000 | Mom_loss: 0.103233
+==> test epoch 480 avg loss: 0.00675 avg lploss: 0.00000 | Mom_loss: 0.102871
+*** Best Val Loss: 0.00695 	 Best Test Loss: 0.00658 	 Best epoch 465
+EarlyStopping counter: 3 out of 50
+train epoch 481 avg loss: 0.00634 avg lploss: 0.00000 | Mom_loss: 0.102080
+train epoch 482 avg loss: 0.00630 avg lploss: 0.00000 | Mom_loss: 0.102397
+train epoch 483 avg loss: 0.00633 avg lploss: 0.00000 | Mom_loss: 0.102392
+train epoch 484 avg loss: 0.00622 avg lploss: 0.00000 | Mom_loss: 0.102292
+train epoch 485 avg loss: 0.00641 avg lploss: 0.00000 | Mom_loss: 0.102304
+==> val epoch 485 avg loss: 0.00692 avg lploss: 0.00000 | Mom_loss: 0.103344
+==> test epoch 485 avg loss: 0.00654 avg lploss: 0.00000 | Mom_loss: 0.102985
+*** Best Val Loss: 0.00692 	 Best Test Loss: 0.00654 	 Best epoch 485
+Validation loss decreased (0.006951 --> 0.006915).  Saving model ...
+train epoch 486 avg loss: 0.00624 avg lploss: 0.00000 | Mom_loss: 0.103373
+train epoch 487 avg loss: 0.00620 avg lploss: 0.00000 | Mom_loss: 0.102757
+train epoch 488 avg loss: 0.00624 avg lploss: 0.00000 | Mom_loss: 0.103135
+train epoch 489 avg loss: 0.00621 avg lploss: 0.00000 | Mom_loss: 0.103358
+train epoch 490 avg loss: 0.00624 avg lploss: 0.00000 | Mom_loss: 0.103719
+==> val epoch 490 avg loss: 0.00687 avg lploss: 0.00000 | Mom_loss: 0.103697
+==> test epoch 490 avg loss: 0.00653 avg lploss: 0.00000 | Mom_loss: 0.103328
+*** Best Val Loss: 0.00687 	 Best Test Loss: 0.00653 	 Best epoch 490
+Validation loss decreased (0.006915 --> 0.006866).  Saving model ...
+train epoch 491 avg loss: 0.00610 avg lploss: 0.00000 | Mom_loss: 0.103561
+train epoch 492 avg loss: 0.00618 avg lploss: 0.00000 | Mom_loss: 0.103256
+train epoch 493 avg loss: 0.00617 avg lploss: 0.00000 | Mom_loss: 0.103909
+train epoch 494 avg loss: 0.00632 avg lploss: 0.00000 | Mom_loss: 0.104173
+train epoch 495 avg loss: 0.00610 avg lploss: 0.00000 | Mom_loss: 0.104017
+==> val epoch 495 avg loss: 0.00678 avg lploss: 0.00000 | Mom_loss: 0.104803
+==> test epoch 495 avg loss: 0.00645 avg lploss: 0.00000 | Mom_loss: 0.104436
+*** Best Val Loss: 0.00678 	 Best Test Loss: 0.00645 	 Best epoch 495
+Validation loss decreased (0.006866 --> 0.006782).  Saving model ...
+train epoch 496 avg loss: 0.00633 avg lploss: 0.00000 | Mom_loss: 0.104466
+train epoch 497 avg loss: 0.00630 avg lploss: 0.00000 | Mom_loss: 0.104393
+train epoch 498 avg loss: 0.00615 avg lploss: 0.00000 | Mom_loss: 0.104524
+train epoch 499 avg loss: 0.00637 avg lploss: 0.00000 | Mom_loss: 0.104263
+train epoch 500 avg loss: 0.00618 avg lploss: 0.00000 | Mom_loss: 0.104611
+==> val epoch 500 avg loss: 0.00710 avg lploss: 0.00000 | Mom_loss: 0.103716
+==> test epoch 500 avg loss: 0.00671 avg lploss: 0.00000 | Mom_loss: 0.103347
+*** Best Val Loss: 0.00678 	 Best Test Loss: 0.00645 	 Best epoch 495
+EarlyStopping counter: 1 out of 50
+train epoch 501 avg loss: 0.00608 avg lploss: 0.00000 | Mom_loss: 0.104716
+train epoch 502 avg loss: 0.00603 avg lploss: 0.00000 | Mom_loss: 0.104369
+train epoch 503 avg loss: 0.00614 avg lploss: 0.00000 | Mom_loss: 0.104995
+train epoch 504 avg loss: 0.00604 avg lploss: 0.00000 | Mom_loss: 0.105336
+train epoch 505 avg loss: 0.00614 avg lploss: 0.00000 | Mom_loss: 0.105349
+==> val epoch 505 avg loss: 0.00704 avg lploss: 0.00000 | Mom_loss: 0.105800
+==> test epoch 505 avg loss: 0.00666 avg lploss: 0.00000 | Mom_loss: 0.105406
+*** Best Val Loss: 0.00678 	 Best Test Loss: 0.00645 	 Best epoch 495
+EarlyStopping counter: 2 out of 50
+train epoch 506 avg loss: 0.00612 avg lploss: 0.00000 | Mom_loss: 0.105398
+train epoch 507 avg loss: 0.00609 avg lploss: 0.00000 | Mom_loss: 0.105500
+train epoch 508 avg loss: 0.00599 avg lploss: 0.00000 | Mom_loss: 0.105374
+train epoch 509 avg loss: 0.00608 avg lploss: 0.00000 | Mom_loss: 0.105497
+train epoch 510 avg loss: 0.00606 avg lploss: 0.00000 | Mom_loss: 0.105982
+==> val epoch 510 avg loss: 0.00687 avg lploss: 0.00000 | Mom_loss: 0.106607
+==> test epoch 510 avg loss: 0.00654 avg lploss: 0.00000 | Mom_loss: 0.106206
+*** Best Val Loss: 0.00678 	 Best Test Loss: 0.00645 	 Best epoch 495
+EarlyStopping counter: 3 out of 50
+train epoch 511 avg loss: 0.00612 avg lploss: 0.00000 | Mom_loss: 0.106272
+train epoch 512 avg loss: 0.00606 avg lploss: 0.00000 | Mom_loss: 0.106304
+train epoch 513 avg loss: 0.00598 avg lploss: 0.00000 | Mom_loss: 0.106257
+train epoch 514 avg loss: 0.00628 avg lploss: 0.00000 | Mom_loss: 0.106438
+train epoch 515 avg loss: 0.00606 avg lploss: 0.00000 | Mom_loss: 0.106533
+==> val epoch 515 avg loss: 0.00675 avg lploss: 0.00000 | Mom_loss: 0.107695
+==> test epoch 515 avg loss: 0.00646 avg lploss: 0.00000 | Mom_loss: 0.107250
+*** Best Val Loss: 0.00675 	 Best Test Loss: 0.00646 	 Best epoch 515
+Validation loss decreased (0.006782 --> 0.006747).  Saving model ...
+train epoch 516 avg loss: 0.00593 avg lploss: 0.00000 | Mom_loss: 0.106611
+train epoch 517 avg loss: 0.00591 avg lploss: 0.00000 | Mom_loss: 0.106902
+train epoch 518 avg loss: 0.00601 avg lploss: 0.00000 | Mom_loss: 0.106809
+train epoch 519 avg loss: 0.00595 avg lploss: 0.00000 | Mom_loss: 0.107299
+train epoch 520 avg loss: 0.00601 avg lploss: 0.00000 | Mom_loss: 0.107167
+==> val epoch 520 avg loss: 0.00684 avg lploss: 0.00000 | Mom_loss: 0.107455
+==> test epoch 520 avg loss: 0.00648 avg lploss: 0.00000 | Mom_loss: 0.107054
+*** Best Val Loss: 0.00675 	 Best Test Loss: 0.00646 	 Best epoch 515
+EarlyStopping counter: 1 out of 50
+train epoch 521 avg loss: 0.00595 avg lploss: 0.00000 | Mom_loss: 0.107156
+train epoch 522 avg loss: 0.00602 avg lploss: 0.00000 | Mom_loss: 0.107612
+train epoch 523 avg loss: 0.00620 avg lploss: 0.00000 | Mom_loss: 0.107422
+train epoch 524 avg loss: 0.00597 avg lploss: 0.00000 | Mom_loss: 0.108154
+train epoch 525 avg loss: 0.00604 avg lploss: 0.00000 | Mom_loss: 0.108138
+==> val epoch 525 avg loss: 0.00690 avg lploss: 0.00000 | Mom_loss: 0.107775
+==> test epoch 525 avg loss: 0.00642 avg lploss: 0.00000 | Mom_loss: 0.107358
+*** Best Val Loss: 0.00675 	 Best Test Loss: 0.00646 	 Best epoch 515
+EarlyStopping counter: 2 out of 50
+train epoch 526 avg loss: 0.00607 avg lploss: 0.00000 | Mom_loss: 0.107697
+train epoch 527 avg loss: 0.00616 avg lploss: 0.00000 | Mom_loss: 0.108176
+train epoch 528 avg loss: 0.00684 avg lploss: 0.00000 | Mom_loss: 0.107686
+train epoch 529 avg loss: 0.00592 avg lploss: 0.00000 | Mom_loss: 0.107564
+train epoch 530 avg loss: 0.00591 avg lploss: 0.00000 | Mom_loss: 0.107998
+==> val epoch 530 avg loss: 0.00735 avg lploss: 0.00000 | Mom_loss: 0.108383
+==> test epoch 530 avg loss: 0.00699 avg lploss: 0.00000 | Mom_loss: 0.107948
+*** Best Val Loss: 0.00675 	 Best Test Loss: 0.00646 	 Best epoch 515
+EarlyStopping counter: 3 out of 50
+train epoch 531 avg loss: 0.00598 avg lploss: 0.00000 | Mom_loss: 0.107951
+train epoch 532 avg loss: 0.00601 avg lploss: 0.00000 | Mom_loss: 0.107873
+train epoch 533 avg loss: 0.00588 avg lploss: 0.00000 | Mom_loss: 0.108271
+train epoch 534 avg loss: 0.00588 avg lploss: 0.00000 | Mom_loss: 0.108246
+train epoch 535 avg loss: 0.00591 avg lploss: 0.00000 | Mom_loss: 0.108947
+==> val epoch 535 avg loss: 0.00686 avg lploss: 0.00000 | Mom_loss: 0.109347
+==> test epoch 535 avg loss: 0.00644 avg lploss: 0.00000 | Mom_loss: 0.108858
+*** Best Val Loss: 0.00675 	 Best Test Loss: 0.00646 	 Best epoch 515
+EarlyStopping counter: 4 out of 50
+train epoch 536 avg loss: 0.00585 avg lploss: 0.00000 | Mom_loss: 0.108592
+train epoch 537 avg loss: 0.00585 avg lploss: 0.00000 | Mom_loss: 0.108783
+train epoch 538 avg loss: 0.00596 avg lploss: 0.00000 | Mom_loss: 0.108834
+train epoch 539 avg loss: 0.00584 avg lploss: 0.00000 | Mom_loss: 0.108610
+train epoch 540 avg loss: 0.00584 avg lploss: 0.00000 | Mom_loss: 0.108512
+==> val epoch 540 avg loss: 0.00674 avg lploss: 0.00000 | Mom_loss: 0.109578
+==> test epoch 540 avg loss: 0.00637 avg lploss: 0.00000 | Mom_loss: 0.109090
+*** Best Val Loss: 0.00674 	 Best Test Loss: 0.00637 	 Best epoch 540
+Validation loss decreased (0.006747 --> 0.006743).  Saving model ...
+train epoch 541 avg loss: 0.00576 avg lploss: 0.00000 | Mom_loss: 0.109001
+train epoch 542 avg loss: 0.00576 avg lploss: 0.00000 | Mom_loss: 0.109299
+train epoch 543 avg loss: 0.00578 avg lploss: 0.00000 | Mom_loss: 0.108880
+train epoch 544 avg loss: 0.00578 avg lploss: 0.00000 | Mom_loss: 0.109689
+train epoch 545 avg loss: 0.00582 avg lploss: 0.00000 | Mom_loss: 0.109242
+==> val epoch 545 avg loss: 0.00672 avg lploss: 0.00000 | Mom_loss: 0.111471
+==> test epoch 545 avg loss: 0.00635 avg lploss: 0.00000 | Mom_loss: 0.110973
+*** Best Val Loss: 0.00672 	 Best Test Loss: 0.00635 	 Best epoch 545
+Validation loss decreased (0.006743 --> 0.006717).  Saving model ...
+train epoch 546 avg loss: 0.00579 avg lploss: 0.00000 | Mom_loss: 0.109758
+train epoch 547 avg loss: 0.00575 avg lploss: 0.00000 | Mom_loss: 0.110124
+train epoch 548 avg loss: 0.00588 avg lploss: 0.00000 | Mom_loss: 0.109839
+train epoch 549 avg loss: 0.00606 avg lploss: 0.00000 | Mom_loss: 0.109932
+train epoch 550 avg loss: 0.00599 avg lploss: 0.00000 | Mom_loss: 0.110189
+==> val epoch 550 avg loss: 0.00721 avg lploss: 0.00000 | Mom_loss: 0.111371
+==> test epoch 550 avg loss: 0.00673 avg lploss: 0.00000 | Mom_loss: 0.110839
+*** Best Val Loss: 0.00672 	 Best Test Loss: 0.00635 	 Best epoch 545
+EarlyStopping counter: 1 out of 50
+train epoch 551 avg loss: 0.00614 avg lploss: 0.00000 | Mom_loss: 0.109175
+train epoch 552 avg loss: 0.00593 avg lploss: 0.00000 | Mom_loss: 0.108673
+train epoch 553 avg loss: 0.00608 avg lploss: 0.00000 | Mom_loss: 0.108604
+train epoch 554 avg loss: 0.00582 avg lploss: 0.00000 | Mom_loss: 0.108702
+train epoch 555 avg loss: 0.00598 avg lploss: 0.00000 | Mom_loss: 0.109093
+==> val epoch 555 avg loss: 0.00692 avg lploss: 0.00000 | Mom_loss: 0.109520
+==> test epoch 555 avg loss: 0.00658 avg lploss: 0.00000 | Mom_loss: 0.109026
+*** Best Val Loss: 0.00672 	 Best Test Loss: 0.00635 	 Best epoch 545
+EarlyStopping counter: 2 out of 50
+train epoch 556 avg loss: 0.00581 avg lploss: 0.00000 | Mom_loss: 0.108821
+train epoch 557 avg loss: 0.00581 avg lploss: 0.00000 | Mom_loss: 0.108449
+train epoch 558 avg loss: 0.00567 avg lploss: 0.00000 | Mom_loss: 0.109046
+train epoch 559 avg loss: 0.00565 avg lploss: 0.00000 | Mom_loss: 0.109250
+train epoch 560 avg loss: 0.00567 avg lploss: 0.00000 | Mom_loss: 0.109877
+==> val epoch 560 avg loss: 0.00675 avg lploss: 0.00000 | Mom_loss: 0.111288
+==> test epoch 560 avg loss: 0.00639 avg lploss: 0.00000 | Mom_loss: 0.110767
+*** Best Val Loss: 0.00672 	 Best Test Loss: 0.00635 	 Best epoch 545
+EarlyStopping counter: 3 out of 50
+train epoch 561 avg loss: 0.00571 avg lploss: 0.00000 | Mom_loss: 0.109843
+train epoch 562 avg loss: 0.00567 avg lploss: 0.00000 | Mom_loss: 0.109771
+train epoch 563 avg loss: 0.00566 avg lploss: 0.00000 | Mom_loss: 0.109945
+train epoch 564 avg loss: 0.00562 avg lploss: 0.00000 | Mom_loss: 0.109946
+train epoch 565 avg loss: 0.00571 avg lploss: 0.00000 | Mom_loss: 0.109908
+==> val epoch 565 avg loss: 0.00674 avg lploss: 0.00000 | Mom_loss: 0.110920
+==> test epoch 565 avg loss: 0.00640 avg lploss: 0.00000 | Mom_loss: 0.110371
+*** Best Val Loss: 0.00672 	 Best Test Loss: 0.00635 	 Best epoch 545
+EarlyStopping counter: 4 out of 50
+train epoch 566 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.109904
+train epoch 567 avg loss: 0.00568 avg lploss: 0.00000 | Mom_loss: 0.110414
+train epoch 568 avg loss: 0.00567 avg lploss: 0.00000 | Mom_loss: 0.110109
+train epoch 569 avg loss: 0.00557 avg lploss: 0.00000 | Mom_loss: 0.110656
+train epoch 570 avg loss: 0.00564 avg lploss: 0.00000 | Mom_loss: 0.111023
+==> val epoch 570 avg loss: 0.00668 avg lploss: 0.00000 | Mom_loss: 0.112583
+==> test epoch 570 avg loss: 0.00627 avg lploss: 0.00000 | Mom_loss: 0.112031
+*** Best Val Loss: 0.00668 	 Best Test Loss: 0.00627 	 Best epoch 570
+Validation loss decreased (0.006717 --> 0.006679).  Saving model ...
+train epoch 571 avg loss: 0.00555 avg lploss: 0.00000 | Mom_loss: 0.110910
+train epoch 572 avg loss: 0.00550 avg lploss: 0.00000 | Mom_loss: 0.111032
+train epoch 573 avg loss: 0.00568 avg lploss: 0.00000 | Mom_loss: 0.111570
+train epoch 574 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.110969
+train epoch 575 avg loss: 0.00553 avg lploss: 0.00000 | Mom_loss: 0.110548
+==> val epoch 575 avg loss: 0.00661 avg lploss: 0.00000 | Mom_loss: 0.111646
+==> test epoch 575 avg loss: 0.00620 avg lploss: 0.00000 | Mom_loss: 0.111109
+*** Best Val Loss: 0.00661 	 Best Test Loss: 0.00620 	 Best epoch 575
+Validation loss decreased (0.006679 --> 0.006615).  Saving model ...
+train epoch 576 avg loss: 0.00561 avg lploss: 0.00000 | Mom_loss: 0.111360
+train epoch 577 avg loss: 0.00558 avg lploss: 0.00000 | Mom_loss: 0.111217
+train epoch 578 avg loss: 0.00552 avg lploss: 0.00000 | Mom_loss: 0.111477
+train epoch 579 avg loss: 0.00553 avg lploss: 0.00000 | Mom_loss: 0.111735
+train epoch 580 avg loss: 0.00568 avg lploss: 0.00000 | Mom_loss: 0.112123
+==> val epoch 580 avg loss: 0.00666 avg lploss: 0.00000 | Mom_loss: 0.114486
+==> test epoch 580 avg loss: 0.00622 avg lploss: 0.00000 | Mom_loss: 0.113924
+*** Best Val Loss: 0.00661 	 Best Test Loss: 0.00620 	 Best epoch 575
+EarlyStopping counter: 1 out of 50
+train epoch 581 avg loss: 0.00551 avg lploss: 0.00000 | Mom_loss: 0.112026
+train epoch 582 avg loss: 0.00557 avg lploss: 0.00000 | Mom_loss: 0.111670
+train epoch 583 avg loss: 0.00550 avg lploss: 0.00000 | Mom_loss: 0.112609
+train epoch 584 avg loss: 0.00554 avg lploss: 0.00000 | Mom_loss: 0.112179
+train epoch 585 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.112279
+==> val epoch 585 avg loss: 0.00664 avg lploss: 0.00000 | Mom_loss: 0.114071
+==> test epoch 585 avg loss: 0.00614 avg lploss: 0.00000 | Mom_loss: 0.113490
+*** Best Val Loss: 0.00661 	 Best Test Loss: 0.00620 	 Best epoch 575
+EarlyStopping counter: 2 out of 50
+train epoch 586 avg loss: 0.00551 avg lploss: 0.00000 | Mom_loss: 0.112045
+train epoch 587 avg loss: 0.00547 avg lploss: 0.00000 | Mom_loss: 0.112849
+train epoch 588 avg loss: 0.00559 avg lploss: 0.00000 | Mom_loss: 0.112175
+train epoch 589 avg loss: 0.00560 avg lploss: 0.00000 | Mom_loss: 0.111933
+train epoch 590 avg loss: 0.00547 avg lploss: 0.00000 | Mom_loss: 0.112948
+==> val epoch 590 avg loss: 0.00659 avg lploss: 0.00000 | Mom_loss: 0.115085
+==> test epoch 590 avg loss: 0.00629 avg lploss: 0.00000 | Mom_loss: 0.114481
+*** Best Val Loss: 0.00659 	 Best Test Loss: 0.00629 	 Best epoch 590
+Validation loss decreased (0.006615 --> 0.006589).  Saving model ...
+train epoch 591 avg loss: 0.00546 avg lploss: 0.00000 | Mom_loss: 0.112952
+train epoch 592 avg loss: 0.00551 avg lploss: 0.00000 | Mom_loss: 0.112890
+train epoch 593 avg loss: 0.00559 avg lploss: 0.00000 | Mom_loss: 0.112647
+train epoch 594 avg loss: 0.00578 avg lploss: 0.00000 | Mom_loss: 0.112809
+train epoch 595 avg loss: 0.00552 avg lploss: 0.00000 | Mom_loss: 0.111710
+==> val epoch 595 avg loss: 0.00653 avg lploss: 0.00000 | Mom_loss: 0.114397
+==> test epoch 595 avg loss: 0.00609 avg lploss: 0.00000 | Mom_loss: 0.113785
+*** Best Val Loss: 0.00653 	 Best Test Loss: 0.00609 	 Best epoch 595
+Validation loss decreased (0.006589 --> 0.006529).  Saving model ...
+train epoch 596 avg loss: 0.00539 avg lploss: 0.00000 | Mom_loss: 0.112871
+train epoch 597 avg loss: 0.00545 avg lploss: 0.00000 | Mom_loss: 0.112667
+train epoch 598 avg loss: 0.00551 avg lploss: 0.00000 | Mom_loss: 0.112757
+train epoch 599 avg loss: 0.00543 avg lploss: 0.00000 | Mom_loss: 0.112802
+train epoch 600 avg loss: 0.00556 avg lploss: 0.00000 | Mom_loss: 0.113389
+==> val epoch 600 avg loss: 0.00664 avg lploss: 0.00000 | Mom_loss: 0.114289
+==> test epoch 600 avg loss: 0.00610 avg lploss: 0.00000 | Mom_loss: 0.113697
+*** Best Val Loss: 0.00653 	 Best Test Loss: 0.00609 	 Best epoch 595
+EarlyStopping counter: 1 out of 50
+train epoch 601 avg loss: 0.00550 avg lploss: 0.00000 | Mom_loss: 0.113174
+train epoch 602 avg loss: 0.00549 avg lploss: 0.00000 | Mom_loss: 0.113830
+train epoch 603 avg loss: 0.00533 avg lploss: 0.00000 | Mom_loss: 0.113322
+train epoch 604 avg loss: 0.00565 avg lploss: 0.00000 | Mom_loss: 0.113866
+train epoch 605 avg loss: 0.00538 avg lploss: 0.00000 | Mom_loss: 0.113124
+==> val epoch 605 avg loss: 0.00673 avg lploss: 0.00000 | Mom_loss: 0.113436
+==> test epoch 605 avg loss: 0.00637 avg lploss: 0.00000 | Mom_loss: 0.112827
+*** Best Val Loss: 0.00653 	 Best Test Loss: 0.00609 	 Best epoch 595
+EarlyStopping counter: 2 out of 50
+train epoch 606 avg loss: 0.00572 avg lploss: 0.00000 | Mom_loss: 0.113522
+train epoch 607 avg loss: 0.00554 avg lploss: 0.00000 | Mom_loss: 0.113626
+train epoch 608 avg loss: 0.00599 avg lploss: 0.00000 | Mom_loss: 0.113584
+train epoch 609 avg loss: 0.00542 avg lploss: 0.00000 | Mom_loss: 0.112742
+train epoch 610 avg loss: 0.00540 avg lploss: 0.00000 | Mom_loss: 0.113719
+==> val epoch 610 avg loss: 0.00651 avg lploss: 0.00000 | Mom_loss: 0.114631
+==> test epoch 610 avg loss: 0.00609 avg lploss: 0.00000 | Mom_loss: 0.113997
+*** Best Val Loss: 0.00651 	 Best Test Loss: 0.00609 	 Best epoch 610
+Validation loss decreased (0.006529 --> 0.006511).  Saving model ...
+train epoch 611 avg loss: 0.00533 avg lploss: 0.00000 | Mom_loss: 0.113501
+train epoch 612 avg loss: 0.00549 avg lploss: 0.00000 | Mom_loss: 0.113327
+train epoch 613 avg loss: 0.00535 avg lploss: 0.00000 | Mom_loss: 0.112761
+train epoch 614 avg loss: 0.00544 avg lploss: 0.00000 | Mom_loss: 0.113702
+train epoch 615 avg loss: 0.00525 avg lploss: 0.00000 | Mom_loss: 0.114072
+==> val epoch 615 avg loss: 0.00671 avg lploss: 0.00000 | Mom_loss: 0.116192
+==> test epoch 615 avg loss: 0.00609 avg lploss: 0.00000 | Mom_loss: 0.115524
+*** Best Val Loss: 0.00651 	 Best Test Loss: 0.00609 	 Best epoch 610
+EarlyStopping counter: 1 out of 50
+train epoch 616 avg loss: 0.00528 avg lploss: 0.00000 | Mom_loss: 0.114260
+train epoch 617 avg loss: 0.00529 avg lploss: 0.00000 | Mom_loss: 0.114519
+train epoch 618 avg loss: 0.00526 avg lploss: 0.00000 | Mom_loss: 0.114532
+train epoch 619 avg loss: 0.00528 avg lploss: 0.00000 | Mom_loss: 0.114809
+train epoch 620 avg loss: 0.00528 avg lploss: 0.00000 | Mom_loss: 0.114446
+==> val epoch 620 avg loss: 0.00641 avg lploss: 0.00000 | Mom_loss: 0.114646
+==> test epoch 620 avg loss: 0.00602 avg lploss: 0.00000 | Mom_loss: 0.113991
+*** Best Val Loss: 0.00641 	 Best Test Loss: 0.00602 	 Best epoch 620
+Validation loss decreased (0.006511 --> 0.006412).  Saving model ...
+train epoch 621 avg loss: 0.00521 avg lploss: 0.00000 | Mom_loss: 0.114806
+train epoch 622 avg loss: 0.00528 avg lploss: 0.00000 | Mom_loss: 0.114791
+train epoch 623 avg loss: 0.00524 avg lploss: 0.00000 | Mom_loss: 0.115030
+train epoch 624 avg loss: 0.00525 avg lploss: 0.00000 | Mom_loss: 0.115050
+train epoch 625 avg loss: 0.00523 avg lploss: 0.00000 | Mom_loss: 0.115206
+==> val epoch 625 avg loss: 0.00648 avg lploss: 0.00000 | Mom_loss: 0.116218
+==> test epoch 625 avg loss: 0.00604 avg lploss: 0.00000 | Mom_loss: 0.115554
+*** Best Val Loss: 0.00641 	 Best Test Loss: 0.00602 	 Best epoch 620
+EarlyStopping counter: 1 out of 50
+train epoch 626 avg loss: 0.00538 avg lploss: 0.00000 | Mom_loss: 0.115013
+train epoch 627 avg loss: 0.00523 avg lploss: 0.00000 | Mom_loss: 0.115746
+train epoch 628 avg loss: 0.00526 avg lploss: 0.00000 | Mom_loss: 0.115220
+train epoch 629 avg loss: 0.00533 avg lploss: 0.00000 | Mom_loss: 0.115581
+train epoch 630 avg loss: 0.00522 avg lploss: 0.00000 | Mom_loss: 0.115154
+==> val epoch 630 avg loss: 0.00644 avg lploss: 0.00000 | Mom_loss: 0.115626
+==> test epoch 630 avg loss: 0.00604 avg lploss: 0.00000 | Mom_loss: 0.114939
+*** Best Val Loss: 0.00641 	 Best Test Loss: 0.00602 	 Best epoch 620
+EarlyStopping counter: 2 out of 50
+train epoch 631 avg loss: 0.00526 avg lploss: 0.00000 | Mom_loss: 0.116084
+train epoch 632 avg loss: 0.00518 avg lploss: 0.00000 | Mom_loss: 0.115647
+train epoch 633 avg loss: 0.00529 avg lploss: 0.00000 | Mom_loss: 0.115626
+train epoch 634 avg loss: 0.00519 avg lploss: 0.00000 | Mom_loss: 0.116219
+train epoch 635 avg loss: 0.00523 avg lploss: 0.00000 | Mom_loss: 0.116601
+==> val epoch 635 avg loss: 0.00648 avg lploss: 0.00000 | Mom_loss: 0.116649
+==> test epoch 635 avg loss: 0.00599 avg lploss: 0.00000 | Mom_loss: 0.115949
+*** Best Val Loss: 0.00641 	 Best Test Loss: 0.00602 	 Best epoch 620
+EarlyStopping counter: 3 out of 50
+train epoch 636 avg loss: 0.00521 avg lploss: 0.00000 | Mom_loss: 0.116220
+train epoch 637 avg loss: 0.00517 avg lploss: 0.00000 | Mom_loss: 0.116280
+train epoch 638 avg loss: 0.00516 avg lploss: 0.00000 | Mom_loss: 0.116006
+train epoch 639 avg loss: 0.00537 avg lploss: 0.00000 | Mom_loss: 0.117179
+train epoch 640 avg loss: 0.00540 avg lploss: 0.00000 | Mom_loss: 0.116356
+==> val epoch 640 avg loss: 0.00669 avg lploss: 0.00000 | Mom_loss: 0.117809
+==> test epoch 640 avg loss: 0.00640 avg lploss: 0.00000 | Mom_loss: 0.117070
+*** Best Val Loss: 0.00641 	 Best Test Loss: 0.00602 	 Best epoch 620
+EarlyStopping counter: 4 out of 50
+train epoch 641 avg loss: 0.00546 avg lploss: 0.00000 | Mom_loss: 0.115911
+train epoch 642 avg loss: 0.00521 avg lploss: 0.00000 | Mom_loss: 0.116743
+train epoch 643 avg loss: 0.00509 avg lploss: 0.00000 | Mom_loss: 0.116873
+train epoch 644 avg loss: 0.00512 avg lploss: 0.00000 | Mom_loss: 0.117459
+train epoch 645 avg loss: 0.00509 avg lploss: 0.00000 | Mom_loss: 0.116786
+==> val epoch 645 avg loss: 0.00630 avg lploss: 0.00000 | Mom_loss: 0.117880
+==> test epoch 645 avg loss: 0.00602 avg lploss: 0.00000 | Mom_loss: 0.117142
+*** Best Val Loss: 0.00630 	 Best Test Loss: 0.00602 	 Best epoch 645
+Validation loss decreased (0.006412 --> 0.006303).  Saving model ...
+train epoch 646 avg loss: 0.00513 avg lploss: 0.00000 | Mom_loss: 0.117142
+train epoch 647 avg loss: 0.00511 avg lploss: 0.00000 | Mom_loss: 0.117483
+train epoch 648 avg loss: 0.00518 avg lploss: 0.00000 | Mom_loss: 0.117235
+train epoch 649 avg loss: 0.00511 avg lploss: 0.00000 | Mom_loss: 0.117501
+train epoch 650 avg loss: 0.00510 avg lploss: 0.00000 | Mom_loss: 0.116900
+==> val epoch 650 avg loss: 0.00643 avg lploss: 0.00000 | Mom_loss: 0.118860
+==> test epoch 650 avg loss: 0.00594 avg lploss: 0.00000 | Mom_loss: 0.118103
+*** Best Val Loss: 0.00630 	 Best Test Loss: 0.00602 	 Best epoch 645
+EarlyStopping counter: 1 out of 50
+train epoch 651 avg loss: 0.00520 avg lploss: 0.00000 | Mom_loss: 0.117565
+train epoch 652 avg loss: 0.00512 avg lploss: 0.00000 | Mom_loss: 0.117758
+train epoch 653 avg loss: 0.00536 avg lploss: 0.00000 | Mom_loss: 0.117481
+train epoch 654 avg loss: 0.00517 avg lploss: 0.00000 | Mom_loss: 0.116840
+train epoch 655 avg loss: 0.00525 avg lploss: 0.00000 | Mom_loss: 0.117536
+==> val epoch 655 avg loss: 0.00635 avg lploss: 0.00000 | Mom_loss: 0.118603
+==> test epoch 655 avg loss: 0.00596 avg lploss: 0.00000 | Mom_loss: 0.117852
+*** Best Val Loss: 0.00630 	 Best Test Loss: 0.00602 	 Best epoch 645
+EarlyStopping counter: 2 out of 50
+train epoch 656 avg loss: 0.00525 avg lploss: 0.00000 | Mom_loss: 0.117454
+train epoch 657 avg loss: 0.00527 avg lploss: 0.00000 | Mom_loss: 0.117014
+train epoch 658 avg loss: 0.00511 avg lploss: 0.00000 | Mom_loss: 0.117281
+train epoch 659 avg loss: 0.00513 avg lploss: 0.00000 | Mom_loss: 0.117283
+train epoch 660 avg loss: 0.00532 avg lploss: 0.00000 | Mom_loss: 0.117268
+==> val epoch 660 avg loss: 0.00633 avg lploss: 0.00000 | Mom_loss: 0.117526
+==> test epoch 660 avg loss: 0.00597 avg lploss: 0.00000 | Mom_loss: 0.116800
+*** Best Val Loss: 0.00630 	 Best Test Loss: 0.00602 	 Best epoch 645
+EarlyStopping counter: 3 out of 50
+train epoch 661 avg loss: 0.00507 avg lploss: 0.00000 | Mom_loss: 0.117510
+train epoch 662 avg loss: 0.00505 avg lploss: 0.00000 | Mom_loss: 0.117250
+train epoch 663 avg loss: 0.00502 avg lploss: 0.00000 | Mom_loss: 0.117963
+train epoch 664 avg loss: 0.00499 avg lploss: 0.00000 | Mom_loss: 0.117909
+train epoch 665 avg loss: 0.00494 avg lploss: 0.00000 | Mom_loss: 0.117819
+==> val epoch 665 avg loss: 0.00644 avg lploss: 0.00000 | Mom_loss: 0.117185
+==> test epoch 665 avg loss: 0.00607 avg lploss: 0.00000 | Mom_loss: 0.116451
+*** Best Val Loss: 0.00630 	 Best Test Loss: 0.00602 	 Best epoch 645
+EarlyStopping counter: 4 out of 50
+train epoch 666 avg loss: 0.00508 avg lploss: 0.00000 | Mom_loss: 0.118012
+train epoch 667 avg loss: 0.00510 avg lploss: 0.00000 | Mom_loss: 0.118264
+train epoch 668 avg loss: 0.00521 avg lploss: 0.00000 | Mom_loss: 0.118314
+train epoch 669 avg loss: 0.00532 avg lploss: 0.00000 | Mom_loss: 0.117484
+train epoch 670 avg loss: 0.00521 avg lploss: 0.00000 | Mom_loss: 0.118236
+==> val epoch 670 avg loss: 0.00633 avg lploss: 0.00000 | Mom_loss: 0.118902
+==> test epoch 670 avg loss: 0.00586 avg lploss: 0.00000 | Mom_loss: 0.118085
+*** Best Val Loss: 0.00630 	 Best Test Loss: 0.00602 	 Best epoch 645
+EarlyStopping counter: 5 out of 50
+train epoch 671 avg loss: 0.00521 avg lploss: 0.00000 | Mom_loss: 0.117785
+train epoch 672 avg loss: 0.00518 avg lploss: 0.00000 | Mom_loss: 0.117334
+train epoch 673 avg loss: 0.00501 avg lploss: 0.00000 | Mom_loss: 0.117481
+train epoch 674 avg loss: 0.00493 avg lploss: 0.00000 | Mom_loss: 0.117833
+train epoch 675 avg loss: 0.00491 avg lploss: 0.00000 | Mom_loss: 0.118089
+==> val epoch 675 avg loss: 0.00629 avg lploss: 0.00000 | Mom_loss: 0.118360
+==> test epoch 675 avg loss: 0.00594 avg lploss: 0.00000 | Mom_loss: 0.117536
+*** Best Val Loss: 0.00629 	 Best Test Loss: 0.00594 	 Best epoch 675
+Validation loss decreased (0.006303 --> 0.006289).  Saving model ...
+train epoch 676 avg loss: 0.00489 avg lploss: 0.00000 | Mom_loss: 0.117645
+train epoch 677 avg loss: 0.00487 avg lploss: 0.00000 | Mom_loss: 0.118822
+train epoch 678 avg loss: 0.00486 avg lploss: 0.00000 | Mom_loss: 0.118417
+train epoch 679 avg loss: 0.00492 avg lploss: 0.00000 | Mom_loss: 0.119247
+train epoch 680 avg loss: 0.00511 avg lploss: 0.00000 | Mom_loss: 0.119233
+==> val epoch 680 avg loss: 0.00625 avg lploss: 0.00000 | Mom_loss: 0.118808
+==> test epoch 680 avg loss: 0.00588 avg lploss: 0.00000 | Mom_loss: 0.118020
+*** Best Val Loss: 0.00625 	 Best Test Loss: 0.00588 	 Best epoch 680
+Validation loss decreased (0.006289 --> 0.006251).  Saving model ...
+train epoch 681 avg loss: 0.00494 avg lploss: 0.00000 | Mom_loss: 0.118506
+train epoch 682 avg loss: 0.00495 avg lploss: 0.00000 | Mom_loss: 0.119089
+train epoch 683 avg loss: 0.00493 avg lploss: 0.00000 | Mom_loss: 0.119189
+train epoch 684 avg loss: 0.00496 avg lploss: 0.00000 | Mom_loss: 0.119259
+train epoch 685 avg loss: 0.00492 avg lploss: 0.00000 | Mom_loss: 0.119722
+==> val epoch 685 avg loss: 0.00631 avg lploss: 0.00000 | Mom_loss: 0.117781
+==> test epoch 685 avg loss: 0.00596 avg lploss: 0.00000 | Mom_loss: 0.116983
+*** Best Val Loss: 0.00625 	 Best Test Loss: 0.00588 	 Best epoch 680
+EarlyStopping counter: 1 out of 50
+train epoch 686 avg loss: 0.00488 avg lploss: 0.00000 | Mom_loss: 0.118618
+train epoch 687 avg loss: 0.00488 avg lploss: 0.00000 | Mom_loss: 0.119498
+train epoch 688 avg loss: 0.00488 avg lploss: 0.00000 | Mom_loss: 0.118618
+train epoch 689 avg loss: 0.00492 avg lploss: 0.00000 | Mom_loss: 0.119116
+train epoch 690 avg loss: 0.00501 avg lploss: 0.00000 | Mom_loss: 0.119540
+==> val epoch 690 avg loss: 0.00628 avg lploss: 0.00000 | Mom_loss: 0.118637
+==> test epoch 690 avg loss: 0.00595 avg lploss: 0.00000 | Mom_loss: 0.117829
+*** Best Val Loss: 0.00625 	 Best Test Loss: 0.00588 	 Best epoch 680
+EarlyStopping counter: 2 out of 50
+train epoch 691 avg loss: 0.00490 avg lploss: 0.00000 | Mom_loss: 0.119136
+train epoch 692 avg loss: 0.00480 avg lploss: 0.00000 | Mom_loss: 0.119822
+train epoch 693 avg loss: 0.00485 avg lploss: 0.00000 | Mom_loss: 0.119508
+train epoch 694 avg loss: 0.00509 avg lploss: 0.00000 | Mom_loss: 0.119132
+train epoch 695 avg loss: 0.00485 avg lploss: 0.00000 | Mom_loss: 0.119799
+==> val epoch 695 avg loss: 0.00642 avg lploss: 0.00000 | Mom_loss: 0.118101
+==> test epoch 695 avg loss: 0.00602 avg lploss: 0.00000 | Mom_loss: 0.117289
+*** Best Val Loss: 0.00625 	 Best Test Loss: 0.00588 	 Best epoch 680
+EarlyStopping counter: 3 out of 50
+train epoch 696 avg loss: 0.00488 avg lploss: 0.00000 | Mom_loss: 0.119234
+train epoch 697 avg loss: 0.00504 avg lploss: 0.00000 | Mom_loss: 0.119801
+train epoch 698 avg loss: 0.00502 avg lploss: 0.00000 | Mom_loss: 0.118625
+train epoch 699 avg loss: 0.00493 avg lploss: 0.00000 | Mom_loss: 0.119026
+train epoch 700 avg loss: 0.00484 avg lploss: 0.00000 | Mom_loss: 0.119096
+==> val epoch 700 avg loss: 0.00654 avg lploss: 0.00000 | Mom_loss: 0.119939
+==> test epoch 700 avg loss: 0.00605 avg lploss: 0.00000 | Mom_loss: 0.119023
+*** Best Val Loss: 0.00625 	 Best Test Loss: 0.00588 	 Best epoch 680
+EarlyStopping counter: 4 out of 50
+train epoch 701 avg loss: 0.00486 avg lploss: 0.00000 | Mom_loss: 0.119318
+train epoch 702 avg loss: 0.00474 avg lploss: 0.00000 | Mom_loss: 0.119015
+train epoch 703 avg loss: 0.00489 avg lploss: 0.00000 | Mom_loss: 0.119750
+train epoch 704 avg loss: 0.00481 avg lploss: 0.00000 | Mom_loss: 0.119959
+train epoch 705 avg loss: 0.00490 avg lploss: 0.00000 | Mom_loss: 0.119049
+==> val epoch 705 avg loss: 0.00619 avg lploss: 0.00000 | Mom_loss: 0.120977
+==> test epoch 705 avg loss: 0.00573 avg lploss: 0.00000 | Mom_loss: 0.120086
+*** Best Val Loss: 0.00619 	 Best Test Loss: 0.00573 	 Best epoch 705
+Validation loss decreased (0.006251 --> 0.006187).  Saving model ...
+train epoch 706 avg loss: 0.00491 avg lploss: 0.00000 | Mom_loss: 0.119677
+train epoch 707 avg loss: 0.00507 avg lploss: 0.00000 | Mom_loss: 0.119173
+train epoch 708 avg loss: 0.00480 avg lploss: 0.00000 | Mom_loss: 0.119927
+train epoch 709 avg loss: 0.00476 avg lploss: 0.00000 | Mom_loss: 0.120670
+train epoch 710 avg loss: 0.00480 avg lploss: 0.00000 | Mom_loss: 0.119293
+==> val epoch 710 avg loss: 0.00642 avg lploss: 0.00000 | Mom_loss: 0.122712
+==> test epoch 710 avg loss: 0.00597 avg lploss: 0.00000 | Mom_loss: 0.121796
+*** Best Val Loss: 0.00619 	 Best Test Loss: 0.00573 	 Best epoch 705
+EarlyStopping counter: 1 out of 50
+train epoch 711 avg loss: 0.00479 avg lploss: 0.00000 | Mom_loss: 0.120513
+train epoch 712 avg loss: 0.00483 avg lploss: 0.00000 | Mom_loss: 0.120267
+train epoch 713 avg loss: 0.00475 avg lploss: 0.00000 | Mom_loss: 0.120446
+train epoch 714 avg loss: 0.00484 avg lploss: 0.00000 | Mom_loss: 0.120070
+train epoch 715 avg loss: 0.00480 avg lploss: 0.00000 | Mom_loss: 0.120387
+==> val epoch 715 avg loss: 0.00620 avg lploss: 0.00000 | Mom_loss: 0.121929
+==> test epoch 715 avg loss: 0.00585 avg lploss: 0.00000 | Mom_loss: 0.121014
+*** Best Val Loss: 0.00619 	 Best Test Loss: 0.00573 	 Best epoch 705
+EarlyStopping counter: 2 out of 50
+train epoch 716 avg loss: 0.00478 avg lploss: 0.00000 | Mom_loss: 0.120568
+train epoch 717 avg loss: 0.00496 avg lploss: 0.00000 | Mom_loss: 0.121093
+train epoch 718 avg loss: 0.00464 avg lploss: 0.00000 | Mom_loss: 0.120744
+train epoch 719 avg loss: 0.00476 avg lploss: 0.00000 | Mom_loss: 0.121099
+train epoch 720 avg loss: 0.00639 avg lploss: 0.00000 | Mom_loss: 0.120117
+==> val epoch 720 avg loss: 0.00669 avg lploss: 0.00000 | Mom_loss: 0.120290
+==> test epoch 720 avg loss: 0.00630 avg lploss: 0.00000 | Mom_loss: 0.119397
+*** Best Val Loss: 0.00619 	 Best Test Loss: 0.00573 	 Best epoch 705
+EarlyStopping counter: 3 out of 50
+train epoch 721 avg loss: 0.00498 avg lploss: 0.00000 | Mom_loss: 0.119908
+train epoch 722 avg loss: 0.00482 avg lploss: 0.00000 | Mom_loss: 0.119569
+train epoch 723 avg loss: 0.00469 avg lploss: 0.00000 | Mom_loss: 0.119976
+train epoch 724 avg loss: 0.00469 avg lploss: 0.00000 | Mom_loss: 0.119920
+train epoch 725 avg loss: 0.00472 avg lploss: 0.00000 | Mom_loss: 0.120846
+==> val epoch 725 avg loss: 0.00624 avg lploss: 0.00000 | Mom_loss: 0.122018
+==> test epoch 725 avg loss: 0.00579 avg lploss: 0.00000 | Mom_loss: 0.121064
+*** Best Val Loss: 0.00619 	 Best Test Loss: 0.00573 	 Best epoch 705
+EarlyStopping counter: 4 out of 50
+train epoch 726 avg loss: 0.00490 avg lploss: 0.00000 | Mom_loss: 0.119975
+train epoch 727 avg loss: 0.00494 avg lploss: 0.00000 | Mom_loss: 0.120160
+train epoch 728 avg loss: 0.00485 avg lploss: 0.00000 | Mom_loss: 0.120022
+train epoch 729 avg loss: 0.00478 avg lploss: 0.00000 | Mom_loss: 0.120501
+train epoch 730 avg loss: 0.00473 avg lploss: 0.00000 | Mom_loss: 0.121115
+==> val epoch 730 avg loss: 0.00604 avg lploss: 0.00000 | Mom_loss: 0.122805
+==> test epoch 730 avg loss: 0.00572 avg lploss: 0.00000 | Mom_loss: 0.121864
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+Validation loss decreased (0.006187 --> 0.006039).  Saving model ...
+train epoch 731 avg loss: 0.00459 avg lploss: 0.00000 | Mom_loss: 0.120868
+train epoch 732 avg loss: 0.00457 avg lploss: 0.00000 | Mom_loss: 0.120674
+train epoch 733 avg loss: 0.00456 avg lploss: 0.00000 | Mom_loss: 0.121276
+train epoch 734 avg loss: 0.00467 avg lploss: 0.00000 | Mom_loss: 0.121715
+train epoch 735 avg loss: 0.00459 avg lploss: 0.00000 | Mom_loss: 0.121491
+==> val epoch 735 avg loss: 0.00618 avg lploss: 0.00000 | Mom_loss: 0.122009
+==> test epoch 735 avg loss: 0.00576 avg lploss: 0.00000 | Mom_loss: 0.121044
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 1 out of 50
+train epoch 736 avg loss: 0.00471 avg lploss: 0.00000 | Mom_loss: 0.121301
+train epoch 737 avg loss: 0.00468 avg lploss: 0.00000 | Mom_loss: 0.121421
+train epoch 738 avg loss: 0.00460 avg lploss: 0.00000 | Mom_loss: 0.122109
+train epoch 739 avg loss: 0.00472 avg lploss: 0.00000 | Mom_loss: 0.122208
+train epoch 740 avg loss: 0.00463 avg lploss: 0.00000 | Mom_loss: 0.120915
+==> val epoch 740 avg loss: 0.00616 avg lploss: 0.00000 | Mom_loss: 0.120777
+==> test epoch 740 avg loss: 0.00577 avg lploss: 0.00000 | Mom_loss: 0.119818
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 2 out of 50
+train epoch 741 avg loss: 0.00468 avg lploss: 0.00000 | Mom_loss: 0.121306
+train epoch 742 avg loss: 0.00464 avg lploss: 0.00000 | Mom_loss: 0.122647
+train epoch 743 avg loss: 0.00468 avg lploss: 0.00000 | Mom_loss: 0.121630
+train epoch 744 avg loss: 0.00466 avg lploss: 0.00000 | Mom_loss: 0.122527
+train epoch 745 avg loss: 0.00455 avg lploss: 0.00000 | Mom_loss: 0.122434
+==> val epoch 745 avg loss: 0.00607 avg lploss: 0.00000 | Mom_loss: 0.122614
+==> test epoch 745 avg loss: 0.00567 avg lploss: 0.00000 | Mom_loss: 0.121587
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 3 out of 50
+train epoch 746 avg loss: 0.00466 avg lploss: 0.00000 | Mom_loss: 0.122558
+train epoch 747 avg loss: 0.00466 avg lploss: 0.00000 | Mom_loss: 0.121748
+train epoch 748 avg loss: 0.00452 avg lploss: 0.00000 | Mom_loss: 0.122450
+train epoch 749 avg loss: 0.00457 avg lploss: 0.00000 | Mom_loss: 0.122385
+train epoch 750 avg loss: 0.00463 avg lploss: 0.00000 | Mom_loss: 0.123058
+==> val epoch 750 avg loss: 0.00610 avg lploss: 0.00000 | Mom_loss: 0.123531
+==> test epoch 750 avg loss: 0.00576 avg lploss: 0.00000 | Mom_loss: 0.122504
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 4 out of 50
+train epoch 751 avg loss: 0.00450 avg lploss: 0.00000 | Mom_loss: 0.122594
+train epoch 752 avg loss: 0.00446 avg lploss: 0.00000 | Mom_loss: 0.123320
+train epoch 753 avg loss: 0.00451 avg lploss: 0.00000 | Mom_loss: 0.122888
+train epoch 754 avg loss: 0.00465 avg lploss: 0.00000 | Mom_loss: 0.123270
+train epoch 755 avg loss: 0.00484 avg lploss: 0.00000 | Mom_loss: 0.123423
+==> val epoch 755 avg loss: 0.00648 avg lploss: 0.00000 | Mom_loss: 0.123229
+==> test epoch 755 avg loss: 0.00607 avg lploss: 0.00000 | Mom_loss: 0.122228
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 5 out of 50
+train epoch 756 avg loss: 0.00462 avg lploss: 0.00000 | Mom_loss: 0.122657
+train epoch 757 avg loss: 0.00457 avg lploss: 0.00000 | Mom_loss: 0.123229
+train epoch 758 avg loss: 0.00467 avg lploss: 0.00000 | Mom_loss: 0.122750
+train epoch 759 avg loss: 0.00461 avg lploss: 0.00000 | Mom_loss: 0.122815
+train epoch 760 avg loss: 0.00457 avg lploss: 0.00000 | Mom_loss: 0.123041
+==> val epoch 760 avg loss: 0.00634 avg lploss: 0.00000 | Mom_loss: 0.123517
+==> test epoch 760 avg loss: 0.00602 avg lploss: 0.00000 | Mom_loss: 0.122459
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 6 out of 50
+train epoch 761 avg loss: 0.00463 avg lploss: 0.00000 | Mom_loss: 0.122587
+train epoch 762 avg loss: 0.00449 avg lploss: 0.00000 | Mom_loss: 0.123020
+train epoch 763 avg loss: 0.00454 avg lploss: 0.00000 | Mom_loss: 0.122933
+train epoch 764 avg loss: 0.00466 avg lploss: 0.00000 | Mom_loss: 0.123032
+train epoch 765 avg loss: 0.00462 avg lploss: 0.00000 | Mom_loss: 0.123364
+==> val epoch 765 avg loss: 0.00626 avg lploss: 0.00000 | Mom_loss: 0.125666
+==> test epoch 765 avg loss: 0.00590 avg lploss: 0.00000 | Mom_loss: 0.124535
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 7 out of 50
+train epoch 766 avg loss: 0.00454 avg lploss: 0.00000 | Mom_loss: 0.123853
+train epoch 767 avg loss: 0.00455 avg lploss: 0.00000 | Mom_loss: 0.123399
+train epoch 768 avg loss: 0.00455 avg lploss: 0.00000 | Mom_loss: 0.124072
+train epoch 769 avg loss: 0.00450 avg lploss: 0.00000 | Mom_loss: 0.124367
+train epoch 770 avg loss: 0.00462 avg lploss: 0.00000 | Mom_loss: 0.123282
+==> val epoch 770 avg loss: 0.00621 avg lploss: 0.00000 | Mom_loss: 0.123795
+==> test epoch 770 avg loss: 0.00594 avg lploss: 0.00000 | Mom_loss: 0.122719
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 8 out of 50
+train epoch 771 avg loss: 0.00460 avg lploss: 0.00000 | Mom_loss: 0.124256
+train epoch 772 avg loss: 0.00471 avg lploss: 0.00000 | Mom_loss: 0.123876
+train epoch 773 avg loss: 0.00470 avg lploss: 0.00000 | Mom_loss: 0.123725
+train epoch 774 avg loss: 0.00466 avg lploss: 0.00000 | Mom_loss: 0.124071
+train epoch 775 avg loss: 0.00451 avg lploss: 0.00000 | Mom_loss: 0.123169
+==> val epoch 775 avg loss: 0.00637 avg lploss: 0.00000 | Mom_loss: 0.125949
+==> test epoch 775 avg loss: 0.00591 avg lploss: 0.00000 | Mom_loss: 0.124788
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 9 out of 50
+train epoch 776 avg loss: 0.00449 avg lploss: 0.00000 | Mom_loss: 0.123840
+train epoch 777 avg loss: 0.00451 avg lploss: 0.00000 | Mom_loss: 0.124550
+train epoch 778 avg loss: 0.00495 avg lploss: 0.00000 | Mom_loss: 0.123713
+train epoch 779 avg loss: 0.00446 avg lploss: 0.00000 | Mom_loss: 0.124084
+train epoch 780 avg loss: 0.00444 avg lploss: 0.00000 | Mom_loss: 0.124456
+==> val epoch 780 avg loss: 0.00615 avg lploss: 0.00000 | Mom_loss: 0.126480
+==> test epoch 780 avg loss: 0.00569 avg lploss: 0.00000 | Mom_loss: 0.125314
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 10 out of 50
+train epoch 781 avg loss: 0.00441 avg lploss: 0.00000 | Mom_loss: 0.124439
+train epoch 782 avg loss: 0.00448 avg lploss: 0.00000 | Mom_loss: 0.124708
+train epoch 783 avg loss: 0.00462 avg lploss: 0.00000 | Mom_loss: 0.124903
+train epoch 784 avg loss: 0.00488 avg lploss: 0.00000 | Mom_loss: 0.125367
+train epoch 785 avg loss: 0.00460 avg lploss: 0.00000 | Mom_loss: 0.124344
+==> val epoch 785 avg loss: 0.00623 avg lploss: 0.00000 | Mom_loss: 0.125537
+==> test epoch 785 avg loss: 0.00597 avg lploss: 0.00000 | Mom_loss: 0.124325
+*** Best Val Loss: 0.00604 	 Best Test Loss: 0.00572 	 Best epoch 730
+EarlyStopping counter: 11 out of 50
+train epoch 786 avg loss: 0.00467 avg lploss: 0.00000 | Mom_loss: 0.124504
+train epoch 787 avg loss: 0.00457 avg lploss: 0.00000 | Mom_loss: 0.124162
+train epoch 788 avg loss: 0.00452 avg lploss: 0.00000 | Mom_loss: 0.123950
+train epoch 789 avg loss: 0.00446 avg lploss: 0.00000 | Mom_loss: 0.125393
+train epoch 790 avg loss: 0.00446 avg lploss: 0.00000 | Mom_loss: 0.124159
+==> val epoch 790 avg loss: 0.00597 avg lploss: 0.00000 | Mom_loss: 0.125266
+==> test epoch 790 avg loss: 0.00569 avg lploss: 0.00000 | Mom_loss: 0.124106
+*** Best Val Loss: 0.00597 	 Best Test Loss: 0.00569 	 Best epoch 790
+Validation loss decreased (0.006039 --> 0.005970).  Saving model ...
+train epoch 791 avg loss: 0.00440 avg lploss: 0.00000 | Mom_loss: 0.125088
+train epoch 792 avg loss: 0.00452 avg lploss: 0.00000 | Mom_loss: 0.125268
+train epoch 793 avg loss: 0.00433 avg lploss: 0.00000 | Mom_loss: 0.124846
+train epoch 794 avg loss: 0.00438 avg lploss: 0.00000 | Mom_loss: 0.125367
+train epoch 795 avg loss: 0.00446 avg lploss: 0.00000 | Mom_loss: 0.125449
+==> val epoch 795 avg loss: 0.00604 avg lploss: 0.00000 | Mom_loss: 0.127376
+==> test epoch 795 avg loss: 0.00556 avg lploss: 0.00000 | Mom_loss: 0.126105
+*** Best Val Loss: 0.00597 	 Best Test Loss: 0.00569 	 Best epoch 790
+EarlyStopping counter: 1 out of 50
+train epoch 796 avg loss: 0.00427 avg lploss: 0.00000 | Mom_loss: 0.125311
+train epoch 797 avg loss: 0.00451 avg lploss: 0.00000 | Mom_loss: 0.125816
+train epoch 798 avg loss: 0.00443 avg lploss: 0.00000 | Mom_loss: 0.125623
+train epoch 799 avg loss: 0.00425 avg lploss: 0.00000 | Mom_loss: 0.126077
+train epoch 800 avg loss: 0.00423 avg lploss: 0.00000 | Mom_loss: 0.126799
+==> val epoch 800 avg loss: 0.00599 avg lploss: 0.00000 | Mom_loss: 0.126266
+==> test epoch 800 avg loss: 0.00575 avg lploss: 0.00000 | Mom_loss: 0.125048
+*** Best Val Loss: 0.00597 	 Best Test Loss: 0.00569 	 Best epoch 790
+EarlyStopping counter: 2 out of 50
+train epoch 801 avg loss: 0.00429 avg lploss: 0.00000 | Mom_loss: 0.126583
+train epoch 802 avg loss: 0.00433 avg lploss: 0.00000 | Mom_loss: 0.127093
+train epoch 803 avg loss: 0.00435 avg lploss: 0.00000 | Mom_loss: 0.126871
+train epoch 804 avg loss: 0.00440 avg lploss: 0.00000 | Mom_loss: 0.126029
+train epoch 805 avg loss: 0.00442 avg lploss: 0.00000 | Mom_loss: 0.126592
+==> val epoch 805 avg loss: 0.00631 avg lploss: 0.00000 | Mom_loss: 0.130025
+==> test epoch 805 avg loss: 0.00590 avg lploss: 0.00000 | Mom_loss: 0.128725
+*** Best Val Loss: 0.00597 	 Best Test Loss: 0.00569 	 Best epoch 790
+EarlyStopping counter: 3 out of 50
+train epoch 806 avg loss: 0.00432 avg lploss: 0.00000 | Mom_loss: 0.126890
+train epoch 807 avg loss: 0.00432 avg lploss: 0.00000 | Mom_loss: 0.126963
+train epoch 808 avg loss: 0.00464 avg lploss: 0.00000 | Mom_loss: 0.126596
+train epoch 809 avg loss: 0.00431 avg lploss: 0.00000 | Mom_loss: 0.126611
+train epoch 810 avg loss: 0.00427 avg lploss: 0.00000 | Mom_loss: 0.126883
+==> val epoch 810 avg loss: 0.00601 avg lploss: 0.00000 | Mom_loss: 0.128682
+==> test epoch 810 avg loss: 0.00588 avg lploss: 0.00000 | Mom_loss: 0.127372
+*** Best Val Loss: 0.00597 	 Best Test Loss: 0.00569 	 Best epoch 790
+EarlyStopping counter: 4 out of 50
+train epoch 811 avg loss: 0.00435 avg lploss: 0.00000 | Mom_loss: 0.127397
+train epoch 812 avg loss: 0.00427 avg lploss: 0.00000 | Mom_loss: 0.128035
+train epoch 813 avg loss: 0.00452 avg lploss: 0.00000 | Mom_loss: 0.127375
+train epoch 814 avg loss: 0.00458 avg lploss: 0.00000 | Mom_loss: 0.125607
+train epoch 815 avg loss: 0.00427 avg lploss: 0.00000 | Mom_loss: 0.126348
+==> val epoch 815 avg loss: 0.00597 avg lploss: 0.00000 | Mom_loss: 0.127712
+==> test epoch 815 avg loss: 0.00551 avg lploss: 0.00000 | Mom_loss: 0.126457
+*** Best Val Loss: 0.00597 	 Best Test Loss: 0.00569 	 Best epoch 790
+EarlyStopping counter: 5 out of 50
+train epoch 816 avg loss: 0.00423 avg lploss: 0.00000 | Mom_loss: 0.127088
+train epoch 817 avg loss: 0.00420 avg lploss: 0.00000 | Mom_loss: 0.127278
+train epoch 818 avg loss: 0.00427 avg lploss: 0.00000 | Mom_loss: 0.127644
+train epoch 819 avg loss: 0.00439 avg lploss: 0.00000 | Mom_loss: 0.127816
+train epoch 820 avg loss: 0.00429 avg lploss: 0.00000 | Mom_loss: 0.127297
+==> val epoch 820 avg loss: 0.00593 avg lploss: 0.00000 | Mom_loss: 0.127456
+==> test epoch 820 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.126135
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+Validation loss decreased (0.005970 --> 0.005932).  Saving model ...
+train epoch 821 avg loss: 0.00430 avg lploss: 0.00000 | Mom_loss: 0.126875
+train epoch 822 avg loss: 0.00417 avg lploss: 0.00000 | Mom_loss: 0.127159
+train epoch 823 avg loss: 0.00420 avg lploss: 0.00000 | Mom_loss: 0.127948
+train epoch 824 avg loss: 0.00436 avg lploss: 0.00000 | Mom_loss: 0.128718
+train epoch 825 avg loss: 0.00455 avg lploss: 0.00000 | Mom_loss: 0.127817
+==> val epoch 825 avg loss: 0.00629 avg lploss: 0.00000 | Mom_loss: 0.128179
+==> test epoch 825 avg loss: 0.00588 avg lploss: 0.00000 | Mom_loss: 0.126859
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 1 out of 50
+train epoch 826 avg loss: 0.00445 avg lploss: 0.00000 | Mom_loss: 0.127050
+train epoch 827 avg loss: 0.00434 avg lploss: 0.00000 | Mom_loss: 0.126908
+train epoch 828 avg loss: 0.00447 avg lploss: 0.00000 | Mom_loss: 0.127212
+train epoch 829 avg loss: 0.00430 avg lploss: 0.00000 | Mom_loss: 0.126995
+train epoch 830 avg loss: 0.00423 avg lploss: 0.00000 | Mom_loss: 0.128105
+==> val epoch 830 avg loss: 0.00612 avg lploss: 0.00000 | Mom_loss: 0.128938
+==> test epoch 830 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.127576
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 2 out of 50
+train epoch 831 avg loss: 0.00444 avg lploss: 0.00000 | Mom_loss: 0.127758
+train epoch 832 avg loss: 0.00427 avg lploss: 0.00000 | Mom_loss: 0.128305
+train epoch 833 avg loss: 0.00428 avg lploss: 0.00000 | Mom_loss: 0.128514
+train epoch 834 avg loss: 0.00425 avg lploss: 0.00000 | Mom_loss: 0.128441
+train epoch 835 avg loss: 0.00431 avg lploss: 0.00000 | Mom_loss: 0.129221
+==> val epoch 835 avg loss: 0.00606 avg lploss: 0.00000 | Mom_loss: 0.132081
+==> test epoch 835 avg loss: 0.00567 avg lploss: 0.00000 | Mom_loss: 0.130692
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 3 out of 50
+train epoch 836 avg loss: 0.00425 avg lploss: 0.00000 | Mom_loss: 0.128288
+train epoch 837 avg loss: 0.00434 avg lploss: 0.00000 | Mom_loss: 0.127922
+train epoch 838 avg loss: 0.00420 avg lploss: 0.00000 | Mom_loss: 0.127956
+train epoch 839 avg loss: 0.00419 avg lploss: 0.00000 | Mom_loss: 0.129421
+train epoch 840 avg loss: 0.00425 avg lploss: 0.00000 | Mom_loss: 0.129695
+==> val epoch 840 avg loss: 0.00608 avg lploss: 0.00000 | Mom_loss: 0.131372
+==> test epoch 840 avg loss: 0.00567 avg lploss: 0.00000 | Mom_loss: 0.130019
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 4 out of 50
+train epoch 841 avg loss: 0.00420 avg lploss: 0.00000 | Mom_loss: 0.129588
+train epoch 842 avg loss: 0.00429 avg lploss: 0.00000 | Mom_loss: 0.129648
+train epoch 843 avg loss: 0.00440 avg lploss: 0.00000 | Mom_loss: 0.129356
+train epoch 844 avg loss: 0.00431 avg lploss: 0.00000 | Mom_loss: 0.129098
+train epoch 845 avg loss: 0.00414 avg lploss: 0.00000 | Mom_loss: 0.129301
+==> val epoch 845 avg loss: 0.00600 avg lploss: 0.00000 | Mom_loss: 0.130607
+==> test epoch 845 avg loss: 0.00559 avg lploss: 0.00000 | Mom_loss: 0.129266
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 5 out of 50
+train epoch 846 avg loss: 0.00423 avg lploss: 0.00000 | Mom_loss: 0.129523
+train epoch 847 avg loss: 0.00420 avg lploss: 0.00000 | Mom_loss: 0.128680
+train epoch 848 avg loss: 0.00415 avg lploss: 0.00000 | Mom_loss: 0.129768
+train epoch 849 avg loss: 0.00420 avg lploss: 0.00000 | Mom_loss: 0.129250
+train epoch 850 avg loss: 0.00419 avg lploss: 0.00000 | Mom_loss: 0.129264
+==> val epoch 850 avg loss: 0.00604 avg lploss: 0.00000 | Mom_loss: 0.130382
+==> test epoch 850 avg loss: 0.00564 avg lploss: 0.00000 | Mom_loss: 0.128929
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 6 out of 50
+train epoch 851 avg loss: 0.00405 avg lploss: 0.00000 | Mom_loss: 0.129569
+train epoch 852 avg loss: 0.00414 avg lploss: 0.00000 | Mom_loss: 0.129404
+train epoch 853 avg loss: 0.00405 avg lploss: 0.00000 | Mom_loss: 0.129937
+train epoch 854 avg loss: 0.00406 avg lploss: 0.00000 | Mom_loss: 0.129424
+train epoch 855 avg loss: 0.00409 avg lploss: 0.00000 | Mom_loss: 0.129618
+==> val epoch 855 avg loss: 0.00613 avg lploss: 0.00000 | Mom_loss: 0.130327
+==> test epoch 855 avg loss: 0.00569 avg lploss: 0.00000 | Mom_loss: 0.128851
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 7 out of 50
+train epoch 856 avg loss: 0.00407 avg lploss: 0.00000 | Mom_loss: 0.130458
+train epoch 857 avg loss: 0.00418 avg lploss: 0.00000 | Mom_loss: 0.130573
+train epoch 858 avg loss: 0.00420 avg lploss: 0.00000 | Mom_loss: 0.129708
+train epoch 859 avg loss: 0.00415 avg lploss: 0.00000 | Mom_loss: 0.130046
+train epoch 860 avg loss: 0.00420 avg lploss: 0.00000 | Mom_loss: 0.130662
+==> val epoch 860 avg loss: 0.00620 avg lploss: 0.00000 | Mom_loss: 0.132700
+==> test epoch 860 avg loss: 0.00574 avg lploss: 0.00000 | Mom_loss: 0.131200
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 8 out of 50
+train epoch 861 avg loss: 0.00409 avg lploss: 0.00000 | Mom_loss: 0.130652
+train epoch 862 avg loss: 0.00422 avg lploss: 0.00000 | Mom_loss: 0.130156
+train epoch 863 avg loss: 0.00405 avg lploss: 0.00000 | Mom_loss: 0.129631
+train epoch 864 avg loss: 0.00401 avg lploss: 0.00000 | Mom_loss: 0.130771
+train epoch 865 avg loss: 0.00415 avg lploss: 0.00000 | Mom_loss: 0.130657
+==> val epoch 865 avg loss: 0.00623 avg lploss: 0.00000 | Mom_loss: 0.132313
+==> test epoch 865 avg loss: 0.00573 avg lploss: 0.00000 | Mom_loss: 0.130786
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 9 out of 50
+train epoch 866 avg loss: 0.00407 avg lploss: 0.00000 | Mom_loss: 0.130429
+train epoch 867 avg loss: 0.00408 avg lploss: 0.00000 | Mom_loss: 0.130219
+train epoch 868 avg loss: 0.00427 avg lploss: 0.00000 | Mom_loss: 0.130452
+train epoch 869 avg loss: 0.00416 avg lploss: 0.00000 | Mom_loss: 0.129871
+train epoch 870 avg loss: 0.00420 avg lploss: 0.00000 | Mom_loss: 0.130081
+==> val epoch 870 avg loss: 0.00608 avg lploss: 0.00000 | Mom_loss: 0.132369
+==> test epoch 870 avg loss: 0.00580 avg lploss: 0.00000 | Mom_loss: 0.130879
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 10 out of 50
+train epoch 871 avg loss: 0.00435 avg lploss: 0.00000 | Mom_loss: 0.130191
+train epoch 872 avg loss: 0.00407 avg lploss: 0.00000 | Mom_loss: 0.129688
+train epoch 873 avg loss: 0.00410 avg lploss: 0.00000 | Mom_loss: 0.130004
+train epoch 874 avg loss: 0.00403 avg lploss: 0.00000 | Mom_loss: 0.129561
+train epoch 875 avg loss: 0.00396 avg lploss: 0.00000 | Mom_loss: 0.130297
+==> val epoch 875 avg loss: 0.00598 avg lploss: 0.00000 | Mom_loss: 0.132180
+==> test epoch 875 avg loss: 0.00562 avg lploss: 0.00000 | Mom_loss: 0.130627
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 11 out of 50
+train epoch 876 avg loss: 0.00411 avg lploss: 0.00000 | Mom_loss: 0.130362
+train epoch 877 avg loss: 0.00402 avg lploss: 0.00000 | Mom_loss: 0.130622
+train epoch 878 avg loss: 0.00398 avg lploss: 0.00000 | Mom_loss: 0.130498
+train epoch 879 avg loss: 0.00394 avg lploss: 0.00000 | Mom_loss: 0.130142
+train epoch 880 avg loss: 0.00399 avg lploss: 0.00000 | Mom_loss: 0.130977
+==> val epoch 880 avg loss: 0.00605 avg lploss: 0.00000 | Mom_loss: 0.132956
+==> test epoch 880 avg loss: 0.00559 avg lploss: 0.00000 | Mom_loss: 0.131412
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 12 out of 50
+train epoch 881 avg loss: 0.00395 avg lploss: 0.00000 | Mom_loss: 0.131683
+train epoch 882 avg loss: 0.00394 avg lploss: 0.00000 | Mom_loss: 0.131544
+train epoch 883 avg loss: 0.00385 avg lploss: 0.00000 | Mom_loss: 0.131524
+train epoch 884 avg loss: 0.00402 avg lploss: 0.00000 | Mom_loss: 0.132114
+train epoch 885 avg loss: 0.00423 avg lploss: 0.00000 | Mom_loss: 0.131705
+==> val epoch 885 avg loss: 0.00630 avg lploss: 0.00000 | Mom_loss: 0.130126
+==> test epoch 885 avg loss: 0.00581 avg lploss: 0.00000 | Mom_loss: 0.128533
+*** Best Val Loss: 0.00593 	 Best Test Loss: 0.00570 	 Best epoch 820
+EarlyStopping counter: 13 out of 50
+train epoch 886 avg loss: 0.00404 avg lploss: 0.00000 | Mom_loss: 0.130913
+train epoch 887 avg loss: 0.00401 avg lploss: 0.00000 | Mom_loss: 0.131309
+train epoch 888 avg loss: 0.00417 avg lploss: 0.00000 | Mom_loss: 0.130562
+train epoch 889 avg loss: 0.00403 avg lploss: 0.00000 | Mom_loss: 0.130373
+train epoch 890 avg loss: 0.00401 avg lploss: 0.00000 | Mom_loss: 0.131285
+==> val epoch 890 avg loss: 0.00583 avg lploss: 0.00000 | Mom_loss: 0.130824
+==> test epoch 890 avg loss: 0.00546 avg lploss: 0.00000 | Mom_loss: 0.129197
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+Validation loss decreased (0.005932 --> 0.005833).  Saving model ...
+train epoch 891 avg loss: 0.00401 avg lploss: 0.00000 | Mom_loss: 0.130908
+train epoch 892 avg loss: 0.00404 avg lploss: 0.00000 | Mom_loss: 0.131332
+train epoch 893 avg loss: 0.00399 avg lploss: 0.00000 | Mom_loss: 0.131405
+train epoch 894 avg loss: 0.00392 avg lploss: 0.00000 | Mom_loss: 0.131121
+train epoch 895 avg loss: 0.00401 avg lploss: 0.00000 | Mom_loss: 0.131449
+==> val epoch 895 avg loss: 0.00597 avg lploss: 0.00000 | Mom_loss: 0.131423
+==> test epoch 895 avg loss: 0.00546 avg lploss: 0.00000 | Mom_loss: 0.129828
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 1 out of 50
+train epoch 896 avg loss: 0.00400 avg lploss: 0.00000 | Mom_loss: 0.130329
+train epoch 897 avg loss: 0.00406 avg lploss: 0.00000 | Mom_loss: 0.130478
+train epoch 898 avg loss: 0.00392 avg lploss: 0.00000 | Mom_loss: 0.131544
+train epoch 899 avg loss: 0.00404 avg lploss: 0.00000 | Mom_loss: 0.131603
+train epoch 900 avg loss: 0.00415 avg lploss: 0.00000 | Mom_loss: 0.131713
+==> val epoch 900 avg loss: 0.00630 avg lploss: 0.00000 | Mom_loss: 0.132622
+==> test epoch 900 avg loss: 0.00571 avg lploss: 0.00000 | Mom_loss: 0.131026
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 2 out of 50
+train epoch 901 avg loss: 0.00390 avg lploss: 0.00000 | Mom_loss: 0.130738
+train epoch 902 avg loss: 0.00407 avg lploss: 0.00000 | Mom_loss: 0.131600
+train epoch 903 avg loss: 0.00398 avg lploss: 0.00000 | Mom_loss: 0.131026
+train epoch 904 avg loss: 0.00396 avg lploss: 0.00000 | Mom_loss: 0.130530
+train epoch 905 avg loss: 0.00402 avg lploss: 0.00000 | Mom_loss: 0.131271
+==> val epoch 905 avg loss: 0.00621 avg lploss: 0.00000 | Mom_loss: 0.131243
+==> test epoch 905 avg loss: 0.00567 avg lploss: 0.00000 | Mom_loss: 0.129656
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 3 out of 50
+train epoch 906 avg loss: 0.00396 avg lploss: 0.00000 | Mom_loss: 0.130839
+train epoch 907 avg loss: 0.00390 avg lploss: 0.00000 | Mom_loss: 0.131086
+train epoch 908 avg loss: 0.00393 avg lploss: 0.00000 | Mom_loss: 0.131260
+train epoch 909 avg loss: 0.00394 avg lploss: 0.00000 | Mom_loss: 0.131656
+train epoch 910 avg loss: 0.00387 avg lploss: 0.00000 | Mom_loss: 0.132412
+==> val epoch 910 avg loss: 0.00610 avg lploss: 0.00000 | Mom_loss: 0.133121
+==> test epoch 910 avg loss: 0.00553 avg lploss: 0.00000 | Mom_loss: 0.131458
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 4 out of 50
+train epoch 911 avg loss: 0.00378 avg lploss: 0.00000 | Mom_loss: 0.131437
+train epoch 912 avg loss: 0.00385 avg lploss: 0.00000 | Mom_loss: 0.131212
+train epoch 913 avg loss: 0.00387 avg lploss: 0.00000 | Mom_loss: 0.131965
+train epoch 914 avg loss: 0.00392 avg lploss: 0.00000 | Mom_loss: 0.131097
+train epoch 915 avg loss: 0.00379 avg lploss: 0.00000 | Mom_loss: 0.131376
+==> val epoch 915 avg loss: 0.00608 avg lploss: 0.00000 | Mom_loss: 0.134407
+==> test epoch 915 avg loss: 0.00561 avg lploss: 0.00000 | Mom_loss: 0.132741
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 5 out of 50
+train epoch 916 avg loss: 0.00385 avg lploss: 0.00000 | Mom_loss: 0.132600
+train epoch 917 avg loss: 0.00392 avg lploss: 0.00000 | Mom_loss: 0.131741
+train epoch 918 avg loss: 0.00389 avg lploss: 0.00000 | Mom_loss: 0.131217
+train epoch 919 avg loss: 0.00382 avg lploss: 0.00000 | Mom_loss: 0.131511
+train epoch 920 avg loss: 0.00395 avg lploss: 0.00000 | Mom_loss: 0.132182
+==> val epoch 920 avg loss: 0.00622 avg lploss: 0.00000 | Mom_loss: 0.132522
+==> test epoch 920 avg loss: 0.00583 avg lploss: 0.00000 | Mom_loss: 0.130901
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 6 out of 50
+train epoch 921 avg loss: 0.00401 avg lploss: 0.00000 | Mom_loss: 0.131404
+train epoch 922 avg loss: 0.00391 avg lploss: 0.00000 | Mom_loss: 0.131469
+train epoch 923 avg loss: 0.00390 avg lploss: 0.00000 | Mom_loss: 0.130623
+train epoch 924 avg loss: 0.00397 avg lploss: 0.00000 | Mom_loss: 0.131197
+train epoch 925 avg loss: 0.00378 avg lploss: 0.00000 | Mom_loss: 0.131184
+==> val epoch 925 avg loss: 0.00620 avg lploss: 0.00000 | Mom_loss: 0.132378
+==> test epoch 925 avg loss: 0.00571 avg lploss: 0.00000 | Mom_loss: 0.130706
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 7 out of 50
+train epoch 926 avg loss: 0.00382 avg lploss: 0.00000 | Mom_loss: 0.131135
+train epoch 927 avg loss: 0.00385 avg lploss: 0.00000 | Mom_loss: 0.130552
+train epoch 928 avg loss: 0.00378 avg lploss: 0.00000 | Mom_loss: 0.131433
+train epoch 929 avg loss: 0.00373 avg lploss: 0.00000 | Mom_loss: 0.132223
+train epoch 930 avg loss: 0.00369 avg lploss: 0.00000 | Mom_loss: 0.132210
+==> val epoch 930 avg loss: 0.00590 avg lploss: 0.00000 | Mom_loss: 0.133487
+==> test epoch 930 avg loss: 0.00554 avg lploss: 0.00000 | Mom_loss: 0.131756
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 8 out of 50
+train epoch 931 avg loss: 0.00386 avg lploss: 0.00000 | Mom_loss: 0.130710
+train epoch 932 avg loss: 0.00378 avg lploss: 0.00000 | Mom_loss: 0.131909
+train epoch 933 avg loss: 0.00389 avg lploss: 0.00000 | Mom_loss: 0.131680
+train epoch 934 avg loss: 0.00378 avg lploss: 0.00000 | Mom_loss: 0.131876
+train epoch 935 avg loss: 0.00397 avg lploss: 0.00000 | Mom_loss: 0.131094
+==> val epoch 935 avg loss: 0.00624 avg lploss: 0.00000 | Mom_loss: 0.133696
+==> test epoch 935 avg loss: 0.00565 avg lploss: 0.00000 | Mom_loss: 0.132008
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 9 out of 50
+train epoch 936 avg loss: 0.00376 avg lploss: 0.00000 | Mom_loss: 0.131435
+train epoch 937 avg loss: 0.00369 avg lploss: 0.00000 | Mom_loss: 0.132127
+train epoch 938 avg loss: 0.00377 avg lploss: 0.00000 | Mom_loss: 0.131801
+train epoch 939 avg loss: 0.00385 avg lploss: 0.00000 | Mom_loss: 0.132114
+train epoch 940 avg loss: 0.00379 avg lploss: 0.00000 | Mom_loss: 0.132160
+==> val epoch 940 avg loss: 0.00628 avg lploss: 0.00000 | Mom_loss: 0.133663
+==> test epoch 940 avg loss: 0.00576 avg lploss: 0.00000 | Mom_loss: 0.131929
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 10 out of 50
+train epoch 941 avg loss: 0.00378 avg lploss: 0.00000 | Mom_loss: 0.131984
+train epoch 942 avg loss: 0.00378 avg lploss: 0.00000 | Mom_loss: 0.132555
+train epoch 943 avg loss: 0.00397 avg lploss: 0.00000 | Mom_loss: 0.131846
+train epoch 944 avg loss: 0.00387 avg lploss: 0.00000 | Mom_loss: 0.131380
+train epoch 945 avg loss: 0.00375 avg lploss: 0.00000 | Mom_loss: 0.132167
+==> val epoch 945 avg loss: 0.00615 avg lploss: 0.00000 | Mom_loss: 0.133136
+==> test epoch 945 avg loss: 0.00586 avg lploss: 0.00000 | Mom_loss: 0.131401
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 11 out of 50
+train epoch 946 avg loss: 0.00370 avg lploss: 0.00000 | Mom_loss: 0.131284
+train epoch 947 avg loss: 0.00372 avg lploss: 0.00000 | Mom_loss: 0.132276
+train epoch 948 avg loss: 0.00367 avg lploss: 0.00000 | Mom_loss: 0.131857
+train epoch 949 avg loss: 0.00382 avg lploss: 0.00000 | Mom_loss: 0.132232
+train epoch 950 avg loss: 0.00385 avg lploss: 0.00000 | Mom_loss: 0.131310
+==> val epoch 950 avg loss: 0.00599 avg lploss: 0.00000 | Mom_loss: 0.133655
+==> test epoch 950 avg loss: 0.00554 avg lploss: 0.00000 | Mom_loss: 0.131963
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 12 out of 50
+train epoch 951 avg loss: 0.00371 avg lploss: 0.00000 | Mom_loss: 0.132360
+train epoch 952 avg loss: 0.00364 avg lploss: 0.00000 | Mom_loss: 0.132272
+train epoch 953 avg loss: 0.00372 avg lploss: 0.00000 | Mom_loss: 0.132339
+train epoch 954 avg loss: 0.00360 avg lploss: 0.00000 | Mom_loss: 0.132193
+train epoch 955 avg loss: 0.00375 avg lploss: 0.00000 | Mom_loss: 0.132804
+==> val epoch 955 avg loss: 0.00597 avg lploss: 0.00000 | Mom_loss: 0.133008
+==> test epoch 955 avg loss: 0.00572 avg lploss: 0.00000 | Mom_loss: 0.131265
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 13 out of 50
+train epoch 956 avg loss: 0.00414 avg lploss: 0.00000 | Mom_loss: 0.131063
+train epoch 957 avg loss: 0.00373 avg lploss: 0.00000 | Mom_loss: 0.132273
+train epoch 958 avg loss: 0.00372 avg lploss: 0.00000 | Mom_loss: 0.131503
+train epoch 959 avg loss: 0.00366 avg lploss: 0.00000 | Mom_loss: 0.133230
+train epoch 960 avg loss: 0.00371 avg lploss: 0.00000 | Mom_loss: 0.131931
+==> val epoch 960 avg loss: 0.00603 avg lploss: 0.00000 | Mom_loss: 0.133886
+==> test epoch 960 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.132164
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 14 out of 50
+train epoch 961 avg loss: 0.00387 avg lploss: 0.00000 | Mom_loss: 0.132933
+train epoch 962 avg loss: 0.00360 avg lploss: 0.00000 | Mom_loss: 0.130976
+train epoch 963 avg loss: 0.00357 avg lploss: 0.00000 | Mom_loss: 0.132279
+train epoch 964 avg loss: 0.00377 avg lploss: 0.00000 | Mom_loss: 0.132487
+train epoch 965 avg loss: 0.00374 avg lploss: 0.00000 | Mom_loss: 0.132046
+==> val epoch 965 avg loss: 0.00623 avg lploss: 0.00000 | Mom_loss: 0.135165
+==> test epoch 965 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.133349
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 15 out of 50
+train epoch 966 avg loss: 0.00371 avg lploss: 0.00000 | Mom_loss: 0.132818
+train epoch 967 avg loss: 0.00394 avg lploss: 0.00000 | Mom_loss: 0.131205
+train epoch 968 avg loss: 0.00385 avg lploss: 0.00000 | Mom_loss: 0.131353
+train epoch 969 avg loss: 0.00388 avg lploss: 0.00000 | Mom_loss: 0.130829
+train epoch 970 avg loss: 0.00401 avg lploss: 0.00000 | Mom_loss: 0.131165
+==> val epoch 970 avg loss: 0.00640 avg lploss: 0.00000 | Mom_loss: 0.132327
+==> test epoch 970 avg loss: 0.00637 avg lploss: 0.00000 | Mom_loss: 0.130628
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 16 out of 50
+train epoch 971 avg loss: 0.00385 avg lploss: 0.00000 | Mom_loss: 0.131913
+train epoch 972 avg loss: 0.00362 avg lploss: 0.00000 | Mom_loss: 0.130814
+train epoch 973 avg loss: 0.00357 avg lploss: 0.00000 | Mom_loss: 0.130815
+train epoch 974 avg loss: 0.00354 avg lploss: 0.00000 | Mom_loss: 0.131403
+train epoch 975 avg loss: 0.00351 avg lploss: 0.00000 | Mom_loss: 0.131534
+==> val epoch 975 avg loss: 0.00639 avg lploss: 0.00000 | Mom_loss: 0.134732
+==> test epoch 975 avg loss: 0.00579 avg lploss: 0.00000 | Mom_loss: 0.132841
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 17 out of 50
+train epoch 976 avg loss: 0.00353 avg lploss: 0.00000 | Mom_loss: 0.132891
+train epoch 977 avg loss: 0.00353 avg lploss: 0.00000 | Mom_loss: 0.131547
+train epoch 978 avg loss: 0.00359 avg lploss: 0.00000 | Mom_loss: 0.132316
+train epoch 979 avg loss: 0.00365 avg lploss: 0.00000 | Mom_loss: 0.130902
+train epoch 980 avg loss: 0.00359 avg lploss: 0.00000 | Mom_loss: 0.131715
+==> val epoch 980 avg loss: 0.00597 avg lploss: 0.00000 | Mom_loss: 0.131843
+==> test epoch 980 avg loss: 0.00552 avg lploss: 0.00000 | Mom_loss: 0.130042
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 18 out of 50
+train epoch 981 avg loss: 0.00349 avg lploss: 0.00000 | Mom_loss: 0.131642
+train epoch 982 avg loss: 0.00349 avg lploss: 0.00000 | Mom_loss: 0.132081
+train epoch 983 avg loss: 0.00353 avg lploss: 0.00000 | Mom_loss: 0.131781
+train epoch 984 avg loss: 0.00367 avg lploss: 0.00000 | Mom_loss: 0.133064
+train epoch 985 avg loss: 0.00371 avg lploss: 0.00000 | Mom_loss: 0.131950
+==> val epoch 985 avg loss: 0.00648 avg lploss: 0.00000 | Mom_loss: 0.133303
+==> test epoch 985 avg loss: 0.00595 avg lploss: 0.00000 | Mom_loss: 0.131490
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 19 out of 50
+train epoch 986 avg loss: 0.00362 avg lploss: 0.00000 | Mom_loss: 0.131764
+train epoch 987 avg loss: 0.00352 avg lploss: 0.00000 | Mom_loss: 0.132072
+train epoch 988 avg loss: 0.00357 avg lploss: 0.00000 | Mom_loss: 0.132614
+train epoch 989 avg loss: 0.00381 avg lploss: 0.00000 | Mom_loss: 0.131445
+train epoch 990 avg loss: 0.00355 avg lploss: 0.00000 | Mom_loss: 0.131738
+==> val epoch 990 avg loss: 0.00616 avg lploss: 0.00000 | Mom_loss: 0.132422
+==> test epoch 990 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.130648
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 20 out of 50
+train epoch 991 avg loss: 0.00367 avg lploss: 0.00000 | Mom_loss: 0.131554
+train epoch 992 avg loss: 0.00364 avg lploss: 0.00000 | Mom_loss: 0.131413
+train epoch 993 avg loss: 0.00352 avg lploss: 0.00000 | Mom_loss: 0.131858
+train epoch 994 avg loss: 0.00350 avg lploss: 0.00000 | Mom_loss: 0.132023
+train epoch 995 avg loss: 0.00353 avg lploss: 0.00000 | Mom_loss: 0.132192
+==> val epoch 995 avg loss: 0.00618 avg lploss: 0.00000 | Mom_loss: 0.133242
+==> test epoch 995 avg loss: 0.00549 avg lploss: 0.00000 | Mom_loss: 0.131463
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 21 out of 50
+train epoch 996 avg loss: 0.00343 avg lploss: 0.00000 | Mom_loss: 0.131893
+train epoch 997 avg loss: 0.00363 avg lploss: 0.00000 | Mom_loss: 0.132212
+train epoch 998 avg loss: 0.00366 avg lploss: 0.00000 | Mom_loss: 0.132002
+train epoch 999 avg loss: 0.00359 avg lploss: 0.00000 | Mom_loss: 0.131898
+train epoch 1000 avg loss: 0.00416 avg lploss: 0.00000 | Mom_loss: 0.129470
+==> val epoch 1000 avg loss: 0.00650 avg lploss: 0.00000 | Mom_loss: 0.132491
+==> test epoch 1000 avg loss: 0.00574 avg lploss: 0.00000 | Mom_loss: 0.130687
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 22 out of 50
+train epoch 1001 avg loss: 0.00381 avg lploss: 0.00000 | Mom_loss: 0.130715
+train epoch 1002 avg loss: 0.00366 avg lploss: 0.00000 | Mom_loss: 0.129580
+train epoch 1003 avg loss: 0.00370 avg lploss: 0.00000 | Mom_loss: 0.130573
+train epoch 1004 avg loss: 0.00342 avg lploss: 0.00000 | Mom_loss: 0.131007
+train epoch 1005 avg loss: 0.00339 avg lploss: 0.00000 | Mom_loss: 0.132178
+==> val epoch 1005 avg loss: 0.00612 avg lploss: 0.00000 | Mom_loss: 0.132733
+==> test epoch 1005 avg loss: 0.00553 avg lploss: 0.00000 | Mom_loss: 0.130878
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 23 out of 50
+train epoch 1006 avg loss: 0.00339 avg lploss: 0.00000 | Mom_loss: 0.131914
+train epoch 1007 avg loss: 0.00339 avg lploss: 0.00000 | Mom_loss: 0.132511
+train epoch 1008 avg loss: 0.00345 avg lploss: 0.00000 | Mom_loss: 0.132051
+train epoch 1009 avg loss: 0.00353 avg lploss: 0.00000 | Mom_loss: 0.131485
+train epoch 1010 avg loss: 0.00393 avg lploss: 0.00000 | Mom_loss: 0.131406
+==> val epoch 1010 avg loss: 0.00629 avg lploss: 0.00000 | Mom_loss: 0.133154
+==> test epoch 1010 avg loss: 0.00564 avg lploss: 0.00000 | Mom_loss: 0.131333
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 24 out of 50
+train epoch 1011 avg loss: 0.00367 avg lploss: 0.00000 | Mom_loss: 0.131868
+train epoch 1012 avg loss: 0.00342 avg lploss: 0.00000 | Mom_loss: 0.132292
+train epoch 1013 avg loss: 0.00346 avg lploss: 0.00000 | Mom_loss: 0.130906
+train epoch 1014 avg loss: 0.00358 avg lploss: 0.00000 | Mom_loss: 0.132423
+train epoch 1015 avg loss: 0.00346 avg lploss: 0.00000 | Mom_loss: 0.131031
+==> val epoch 1015 avg loss: 0.00620 avg lploss: 0.00000 | Mom_loss: 0.132821
+==> test epoch 1015 avg loss: 0.00557 avg lploss: 0.00000 | Mom_loss: 0.130993
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 25 out of 50
+train epoch 1016 avg loss: 0.00334 avg lploss: 0.00000 | Mom_loss: 0.131343
+train epoch 1017 avg loss: 0.00344 avg lploss: 0.00000 | Mom_loss: 0.131658
+train epoch 1018 avg loss: 0.00359 avg lploss: 0.00000 | Mom_loss: 0.131716
+train epoch 1019 avg loss: 0.00347 avg lploss: 0.00000 | Mom_loss: 0.132307
+train epoch 1020 avg loss: 0.00349 avg lploss: 0.00000 | Mom_loss: 0.131990
+==> val epoch 1020 avg loss: 0.00667 avg lploss: 0.00000 | Mom_loss: 0.137392
+==> test epoch 1020 avg loss: 0.00590 avg lploss: 0.00000 | Mom_loss: 0.135440
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 26 out of 50
+train epoch 1021 avg loss: 0.00347 avg lploss: 0.00000 | Mom_loss: 0.132991
+train epoch 1022 avg loss: 0.00351 avg lploss: 0.00000 | Mom_loss: 0.132636
+train epoch 1023 avg loss: 0.00344 avg lploss: 0.00000 | Mom_loss: 0.132795
+train epoch 1024 avg loss: 0.00343 avg lploss: 0.00000 | Mom_loss: 0.132920
+train epoch 1025 avg loss: 0.00354 avg lploss: 0.00000 | Mom_loss: 0.131832
+==> val epoch 1025 avg loss: 0.00642 avg lploss: 0.00000 | Mom_loss: 0.134076
+==> test epoch 1025 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.132191
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 27 out of 50
+train epoch 1026 avg loss: 0.00337 avg lploss: 0.00000 | Mom_loss: 0.131721
+train epoch 1027 avg loss: 0.00344 avg lploss: 0.00000 | Mom_loss: 0.131389
+train epoch 1028 avg loss: 0.00404 avg lploss: 0.00000 | Mom_loss: 0.131650
+train epoch 1029 avg loss: 0.00390 avg lploss: 0.00000 | Mom_loss: 0.130574
+train epoch 1030 avg loss: 0.00335 avg lploss: 0.00000 | Mom_loss: 0.130815
+==> val epoch 1030 avg loss: 0.00625 avg lploss: 0.00000 | Mom_loss: 0.132470
+==> test epoch 1030 avg loss: 0.00550 avg lploss: 0.00000 | Mom_loss: 0.130569
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 28 out of 50
+train epoch 1031 avg loss: 0.00338 avg lploss: 0.00000 | Mom_loss: 0.131301
+train epoch 1032 avg loss: 0.00346 avg lploss: 0.00000 | Mom_loss: 0.130867
+train epoch 1033 avg loss: 0.00338 avg lploss: 0.00000 | Mom_loss: 0.131917
+train epoch 1034 avg loss: 0.00351 avg lploss: 0.00000 | Mom_loss: 0.131799
+train epoch 1035 avg loss: 0.00330 avg lploss: 0.00000 | Mom_loss: 0.131444
+==> val epoch 1035 avg loss: 0.00608 avg lploss: 0.00000 | Mom_loss: 0.133246
+==> test epoch 1035 avg loss: 0.00556 avg lploss: 0.00000 | Mom_loss: 0.131299
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 29 out of 50
+train epoch 1036 avg loss: 0.00370 avg lploss: 0.00000 | Mom_loss: 0.132536
+train epoch 1037 avg loss: 0.00361 avg lploss: 0.00000 | Mom_loss: 0.129287
+train epoch 1038 avg loss: 0.00327 avg lploss: 0.00000 | Mom_loss: 0.132634
+train epoch 1039 avg loss: 0.00364 avg lploss: 0.00000 | Mom_loss: 0.131670
+train epoch 1040 avg loss: 0.00356 avg lploss: 0.00000 | Mom_loss: 0.131343
+==> val epoch 1040 avg loss: 0.00622 avg lploss: 0.00000 | Mom_loss: 0.131547
+==> test epoch 1040 avg loss: 0.00563 avg lploss: 0.00000 | Mom_loss: 0.129633
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 30 out of 50
+train epoch 1041 avg loss: 0.00348 avg lploss: 0.00000 | Mom_loss: 0.131179
+train epoch 1042 avg loss: 0.00343 avg lploss: 0.00000 | Mom_loss: 0.131133
+train epoch 1043 avg loss: 0.00334 avg lploss: 0.00000 | Mom_loss: 0.131628
+train epoch 1044 avg loss: 0.00331 avg lploss: 0.00000 | Mom_loss: 0.132281
+train epoch 1045 avg loss: 0.00338 avg lploss: 0.00000 | Mom_loss: 0.132462
+==> val epoch 1045 avg loss: 0.00614 avg lploss: 0.00000 | Mom_loss: 0.133750
+==> test epoch 1045 avg loss: 0.00571 avg lploss: 0.00000 | Mom_loss: 0.131833
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 31 out of 50
+train epoch 1046 avg loss: 0.00352 avg lploss: 0.00000 | Mom_loss: 0.131840
+train epoch 1047 avg loss: 0.00345 avg lploss: 0.00000 | Mom_loss: 0.130302
+train epoch 1048 avg loss: 0.00343 avg lploss: 0.00000 | Mom_loss: 0.130956
+train epoch 1049 avg loss: 0.00334 avg lploss: 0.00000 | Mom_loss: 0.132075
+train epoch 1050 avg loss: 0.00333 avg lploss: 0.00000 | Mom_loss: 0.131927
+==> val epoch 1050 avg loss: 0.00630 avg lploss: 0.00000 | Mom_loss: 0.133023
+==> test epoch 1050 avg loss: 0.00583 avg lploss: 0.00000 | Mom_loss: 0.131074
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 32 out of 50
+train epoch 1051 avg loss: 0.00364 avg lploss: 0.00000 | Mom_loss: 0.131891
+train epoch 1052 avg loss: 0.00354 avg lploss: 0.00000 | Mom_loss: 0.131151
+train epoch 1053 avg loss: 0.00364 avg lploss: 0.00000 | Mom_loss: 0.132487
+train epoch 1054 avg loss: 0.00370 avg lploss: 0.00000 | Mom_loss: 0.131143
+train epoch 1055 avg loss: 0.00329 avg lploss: 0.00000 | Mom_loss: 0.131270
+==> val epoch 1055 avg loss: 0.00634 avg lploss: 0.00000 | Mom_loss: 0.133698
+==> test epoch 1055 avg loss: 0.00556 avg lploss: 0.00000 | Mom_loss: 0.131675
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 33 out of 50
+train epoch 1056 avg loss: 0.00331 avg lploss: 0.00000 | Mom_loss: 0.131983
+train epoch 1057 avg loss: 0.00342 avg lploss: 0.00000 | Mom_loss: 0.131998
+train epoch 1058 avg loss: 0.00332 avg lploss: 0.00000 | Mom_loss: 0.131301
+train epoch 1059 avg loss: 0.00319 avg lploss: 0.00000 | Mom_loss: 0.131467
+train epoch 1060 avg loss: 0.00315 avg lploss: 0.00000 | Mom_loss: 0.132206
+==> val epoch 1060 avg loss: 0.00656 avg lploss: 0.00000 | Mom_loss: 0.134300
+==> test epoch 1060 avg loss: 0.00559 avg lploss: 0.00000 | Mom_loss: 0.132310
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 34 out of 50
+train epoch 1061 avg loss: 0.00319 avg lploss: 0.00000 | Mom_loss: 0.131449
+train epoch 1062 avg loss: 0.00332 avg lploss: 0.00000 | Mom_loss: 0.132314
+train epoch 1063 avg loss: 0.00349 avg lploss: 0.00000 | Mom_loss: 0.132103
+train epoch 1064 avg loss: 0.00371 avg lploss: 0.00000 | Mom_loss: 0.130721
+train epoch 1065 avg loss: 0.00323 avg lploss: 0.00000 | Mom_loss: 0.131963
+==> val epoch 1065 avg loss: 0.00632 avg lploss: 0.00000 | Mom_loss: 0.134423
+==> test epoch 1065 avg loss: 0.00562 avg lploss: 0.00000 | Mom_loss: 0.132485
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 35 out of 50
+train epoch 1066 avg loss: 0.00332 avg lploss: 0.00000 | Mom_loss: 0.131838
+train epoch 1067 avg loss: 0.00329 avg lploss: 0.00000 | Mom_loss: 0.131845
+train epoch 1068 avg loss: 0.00329 avg lploss: 0.00000 | Mom_loss: 0.131548
+train epoch 1069 avg loss: 0.00328 avg lploss: 0.00000 | Mom_loss: 0.132169
+train epoch 1070 avg loss: 0.00327 avg lploss: 0.00000 | Mom_loss: 0.132508
+==> val epoch 1070 avg loss: 0.00649 avg lploss: 0.00000 | Mom_loss: 0.133179
+==> test epoch 1070 avg loss: 0.00576 avg lploss: 0.00000 | Mom_loss: 0.131296
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 36 out of 50
+train epoch 1071 avg loss: 0.00317 avg lploss: 0.00000 | Mom_loss: 0.132379
+train epoch 1072 avg loss: 0.00332 avg lploss: 0.00000 | Mom_loss: 0.131745
+train epoch 1073 avg loss: 0.00327 avg lploss: 0.00000 | Mom_loss: 0.132041
+train epoch 1074 avg loss: 0.00320 avg lploss: 0.00000 | Mom_loss: 0.131284
+train epoch 1075 avg loss: 0.00324 avg lploss: 0.00000 | Mom_loss: 0.132354
+==> val epoch 1075 avg loss: 0.00675 avg lploss: 0.00000 | Mom_loss: 0.133478
+==> test epoch 1075 avg loss: 0.00584 avg lploss: 0.00000 | Mom_loss: 0.131578
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 37 out of 50
+train epoch 1076 avg loss: 0.00319 avg lploss: 0.00000 | Mom_loss: 0.132139
+train epoch 1077 avg loss: 0.00328 avg lploss: 0.00000 | Mom_loss: 0.131943
+train epoch 1078 avg loss: 0.00329 avg lploss: 0.00000 | Mom_loss: 0.132125
+train epoch 1079 avg loss: 0.00337 avg lploss: 0.00000 | Mom_loss: 0.133334
+train epoch 1080 avg loss: 0.00332 avg lploss: 0.00000 | Mom_loss: 0.131219
+==> val epoch 1080 avg loss: 0.00656 avg lploss: 0.00000 | Mom_loss: 0.133161
+==> test epoch 1080 avg loss: 0.00568 avg lploss: 0.00000 | Mom_loss: 0.131207
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 38 out of 50
+train epoch 1081 avg loss: 0.00317 avg lploss: 0.00000 | Mom_loss: 0.131983
+train epoch 1082 avg loss: 0.00326 avg lploss: 0.00000 | Mom_loss: 0.131596
+train epoch 1083 avg loss: 0.00342 avg lploss: 0.00000 | Mom_loss: 0.131927
+train epoch 1084 avg loss: 0.00318 avg lploss: 0.00000 | Mom_loss: 0.131516
+train epoch 1085 avg loss: 0.00315 avg lploss: 0.00000 | Mom_loss: 0.131783
+==> val epoch 1085 avg loss: 0.00645 avg lploss: 0.00000 | Mom_loss: 0.133110
+==> test epoch 1085 avg loss: 0.00561 avg lploss: 0.00000 | Mom_loss: 0.131131
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 39 out of 50
+train epoch 1086 avg loss: 0.00323 avg lploss: 0.00000 | Mom_loss: 0.131762
+train epoch 1087 avg loss: 0.00345 avg lploss: 0.00000 | Mom_loss: 0.131746
+train epoch 1088 avg loss: 0.00341 avg lploss: 0.00000 | Mom_loss: 0.132207
+train epoch 1089 avg loss: 0.00322 avg lploss: 0.00000 | Mom_loss: 0.131931
+train epoch 1090 avg loss: 0.00315 avg lploss: 0.00000 | Mom_loss: 0.131790
+==> val epoch 1090 avg loss: 0.00649 avg lploss: 0.00000 | Mom_loss: 0.134449
+==> test epoch 1090 avg loss: 0.00578 avg lploss: 0.00000 | Mom_loss: 0.132473
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 40 out of 50
+train epoch 1091 avg loss: 0.00321 avg lploss: 0.00000 | Mom_loss: 0.131592
+train epoch 1092 avg loss: 0.00331 avg lploss: 0.00000 | Mom_loss: 0.131825
+train epoch 1093 avg loss: 0.00345 avg lploss: 0.00000 | Mom_loss: 0.130961
+train epoch 1094 avg loss: 0.00321 avg lploss: 0.00000 | Mom_loss: 0.130914
+train epoch 1095 avg loss: 0.00322 avg lploss: 0.00000 | Mom_loss: 0.130840
+==> val epoch 1095 avg loss: 0.00626 avg lploss: 0.00000 | Mom_loss: 0.133503
+==> test epoch 1095 avg loss: 0.00562 avg lploss: 0.00000 | Mom_loss: 0.131540
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 41 out of 50
+train epoch 1096 avg loss: 0.00312 avg lploss: 0.00000 | Mom_loss: 0.132046
+train epoch 1097 avg loss: 0.00313 avg lploss: 0.00000 | Mom_loss: 0.132660
+train epoch 1098 avg loss: 0.00311 avg lploss: 0.00000 | Mom_loss: 0.131590
+train epoch 1099 avg loss: 0.00309 avg lploss: 0.00000 | Mom_loss: 0.131513
+train epoch 1100 avg loss: 0.00308 avg lploss: 0.00000 | Mom_loss: 0.132135
+==> val epoch 1100 avg loss: 0.00646 avg lploss: 0.00000 | Mom_loss: 0.133164
+==> test epoch 1100 avg loss: 0.00568 avg lploss: 0.00000 | Mom_loss: 0.131271
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 42 out of 50
+train epoch 1101 avg loss: 0.00313 avg lploss: 0.00000 | Mom_loss: 0.132601
+train epoch 1102 avg loss: 0.00311 avg lploss: 0.00000 | Mom_loss: 0.132032
+train epoch 1103 avg loss: 0.00318 avg lploss: 0.00000 | Mom_loss: 0.131878
+train epoch 1104 avg loss: 0.00325 avg lploss: 0.00000 | Mom_loss: 0.132318
+train epoch 1105 avg loss: 0.00314 avg lploss: 0.00000 | Mom_loss: 0.131964
+==> val epoch 1105 avg loss: 0.00648 avg lploss: 0.00000 | Mom_loss: 0.135170
+==> test epoch 1105 avg loss: 0.00574 avg lploss: 0.00000 | Mom_loss: 0.133143
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 43 out of 50
+train epoch 1106 avg loss: 0.00318 avg lploss: 0.00000 | Mom_loss: 0.132018
+train epoch 1107 avg loss: 0.00328 avg lploss: 0.00000 | Mom_loss: 0.131162
+train epoch 1108 avg loss: 0.00318 avg lploss: 0.00000 | Mom_loss: 0.130357
+train epoch 1109 avg loss: 0.00327 avg lploss: 0.00000 | Mom_loss: 0.130438
+train epoch 1110 avg loss: 0.00316 avg lploss: 0.00000 | Mom_loss: 0.131457
+==> val epoch 1110 avg loss: 0.00640 avg lploss: 0.00000 | Mom_loss: 0.132655
+==> test epoch 1110 avg loss: 0.00576 avg lploss: 0.00000 | Mom_loss: 0.130661
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 44 out of 50
+train epoch 1111 avg loss: 0.00319 avg lploss: 0.00000 | Mom_loss: 0.131807
+train epoch 1112 avg loss: 0.00339 avg lploss: 0.00000 | Mom_loss: 0.131659
+train epoch 1113 avg loss: 0.00309 avg lploss: 0.00000 | Mom_loss: 0.130363
+train epoch 1114 avg loss: 0.00312 avg lploss: 0.00000 | Mom_loss: 0.130096
+train epoch 1115 avg loss: 0.00313 avg lploss: 0.00000 | Mom_loss: 0.130547
+==> val epoch 1115 avg loss: 0.00695 avg lploss: 0.00000 | Mom_loss: 0.133846
+==> test epoch 1115 avg loss: 0.00594 avg lploss: 0.00000 | Mom_loss: 0.131860
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 45 out of 50
+train epoch 1116 avg loss: 0.00309 avg lploss: 0.00000 | Mom_loss: 0.130005
+train epoch 1117 avg loss: 0.00315 avg lploss: 0.00000 | Mom_loss: 0.131947
+train epoch 1118 avg loss: 0.00334 avg lploss: 0.00000 | Mom_loss: 0.129897
+train epoch 1119 avg loss: 0.00521 avg lploss: 0.00000 | Mom_loss: 0.127443
+train epoch 1120 avg loss: 0.00405 avg lploss: 0.00000 | Mom_loss: 0.127078
+==> val epoch 1120 avg loss: 0.00622 avg lploss: 0.00000 | Mom_loss: 0.126563
+==> test epoch 1120 avg loss: 0.00558 avg lploss: 0.00000 | Mom_loss: 0.124773
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 46 out of 50
+train epoch 1121 avg loss: 0.00344 avg lploss: 0.00000 | Mom_loss: 0.126901
+train epoch 1122 avg loss: 0.00318 avg lploss: 0.00000 | Mom_loss: 0.128384
+train epoch 1123 avg loss: 0.00314 avg lploss: 0.00000 | Mom_loss: 0.128289
+train epoch 1124 avg loss: 0.00298 avg lploss: 0.00000 | Mom_loss: 0.128887
+train epoch 1125 avg loss: 0.00312 avg lploss: 0.00000 | Mom_loss: 0.129978
+==> val epoch 1125 avg loss: 0.00670 avg lploss: 0.00000 | Mom_loss: 0.132129
+==> test epoch 1125 avg loss: 0.00570 avg lploss: 0.00000 | Mom_loss: 0.130098
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 47 out of 50
+train epoch 1126 avg loss: 0.00324 avg lploss: 0.00000 | Mom_loss: 0.129404
+train epoch 1127 avg loss: 0.00317 avg lploss: 0.00000 | Mom_loss: 0.129147
+train epoch 1128 avg loss: 0.00311 avg lploss: 0.00000 | Mom_loss: 0.128964
+train epoch 1129 avg loss: 0.00304 avg lploss: 0.00000 | Mom_loss: 0.129288
+train epoch 1130 avg loss: 0.00301 avg lploss: 0.00000 | Mom_loss: 0.129433
+==> val epoch 1130 avg loss: 0.00651 avg lploss: 0.00000 | Mom_loss: 0.131645
+==> test epoch 1130 avg loss: 0.00565 avg lploss: 0.00000 | Mom_loss: 0.129553
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 48 out of 50
+train epoch 1131 avg loss: 0.00297 avg lploss: 0.00000 | Mom_loss: 0.129498
+train epoch 1132 avg loss: 0.00297 avg lploss: 0.00000 | Mom_loss: 0.130263
+train epoch 1133 avg loss: 0.00304 avg lploss: 0.00000 | Mom_loss: 0.129188
+train epoch 1134 avg loss: 0.00321 avg lploss: 0.00000 | Mom_loss: 0.130107
+train epoch 1135 avg loss: 0.00308 avg lploss: 0.00000 | Mom_loss: 0.129775
+==> val epoch 1135 avg loss: 0.00652 avg lploss: 0.00000 | Mom_loss: 0.130181
+==> test epoch 1135 avg loss: 0.00571 avg lploss: 0.00000 | Mom_loss: 0.128182
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 49 out of 50
+train epoch 1136 avg loss: 0.00299 avg lploss: 0.00000 | Mom_loss: 0.130093
+train epoch 1137 avg loss: 0.00308 avg lploss: 0.00000 | Mom_loss: 0.129600
+train epoch 1138 avg loss: 0.00319 avg lploss: 0.00000 | Mom_loss: 0.129728
+train epoch 1139 avg loss: 0.00300 avg lploss: 0.00000 | Mom_loss: 0.129779
+train epoch 1140 avg loss: 0.00317 avg lploss: 0.00000 | Mom_loss: 0.129373
+==> val epoch 1140 avg loss: 0.00670 avg lploss: 0.00000 | Mom_loss: 0.131389
+==> test epoch 1140 avg loss: 0.00578 avg lploss: 0.00000 | Mom_loss: 0.129351
+*** Best Val Loss: 0.00583 	 Best Test Loss: 0.00546 	 Best epoch 890
+EarlyStopping counter: 50 out of 50
+Early Stopping.
+best_train_f_mse = 0.004015
+best_val_f_mse = 0.005833
+best_test_f_mse = 0.005458
+best_test_a_mse = 0.002199
+best_epoch = 890
+best_train_f_mse = 0.004015, best_val_f_mse = 0.005833, best_test_f_mse = 0.005458, best_test_a_mse = 0.002199, best_epoch = 890
+Training completed for seed 2 with momentum conservation
