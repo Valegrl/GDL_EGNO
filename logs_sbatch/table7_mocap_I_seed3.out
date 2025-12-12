@@ -1,0 +1,2856 @@
+Date              = Mon Dec  8 22:40:16 CET 2025
+Hostname          = mel2185
+Array Task ID     = 2
+Running config: configs/table7_mocap_variant_I_seed3.json
+Namespace(batch_size=12, case='run', config_by_file='configs/table7_mocap_variant_I_seed3.json', cuda=True, data_dir='motion/dataset', decoder_layer=1, delta_frame=30, dropout=0.5, epochs=2000, exp_name='table7_mocap_variant_I_seed3', flat=False, interaction_layer=3, lambda_link=1, log_interval=1, lr=0.0005, max_training_samples=200, model='egno', n_cluster=3, n_layers=6, nf=128, no_cuda=False, num_modes=2, num_timesteps=5, outf='/project/scratch/p200981/egno/logs/table7_mocap', pooling_layer=3, seed=3, test_interval=5, time_emb_dim=32, use_h_conv=True, use_x_conv=True, weight_decay=1e-10)
+Got Split!
+Got 200 samples!
+Got Split!
+Got 240 samples!
+Got Split!
+Got 240 samples!
+EGNO(
+  (layers): ModuleList(
+    (0-5): 6 x EGNN_Layer(
+      (edge_message_net): InvariantScalarNet(
+        (activation): SiLU()
+        (scalar_net): BaseMLP(
+          (mlp): Sequential(
+            (0): Linear(in_features=259, out_features=128, bias=True)
+            (1): SiLU()
+            (2): Linear(in_features=128, out_features=128, bias=True)
+            (3): SiLU()
+          )
+        )
+      )
+      (coord_net): BaseMLP(
+        (mlp): Sequential(
+          (0): Linear(in_features=128, out_features=128, bias=True)
+          (1): SiLU()
+          (2): Linear(in_features=128, out_features=1, bias=True)
+        )
+      )
+      (node_v_net): BaseMLP(
+        (mlp): Sequential(
+          (0): Linear(in_features=128, out_features=128, bias=True)
+          (1): SiLU()
+          (2): Linear(in_features=128, out_features=1, bias=True)
+        )
+      )
+      (node_net): BaseMLP(
+        (mlp): Sequential(
+          (0): Linear(in_features=256, out_features=128, bias=True)
+          (1): SiLU()
+          (2): Linear(in_features=128, out_features=128, bias=True)
+        )
+      )
+    )
+  )
+  (embedding): Linear(in_features=34, out_features=128, bias=True)
+  (time_conv_modules): ModuleList(
+    (0-5): 6 x TimeConv(
+      (t_conv): SpectralConv1d()
+      (act): LeakyReLU(negative_slope=0.01)
+    )
+  )
+  (time_conv_x_modules): ModuleList(
+    (0-5): 6 x TimeConv_x(
+      (t_conv): SpectralConv1d_x()
+    )
+  )
+)
+Model saved to /project/scratch/p200981/egno/logs/table7_mocap/table7_mocap_variant_I_seed3/saved_model.pth
+train epoch 0 avg loss: 41159.73229 (A-MSE: 41057.30459) avg lploss: 0.00000
+==> val epoch 0 avg loss: 97.88199 (A-MSE: 86.35883) avg lploss: 0.00000
+==> test epoch 0 avg loss: 93.28086 (A-MSE: 82.31613) avg lploss: 0.00000
+*** Best Val Loss: 97.88199 	 Best Test Loss: 93.28086 	 Best epoch 0
+Validation loss decreased (inf --> 97.881987).  Saving model ...
+train epoch 1 avg loss: 94.20229 (A-MSE: 83.11911) avg lploss: 0.00000
+train epoch 2 avg loss: 91.41828 (A-MSE: 80.52503) avg lploss: 0.00000
+train epoch 3 avg loss: 85.99052 (A-MSE: 75.63449) avg lploss: 0.00000
+train epoch 4 avg loss: 75.71604 (A-MSE: 66.43852) avg lploss: 0.00000
+train epoch 5 avg loss: 59.96443 (A-MSE: 52.04048) avg lploss: 0.00000
+==> val epoch 5 avg loss: 49.75112 (A-MSE: 42.92799) avg lploss: 0.00000
+==> test epoch 5 avg loss: 47.79207 (A-MSE: 41.32145) avg lploss: 0.00000
+*** Best Val Loss: 49.75112 	 Best Test Loss: 47.79207 	 Best epoch 5
+Validation loss decreased (97.881987 --> 49.751123).  Saving model ...
+train epoch 6 avg loss: 44.97545 (A-MSE: 38.98878) avg lploss: 0.00000
+train epoch 7 avg loss: 35.30978 (A-MSE: 30.64926) avg lploss: 0.00000
+train epoch 8 avg loss: 30.32450 (A-MSE: 26.23923) avg lploss: 0.00000
+train epoch 9 avg loss: 25.93561 (A-MSE: 22.47547) avg lploss: 0.00000
+train epoch 10 avg loss: 23.02895 (A-MSE: 19.93968) avg lploss: 0.00000
+==> val epoch 10 avg loss: 20.67171 (A-MSE: 17.99536) avg lploss: 0.00000
+==> test epoch 10 avg loss: 19.24938 (A-MSE: 16.65672) avg lploss: 0.00000
+*** Best Val Loss: 20.67171 	 Best Test Loss: 19.24938 	 Best epoch 10
+Validation loss decreased (49.751123 --> 20.671714).  Saving model ...
+train epoch 11 avg loss: 20.52930 (A-MSE: 17.94215) avg lploss: 0.00000
+train epoch 12 avg loss: 19.11256 (A-MSE: 16.76103) avg lploss: 0.00000
+train epoch 13 avg loss: 18.19591 (A-MSE: 15.97954) avg lploss: 0.00000
+train epoch 14 avg loss: 17.26726 (A-MSE: 15.19335) avg lploss: 0.00000
+train epoch 15 avg loss: 16.37961 (A-MSE: 14.45509) avg lploss: 0.00000
+==> val epoch 15 avg loss: 15.77997 (A-MSE: 13.97623) avg lploss: 0.00000
+==> test epoch 15 avg loss: 14.35515 (A-MSE: 12.63685) avg lploss: 0.00000
+*** Best Val Loss: 15.77997 	 Best Test Loss: 14.35515 	 Best epoch 15
+Validation loss decreased (20.671714 --> 15.779969).  Saving model ...
+train epoch 16 avg loss: 15.69583 (A-MSE: 13.85991) avg lploss: 0.00000
+train epoch 17 avg loss: 14.81446 (A-MSE: 13.11827) avg lploss: 0.00000
+train epoch 18 avg loss: 14.47858 (A-MSE: 12.77168) avg lploss: 0.00000
+train epoch 19 avg loss: 14.17095 (A-MSE: 12.55996) avg lploss: 0.00000
+train epoch 20 avg loss: 13.34296 (A-MSE: 11.81970) avg lploss: 0.00000
+==> val epoch 20 avg loss: 12.80998 (A-MSE: 11.41088) avg lploss: 0.00000
+==> test epoch 20 avg loss: 11.64886 (A-MSE: 10.32065) avg lploss: 0.00000
+*** Best Val Loss: 12.80998 	 Best Test Loss: 11.64886 	 Best epoch 20
+Validation loss decreased (15.779969 --> 12.809984).  Saving model ...
+train epoch 21 avg loss: 12.62999 (A-MSE: 11.16725) avg lploss: 0.00000
+train epoch 22 avg loss: 12.14289 (A-MSE: 10.73895) avg lploss: 0.00000
+train epoch 23 avg loss: 11.86799 (A-MSE: 10.47241) avg lploss: 0.00000
+train epoch 24 avg loss: 11.17794 (A-MSE: 9.87342) avg lploss: 0.00000
+train epoch 25 avg loss: 10.67456 (A-MSE: 9.44583) avg lploss: 0.00000
+==> val epoch 25 avg loss: 10.53312 (A-MSE: 9.21532) avg lploss: 0.00000
+==> test epoch 25 avg loss: 10.06218 (A-MSE: 8.78159) avg lploss: 0.00000
+*** Best Val Loss: 10.53312 	 Best Test Loss: 10.06218 	 Best epoch 25
+Validation loss decreased (12.809984 --> 10.533121).  Saving model ...
+train epoch 26 avg loss: 10.38430 (A-MSE: 9.16271) avg lploss: 0.00000
+train epoch 27 avg loss: 9.94721 (A-MSE: 8.78329) avg lploss: 0.00000
+train epoch 28 avg loss: 9.45553 (A-MSE: 8.35064) avg lploss: 0.00000
+train epoch 29 avg loss: 8.79267 (A-MSE: 7.76400) avg lploss: 0.00000
+train epoch 30 avg loss: 8.44290 (A-MSE: 7.50206) avg lploss: 0.00000
+==> val epoch 30 avg loss: 8.13557 (A-MSE: 7.17069) avg lploss: 0.00000
+==> test epoch 30 avg loss: 7.82870 (A-MSE: 6.89400) avg lploss: 0.00000
+*** Best Val Loss: 8.13557 	 Best Test Loss: 7.82870 	 Best epoch 30
+Validation loss decreased (10.533121 --> 8.135566).  Saving model ...
+train epoch 31 avg loss: 7.88308 (A-MSE: 6.97923) avg lploss: 0.00000
+train epoch 32 avg loss: 7.50407 (A-MSE: 6.67597) avg lploss: 0.00000
+train epoch 33 avg loss: 7.03219 (A-MSE: 6.25903) avg lploss: 0.00000
+train epoch 34 avg loss: 6.70233 (A-MSE: 5.96674) avg lploss: 0.00000
+train epoch 35 avg loss: 6.32286 (A-MSE: 5.64173) avg lploss: 0.00000
+==> val epoch 35 avg loss: 6.24999 (A-MSE: 5.50709) avg lploss: 0.00000
+==> test epoch 35 avg loss: 6.15049 (A-MSE: 5.39598) avg lploss: 0.00000
+*** Best Val Loss: 6.24999 	 Best Test Loss: 6.15049 	 Best epoch 35
+Validation loss decreased (8.135566 --> 6.249988).  Saving model ...
+train epoch 36 avg loss: 6.15322 (A-MSE: 5.48627) avg lploss: 0.00000
+train epoch 37 avg loss: 5.78336 (A-MSE: 5.14178) avg lploss: 0.00000
+train epoch 38 avg loss: 5.40415 (A-MSE: 4.80881) avg lploss: 0.00000
+train epoch 39 avg loss: 5.31857 (A-MSE: 4.73562) avg lploss: 0.00000
+train epoch 40 avg loss: 5.11513 (A-MSE: 4.55297) avg lploss: 0.00000
+==> val epoch 40 avg loss: 4.89195 (A-MSE: 4.42933) avg lploss: 0.00000
+==> test epoch 40 avg loss: 4.96993 (A-MSE: 4.49590) avg lploss: 0.00000
+*** Best Val Loss: 4.89195 	 Best Test Loss: 4.96993 	 Best epoch 40
+Validation loss decreased (6.249988 --> 4.891946).  Saving model ...
+train epoch 41 avg loss: 5.08141 (A-MSE: 4.52138) avg lploss: 0.00000
+train epoch 42 avg loss: 4.85134 (A-MSE: 4.31542) avg lploss: 0.00000
+train epoch 43 avg loss: 4.52409 (A-MSE: 4.00363) avg lploss: 0.00000
+train epoch 44 avg loss: 4.54569 (A-MSE: 4.03508) avg lploss: 0.00000
+train epoch 45 avg loss: 4.23564 (A-MSE: 3.74391) avg lploss: 0.00000
+==> val epoch 45 avg loss: 4.49041 (A-MSE: 4.02542) avg lploss: 0.00000
+==> test epoch 45 avg loss: 4.56393 (A-MSE: 4.08844) avg lploss: 0.00000
+*** Best Val Loss: 4.49041 	 Best Test Loss: 4.56393 	 Best epoch 45
+Validation loss decreased (4.891946 --> 4.490413).  Saving model ...
+train epoch 46 avg loss: 4.21216 (A-MSE: 3.73125) avg lploss: 0.00000
+train epoch 47 avg loss: 4.06729 (A-MSE: 3.59586) avg lploss: 0.00000
+train epoch 48 avg loss: 4.52542 (A-MSE: 4.01733) avg lploss: 0.00000
+train epoch 49 avg loss: 4.20994 (A-MSE: 3.72281) avg lploss: 0.00000
+train epoch 50 avg loss: 3.93110 (A-MSE: 3.49315) avg lploss: 0.00000
+==> val epoch 50 avg loss: 3.95658 (A-MSE: 3.51970) avg lploss: 0.00000
+==> test epoch 50 avg loss: 4.04086 (A-MSE: 3.60739) avg lploss: 0.00000
+*** Best Val Loss: 3.95658 	 Best Test Loss: 4.04086 	 Best epoch 50
+Validation loss decreased (4.490413 --> 3.956582).  Saving model ...
+train epoch 51 avg loss: 3.67431 (A-MSE: 3.24636) avg lploss: 0.00000
+train epoch 52 avg loss: 3.80609 (A-MSE: 3.37091) avg lploss: 0.00000
+train epoch 53 avg loss: 3.66612 (A-MSE: 3.25890) avg lploss: 0.00000
+train epoch 54 avg loss: 3.59761 (A-MSE: 3.19753) avg lploss: 0.00000
+train epoch 55 avg loss: 3.92543 (A-MSE: 3.47150) avg lploss: 0.00000
+==> val epoch 55 avg loss: 4.16520 (A-MSE: 3.72634) avg lploss: 0.00000
+==> test epoch 55 avg loss: 4.21267 (A-MSE: 3.77954) avg lploss: 0.00000
+*** Best Val Loss: 3.95658 	 Best Test Loss: 4.04086 	 Best epoch 50
+EarlyStopping counter: 1 out of 50
+train epoch 56 avg loss: 3.64594 (A-MSE: 3.22876) avg lploss: 0.00000
+train epoch 57 avg loss: 3.39411 (A-MSE: 3.01984) avg lploss: 0.00000
+train epoch 58 avg loss: 3.33493 (A-MSE: 2.95615) avg lploss: 0.00000
+train epoch 59 avg loss: 3.57194 (A-MSE: 3.17107) avg lploss: 0.00000
+train epoch 60 avg loss: 3.42356 (A-MSE: 3.04724) avg lploss: 0.00000
+==> val epoch 60 avg loss: 3.51565 (A-MSE: 3.16445) avg lploss: 0.00000
+==> test epoch 60 avg loss: 3.64446 (A-MSE: 3.28465) avg lploss: 0.00000
+*** Best Val Loss: 3.51565 	 Best Test Loss: 3.64446 	 Best epoch 60
+Validation loss decreased (3.956582 --> 3.515647).  Saving model ...
+train epoch 61 avg loss: 3.15548 (A-MSE: 2.80742) avg lploss: 0.00000
+train epoch 62 avg loss: 3.01103 (A-MSE: 2.67511) avg lploss: 0.00000
+train epoch 63 avg loss: 3.09425 (A-MSE: 2.76692) avg lploss: 0.00000
+train epoch 64 avg loss: 3.34318 (A-MSE: 2.98097) avg lploss: 0.00000
+train epoch 65 avg loss: 2.97518 (A-MSE: 2.65057) avg lploss: 0.00000
+==> val epoch 65 avg loss: 2.90578 (A-MSE: 2.61787) avg lploss: 0.00000
+==> test epoch 65 avg loss: 3.08411 (A-MSE: 2.79840) avg lploss: 0.00000
+*** Best Val Loss: 2.90578 	 Best Test Loss: 3.08411 	 Best epoch 65
+Validation loss decreased (3.515647 --> 2.905778).  Saving model ...
+train epoch 66 avg loss: 2.88557 (A-MSE: 2.56425) avg lploss: 0.00000
+train epoch 67 avg loss: 2.82805 (A-MSE: 2.51765) avg lploss: 0.00000
+train epoch 68 avg loss: 2.77876 (A-MSE: 2.47279) avg lploss: 0.00000
+train epoch 69 avg loss: 2.65820 (A-MSE: 2.37427) avg lploss: 0.00000
+train epoch 70 avg loss: 2.83298 (A-MSE: 2.52697) avg lploss: 0.00000
+==> val epoch 70 avg loss: 3.58660 (A-MSE: 3.19273) avg lploss: 0.00000
+==> test epoch 70 avg loss: 3.80608 (A-MSE: 3.40019) avg lploss: 0.00000
+*** Best Val Loss: 2.90578 	 Best Test Loss: 3.08411 	 Best epoch 65
+EarlyStopping counter: 1 out of 50
+train epoch 71 avg loss: 2.94555 (A-MSE: 2.62215) avg lploss: 0.00000
+train epoch 72 avg loss: 2.75353 (A-MSE: 2.45610) avg lploss: 0.00000
+train epoch 73 avg loss: 2.76500 (A-MSE: 2.46584) avg lploss: 0.00000
+train epoch 74 avg loss: 2.74515 (A-MSE: 2.44354) avg lploss: 0.00000
+train epoch 75 avg loss: 2.51640 (A-MSE: 2.25168) avg lploss: 0.00000
+==> val epoch 75 avg loss: 2.85377 (A-MSE: 2.54704) avg lploss: 0.00000
+==> test epoch 75 avg loss: 3.05142 (A-MSE: 2.74751) avg lploss: 0.00000
+*** Best Val Loss: 2.85377 	 Best Test Loss: 3.05142 	 Best epoch 75
+Validation loss decreased (2.905778 --> 2.853767).  Saving model ...
+train epoch 76 avg loss: 2.50066 (A-MSE: 2.23610) avg lploss: 0.00000
+train epoch 77 avg loss: 2.61113 (A-MSE: 2.32796) avg lploss: 0.00000
+train epoch 78 avg loss: 2.51756 (A-MSE: 2.24391) avg lploss: 0.00000
+train epoch 79 avg loss: 2.55227 (A-MSE: 2.28416) avg lploss: 0.00000
+train epoch 80 avg loss: 2.42539 (A-MSE: 2.15289) avg lploss: 0.00000
+==> val epoch 80 avg loss: 2.43479 (A-MSE: 2.19844) avg lploss: 0.00000
+==> test epoch 80 avg loss: 2.68595 (A-MSE: 2.44102) avg lploss: 0.00000
+*** Best Val Loss: 2.43479 	 Best Test Loss: 2.68595 	 Best epoch 80
+Validation loss decreased (2.853767 --> 2.434786).  Saving model ...
+train epoch 81 avg loss: 2.32746 (A-MSE: 2.07922) avg lploss: 0.00000
+train epoch 82 avg loss: 2.30855 (A-MSE: 2.06039) avg lploss: 0.00000
+train epoch 83 avg loss: 2.36644 (A-MSE: 2.10651) avg lploss: 0.00000
+train epoch 84 avg loss: 2.29130 (A-MSE: 2.03745) avg lploss: 0.00000
+train epoch 85 avg loss: 2.18856 (A-MSE: 1.94962) avg lploss: 0.00000
+==> val epoch 85 avg loss: 2.22922 (A-MSE: 1.99507) avg lploss: 0.00000
+==> test epoch 85 avg loss: 2.45703 (A-MSE: 2.21126) avg lploss: 0.00000
+*** Best Val Loss: 2.22922 	 Best Test Loss: 2.45703 	 Best epoch 85
+Validation loss decreased (2.434786 --> 2.229217).  Saving model ...
+train epoch 86 avg loss: 2.19163 (A-MSE: 1.95273) avg lploss: 0.00000
+train epoch 87 avg loss: 2.08971 (A-MSE: 1.87280) avg lploss: 0.00000
+train epoch 88 avg loss: 2.18177 (A-MSE: 1.93651) avg lploss: 0.00000
+train epoch 89 avg loss: 2.20019 (A-MSE: 1.98060) avg lploss: 0.00000
+train epoch 90 avg loss: 2.03294 (A-MSE: 1.81383) avg lploss: 0.00000
+==> val epoch 90 avg loss: 2.02288 (A-MSE: 1.81662) avg lploss: 0.00000
+==> test epoch 90 avg loss: 2.26073 (A-MSE: 2.04168) avg lploss: 0.00000
+*** Best Val Loss: 2.02288 	 Best Test Loss: 2.26073 	 Best epoch 90
+Validation loss decreased (2.229217 --> 2.022879).  Saving model ...
+train epoch 91 avg loss: 1.97755 (A-MSE: 1.77649) avg lploss: 0.00000
+train epoch 92 avg loss: 1.98038 (A-MSE: 1.76332) avg lploss: 0.00000
+train epoch 93 avg loss: 2.19293 (A-MSE: 1.95050) avg lploss: 0.00000
+train epoch 94 avg loss: 1.93143 (A-MSE: 1.72149) avg lploss: 0.00000
+train epoch 95 avg loss: 1.93577 (A-MSE: 1.72795) avg lploss: 0.00000
+==> val epoch 95 avg loss: 2.22388 (A-MSE: 1.98856) avg lploss: 0.00000
+==> test epoch 95 avg loss: 2.59054 (A-MSE: 2.31999) avg lploss: 0.00000
+*** Best Val Loss: 2.02288 	 Best Test Loss: 2.26073 	 Best epoch 90
+EarlyStopping counter: 1 out of 50
+train epoch 96 avg loss: 1.85045 (A-MSE: 1.65615) avg lploss: 0.00000
+train epoch 97 avg loss: 1.86554 (A-MSE: 1.66196) avg lploss: 0.00000
+train epoch 98 avg loss: 1.81718 (A-MSE: 1.60821) avg lploss: 0.00000
+train epoch 99 avg loss: 1.74892 (A-MSE: 1.56978) avg lploss: 0.00000
+train epoch 100 avg loss: 1.73240 (A-MSE: 1.55197) avg lploss: 0.00000
+==> val epoch 100 avg loss: 1.80344 (A-MSE: 1.62005) avg lploss: 0.00000
+==> test epoch 100 avg loss: 2.10738 (A-MSE: 1.89605) avg lploss: 0.00000
+*** Best Val Loss: 1.80344 	 Best Test Loss: 2.10738 	 Best epoch 100
+Validation loss decreased (2.022879 --> 1.803436).  Saving model ...
+train epoch 101 avg loss: 1.75464 (A-MSE: 1.56222) avg lploss: 0.00000
+train epoch 102 avg loss: 1.62041 (A-MSE: 1.45371) avg lploss: 0.00000
+train epoch 103 avg loss: 1.84334 (A-MSE: 1.63958) avg lploss: 0.00000
+train epoch 104 avg loss: 1.96565 (A-MSE: 1.75317) avg lploss: 0.00000
+train epoch 105 avg loss: 1.69259 (A-MSE: 1.51470) avg lploss: 0.00000
+==> val epoch 105 avg loss: 1.96283 (A-MSE: 1.75205) avg lploss: 0.00000
+==> test epoch 105 avg loss: 2.25558 (A-MSE: 2.01093) avg lploss: 0.00000
+*** Best Val Loss: 1.80344 	 Best Test Loss: 2.10738 	 Best epoch 100
+EarlyStopping counter: 1 out of 50
+train epoch 106 avg loss: 1.72944 (A-MSE: 1.54309) avg lploss: 0.00000
+train epoch 107 avg loss: 1.60995 (A-MSE: 1.43884) avg lploss: 0.00000
+train epoch 108 avg loss: 1.54686 (A-MSE: 1.37705) avg lploss: 0.00000
+train epoch 109 avg loss: 1.60425 (A-MSE: 1.42663) avg lploss: 0.00000
+train epoch 110 avg loss: 1.52829 (A-MSE: 1.36021) avg lploss: 0.00000
+==> val epoch 110 avg loss: 1.66796 (A-MSE: 1.47993) avg lploss: 0.00000
+==> test epoch 110 avg loss: 1.92116 (A-MSE: 1.70688) avg lploss: 0.00000
+*** Best Val Loss: 1.66796 	 Best Test Loss: 1.92116 	 Best epoch 110
+Validation loss decreased (1.803436 --> 1.667964).  Saving model ...
+train epoch 111 avg loss: 1.38346 (A-MSE: 1.23443) avg lploss: 0.00000
+train epoch 112 avg loss: 1.45915 (A-MSE: 1.29964) avg lploss: 0.00000
+train epoch 113 avg loss: 1.41120 (A-MSE: 1.26157) avg lploss: 0.00000
+train epoch 114 avg loss: 1.42111 (A-MSE: 1.26591) avg lploss: 0.00000
+train epoch 115 avg loss: 1.37472 (A-MSE: 1.22138) avg lploss: 0.00000
+==> val epoch 115 avg loss: 1.78990 (A-MSE: 1.56044) avg lploss: 0.00000
+==> test epoch 115 avg loss: 2.03082 (A-MSE: 1.78647) avg lploss: 0.00000
+*** Best Val Loss: 1.66796 	 Best Test Loss: 1.92116 	 Best epoch 110
+EarlyStopping counter: 1 out of 50
+train epoch 116 avg loss: 1.43173 (A-MSE: 1.27456) avg lploss: 0.00000
+train epoch 117 avg loss: 1.33723 (A-MSE: 1.19733) avg lploss: 0.00000
+train epoch 118 avg loss: 1.34364 (A-MSE: 1.18878) avg lploss: 0.00000
+train epoch 119 avg loss: 1.37641 (A-MSE: 1.22232) avg lploss: 0.00000
+train epoch 120 avg loss: 1.63118 (A-MSE: 1.45062) avg lploss: 0.00000
+==> val epoch 120 avg loss: 1.77085 (A-MSE: 1.56480) avg lploss: 0.00000
+==> test epoch 120 avg loss: 2.04231 (A-MSE: 1.80387) avg lploss: 0.00000
+*** Best Val Loss: 1.66796 	 Best Test Loss: 1.92116 	 Best epoch 110
+EarlyStopping counter: 2 out of 50
+train epoch 121 avg loss: 1.34709 (A-MSE: 1.20618) avg lploss: 0.00000
+train epoch 122 avg loss: 1.36040 (A-MSE: 1.21152) avg lploss: 0.00000
+train epoch 123 avg loss: 1.29327 (A-MSE: 1.14913) avg lploss: 0.00000
+train epoch 124 avg loss: 1.22932 (A-MSE: 1.09285) avg lploss: 0.00000
+train epoch 125 avg loss: 1.16639 (A-MSE: 1.03843) avg lploss: 0.00000
+==> val epoch 125 avg loss: 1.43125 (A-MSE: 1.26182) avg lploss: 0.00000
+==> test epoch 125 avg loss: 1.64573 (A-MSE: 1.45931) avg lploss: 0.00000
+*** Best Val Loss: 1.43125 	 Best Test Loss: 1.64573 	 Best epoch 125
+Validation loss decreased (1.667964 --> 1.431252).  Saving model ...
+train epoch 126 avg loss: 1.19089 (A-MSE: 1.05631) avg lploss: 0.00000
+train epoch 127 avg loss: 1.22310 (A-MSE: 1.08772) avg lploss: 0.00000
+train epoch 128 avg loss: 1.37650 (A-MSE: 1.21412) avg lploss: 0.00000
+train epoch 129 avg loss: 1.28927 (A-MSE: 1.15050) avg lploss: 0.00000
+train epoch 130 avg loss: 1.34341 (A-MSE: 1.19638) avg lploss: 0.00000
+==> val epoch 130 avg loss: 1.95246 (A-MSE: 1.70865) avg lploss: 0.00000
+==> test epoch 130 avg loss: 2.30261 (A-MSE: 2.02209) avg lploss: 0.00000
+*** Best Val Loss: 1.43125 	 Best Test Loss: 1.64573 	 Best epoch 125
+EarlyStopping counter: 1 out of 50
+train epoch 131 avg loss: 1.39567 (A-MSE: 1.24483) avg lploss: 0.00000
+train epoch 132 avg loss: 1.24764 (A-MSE: 1.09598) avg lploss: 0.00000
+train epoch 133 avg loss: 1.13396 (A-MSE: 1.00758) avg lploss: 0.00000
+train epoch 134 avg loss: 1.12838 (A-MSE: 0.99961) avg lploss: 0.00000
+train epoch 135 avg loss: 1.16397 (A-MSE: 1.02858) avg lploss: 0.00000
+==> val epoch 135 avg loss: 1.37245 (A-MSE: 1.20868) avg lploss: 0.00000
+==> test epoch 135 avg loss: 1.63247 (A-MSE: 1.44746) avg lploss: 0.00000
+*** Best Val Loss: 1.37245 	 Best Test Loss: 1.63247 	 Best epoch 135
+Validation loss decreased (1.431252 --> 1.372454).  Saving model ...
+train epoch 136 avg loss: 1.13600 (A-MSE: 1.01020) avg lploss: 0.00000
+train epoch 137 avg loss: 1.20478 (A-MSE: 1.07057) avg lploss: 0.00000
+train epoch 138 avg loss: 1.33351 (A-MSE: 1.18701) avg lploss: 0.00000
+train epoch 139 avg loss: 1.15562 (A-MSE: 1.01929) avg lploss: 0.00000
+train epoch 140 avg loss: 1.16879 (A-MSE: 1.03443) avg lploss: 0.00000
+==> val epoch 140 avg loss: 1.31034 (A-MSE: 1.16037) avg lploss: 0.00000
+==> test epoch 140 avg loss: 1.56964 (A-MSE: 1.39807) avg lploss: 0.00000
+*** Best Val Loss: 1.31034 	 Best Test Loss: 1.56964 	 Best epoch 140
+Validation loss decreased (1.372454 --> 1.310338).  Saving model ...
+train epoch 141 avg loss: 1.09495 (A-MSE: 0.97112) avg lploss: 0.00000
+train epoch 142 avg loss: 1.02298 (A-MSE: 0.90521) avg lploss: 0.00000
+train epoch 143 avg loss: 1.01270 (A-MSE: 0.89727) avg lploss: 0.00000
+train epoch 144 avg loss: 1.18501 (A-MSE: 1.04702) avg lploss: 0.00000
+train epoch 145 avg loss: 1.03400 (A-MSE: 0.91378) avg lploss: 0.00000
+==> val epoch 145 avg loss: 1.28966 (A-MSE: 1.13868) avg lploss: 0.00000
+==> test epoch 145 avg loss: 1.52854 (A-MSE: 1.35653) avg lploss: 0.00000
+*** Best Val Loss: 1.28966 	 Best Test Loss: 1.52854 	 Best epoch 145
+Validation loss decreased (1.310338 --> 1.289659).  Saving model ...
+train epoch 146 avg loss: 0.99198 (A-MSE: 0.88012) avg lploss: 0.00000
+train epoch 147 avg loss: 1.03332 (A-MSE: 0.91471) avg lploss: 0.00000
+train epoch 148 avg loss: 1.11010 (A-MSE: 0.98038) avg lploss: 0.00000
+train epoch 149 avg loss: 0.96397 (A-MSE: 0.85863) avg lploss: 0.00000
+train epoch 150 avg loss: 0.99391 (A-MSE: 0.88251) avg lploss: 0.00000
+==> val epoch 150 avg loss: 1.35738 (A-MSE: 1.17917) avg lploss: 0.00000
+==> test epoch 150 avg loss: 1.64184 (A-MSE: 1.43438) avg lploss: 0.00000
+*** Best Val Loss: 1.28966 	 Best Test Loss: 1.52854 	 Best epoch 145
+EarlyStopping counter: 1 out of 50
+train epoch 151 avg loss: 1.08505 (A-MSE: 0.95604) avg lploss: 0.00000
+train epoch 152 avg loss: 0.99326 (A-MSE: 0.87748) avg lploss: 0.00000
+train epoch 153 avg loss: 0.99117 (A-MSE: 0.87878) avg lploss: 0.00000
+train epoch 154 avg loss: 1.02696 (A-MSE: 0.90795) avg lploss: 0.00000
+train epoch 155 avg loss: 1.01935 (A-MSE: 0.90194) avg lploss: 0.00000
+==> val epoch 155 avg loss: 1.26610 (A-MSE: 1.09205) avg lploss: 0.00000
+==> test epoch 155 avg loss: 1.47564 (A-MSE: 1.28326) avg lploss: 0.00000
+*** Best Val Loss: 1.26610 	 Best Test Loss: 1.47564 	 Best epoch 155
+Validation loss decreased (1.289659 --> 1.266104).  Saving model ...
+train epoch 156 avg loss: 0.97311 (A-MSE: 0.86039) avg lploss: 0.00000
+train epoch 157 avg loss: 0.92288 (A-MSE: 0.81750) avg lploss: 0.00000
+train epoch 158 avg loss: 0.91516 (A-MSE: 0.80537) avg lploss: 0.00000
+train epoch 159 avg loss: 1.00306 (A-MSE: 0.88457) avg lploss: 0.00000
+train epoch 160 avg loss: 0.91933 (A-MSE: 0.81365) avg lploss: 0.00000
+==> val epoch 160 avg loss: 1.06907 (A-MSE: 0.93408) avg lploss: 0.00000
+==> test epoch 160 avg loss: 1.26608 (A-MSE: 1.11857) avg lploss: 0.00000
+*** Best Val Loss: 1.06907 	 Best Test Loss: 1.26608 	 Best epoch 160
+Validation loss decreased (1.266104 --> 1.069072).  Saving model ...
+train epoch 161 avg loss: 0.94417 (A-MSE: 0.83193) avg lploss: 0.00000
+train epoch 162 avg loss: 1.21311 (A-MSE: 1.06400) avg lploss: 0.00000
+train epoch 163 avg loss: 1.18582 (A-MSE: 1.04627) avg lploss: 0.00000
+train epoch 164 avg loss: 0.92433 (A-MSE: 0.82325) avg lploss: 0.00000
+train epoch 165 avg loss: 0.96073 (A-MSE: 0.84379) avg lploss: 0.00000
+==> val epoch 165 avg loss: 1.31220 (A-MSE: 1.13805) avg lploss: 0.00000
+==> test epoch 165 avg loss: 1.50650 (A-MSE: 1.30848) avg lploss: 0.00000
+*** Best Val Loss: 1.06907 	 Best Test Loss: 1.26608 	 Best epoch 160
+EarlyStopping counter: 1 out of 50
+train epoch 166 avg loss: 0.88948 (A-MSE: 0.78394) avg lploss: 0.00000
+train epoch 167 avg loss: 0.86756 (A-MSE: 0.76948) avg lploss: 0.00000
+train epoch 168 avg loss: 0.93762 (A-MSE: 0.82725) avg lploss: 0.00000
+train epoch 169 avg loss: 0.93579 (A-MSE: 0.82146) avg lploss: 0.00000
+train epoch 170 avg loss: 0.96636 (A-MSE: 0.84705) avg lploss: 0.00000
+==> val epoch 170 avg loss: 1.13569 (A-MSE: 0.98875) avg lploss: 0.00000
+==> test epoch 170 avg loss: 1.34899 (A-MSE: 1.17927) avg lploss: 0.00000
+*** Best Val Loss: 1.06907 	 Best Test Loss: 1.26608 	 Best epoch 160
+EarlyStopping counter: 2 out of 50
+train epoch 171 avg loss: 0.90120 (A-MSE: 0.79954) avg lploss: 0.00000
+train epoch 172 avg loss: 0.94310 (A-MSE: 0.82726) avg lploss: 0.00000
+train epoch 173 avg loss: 0.94283 (A-MSE: 0.83131) avg lploss: 0.00000
+train epoch 174 avg loss: 0.87284 (A-MSE: 0.76826) avg lploss: 0.00000
+train epoch 175 avg loss: 0.91710 (A-MSE: 0.80906) avg lploss: 0.00000
+==> val epoch 175 avg loss: 1.08219 (A-MSE: 0.94959) avg lploss: 0.00000
+==> test epoch 175 avg loss: 1.24194 (A-MSE: 1.08989) avg lploss: 0.00000
+*** Best Val Loss: 1.06907 	 Best Test Loss: 1.26608 	 Best epoch 160
+EarlyStopping counter: 3 out of 50
+train epoch 176 avg loss: 0.82752 (A-MSE: 0.73248) avg lploss: 0.00000
+train epoch 177 avg loss: 0.80776 (A-MSE: 0.71446) avg lploss: 0.00000
+train epoch 178 avg loss: 0.79492 (A-MSE: 0.70385) avg lploss: 0.00000
+train epoch 179 avg loss: 0.84029 (A-MSE: 0.73775) avg lploss: 0.00000
+train epoch 180 avg loss: 0.84599 (A-MSE: 0.75041) avg lploss: 0.00000
+==> val epoch 180 avg loss: 1.29009 (A-MSE: 1.12573) avg lploss: 0.00000
+==> test epoch 180 avg loss: 1.53180 (A-MSE: 1.34253) avg lploss: 0.00000
+*** Best Val Loss: 1.06907 	 Best Test Loss: 1.26608 	 Best epoch 160
+EarlyStopping counter: 4 out of 50
+train epoch 181 avg loss: 0.85536 (A-MSE: 0.75652) avg lploss: 0.00000
+train epoch 182 avg loss: 0.79764 (A-MSE: 0.70041) avg lploss: 0.00000
+train epoch 183 avg loss: 0.76873 (A-MSE: 0.67942) avg lploss: 0.00000
+train epoch 184 avg loss: 0.96816 (A-MSE: 0.85085) avg lploss: 0.00000
+train epoch 185 avg loss: 0.82180 (A-MSE: 0.72620) avg lploss: 0.00000
+==> val epoch 185 avg loss: 1.01883 (A-MSE: 0.87901) avg lploss: 0.00000
+==> test epoch 185 avg loss: 1.17067 (A-MSE: 1.01625) avg lploss: 0.00000
+*** Best Val Loss: 1.01883 	 Best Test Loss: 1.17067 	 Best epoch 185
+Validation loss decreased (1.069072 --> 1.018834).  Saving model ...
+train epoch 186 avg loss: 0.79609 (A-MSE: 0.69821) avg lploss: 0.00000
+train epoch 187 avg loss: 0.85125 (A-MSE: 0.75227) avg lploss: 0.00000
+train epoch 188 avg loss: 0.77010 (A-MSE: 0.68139) avg lploss: 0.00000
+train epoch 189 avg loss: 0.76462 (A-MSE: 0.67549) avg lploss: 0.00000
+train epoch 190 avg loss: 0.85597 (A-MSE: 0.75378) avg lploss: 0.00000
+==> val epoch 190 avg loss: 1.03117 (A-MSE: 0.90937) avg lploss: 0.00000
+==> test epoch 190 avg loss: 1.16797 (A-MSE: 1.03001) avg lploss: 0.00000
+*** Best Val Loss: 1.01883 	 Best Test Loss: 1.17067 	 Best epoch 185
+EarlyStopping counter: 1 out of 50
+train epoch 191 avg loss: 0.81857 (A-MSE: 0.72267) avg lploss: 0.00000
+train epoch 192 avg loss: 0.93106 (A-MSE: 0.81983) avg lploss: 0.00000
+train epoch 193 avg loss: 0.77597 (A-MSE: 0.68284) avg lploss: 0.00000
+train epoch 194 avg loss: 0.79880 (A-MSE: 0.70191) avg lploss: 0.00000
+train epoch 195 avg loss: 0.79298 (A-MSE: 0.69781) avg lploss: 0.00000
+==> val epoch 195 avg loss: 0.94055 (A-MSE: 0.81968) avg lploss: 0.00000
+==> test epoch 195 avg loss: 1.11919 (A-MSE: 0.97973) avg lploss: 0.00000
+*** Best Val Loss: 0.94055 	 Best Test Loss: 1.11919 	 Best epoch 195
+Validation loss decreased (1.018834 --> 0.940552).  Saving model ...
+train epoch 196 avg loss: 0.74815 (A-MSE: 0.65730) avg lploss: 0.00000
+train epoch 197 avg loss: 0.74490 (A-MSE: 0.65482) avg lploss: 0.00000
+train epoch 198 avg loss: 0.77536 (A-MSE: 0.68787) avg lploss: 0.00000
+train epoch 199 avg loss: 0.72748 (A-MSE: 0.64209) avg lploss: 0.00000
+train epoch 200 avg loss: 0.77014 (A-MSE: 0.67883) avg lploss: 0.00000
+==> val epoch 200 avg loss: 1.03589 (A-MSE: 0.91114) avg lploss: 0.00000
+==> test epoch 200 avg loss: 1.21729 (A-MSE: 1.07912) avg lploss: 0.00000
+*** Best Val Loss: 0.94055 	 Best Test Loss: 1.11919 	 Best epoch 195
+EarlyStopping counter: 1 out of 50
+train epoch 201 avg loss: 0.81219 (A-MSE: 0.71228) avg lploss: 0.00000
+train epoch 202 avg loss: 0.73829 (A-MSE: 0.65465) avg lploss: 0.00000
+train epoch 203 avg loss: 0.68969 (A-MSE: 0.60704) avg lploss: 0.00000
+train epoch 204 avg loss: 0.70814 (A-MSE: 0.62515) avg lploss: 0.00000
+train epoch 205 avg loss: 0.75893 (A-MSE: 0.67016) avg lploss: 0.00000
+==> val epoch 205 avg loss: 0.89041 (A-MSE: 0.78588) avg lploss: 0.00000
+==> test epoch 205 avg loss: 1.00594 (A-MSE: 0.88827) avg lploss: 0.00000
+*** Best Val Loss: 0.89041 	 Best Test Loss: 1.00594 	 Best epoch 205
+Validation loss decreased (0.940552 --> 0.890410).  Saving model ...
+train epoch 206 avg loss: 0.70371 (A-MSE: 0.61684) avg lploss: 0.00000
+train epoch 207 avg loss: 0.75191 (A-MSE: 0.66218) avg lploss: 0.00000
+train epoch 208 avg loss: 0.82818 (A-MSE: 0.72710) avg lploss: 0.00000
+train epoch 209 avg loss: 0.75693 (A-MSE: 0.66558) avg lploss: 0.00000
+train epoch 210 avg loss: 0.70037 (A-MSE: 0.61781) avg lploss: 0.00000
+==> val epoch 210 avg loss: 0.87106 (A-MSE: 0.75870) avg lploss: 0.00000
+==> test epoch 210 avg loss: 1.01650 (A-MSE: 0.89125) avg lploss: 0.00000
+*** Best Val Loss: 0.87106 	 Best Test Loss: 1.01650 	 Best epoch 210
+Validation loss decreased (0.890410 --> 0.871064).  Saving model ...
+train epoch 211 avg loss: 0.65889 (A-MSE: 0.58251) avg lploss: 0.00000
+train epoch 212 avg loss: 0.65592 (A-MSE: 0.58052) avg lploss: 0.00000
+train epoch 213 avg loss: 0.65058 (A-MSE: 0.57921) avg lploss: 0.00000
+train epoch 214 avg loss: 0.66287 (A-MSE: 0.58491) avg lploss: 0.00000
+train epoch 215 avg loss: 0.67111 (A-MSE: 0.59355) avg lploss: 0.00000
+==> val epoch 215 avg loss: 0.89505 (A-MSE: 0.77384) avg lploss: 0.00000
+==> test epoch 215 avg loss: 1.01807 (A-MSE: 0.88110) avg lploss: 0.00000
+*** Best Val Loss: 0.87106 	 Best Test Loss: 1.01650 	 Best epoch 210
+EarlyStopping counter: 1 out of 50
+train epoch 216 avg loss: 0.71008 (A-MSE: 0.62203) avg lploss: 0.00000
+train epoch 217 avg loss: 0.72282 (A-MSE: 0.64033) avg lploss: 0.00000
+train epoch 218 avg loss: 0.74208 (A-MSE: 0.65344) avg lploss: 0.00000
+train epoch 219 avg loss: 0.89645 (A-MSE: 0.79012) avg lploss: 0.00000
+train epoch 220 avg loss: 0.74218 (A-MSE: 0.65808) avg lploss: 0.00000
+==> val epoch 220 avg loss: 0.83225 (A-MSE: 0.71323) avg lploss: 0.00000
+==> test epoch 220 avg loss: 0.94746 (A-MSE: 0.82654) avg lploss: 0.00000
+*** Best Val Loss: 0.83225 	 Best Test Loss: 0.94746 	 Best epoch 220
+Validation loss decreased (0.871064 --> 0.832254).  Saving model ...
+train epoch 221 avg loss: 0.67436 (A-MSE: 0.59445) avg lploss: 0.00000
+train epoch 222 avg loss: 0.66948 (A-MSE: 0.58918) avg lploss: 0.00000
+train epoch 223 avg loss: 0.65990 (A-MSE: 0.58109) avg lploss: 0.00000
+train epoch 224 avg loss: 0.65037 (A-MSE: 0.57309) avg lploss: 0.00000
+train epoch 225 avg loss: 0.71235 (A-MSE: 0.62984) avg lploss: 0.00000
+==> val epoch 225 avg loss: 0.92689 (A-MSE: 0.78869) avg lploss: 0.00000
+==> test epoch 225 avg loss: 1.07931 (A-MSE: 0.92910) avg lploss: 0.00000
+*** Best Val Loss: 0.83225 	 Best Test Loss: 0.94746 	 Best epoch 220
+EarlyStopping counter: 1 out of 50
+train epoch 226 avg loss: 0.72801 (A-MSE: 0.64007) avg lploss: 0.00000
+train epoch 227 avg loss: 0.66590 (A-MSE: 0.58231) avg lploss: 0.00000
+train epoch 228 avg loss: 0.62737 (A-MSE: 0.55508) avg lploss: 0.00000
+train epoch 229 avg loss: 0.63137 (A-MSE: 0.55763) avg lploss: 0.00000
+train epoch 230 avg loss: 0.59730 (A-MSE: 0.52829) avg lploss: 0.00000
+==> val epoch 230 avg loss: 0.77426 (A-MSE: 0.66887) avg lploss: 0.00000
+==> test epoch 230 avg loss: 0.90945 (A-MSE: 0.79531) avg lploss: 0.00000
+*** Best Val Loss: 0.77426 	 Best Test Loss: 0.90945 	 Best epoch 230
+Validation loss decreased (0.832254 --> 0.774258).  Saving model ...
+train epoch 231 avg loss: 0.58619 (A-MSE: 0.51347) avg lploss: 0.00000
+train epoch 232 avg loss: 0.66581 (A-MSE: 0.58927) avg lploss: 0.00000
+train epoch 233 avg loss: 0.60889 (A-MSE: 0.53943) avg lploss: 0.00000
+train epoch 234 avg loss: 0.61996 (A-MSE: 0.54776) avg lploss: 0.00000
+train epoch 235 avg loss: 0.58185 (A-MSE: 0.51204) avg lploss: 0.00000
+==> val epoch 235 avg loss: 0.74336 (A-MSE: 0.64823) avg lploss: 0.00000
+==> test epoch 235 avg loss: 0.86883 (A-MSE: 0.76398) avg lploss: 0.00000
+*** Best Val Loss: 0.74336 	 Best Test Loss: 0.86883 	 Best epoch 235
+Validation loss decreased (0.774258 --> 0.743359).  Saving model ...
+train epoch 236 avg loss: 0.64193 (A-MSE: 0.56484) avg lploss: 0.00000
+train epoch 237 avg loss: 0.65666 (A-MSE: 0.57972) avg lploss: 0.00000
+train epoch 238 avg loss: 0.58649 (A-MSE: 0.51587) avg lploss: 0.00000
+train epoch 239 avg loss: 0.61526 (A-MSE: 0.54518) avg lploss: 0.00000
+train epoch 240 avg loss: 0.66149 (A-MSE: 0.58454) avg lploss: 0.00000
+==> val epoch 240 avg loss: 0.84198 (A-MSE: 0.73142) avg lploss: 0.00000
+==> test epoch 240 avg loss: 0.96031 (A-MSE: 0.84298) avg lploss: 0.00000
+*** Best Val Loss: 0.74336 	 Best Test Loss: 0.86883 	 Best epoch 235
+EarlyStopping counter: 1 out of 50
+train epoch 241 avg loss: 0.64750 (A-MSE: 0.56970) avg lploss: 0.00000
+train epoch 242 avg loss: 0.61648 (A-MSE: 0.54134) avg lploss: 0.00000
+train epoch 243 avg loss: 0.62145 (A-MSE: 0.54628) avg lploss: 0.00000
+train epoch 244 avg loss: 0.61126 (A-MSE: 0.53973) avg lploss: 0.00000
+train epoch 245 avg loss: 0.63491 (A-MSE: 0.55932) avg lploss: 0.00000
+==> val epoch 245 avg loss: 0.75005 (A-MSE: 0.65739) avg lploss: 0.00000
+==> test epoch 245 avg loss: 0.86909 (A-MSE: 0.76666) avg lploss: 0.00000
+*** Best Val Loss: 0.74336 	 Best Test Loss: 0.86883 	 Best epoch 235
+EarlyStopping counter: 2 out of 50
+train epoch 246 avg loss: 0.61489 (A-MSE: 0.53866) avg lploss: 0.00000
+train epoch 247 avg loss: 0.60320 (A-MSE: 0.52772) avg lploss: 0.00000
+train epoch 248 avg loss: 0.57601 (A-MSE: 0.51248) avg lploss: 0.00000
+train epoch 249 avg loss: 0.58545 (A-MSE: 0.51505) avg lploss: 0.00000
+train epoch 250 avg loss: 0.58637 (A-MSE: 0.52017) avg lploss: 0.00000
+==> val epoch 250 avg loss: 0.72122 (A-MSE: 0.62528) avg lploss: 0.00000
+==> test epoch 250 avg loss: 0.82232 (A-MSE: 0.71695) avg lploss: 0.00000
+*** Best Val Loss: 0.72122 	 Best Test Loss: 0.82232 	 Best epoch 250
+Validation loss decreased (0.743359 --> 0.721222).  Saving model ...
+train epoch 251 avg loss: 0.55946 (A-MSE: 0.49326) avg lploss: 0.00000
+train epoch 252 avg loss: 0.60015 (A-MSE: 0.52739) avg lploss: 0.00000
+train epoch 253 avg loss: 0.58727 (A-MSE: 0.52104) avg lploss: 0.00000
+train epoch 254 avg loss: 0.58346 (A-MSE: 0.51660) avg lploss: 0.00000
+train epoch 255 avg loss: 0.53502 (A-MSE: 0.47271) avg lploss: 0.00000
+==> val epoch 255 avg loss: 0.77110 (A-MSE: 0.65867) avg lploss: 0.00000
+==> test epoch 255 avg loss: 0.86001 (A-MSE: 0.74268) avg lploss: 0.00000
+*** Best Val Loss: 0.72122 	 Best Test Loss: 0.82232 	 Best epoch 250
+EarlyStopping counter: 1 out of 50
+train epoch 256 avg loss: 0.53112 (A-MSE: 0.46644) avg lploss: 0.00000
+train epoch 257 avg loss: 0.61341 (A-MSE: 0.54232) avg lploss: 0.00000
+train epoch 258 avg loss: 0.69646 (A-MSE: 0.61349) avg lploss: 0.00000
+train epoch 259 avg loss: 0.59103 (A-MSE: 0.51924) avg lploss: 0.00000
+train epoch 260 avg loss: 0.55493 (A-MSE: 0.48659) avg lploss: 0.00000
+==> val epoch 260 avg loss: 0.81742 (A-MSE: 0.68728) avg lploss: 0.00000
+==> test epoch 260 avg loss: 0.94151 (A-MSE: 0.80529) avg lploss: 0.00000
+*** Best Val Loss: 0.72122 	 Best Test Loss: 0.82232 	 Best epoch 250
+EarlyStopping counter: 2 out of 50
+train epoch 261 avg loss: 0.51956 (A-MSE: 0.45643) avg lploss: 0.00000
+train epoch 262 avg loss: 0.58255 (A-MSE: 0.51904) avg lploss: 0.00000
+train epoch 263 avg loss: 0.70573 (A-MSE: 0.62257) avg lploss: 0.00000
+train epoch 264 avg loss: 0.66170 (A-MSE: 0.58381) avg lploss: 0.00000
+train epoch 265 avg loss: 0.58407 (A-MSE: 0.51875) avg lploss: 0.00000
+==> val epoch 265 avg loss: 0.72102 (A-MSE: 0.63341) avg lploss: 0.00000
+==> test epoch 265 avg loss: 0.83687 (A-MSE: 0.74337) avg lploss: 0.00000
+*** Best Val Loss: 0.72102 	 Best Test Loss: 0.83687 	 Best epoch 265
+Validation loss decreased (0.721222 --> 0.721017).  Saving model ...
+train epoch 266 avg loss: 0.53905 (A-MSE: 0.48064) avg lploss: 0.00000
+train epoch 267 avg loss: 0.52535 (A-MSE: 0.46137) avg lploss: 0.00000
+train epoch 268 avg loss: 0.52721 (A-MSE: 0.46475) avg lploss: 0.00000
+train epoch 269 avg loss: 0.50067 (A-MSE: 0.44238) avg lploss: 0.00000
+train epoch 270 avg loss: 0.62820 (A-MSE: 0.55572) avg lploss: 0.00000
+==> val epoch 270 avg loss: 0.76525 (A-MSE: 0.66822) avg lploss: 0.00000
+==> test epoch 270 avg loss: 0.88780 (A-MSE: 0.78202) avg lploss: 0.00000
+*** Best Val Loss: 0.72102 	 Best Test Loss: 0.83687 	 Best epoch 265
+EarlyStopping counter: 1 out of 50
+train epoch 271 avg loss: 0.53786 (A-MSE: 0.47469) avg lploss: 0.00000
+train epoch 272 avg loss: 0.52184 (A-MSE: 0.45950) avg lploss: 0.00000
+train epoch 273 avg loss: 0.53085 (A-MSE: 0.46606) avg lploss: 0.00000
+train epoch 274 avg loss: 0.51834 (A-MSE: 0.45401) avg lploss: 0.00000
+train epoch 275 avg loss: 0.53101 (A-MSE: 0.46880) avg lploss: 0.00000
+==> val epoch 275 avg loss: 0.82522 (A-MSE: 0.68615) avg lploss: 0.00000
+==> test epoch 275 avg loss: 0.94899 (A-MSE: 0.80083) avg lploss: 0.00000
+*** Best Val Loss: 0.72102 	 Best Test Loss: 0.83687 	 Best epoch 265
+EarlyStopping counter: 2 out of 50
+train epoch 276 avg loss: 0.51369 (A-MSE: 0.45073) avg lploss: 0.00000
+train epoch 277 avg loss: 0.50238 (A-MSE: 0.44553) avg lploss: 0.00000
+train epoch 278 avg loss: 0.48699 (A-MSE: 0.42786) avg lploss: 0.00000
+train epoch 279 avg loss: 0.54181 (A-MSE: 0.47524) avg lploss: 0.00000
+train epoch 280 avg loss: 0.59843 (A-MSE: 0.52637) avg lploss: 0.00000
+==> val epoch 280 avg loss: 0.67987 (A-MSE: 0.60214) avg lploss: 0.00000
+==> test epoch 280 avg loss: 0.80501 (A-MSE: 0.71597) avg lploss: 0.00000
+*** Best Val Loss: 0.67987 	 Best Test Loss: 0.80501 	 Best epoch 280
+Validation loss decreased (0.721017 --> 0.679871).  Saving model ...
+train epoch 281 avg loss: 0.57644 (A-MSE: 0.51033) avg lploss: 0.00000
+train epoch 282 avg loss: 0.53929 (A-MSE: 0.47601) avg lploss: 0.00000
+train epoch 283 avg loss: 0.52675 (A-MSE: 0.46429) avg lploss: 0.00000
+train epoch 284 avg loss: 0.52947 (A-MSE: 0.46723) avg lploss: 0.00000
+train epoch 285 avg loss: 0.52897 (A-MSE: 0.46409) avg lploss: 0.00000
+==> val epoch 285 avg loss: 0.71919 (A-MSE: 0.61448) avg lploss: 0.00000
+==> test epoch 285 avg loss: 0.80874 (A-MSE: 0.69673) avg lploss: 0.00000
+*** Best Val Loss: 0.67987 	 Best Test Loss: 0.80501 	 Best epoch 280
+EarlyStopping counter: 1 out of 50
+train epoch 286 avg loss: 0.54965 (A-MSE: 0.48480) avg lploss: 0.00000
+train epoch 287 avg loss: 0.50889 (A-MSE: 0.44854) avg lploss: 0.00000
+train epoch 288 avg loss: 0.55135 (A-MSE: 0.48451) avg lploss: 0.00000
+train epoch 289 avg loss: 0.53657 (A-MSE: 0.47139) avg lploss: 0.00000
+train epoch 290 avg loss: 0.47760 (A-MSE: 0.42506) avg lploss: 0.00000
+==> val epoch 290 avg loss: 0.69294 (A-MSE: 0.60734) avg lploss: 0.00000
+==> test epoch 290 avg loss: 0.76807 (A-MSE: 0.67814) avg lploss: 0.00000
+*** Best Val Loss: 0.67987 	 Best Test Loss: 0.80501 	 Best epoch 280
+EarlyStopping counter: 2 out of 50
+train epoch 291 avg loss: 0.50508 (A-MSE: 0.44352) avg lploss: 0.00000
+train epoch 292 avg loss: 0.46874 (A-MSE: 0.41128) avg lploss: 0.00000
+train epoch 293 avg loss: 0.48174 (A-MSE: 0.42617) avg lploss: 0.00000
+train epoch 294 avg loss: 0.45068 (A-MSE: 0.40006) avg lploss: 0.00000
+train epoch 295 avg loss: 0.46801 (A-MSE: 0.41108) avg lploss: 0.00000
+==> val epoch 295 avg loss: 0.57967 (A-MSE: 0.50689) avg lploss: 0.00000
+==> test epoch 295 avg loss: 0.66312 (A-MSE: 0.58601) avg lploss: 0.00000
+*** Best Val Loss: 0.57967 	 Best Test Loss: 0.66312 	 Best epoch 295
+Validation loss decreased (0.679871 --> 0.579666).  Saving model ...
+train epoch 296 avg loss: 0.47865 (A-MSE: 0.42449) avg lploss: 0.00000
+train epoch 297 avg loss: 0.54194 (A-MSE: 0.47530) avg lploss: 0.00000
+train epoch 298 avg loss: 0.47003 (A-MSE: 0.41754) avg lploss: 0.00000
+train epoch 299 avg loss: 0.45794 (A-MSE: 0.40099) avg lploss: 0.00000
+train epoch 300 avg loss: 0.46007 (A-MSE: 0.40829) avg lploss: 0.00000
+==> val epoch 300 avg loss: 0.75687 (A-MSE: 0.65524) avg lploss: 0.00000
+==> test epoch 300 avg loss: 0.79108 (A-MSE: 0.69446) avg lploss: 0.00000
+*** Best Val Loss: 0.57967 	 Best Test Loss: 0.66312 	 Best epoch 295
+EarlyStopping counter: 1 out of 50
+train epoch 301 avg loss: 0.47385 (A-MSE: 0.41585) avg lploss: 0.00000
+train epoch 302 avg loss: 0.45330 (A-MSE: 0.40106) avg lploss: 0.00000
+train epoch 303 avg loss: 0.48491 (A-MSE: 0.42752) avg lploss: 0.00000
+train epoch 304 avg loss: 0.48702 (A-MSE: 0.43150) avg lploss: 0.00000
+train epoch 305 avg loss: 0.47857 (A-MSE: 0.42399) avg lploss: 0.00000
+==> val epoch 305 avg loss: 0.61402 (A-MSE: 0.54255) avg lploss: 0.00000
+==> test epoch 305 avg loss: 0.70724 (A-MSE: 0.62968) avg lploss: 0.00000
+*** Best Val Loss: 0.57967 	 Best Test Loss: 0.66312 	 Best epoch 295
+EarlyStopping counter: 2 out of 50
+train epoch 306 avg loss: 0.47463 (A-MSE: 0.41710) avg lploss: 0.00000
+train epoch 307 avg loss: 0.47838 (A-MSE: 0.42403) avg lploss: 0.00000
+train epoch 308 avg loss: 0.49191 (A-MSE: 0.43400) avg lploss: 0.00000
+train epoch 309 avg loss: 0.51821 (A-MSE: 0.45501) avg lploss: 0.00000
+train epoch 310 avg loss: 0.46574 (A-MSE: 0.40866) avg lploss: 0.00000
+==> val epoch 310 avg loss: 0.67917 (A-MSE: 0.58812) avg lploss: 0.00000
+==> test epoch 310 avg loss: 0.73409 (A-MSE: 0.64223) avg lploss: 0.00000
+*** Best Val Loss: 0.57967 	 Best Test Loss: 0.66312 	 Best epoch 295
+EarlyStopping counter: 3 out of 50
+train epoch 311 avg loss: 0.49200 (A-MSE: 0.43338) avg lploss: 0.00000
+train epoch 312 avg loss: 0.46677 (A-MSE: 0.41204) avg lploss: 0.00000
+train epoch 313 avg loss: 0.46462 (A-MSE: 0.40772) avg lploss: 0.00000
+train epoch 314 avg loss: 0.46362 (A-MSE: 0.40714) avg lploss: 0.00000
+train epoch 315 avg loss: 0.44501 (A-MSE: 0.39068) avg lploss: 0.00000
+==> val epoch 315 avg loss: 0.59933 (A-MSE: 0.52810) avg lploss: 0.00000
+==> test epoch 315 avg loss: 0.70185 (A-MSE: 0.62833) avg lploss: 0.00000
+*** Best Val Loss: 0.57967 	 Best Test Loss: 0.66312 	 Best epoch 295
+EarlyStopping counter: 4 out of 50
+train epoch 316 avg loss: 0.47101 (A-MSE: 0.41633) avg lploss: 0.00000
+train epoch 317 avg loss: 0.43173 (A-MSE: 0.38087) avg lploss: 0.00000
+train epoch 318 avg loss: 0.41881 (A-MSE: 0.36991) avg lploss: 0.00000
+train epoch 319 avg loss: 0.42940 (A-MSE: 0.37683) avg lploss: 0.00000
+train epoch 320 avg loss: 0.44292 (A-MSE: 0.39158) avg lploss: 0.00000
+==> val epoch 320 avg loss: 0.60956 (A-MSE: 0.53227) avg lploss: 0.00000
+==> test epoch 320 avg loss: 0.68086 (A-MSE: 0.59522) avg lploss: 0.00000
+*** Best Val Loss: 0.57967 	 Best Test Loss: 0.66312 	 Best epoch 295
+EarlyStopping counter: 5 out of 50
+train epoch 321 avg loss: 0.41983 (A-MSE: 0.37045) avg lploss: 0.00000
+train epoch 322 avg loss: 0.41904 (A-MSE: 0.36834) avg lploss: 0.00000
+train epoch 323 avg loss: 0.40281 (A-MSE: 0.35344) avg lploss: 0.00000
+train epoch 324 avg loss: 0.39594 (A-MSE: 0.34889) avg lploss: 0.00000
+train epoch 325 avg loss: 0.46400 (A-MSE: 0.41244) avg lploss: 0.00000
+==> val epoch 325 avg loss: 0.64578 (A-MSE: 0.55994) avg lploss: 0.00000
+==> test epoch 325 avg loss: 0.67729 (A-MSE: 0.59451) avg lploss: 0.00000
+*** Best Val Loss: 0.57967 	 Best Test Loss: 0.66312 	 Best epoch 295
+EarlyStopping counter: 6 out of 50
+train epoch 326 avg loss: 0.47649 (A-MSE: 0.41647) avg lploss: 0.00000
+train epoch 327 avg loss: 0.42451 (A-MSE: 0.37804) avg lploss: 0.00000
+train epoch 328 avg loss: 0.41885 (A-MSE: 0.36902) avg lploss: 0.00000
+train epoch 329 avg loss: 0.39457 (A-MSE: 0.34786) avg lploss: 0.00000
+train epoch 330 avg loss: 0.42507 (A-MSE: 0.37624) avg lploss: 0.00000
+==> val epoch 330 avg loss: 0.70932 (A-MSE: 0.59468) avg lploss: 0.00000
+==> test epoch 330 avg loss: 0.77332 (A-MSE: 0.66230) avg lploss: 0.00000
+*** Best Val Loss: 0.57967 	 Best Test Loss: 0.66312 	 Best epoch 295
+EarlyStopping counter: 7 out of 50
+train epoch 331 avg loss: 0.46483 (A-MSE: 0.40593) avg lploss: 0.00000
+train epoch 332 avg loss: 0.43563 (A-MSE: 0.37917) avg lploss: 0.00000
+train epoch 333 avg loss: 0.43708 (A-MSE: 0.38688) avg lploss: 0.00000
+train epoch 334 avg loss: 0.37362 (A-MSE: 0.33373) avg lploss: 0.00000
+train epoch 335 avg loss: 0.42220 (A-MSE: 0.37695) avg lploss: 0.00000
+==> val epoch 335 avg loss: 0.57485 (A-MSE: 0.50478) avg lploss: 0.00000
+==> test epoch 335 avg loss: 0.62847 (A-MSE: 0.55627) avg lploss: 0.00000
+*** Best Val Loss: 0.57485 	 Best Test Loss: 0.62847 	 Best epoch 335
+Validation loss decreased (0.579666 --> 0.574848).  Saving model ...
+train epoch 336 avg loss: 0.41704 (A-MSE: 0.36788) avg lploss: 0.00000
+train epoch 337 avg loss: 0.42975 (A-MSE: 0.38027) avg lploss: 0.00000
+train epoch 338 avg loss: 0.45890 (A-MSE: 0.40311) avg lploss: 0.00000
+train epoch 339 avg loss: 0.51494 (A-MSE: 0.45262) avg lploss: 0.00000
+train epoch 340 avg loss: 0.48728 (A-MSE: 0.42972) avg lploss: 0.00000
+==> val epoch 340 avg loss: 0.62535 (A-MSE: 0.54165) avg lploss: 0.00000
+==> test epoch 340 avg loss: 0.65767 (A-MSE: 0.58313) avg lploss: 0.00000
+*** Best Val Loss: 0.57485 	 Best Test Loss: 0.62847 	 Best epoch 335
+EarlyStopping counter: 1 out of 50
+train epoch 341 avg loss: 0.42928 (A-MSE: 0.37684) avg lploss: 0.00000
+train epoch 342 avg loss: 0.40604 (A-MSE: 0.35783) avg lploss: 0.00000
+train epoch 343 avg loss: 0.37514 (A-MSE: 0.32990) avg lploss: 0.00000
+train epoch 344 avg loss: 0.36881 (A-MSE: 0.32658) avg lploss: 0.00000
+train epoch 345 avg loss: 0.40557 (A-MSE: 0.35695) avg lploss: 0.00000
+==> val epoch 345 avg loss: 0.62134 (A-MSE: 0.54009) avg lploss: 0.00000
+==> test epoch 345 avg loss: 0.68042 (A-MSE: 0.60013) avg lploss: 0.00000
+*** Best Val Loss: 0.57485 	 Best Test Loss: 0.62847 	 Best epoch 335
+EarlyStopping counter: 2 out of 50
+train epoch 346 avg loss: 0.48937 (A-MSE: 0.43290) avg lploss: 0.00000
+train epoch 347 avg loss: 0.43120 (A-MSE: 0.38007) avg lploss: 0.00000
+train epoch 348 avg loss: 0.41585 (A-MSE: 0.36530) avg lploss: 0.00000
+train epoch 349 avg loss: 0.40901 (A-MSE: 0.36067) avg lploss: 0.00000
+train epoch 350 avg loss: 0.41358 (A-MSE: 0.36458) avg lploss: 0.00000
+==> val epoch 350 avg loss: 0.69211 (A-MSE: 0.57705) avg lploss: 0.00000
+==> test epoch 350 avg loss: 0.74322 (A-MSE: 0.62830) avg lploss: 0.00000
+*** Best Val Loss: 0.57485 	 Best Test Loss: 0.62847 	 Best epoch 335
+EarlyStopping counter: 3 out of 50
+train epoch 351 avg loss: 0.48246 (A-MSE: 0.42579) avg lploss: 0.00000
+train epoch 352 avg loss: 0.47865 (A-MSE: 0.41984) avg lploss: 0.00000
+train epoch 353 avg loss: 0.39500 (A-MSE: 0.34738) avg lploss: 0.00000
+train epoch 354 avg loss: 0.39701 (A-MSE: 0.35003) avg lploss: 0.00000
+train epoch 355 avg loss: 0.41104 (A-MSE: 0.36460) avg lploss: 0.00000
+==> val epoch 355 avg loss: 0.75267 (A-MSE: 0.64549) avg lploss: 0.00000
+==> test epoch 355 avg loss: 0.81107 (A-MSE: 0.70262) avg lploss: 0.00000
+*** Best Val Loss: 0.57485 	 Best Test Loss: 0.62847 	 Best epoch 335
+EarlyStopping counter: 4 out of 50
+train epoch 356 avg loss: 0.38686 (A-MSE: 0.34390) avg lploss: 0.00000
+train epoch 357 avg loss: 0.36604 (A-MSE: 0.32454) avg lploss: 0.00000
+train epoch 358 avg loss: 0.40058 (A-MSE: 0.35218) avg lploss: 0.00000
+train epoch 359 avg loss: 0.43962 (A-MSE: 0.38813) avg lploss: 0.00000
+train epoch 360 avg loss: 0.39188 (A-MSE: 0.34412) avg lploss: 0.00000
+==> val epoch 360 avg loss: 0.57349 (A-MSE: 0.49827) avg lploss: 0.00000
+==> test epoch 360 avg loss: 0.63306 (A-MSE: 0.56012) avg lploss: 0.00000
+*** Best Val Loss: 0.57349 	 Best Test Loss: 0.63306 	 Best epoch 360
+Validation loss decreased (0.574848 --> 0.573492).  Saving model ...
+train epoch 361 avg loss: 0.35864 (A-MSE: 0.31596) avg lploss: 0.00000
+train epoch 362 avg loss: 0.37591 (A-MSE: 0.33137) avg lploss: 0.00000
+train epoch 363 avg loss: 0.39318 (A-MSE: 0.34451) avg lploss: 0.00000
+train epoch 364 avg loss: 0.37401 (A-MSE: 0.33016) avg lploss: 0.00000
+train epoch 365 avg loss: 0.40209 (A-MSE: 0.35397) avg lploss: 0.00000
+==> val epoch 365 avg loss: 0.55044 (A-MSE: 0.48344) avg lploss: 0.00000
+==> test epoch 365 avg loss: 0.58263 (A-MSE: 0.51949) avg lploss: 0.00000
+*** Best Val Loss: 0.55044 	 Best Test Loss: 0.58263 	 Best epoch 365
+Validation loss decreased (0.573492 --> 0.550445).  Saving model ...
+train epoch 366 avg loss: 0.37844 (A-MSE: 0.33567) avg lploss: 0.00000
+train epoch 367 avg loss: 0.38013 (A-MSE: 0.33462) avg lploss: 0.00000
+train epoch 368 avg loss: 0.35715 (A-MSE: 0.31321) avg lploss: 0.00000
+train epoch 369 avg loss: 0.36494 (A-MSE: 0.32193) avg lploss: 0.00000
+train epoch 370 avg loss: 0.35243 (A-MSE: 0.31066) avg lploss: 0.00000
+==> val epoch 370 avg loss: 0.56494 (A-MSE: 0.48966) avg lploss: 0.00000
+==> test epoch 370 avg loss: 0.58514 (A-MSE: 0.51798) avg lploss: 0.00000
+*** Best Val Loss: 0.55044 	 Best Test Loss: 0.58263 	 Best epoch 365
+EarlyStopping counter: 1 out of 50
+train epoch 371 avg loss: 0.36154 (A-MSE: 0.31731) avg lploss: 0.00000
+train epoch 372 avg loss: 0.34785 (A-MSE: 0.30755) avg lploss: 0.00000
+train epoch 373 avg loss: 0.35702 (A-MSE: 0.31643) avg lploss: 0.00000
+train epoch 374 avg loss: 0.36028 (A-MSE: 0.31722) avg lploss: 0.00000
+train epoch 375 avg loss: 0.33889 (A-MSE: 0.30089) avg lploss: 0.00000
+==> val epoch 375 avg loss: 0.50119 (A-MSE: 0.43198) avg lploss: 0.00000
+==> test epoch 375 avg loss: 0.56543 (A-MSE: 0.49568) avg lploss: 0.00000
+*** Best Val Loss: 0.50119 	 Best Test Loss: 0.56543 	 Best epoch 375
+Validation loss decreased (0.550445 --> 0.501187).  Saving model ...
+train epoch 376 avg loss: 0.35625 (A-MSE: 0.31310) avg lploss: 0.00000
+train epoch 377 avg loss: 0.36048 (A-MSE: 0.32094) avg lploss: 0.00000
+train epoch 378 avg loss: 0.36867 (A-MSE: 0.32597) avg lploss: 0.00000
+train epoch 379 avg loss: 0.35390 (A-MSE: 0.31226) avg lploss: 0.00000
+train epoch 380 avg loss: 0.36456 (A-MSE: 0.31910) avg lploss: 0.00000
+==> val epoch 380 avg loss: 0.55738 (A-MSE: 0.47956) avg lploss: 0.00000
+==> test epoch 380 avg loss: 0.59075 (A-MSE: 0.51794) avg lploss: 0.00000
+*** Best Val Loss: 0.50119 	 Best Test Loss: 0.56543 	 Best epoch 375
+EarlyStopping counter: 1 out of 50
+train epoch 381 avg loss: 0.36433 (A-MSE: 0.32436) avg lploss: 0.00000
+train epoch 382 avg loss: 0.35731 (A-MSE: 0.31459) avg lploss: 0.00000
+train epoch 383 avg loss: 0.34111 (A-MSE: 0.30077) avg lploss: 0.00000
+train epoch 384 avg loss: 0.36713 (A-MSE: 0.32111) avg lploss: 0.00000
+train epoch 385 avg loss: 0.36241 (A-MSE: 0.32255) avg lploss: 0.00000
+==> val epoch 385 avg loss: 0.56971 (A-MSE: 0.49340) avg lploss: 0.00000
+==> test epoch 385 avg loss: 0.62396 (A-MSE: 0.54460) avg lploss: 0.00000
+*** Best Val Loss: 0.50119 	 Best Test Loss: 0.56543 	 Best epoch 375
+EarlyStopping counter: 2 out of 50
+train epoch 386 avg loss: 0.38959 (A-MSE: 0.34341) avg lploss: 0.00000
+train epoch 387 avg loss: 0.38718 (A-MSE: 0.34017) avg lploss: 0.00000
+train epoch 388 avg loss: 0.35698 (A-MSE: 0.31422) avg lploss: 0.00000
+train epoch 389 avg loss: 0.34310 (A-MSE: 0.30098) avg lploss: 0.00000
+train epoch 390 avg loss: 0.34024 (A-MSE: 0.30021) avg lploss: 0.00000
+==> val epoch 390 avg loss: 0.70270 (A-MSE: 0.61837) avg lploss: 0.00000
+==> test epoch 390 avg loss: 0.74333 (A-MSE: 0.66064) avg lploss: 0.00000
+*** Best Val Loss: 0.50119 	 Best Test Loss: 0.56543 	 Best epoch 375
+EarlyStopping counter: 3 out of 50
+train epoch 391 avg loss: 0.41285 (A-MSE: 0.36291) avg lploss: 0.00000
+train epoch 392 avg loss: 0.37828 (A-MSE: 0.33510) avg lploss: 0.00000
+train epoch 393 avg loss: 0.32854 (A-MSE: 0.29313) avg lploss: 0.00000
+train epoch 394 avg loss: 0.34716 (A-MSE: 0.30611) avg lploss: 0.00000
+train epoch 395 avg loss: 0.36990 (A-MSE: 0.32689) avg lploss: 0.00000
+==> val epoch 395 avg loss: 0.63750 (A-MSE: 0.56522) avg lploss: 0.00000
+==> test epoch 395 avg loss: 0.69636 (A-MSE: 0.61971) avg lploss: 0.00000
+*** Best Val Loss: 0.50119 	 Best Test Loss: 0.56543 	 Best epoch 375
+EarlyStopping counter: 4 out of 50
+train epoch 396 avg loss: 0.35966 (A-MSE: 0.31431) avg lploss: 0.00000
+train epoch 397 avg loss: 0.31379 (A-MSE: 0.27674) avg lploss: 0.00000
+train epoch 398 avg loss: 0.32381 (A-MSE: 0.28726) avg lploss: 0.00000
+train epoch 399 avg loss: 0.34333 (A-MSE: 0.30429) avg lploss: 0.00000
+train epoch 400 avg loss: 0.32118 (A-MSE: 0.28404) avg lploss: 0.00000
+==> val epoch 400 avg loss: 0.47178 (A-MSE: 0.40999) avg lploss: 0.00000
+==> test epoch 400 avg loss: 0.51518 (A-MSE: 0.45412) avg lploss: 0.00000
+*** Best Val Loss: 0.47178 	 Best Test Loss: 0.51518 	 Best epoch 400
+Validation loss decreased (0.501187 --> 0.471784).  Saving model ...
+train epoch 401 avg loss: 0.32992 (A-MSE: 0.28904) avg lploss: 0.00000
+train epoch 402 avg loss: 0.32947 (A-MSE: 0.28887) avg lploss: 0.00000
+train epoch 403 avg loss: 0.34124 (A-MSE: 0.30409) avg lploss: 0.00000
+train epoch 404 avg loss: 0.38723 (A-MSE: 0.33818) avg lploss: 0.00000
+train epoch 405 avg loss: 0.32766 (A-MSE: 0.28929) avg lploss: 0.00000
+==> val epoch 405 avg loss: 0.53579 (A-MSE: 0.46754) avg lploss: 0.00000
+==> test epoch 405 avg loss: 0.56981 (A-MSE: 0.50194) avg lploss: 0.00000
+*** Best Val Loss: 0.47178 	 Best Test Loss: 0.51518 	 Best epoch 400
+EarlyStopping counter: 1 out of 50
+train epoch 406 avg loss: 0.31833 (A-MSE: 0.27787) avg lploss: 0.00000
+train epoch 407 avg loss: 0.36379 (A-MSE: 0.32173) avg lploss: 0.00000
+train epoch 408 avg loss: 0.39841 (A-MSE: 0.34727) avg lploss: 0.00000
+train epoch 409 avg loss: 0.36788 (A-MSE: 0.32628) avg lploss: 0.00000
+train epoch 410 avg loss: 0.32159 (A-MSE: 0.28680) avg lploss: 0.00000
+==> val epoch 410 avg loss: 0.53645 (A-MSE: 0.47276) avg lploss: 0.00000
+==> test epoch 410 avg loss: 0.57167 (A-MSE: 0.50768) avg lploss: 0.00000
+*** Best Val Loss: 0.47178 	 Best Test Loss: 0.51518 	 Best epoch 400
+EarlyStopping counter: 2 out of 50
+train epoch 411 avg loss: 0.32563 (A-MSE: 0.28575) avg lploss: 0.00000
+train epoch 412 avg loss: 0.31999 (A-MSE: 0.28430) avg lploss: 0.00000
+train epoch 413 avg loss: 0.33127 (A-MSE: 0.28985) avg lploss: 0.00000
+train epoch 414 avg loss: 0.32214 (A-MSE: 0.28285) avg lploss: 0.00000
+train epoch 415 avg loss: 0.33663 (A-MSE: 0.29868) avg lploss: 0.00000
+==> val epoch 415 avg loss: 0.53702 (A-MSE: 0.46590) avg lploss: 0.00000
+==> test epoch 415 avg loss: 0.56707 (A-MSE: 0.49676) avg lploss: 0.00000
+*** Best Val Loss: 0.47178 	 Best Test Loss: 0.51518 	 Best epoch 400
+EarlyStopping counter: 3 out of 50
+train epoch 416 avg loss: 0.31511 (A-MSE: 0.27812) avg lploss: 0.00000
+train epoch 417 avg loss: 0.32377 (A-MSE: 0.28515) avg lploss: 0.00000
+train epoch 418 avg loss: 0.33663 (A-MSE: 0.29586) avg lploss: 0.00000
+train epoch 419 avg loss: 0.29308 (A-MSE: 0.25864) avg lploss: 0.00000
+train epoch 420 avg loss: 0.29050 (A-MSE: 0.25857) avg lploss: 0.00000
+==> val epoch 420 avg loss: 0.51220 (A-MSE: 0.44631) avg lploss: 0.00000
+==> test epoch 420 avg loss: 0.54706 (A-MSE: 0.48467) avg lploss: 0.00000
+*** Best Val Loss: 0.47178 	 Best Test Loss: 0.51518 	 Best epoch 400
+EarlyStopping counter: 4 out of 50
+train epoch 421 avg loss: 0.30219 (A-MSE: 0.26689) avg lploss: 0.00000
+train epoch 422 avg loss: 0.30365 (A-MSE: 0.26722) avg lploss: 0.00000
+train epoch 423 avg loss: 0.33213 (A-MSE: 0.29156) avg lploss: 0.00000
+train epoch 424 avg loss: 0.41375 (A-MSE: 0.36258) avg lploss: 0.00000
+train epoch 425 avg loss: 0.42435 (A-MSE: 0.36884) avg lploss: 0.00000
+==> val epoch 425 avg loss: 0.59778 (A-MSE: 0.50746) avg lploss: 0.00000
+==> test epoch 425 avg loss: 0.62394 (A-MSE: 0.54045) avg lploss: 0.00000
+*** Best Val Loss: 0.47178 	 Best Test Loss: 0.51518 	 Best epoch 400
+EarlyStopping counter: 5 out of 50
+train epoch 426 avg loss: 0.36309 (A-MSE: 0.32013) avg lploss: 0.00000
+train epoch 427 avg loss: 0.30049 (A-MSE: 0.26223) avg lploss: 0.00000
+train epoch 428 avg loss: 0.32582 (A-MSE: 0.28524) avg lploss: 0.00000
+train epoch 429 avg loss: 0.36352 (A-MSE: 0.32200) avg lploss: 0.00000
+train epoch 430 avg loss: 0.36002 (A-MSE: 0.31546) avg lploss: 0.00000
+==> val epoch 430 avg loss: 0.49533 (A-MSE: 0.43684) avg lploss: 0.00000
+==> test epoch 430 avg loss: 0.56252 (A-MSE: 0.50641) avg lploss: 0.00000
+*** Best Val Loss: 0.47178 	 Best Test Loss: 0.51518 	 Best epoch 400
+EarlyStopping counter: 6 out of 50
+train epoch 431 avg loss: 0.32680 (A-MSE: 0.28856) avg lploss: 0.00000
+train epoch 432 avg loss: 0.29856 (A-MSE: 0.26239) avg lploss: 0.00000
+train epoch 433 avg loss: 0.29664 (A-MSE: 0.26025) avg lploss: 0.00000
+train epoch 434 avg loss: 0.29499 (A-MSE: 0.26071) avg lploss: 0.00000
+train epoch 435 avg loss: 0.31612 (A-MSE: 0.27917) avg lploss: 0.00000
+==> val epoch 435 avg loss: 0.54911 (A-MSE: 0.47038) avg lploss: 0.00000
+==> test epoch 435 avg loss: 0.58442 (A-MSE: 0.51352) avg lploss: 0.00000
+*** Best Val Loss: 0.47178 	 Best Test Loss: 0.51518 	 Best epoch 400
+EarlyStopping counter: 7 out of 50
+train epoch 436 avg loss: 0.34737 (A-MSE: 0.30546) avg lploss: 0.00000
+train epoch 437 avg loss: 0.36094 (A-MSE: 0.31839) avg lploss: 0.00000
+train epoch 438 avg loss: 0.30010 (A-MSE: 0.26633) avg lploss: 0.00000
+train epoch 439 avg loss: 0.38212 (A-MSE: 0.33605) avg lploss: 0.00000
+train epoch 440 avg loss: 0.36643 (A-MSE: 0.32192) avg lploss: 0.00000
+==> val epoch 440 avg loss: 0.65546 (A-MSE: 0.56337) avg lploss: 0.00000
+==> test epoch 440 avg loss: 0.69235 (A-MSE: 0.60334) avg lploss: 0.00000
+*** Best Val Loss: 0.47178 	 Best Test Loss: 0.51518 	 Best epoch 400
+EarlyStopping counter: 8 out of 50
+train epoch 441 avg loss: 0.33130 (A-MSE: 0.28804) avg lploss: 0.00000
+train epoch 442 avg loss: 0.31521 (A-MSE: 0.27821) avg lploss: 0.00000
+train epoch 443 avg loss: 0.29728 (A-MSE: 0.26271) avg lploss: 0.00000
+train epoch 444 avg loss: 0.33647 (A-MSE: 0.29616) avg lploss: 0.00000
+train epoch 445 avg loss: 0.31695 (A-MSE: 0.28043) avg lploss: 0.00000
+==> val epoch 445 avg loss: 0.46338 (A-MSE: 0.40255) avg lploss: 0.00000
+==> test epoch 445 avg loss: 0.53274 (A-MSE: 0.46688) avg lploss: 0.00000
+*** Best Val Loss: 0.46338 	 Best Test Loss: 0.53274 	 Best epoch 445
+Validation loss decreased (0.471784 --> 0.463377).  Saving model ...
+train epoch 446 avg loss: 0.29107 (A-MSE: 0.25641) avg lploss: 0.00000
+train epoch 447 avg loss: 0.29208 (A-MSE: 0.25681) avg lploss: 0.00000
+train epoch 448 avg loss: 0.27667 (A-MSE: 0.24503) avg lploss: 0.00000
+train epoch 449 avg loss: 0.31774 (A-MSE: 0.27882) avg lploss: 0.00000
+train epoch 450 avg loss: 0.31500 (A-MSE: 0.27620) avg lploss: 0.00000
+==> val epoch 450 avg loss: 0.54803 (A-MSE: 0.48660) avg lploss: 0.00000
+==> test epoch 450 avg loss: 0.56682 (A-MSE: 0.50583) avg lploss: 0.00000
+*** Best Val Loss: 0.46338 	 Best Test Loss: 0.53274 	 Best epoch 445
+EarlyStopping counter: 1 out of 50
+train epoch 451 avg loss: 0.32006 (A-MSE: 0.28136) avg lploss: 0.00000
+train epoch 452 avg loss: 0.28848 (A-MSE: 0.25578) avg lploss: 0.00000
+train epoch 453 avg loss: 0.31788 (A-MSE: 0.28196) avg lploss: 0.00000
+train epoch 454 avg loss: 0.30309 (A-MSE: 0.26537) avg lploss: 0.00000
+train epoch 455 avg loss: 0.30432 (A-MSE: 0.26721) avg lploss: 0.00000
+==> val epoch 455 avg loss: 0.49261 (A-MSE: 0.42521) avg lploss: 0.00000
+==> test epoch 455 avg loss: 0.52146 (A-MSE: 0.45580) avg lploss: 0.00000
+*** Best Val Loss: 0.46338 	 Best Test Loss: 0.53274 	 Best epoch 445
+EarlyStopping counter: 2 out of 50
+train epoch 456 avg loss: 0.29427 (A-MSE: 0.25814) avg lploss: 0.00000
+train epoch 457 avg loss: 0.26844 (A-MSE: 0.23829) avg lploss: 0.00000
+train epoch 458 avg loss: 0.28376 (A-MSE: 0.25062) avg lploss: 0.00000
+train epoch 459 avg loss: 0.30720 (A-MSE: 0.26816) avg lploss: 0.00000
+train epoch 460 avg loss: 0.30270 (A-MSE: 0.26535) avg lploss: 0.00000
+==> val epoch 460 avg loss: 0.55713 (A-MSE: 0.47801) avg lploss: 0.00000
+==> test epoch 460 avg loss: 0.58055 (A-MSE: 0.50501) avg lploss: 0.00000
+*** Best Val Loss: 0.46338 	 Best Test Loss: 0.53274 	 Best epoch 445
+EarlyStopping counter: 3 out of 50
+train epoch 461 avg loss: 0.27945 (A-MSE: 0.24475) avg lploss: 0.00000
+train epoch 462 avg loss: 0.26828 (A-MSE: 0.23518) avg lploss: 0.00000
+train epoch 463 avg loss: 0.29065 (A-MSE: 0.25691) avg lploss: 0.00000
+train epoch 464 avg loss: 0.39135 (A-MSE: 0.34551) avg lploss: 0.00000
+train epoch 465 avg loss: 0.28946 (A-MSE: 0.25594) avg lploss: 0.00000
+==> val epoch 465 avg loss: 0.45686 (A-MSE: 0.40239) avg lploss: 0.00000
+==> test epoch 465 avg loss: 0.49013 (A-MSE: 0.44003) avg lploss: 0.00000
+*** Best Val Loss: 0.45686 	 Best Test Loss: 0.49013 	 Best epoch 465
+Validation loss decreased (0.463377 --> 0.456861).  Saving model ...
+train epoch 466 avg loss: 0.27614 (A-MSE: 0.24430) avg lploss: 0.00000
+train epoch 467 avg loss: 0.28859 (A-MSE: 0.25446) avg lploss: 0.00000
+train epoch 468 avg loss: 0.28087 (A-MSE: 0.24746) avg lploss: 0.00000
+train epoch 469 avg loss: 0.29769 (A-MSE: 0.26344) avg lploss: 0.00000
+train epoch 470 avg loss: 0.26151 (A-MSE: 0.22938) avg lploss: 0.00000
+==> val epoch 470 avg loss: 0.48879 (A-MSE: 0.43148) avg lploss: 0.00000
+==> test epoch 470 avg loss: 0.52147 (A-MSE: 0.46811) avg lploss: 0.00000
+*** Best Val Loss: 0.45686 	 Best Test Loss: 0.49013 	 Best epoch 465
+EarlyStopping counter: 1 out of 50
+train epoch 471 avg loss: 0.28924 (A-MSE: 0.25522) avg lploss: 0.00000
+train epoch 472 avg loss: 0.27778 (A-MSE: 0.24418) avg lploss: 0.00000
+train epoch 473 avg loss: 0.26976 (A-MSE: 0.23789) avg lploss: 0.00000
+train epoch 474 avg loss: 0.29902 (A-MSE: 0.26312) avg lploss: 0.00000
+train epoch 475 avg loss: 0.35882 (A-MSE: 0.31082) avg lploss: 0.00000
+==> val epoch 475 avg loss: 0.51203 (A-MSE: 0.44927) avg lploss: 0.00000
+==> test epoch 475 avg loss: 0.55282 (A-MSE: 0.48328) avg lploss: 0.00000
+*** Best Val Loss: 0.45686 	 Best Test Loss: 0.49013 	 Best epoch 465
+EarlyStopping counter: 2 out of 50
+train epoch 476 avg loss: 0.32660 (A-MSE: 0.28753) avg lploss: 0.00000
+train epoch 477 avg loss: 0.30129 (A-MSE: 0.26614) avg lploss: 0.00000
+train epoch 478 avg loss: 0.35505 (A-MSE: 0.31196) avg lploss: 0.00000
+train epoch 479 avg loss: 0.36308 (A-MSE: 0.32118) avg lploss: 0.00000
+train epoch 480 avg loss: 0.30975 (A-MSE: 0.27065) avg lploss: 0.00000
+==> val epoch 480 avg loss: 0.47564 (A-MSE: 0.41463) avg lploss: 0.00000
+==> test epoch 480 avg loss: 0.52167 (A-MSE: 0.46024) avg lploss: 0.00000
+*** Best Val Loss: 0.45686 	 Best Test Loss: 0.49013 	 Best epoch 465
+EarlyStopping counter: 3 out of 50
+train epoch 481 avg loss: 0.27362 (A-MSE: 0.23957) avg lploss: 0.00000
+train epoch 482 avg loss: 0.27269 (A-MSE: 0.23830) avg lploss: 0.00000
+train epoch 483 avg loss: 0.26540 (A-MSE: 0.23544) avg lploss: 0.00000
+train epoch 484 avg loss: 0.31825 (A-MSE: 0.27990) avg lploss: 0.00000
+train epoch 485 avg loss: 0.28776 (A-MSE: 0.25217) avg lploss: 0.00000
+==> val epoch 485 avg loss: 0.46926 (A-MSE: 0.41489) avg lploss: 0.00000
+==> test epoch 485 avg loss: 0.51313 (A-MSE: 0.46276) avg lploss: 0.00000
+*** Best Val Loss: 0.45686 	 Best Test Loss: 0.49013 	 Best epoch 465
+EarlyStopping counter: 4 out of 50
+train epoch 486 avg loss: 0.30650 (A-MSE: 0.26672) avg lploss: 0.00000
+train epoch 487 avg loss: 0.26774 (A-MSE: 0.23636) avg lploss: 0.00000
+train epoch 488 avg loss: 0.30919 (A-MSE: 0.27010) avg lploss: 0.00000
+train epoch 489 avg loss: 0.26244 (A-MSE: 0.23113) avg lploss: 0.00000
+train epoch 490 avg loss: 0.26175 (A-MSE: 0.23098) avg lploss: 0.00000
+==> val epoch 490 avg loss: 0.62876 (A-MSE: 0.54148) avg lploss: 0.00000
+==> test epoch 490 avg loss: 0.65240 (A-MSE: 0.56854) avg lploss: 0.00000
+*** Best Val Loss: 0.45686 	 Best Test Loss: 0.49013 	 Best epoch 465
+EarlyStopping counter: 5 out of 50
+train epoch 491 avg loss: 0.30384 (A-MSE: 0.26648) avg lploss: 0.00000
+train epoch 492 avg loss: 0.25901 (A-MSE: 0.22955) avg lploss: 0.00000
+train epoch 493 avg loss: 0.25597 (A-MSE: 0.22577) avg lploss: 0.00000
+train epoch 494 avg loss: 0.25748 (A-MSE: 0.22638) avg lploss: 0.00000
+train epoch 495 avg loss: 0.26524 (A-MSE: 0.23241) avg lploss: 0.00000
+==> val epoch 495 avg loss: 0.48298 (A-MSE: 0.41468) avg lploss: 0.00000
+==> test epoch 495 avg loss: 0.50935 (A-MSE: 0.44759) avg lploss: 0.00000
+*** Best Val Loss: 0.45686 	 Best Test Loss: 0.49013 	 Best epoch 465
+EarlyStopping counter: 6 out of 50
+train epoch 496 avg loss: 0.26549 (A-MSE: 0.23294) avg lploss: 0.00000
+train epoch 497 avg loss: 0.26864 (A-MSE: 0.23665) avg lploss: 0.00000
+train epoch 498 avg loss: 0.35897 (A-MSE: 0.31178) avg lploss: 0.00000
+train epoch 499 avg loss: 0.33022 (A-MSE: 0.29047) avg lploss: 0.00000
+train epoch 500 avg loss: 0.29892 (A-MSE: 0.26109) avg lploss: 0.00000
+==> val epoch 500 avg loss: 0.49609 (A-MSE: 0.45032) avg lploss: 0.00000
+==> test epoch 500 avg loss: 0.54283 (A-MSE: 0.50629) avg lploss: 0.00000
+*** Best Val Loss: 0.45686 	 Best Test Loss: 0.49013 	 Best epoch 465
+EarlyStopping counter: 7 out of 50
+train epoch 501 avg loss: 0.29685 (A-MSE: 0.26180) avg lploss: 0.00000
+train epoch 502 avg loss: 0.24363 (A-MSE: 0.21480) avg lploss: 0.00000
+train epoch 503 avg loss: 0.24869 (A-MSE: 0.22129) avg lploss: 0.00000
+train epoch 504 avg loss: 0.27675 (A-MSE: 0.24149) avg lploss: 0.00000
+train epoch 505 avg loss: 0.28460 (A-MSE: 0.25004) avg lploss: 0.00000
+==> val epoch 505 avg loss: 0.48299 (A-MSE: 0.40970) avg lploss: 0.00000
+==> test epoch 505 avg loss: 0.49419 (A-MSE: 0.43138) avg lploss: 0.00000
+*** Best Val Loss: 0.45686 	 Best Test Loss: 0.49013 	 Best epoch 465
+EarlyStopping counter: 8 out of 50
+train epoch 506 avg loss: 0.29252 (A-MSE: 0.25680) avg lploss: 0.00000
+train epoch 507 avg loss: 0.28983 (A-MSE: 0.25454) avg lploss: 0.00000
+train epoch 508 avg loss: 0.28324 (A-MSE: 0.24875) avg lploss: 0.00000
+train epoch 509 avg loss: 0.29999 (A-MSE: 0.26565) avg lploss: 0.00000
+train epoch 510 avg loss: 0.24697 (A-MSE: 0.21678) avg lploss: 0.00000
+==> val epoch 510 avg loss: 0.43082 (A-MSE: 0.37557) avg lploss: 0.00000
+==> test epoch 510 avg loss: 0.47991 (A-MSE: 0.42625) avg lploss: 0.00000
+*** Best Val Loss: 0.43082 	 Best Test Loss: 0.47991 	 Best epoch 510
+Validation loss decreased (0.456861 --> 0.430819).  Saving model ...
+train epoch 511 avg loss: 0.24329 (A-MSE: 0.21449) avg lploss: 0.00000
+train epoch 512 avg loss: 0.24911 (A-MSE: 0.21903) avg lploss: 0.00000
+train epoch 513 avg loss: 0.28012 (A-MSE: 0.24637) avg lploss: 0.00000
+train epoch 514 avg loss: 0.26276 (A-MSE: 0.23065) avg lploss: 0.00000
+train epoch 515 avg loss: 0.25557 (A-MSE: 0.22654) avg lploss: 0.00000
+==> val epoch 515 avg loss: 0.45580 (A-MSE: 0.39867) avg lploss: 0.00000
+==> test epoch 515 avg loss: 0.47743 (A-MSE: 0.42062) avg lploss: 0.00000
+*** Best Val Loss: 0.43082 	 Best Test Loss: 0.47991 	 Best epoch 510
+EarlyStopping counter: 1 out of 50
+train epoch 516 avg loss: 0.25271 (A-MSE: 0.22241) avg lploss: 0.00000
+train epoch 517 avg loss: 0.26843 (A-MSE: 0.23696) avg lploss: 0.00000
+train epoch 518 avg loss: 0.29746 (A-MSE: 0.25970) avg lploss: 0.00000
+train epoch 519 avg loss: 0.26695 (A-MSE: 0.23566) avg lploss: 0.00000
+train epoch 520 avg loss: 0.28347 (A-MSE: 0.24683) avg lploss: 0.00000
+==> val epoch 520 avg loss: 0.50397 (A-MSE: 0.42244) avg lploss: 0.00000
+==> test epoch 520 avg loss: 0.53792 (A-MSE: 0.46718) avg lploss: 0.00000
+*** Best Val Loss: 0.43082 	 Best Test Loss: 0.47991 	 Best epoch 510
+EarlyStopping counter: 2 out of 50
+train epoch 521 avg loss: 0.28555 (A-MSE: 0.25242) avg lploss: 0.00000
+train epoch 522 avg loss: 0.28088 (A-MSE: 0.24374) avg lploss: 0.00000
+train epoch 523 avg loss: 0.25772 (A-MSE: 0.22839) avg lploss: 0.00000
+train epoch 524 avg loss: 0.31155 (A-MSE: 0.27138) avg lploss: 0.00000
+train epoch 525 avg loss: 0.28226 (A-MSE: 0.24624) avg lploss: 0.00000
+==> val epoch 525 avg loss: 0.45789 (A-MSE: 0.40564) avg lploss: 0.00000
+==> test epoch 525 avg loss: 0.51534 (A-MSE: 0.46436) avg lploss: 0.00000
+*** Best Val Loss: 0.43082 	 Best Test Loss: 0.47991 	 Best epoch 510
+EarlyStopping counter: 3 out of 50
+train epoch 526 avg loss: 0.27161 (A-MSE: 0.24098) avg lploss: 0.00000
+train epoch 527 avg loss: 0.26791 (A-MSE: 0.23663) avg lploss: 0.00000
+train epoch 528 avg loss: 0.24320 (A-MSE: 0.21452) avg lploss: 0.00000
+train epoch 529 avg loss: 0.24930 (A-MSE: 0.21925) avg lploss: 0.00000
+train epoch 530 avg loss: 0.25620 (A-MSE: 0.22671) avg lploss: 0.00000
+==> val epoch 530 avg loss: 0.53271 (A-MSE: 0.45407) avg lploss: 0.00000
+==> test epoch 530 avg loss: 0.53746 (A-MSE: 0.46696) avg lploss: 0.00000
+*** Best Val Loss: 0.43082 	 Best Test Loss: 0.47991 	 Best epoch 510
+EarlyStopping counter: 4 out of 50
+train epoch 531 avg loss: 0.24945 (A-MSE: 0.22030) avg lploss: 0.00000
+train epoch 532 avg loss: 0.26344 (A-MSE: 0.23143) avg lploss: 0.00000
+train epoch 533 avg loss: 0.27295 (A-MSE: 0.23963) avg lploss: 0.00000
+train epoch 534 avg loss: 0.28084 (A-MSE: 0.24544) avg lploss: 0.00000
+train epoch 535 avg loss: 0.24909 (A-MSE: 0.21853) avg lploss: 0.00000
+==> val epoch 535 avg loss: 0.51245 (A-MSE: 0.43739) avg lploss: 0.00000
+==> test epoch 535 avg loss: 0.54459 (A-MSE: 0.47340) avg lploss: 0.00000
+*** Best Val Loss: 0.43082 	 Best Test Loss: 0.47991 	 Best epoch 510
+EarlyStopping counter: 5 out of 50
+train epoch 536 avg loss: 0.23021 (A-MSE: 0.20349) avg lploss: 0.00000
+train epoch 537 avg loss: 0.23006 (A-MSE: 0.20213) avg lploss: 0.00000
+train epoch 538 avg loss: 0.23924 (A-MSE: 0.21141) avg lploss: 0.00000
+train epoch 539 avg loss: 0.24664 (A-MSE: 0.21827) avg lploss: 0.00000
+train epoch 540 avg loss: 0.26973 (A-MSE: 0.23767) avg lploss: 0.00000
+==> val epoch 540 avg loss: 0.47581 (A-MSE: 0.40697) avg lploss: 0.00000
+==> test epoch 540 avg loss: 0.50050 (A-MSE: 0.44131) avg lploss: 0.00000
+*** Best Val Loss: 0.43082 	 Best Test Loss: 0.47991 	 Best epoch 510
+EarlyStopping counter: 6 out of 50
+train epoch 541 avg loss: 0.25136 (A-MSE: 0.22202) avg lploss: 0.00000
+train epoch 542 avg loss: 0.28441 (A-MSE: 0.24727) avg lploss: 0.00000
+train epoch 543 avg loss: 0.25794 (A-MSE: 0.22799) avg lploss: 0.00000
+train epoch 544 avg loss: 0.24391 (A-MSE: 0.21639) avg lploss: 0.00000
+train epoch 545 avg loss: 0.24063 (A-MSE: 0.21033) avg lploss: 0.00000
+==> val epoch 545 avg loss: 0.46157 (A-MSE: 0.40488) avg lploss: 0.00000
+==> test epoch 545 avg loss: 0.51369 (A-MSE: 0.45296) avg lploss: 0.00000
+*** Best Val Loss: 0.43082 	 Best Test Loss: 0.47991 	 Best epoch 510
+EarlyStopping counter: 7 out of 50
+train epoch 546 avg loss: 0.24507 (A-MSE: 0.21468) avg lploss: 0.00000
+train epoch 547 avg loss: 0.24675 (A-MSE: 0.21720) avg lploss: 0.00000
+train epoch 548 avg loss: 0.25130 (A-MSE: 0.22045) avg lploss: 0.00000
+train epoch 549 avg loss: 0.26080 (A-MSE: 0.23139) avg lploss: 0.00000
+train epoch 550 avg loss: 0.23906 (A-MSE: 0.21009) avg lploss: 0.00000
+==> val epoch 550 avg loss: 0.42128 (A-MSE: 0.37206) avg lploss: 0.00000
+==> test epoch 550 avg loss: 0.45887 (A-MSE: 0.40837) avg lploss: 0.00000
+*** Best Val Loss: 0.42128 	 Best Test Loss: 0.45887 	 Best epoch 550
+Validation loss decreased (0.430819 --> 0.421279).  Saving model ...
+train epoch 551 avg loss: 0.23781 (A-MSE: 0.21008) avg lploss: 0.00000
+train epoch 552 avg loss: 0.21583 (A-MSE: 0.19178) avg lploss: 0.00000
+train epoch 553 avg loss: 0.25811 (A-MSE: 0.22524) avg lploss: 0.00000
+train epoch 554 avg loss: 0.25625 (A-MSE: 0.22517) avg lploss: 0.00000
+train epoch 555 avg loss: 0.25475 (A-MSE: 0.22412) avg lploss: 0.00000
+==> val epoch 555 avg loss: 0.55243 (A-MSE: 0.47399) avg lploss: 0.00000
+==> test epoch 555 avg loss: 0.56993 (A-MSE: 0.49385) avg lploss: 0.00000
+*** Best Val Loss: 0.42128 	 Best Test Loss: 0.45887 	 Best epoch 550
+EarlyStopping counter: 1 out of 50
+train epoch 556 avg loss: 0.21385 (A-MSE: 0.18800) avg lploss: 0.00000
+train epoch 557 avg loss: 0.22927 (A-MSE: 0.20342) avg lploss: 0.00000
+train epoch 558 avg loss: 0.26411 (A-MSE: 0.23094) avg lploss: 0.00000
+train epoch 559 avg loss: 0.22727 (A-MSE: 0.20119) avg lploss: 0.00000
+train epoch 560 avg loss: 0.22558 (A-MSE: 0.20000) avg lploss: 0.00000
+==> val epoch 560 avg loss: 0.50348 (A-MSE: 0.42098) avg lploss: 0.00000
+==> test epoch 560 avg loss: 0.50630 (A-MSE: 0.43254) avg lploss: 0.00000
+*** Best Val Loss: 0.42128 	 Best Test Loss: 0.45887 	 Best epoch 550
+EarlyStopping counter: 2 out of 50
+train epoch 561 avg loss: 0.20677 (A-MSE: 0.18148) avg lploss: 0.00000
+train epoch 562 avg loss: 0.20859 (A-MSE: 0.18433) avg lploss: 0.00000
+train epoch 563 avg loss: 0.23375 (A-MSE: 0.20501) avg lploss: 0.00000
+train epoch 564 avg loss: 0.24672 (A-MSE: 0.21693) avg lploss: 0.00000
+train epoch 565 avg loss: 0.23936 (A-MSE: 0.21039) avg lploss: 0.00000
+==> val epoch 565 avg loss: 0.50850 (A-MSE: 0.43919) avg lploss: 0.00000
+==> test epoch 565 avg loss: 0.49675 (A-MSE: 0.43297) avg lploss: 0.00000
+*** Best Val Loss: 0.42128 	 Best Test Loss: 0.45887 	 Best epoch 550
+EarlyStopping counter: 3 out of 50
+train epoch 566 avg loss: 0.23998 (A-MSE: 0.21123) avg lploss: 0.00000
+train epoch 567 avg loss: 0.21867 (A-MSE: 0.19148) avg lploss: 0.00000
+train epoch 568 avg loss: 0.21804 (A-MSE: 0.19175) avg lploss: 0.00000
+train epoch 569 avg loss: 0.22624 (A-MSE: 0.20087) avg lploss: 0.00000
+train epoch 570 avg loss: 0.22828 (A-MSE: 0.20171) avg lploss: 0.00000
+==> val epoch 570 avg loss: 0.45376 (A-MSE: 0.40095) avg lploss: 0.00000
+==> test epoch 570 avg loss: 0.49999 (A-MSE: 0.44032) avg lploss: 0.00000
+*** Best Val Loss: 0.42128 	 Best Test Loss: 0.45887 	 Best epoch 550
+EarlyStopping counter: 4 out of 50
+train epoch 571 avg loss: 0.24960 (A-MSE: 0.22018) avg lploss: 0.00000
+train epoch 572 avg loss: 0.26055 (A-MSE: 0.22657) avg lploss: 0.00000
+train epoch 573 avg loss: 0.22662 (A-MSE: 0.20057) avg lploss: 0.00000
+train epoch 574 avg loss: 0.21577 (A-MSE: 0.19080) avg lploss: 0.00000
+train epoch 575 avg loss: 0.20248 (A-MSE: 0.17866) avg lploss: 0.00000
+==> val epoch 575 avg loss: 0.41950 (A-MSE: 0.36891) avg lploss: 0.00000
+==> test epoch 575 avg loss: 0.44936 (A-MSE: 0.40211) avg lploss: 0.00000
+*** Best Val Loss: 0.41950 	 Best Test Loss: 0.44936 	 Best epoch 575
+Validation loss decreased (0.421279 --> 0.419496).  Saving model ...
+train epoch 576 avg loss: 0.24997 (A-MSE: 0.22267) avg lploss: 0.00000
+train epoch 577 avg loss: 0.28153 (A-MSE: 0.24724) avg lploss: 0.00000
+train epoch 578 avg loss: 0.25545 (A-MSE: 0.22044) avg lploss: 0.00000
+train epoch 579 avg loss: 0.28236 (A-MSE: 0.24904) avg lploss: 0.00000
+train epoch 580 avg loss: 0.23398 (A-MSE: 0.20569) avg lploss: 0.00000
+==> val epoch 580 avg loss: 0.46471 (A-MSE: 0.40281) avg lploss: 0.00000
+==> test epoch 580 avg loss: 0.49098 (A-MSE: 0.43364) avg lploss: 0.00000
+*** Best Val Loss: 0.41950 	 Best Test Loss: 0.44936 	 Best epoch 575
+EarlyStopping counter: 1 out of 50
+train epoch 581 avg loss: 0.20895 (A-MSE: 0.18371) avg lploss: 0.00000
+train epoch 582 avg loss: 0.23680 (A-MSE: 0.20703) avg lploss: 0.00000
+train epoch 583 avg loss: 0.20598 (A-MSE: 0.18312) avg lploss: 0.00000
+train epoch 584 avg loss: 0.21888 (A-MSE: 0.19382) avg lploss: 0.00000
+train epoch 585 avg loss: 0.21043 (A-MSE: 0.18680) avg lploss: 0.00000
+==> val epoch 585 avg loss: 0.43960 (A-MSE: 0.38620) avg lploss: 0.00000
+==> test epoch 585 avg loss: 0.46353 (A-MSE: 0.40969) avg lploss: 0.00000
+*** Best Val Loss: 0.41950 	 Best Test Loss: 0.44936 	 Best epoch 575
+EarlyStopping counter: 2 out of 50
+train epoch 586 avg loss: 0.22631 (A-MSE: 0.20049) avg lploss: 0.00000
+train epoch 587 avg loss: 0.24771 (A-MSE: 0.21736) avg lploss: 0.00000
+train epoch 588 avg loss: 0.25897 (A-MSE: 0.22583) avg lploss: 0.00000
+train epoch 589 avg loss: 0.25084 (A-MSE: 0.22122) avg lploss: 0.00000
+train epoch 590 avg loss: 0.26412 (A-MSE: 0.23197) avg lploss: 0.00000
+==> val epoch 590 avg loss: 0.45558 (A-MSE: 0.39474) avg lploss: 0.00000
+==> test epoch 590 avg loss: 0.51139 (A-MSE: 0.44571) avg lploss: 0.00000
+*** Best Val Loss: 0.41950 	 Best Test Loss: 0.44936 	 Best epoch 575
+EarlyStopping counter: 3 out of 50
+train epoch 591 avg loss: 0.23636 (A-MSE: 0.20778) avg lploss: 0.00000
+train epoch 592 avg loss: 0.20345 (A-MSE: 0.17850) avg lploss: 0.00000
+train epoch 593 avg loss: 0.20326 (A-MSE: 0.17892) avg lploss: 0.00000
+train epoch 594 avg loss: 0.19740 (A-MSE: 0.17311) avg lploss: 0.00000
+train epoch 595 avg loss: 0.21834 (A-MSE: 0.19279) avg lploss: 0.00000
+==> val epoch 595 avg loss: 0.40301 (A-MSE: 0.35424) avg lploss: 0.00000
+==> test epoch 595 avg loss: 0.44363 (A-MSE: 0.39609) avg lploss: 0.00000
+*** Best Val Loss: 0.40301 	 Best Test Loss: 0.44363 	 Best epoch 595
+Validation loss decreased (0.419496 --> 0.403010).  Saving model ...
+train epoch 596 avg loss: 0.20432 (A-MSE: 0.17945) avg lploss: 0.00000
+train epoch 597 avg loss: 0.21064 (A-MSE: 0.18445) avg lploss: 0.00000
+train epoch 598 avg loss: 0.22572 (A-MSE: 0.19785) avg lploss: 0.00000
+train epoch 599 avg loss: 0.24809 (A-MSE: 0.22255) avg lploss: 0.00000
+train epoch 600 avg loss: 0.23749 (A-MSE: 0.20856) avg lploss: 0.00000
+==> val epoch 600 avg loss: 0.51914 (A-MSE: 0.44798) avg lploss: 0.00000
+==> test epoch 600 avg loss: 0.53372 (A-MSE: 0.46376) avg lploss: 0.00000
+*** Best Val Loss: 0.40301 	 Best Test Loss: 0.44363 	 Best epoch 595
+EarlyStopping counter: 1 out of 50
+train epoch 601 avg loss: 0.22074 (A-MSE: 0.19435) avg lploss: 0.00000
+train epoch 602 avg loss: 0.24312 (A-MSE: 0.21416) avg lploss: 0.00000
+train epoch 603 avg loss: 0.25424 (A-MSE: 0.22286) avg lploss: 0.00000
+train epoch 604 avg loss: 0.20881 (A-MSE: 0.18286) avg lploss: 0.00000
+train epoch 605 avg loss: 0.19472 (A-MSE: 0.17095) avg lploss: 0.00000
+==> val epoch 605 avg loss: 0.49540 (A-MSE: 0.42322) avg lploss: 0.00000
+==> test epoch 605 avg loss: 0.50459 (A-MSE: 0.43708) avg lploss: 0.00000
+*** Best Val Loss: 0.40301 	 Best Test Loss: 0.44363 	 Best epoch 595
+EarlyStopping counter: 2 out of 50
+train epoch 606 avg loss: 0.20602 (A-MSE: 0.18064) avg lploss: 0.00000
+train epoch 607 avg loss: 0.23429 (A-MSE: 0.20567) avg lploss: 0.00000
+train epoch 608 avg loss: 0.20821 (A-MSE: 0.18346) avg lploss: 0.00000
+train epoch 609 avg loss: 0.23679 (A-MSE: 0.20713) avg lploss: 0.00000
+train epoch 610 avg loss: 0.24543 (A-MSE: 0.21520) avg lploss: 0.00000
+==> val epoch 610 avg loss: 0.43917 (A-MSE: 0.37801) avg lploss: 0.00000
+==> test epoch 610 avg loss: 0.46907 (A-MSE: 0.41809) avg lploss: 0.00000
+*** Best Val Loss: 0.40301 	 Best Test Loss: 0.44363 	 Best epoch 595
+EarlyStopping counter: 3 out of 50
+train epoch 611 avg loss: 0.21442 (A-MSE: 0.18784) avg lploss: 0.00000
+train epoch 612 avg loss: 0.19817 (A-MSE: 0.17336) avg lploss: 0.00000
+train epoch 613 avg loss: 0.19363 (A-MSE: 0.17137) avg lploss: 0.00000
+train epoch 614 avg loss: 0.19038 (A-MSE: 0.16807) avg lploss: 0.00000
+train epoch 615 avg loss: 0.19417 (A-MSE: 0.17104) avg lploss: 0.00000
+==> val epoch 615 avg loss: 0.40278 (A-MSE: 0.34663) avg lploss: 0.00000
+==> test epoch 615 avg loss: 0.43001 (A-MSE: 0.37861) avg lploss: 0.00000
+*** Best Val Loss: 0.40278 	 Best Test Loss: 0.43001 	 Best epoch 615
+Validation loss decreased (0.403010 --> 0.402781).  Saving model ...
+train epoch 616 avg loss: 0.20869 (A-MSE: 0.18294) avg lploss: 0.00000
+train epoch 617 avg loss: 0.21069 (A-MSE: 0.18676) avg lploss: 0.00000
+train epoch 618 avg loss: 0.21275 (A-MSE: 0.18750) avg lploss: 0.00000
+train epoch 619 avg loss: 0.19820 (A-MSE: 0.17451) avg lploss: 0.00000
+train epoch 620 avg loss: 0.19479 (A-MSE: 0.17278) avg lploss: 0.00000
+==> val epoch 620 avg loss: 0.39261 (A-MSE: 0.34241) avg lploss: 0.00000
+==> test epoch 620 avg loss: 0.41524 (A-MSE: 0.36648) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+Validation loss decreased (0.402781 --> 0.392607).  Saving model ...
+train epoch 621 avg loss: 0.19079 (A-MSE: 0.16876) avg lploss: 0.00000
+train epoch 622 avg loss: 0.22609 (A-MSE: 0.19919) avg lploss: 0.00000
+train epoch 623 avg loss: 0.21364 (A-MSE: 0.18790) avg lploss: 0.00000
+train epoch 624 avg loss: 0.20481 (A-MSE: 0.18037) avg lploss: 0.00000
+train epoch 625 avg loss: 0.25084 (A-MSE: 0.21971) avg lploss: 0.00000
+==> val epoch 625 avg loss: 0.42615 (A-MSE: 0.37140) avg lploss: 0.00000
+==> test epoch 625 avg loss: 0.46314 (A-MSE: 0.41110) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 1 out of 50
+train epoch 626 avg loss: 0.25765 (A-MSE: 0.22404) avg lploss: 0.00000
+train epoch 627 avg loss: 0.20958 (A-MSE: 0.18500) avg lploss: 0.00000
+train epoch 628 avg loss: 0.23401 (A-MSE: 0.20612) avg lploss: 0.00000
+train epoch 629 avg loss: 0.28185 (A-MSE: 0.24420) avg lploss: 0.00000
+train epoch 630 avg loss: 0.24918 (A-MSE: 0.21693) avg lploss: 0.00000
+==> val epoch 630 avg loss: 0.40698 (A-MSE: 0.35745) avg lploss: 0.00000
+==> test epoch 630 avg loss: 0.43732 (A-MSE: 0.39016) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 2 out of 50
+train epoch 631 avg loss: 0.20076 (A-MSE: 0.17773) avg lploss: 0.00000
+train epoch 632 avg loss: 0.21334 (A-MSE: 0.18793) avg lploss: 0.00000
+train epoch 633 avg loss: 0.20431 (A-MSE: 0.18104) avg lploss: 0.00000
+train epoch 634 avg loss: 0.19157 (A-MSE: 0.16890) avg lploss: 0.00000
+train epoch 635 avg loss: 0.20151 (A-MSE: 0.17762) avg lploss: 0.00000
+==> val epoch 635 avg loss: 0.39993 (A-MSE: 0.35338) avg lploss: 0.00000
+==> test epoch 635 avg loss: 0.43804 (A-MSE: 0.39147) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 3 out of 50
+train epoch 636 avg loss: 0.19657 (A-MSE: 0.17340) avg lploss: 0.00000
+train epoch 637 avg loss: 0.21561 (A-MSE: 0.18893) avg lploss: 0.00000
+train epoch 638 avg loss: 0.21898 (A-MSE: 0.19212) avg lploss: 0.00000
+train epoch 639 avg loss: 0.19572 (A-MSE: 0.17274) avg lploss: 0.00000
+train epoch 640 avg loss: 0.19572 (A-MSE: 0.17350) avg lploss: 0.00000
+==> val epoch 640 avg loss: 0.56779 (A-MSE: 0.47832) avg lploss: 0.00000
+==> test epoch 640 avg loss: 0.54934 (A-MSE: 0.47004) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 4 out of 50
+train epoch 641 avg loss: 0.20963 (A-MSE: 0.18485) avg lploss: 0.00000
+train epoch 642 avg loss: 0.17959 (A-MSE: 0.15794) avg lploss: 0.00000
+train epoch 643 avg loss: 0.19873 (A-MSE: 0.17375) avg lploss: 0.00000
+train epoch 644 avg loss: 0.22065 (A-MSE: 0.19241) avg lploss: 0.00000
+train epoch 645 avg loss: 0.22253 (A-MSE: 0.19309) avg lploss: 0.00000
+==> val epoch 645 avg loss: 0.42387 (A-MSE: 0.37019) avg lploss: 0.00000
+==> test epoch 645 avg loss: 0.45668 (A-MSE: 0.40490) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 5 out of 50
+train epoch 646 avg loss: 0.21775 (A-MSE: 0.19429) avg lploss: 0.00000
+train epoch 647 avg loss: 0.18805 (A-MSE: 0.16605) avg lploss: 0.00000
+train epoch 648 avg loss: 0.20492 (A-MSE: 0.18225) avg lploss: 0.00000
+train epoch 649 avg loss: 0.21095 (A-MSE: 0.18643) avg lploss: 0.00000
+train epoch 650 avg loss: 0.20928 (A-MSE: 0.18498) avg lploss: 0.00000
+==> val epoch 650 avg loss: 0.45068 (A-MSE: 0.39365) avg lploss: 0.00000
+==> test epoch 650 avg loss: 0.47503 (A-MSE: 0.41877) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 6 out of 50
+train epoch 651 avg loss: 0.19679 (A-MSE: 0.17364) avg lploss: 0.00000
+train epoch 652 avg loss: 0.19127 (A-MSE: 0.16801) avg lploss: 0.00000
+train epoch 653 avg loss: 0.20214 (A-MSE: 0.17767) avg lploss: 0.00000
+train epoch 654 avg loss: 0.18962 (A-MSE: 0.16767) avg lploss: 0.00000
+train epoch 655 avg loss: 0.18262 (A-MSE: 0.16207) avg lploss: 0.00000
+==> val epoch 655 avg loss: 0.45065 (A-MSE: 0.38336) avg lploss: 0.00000
+==> test epoch 655 avg loss: 0.43367 (A-MSE: 0.37843) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 7 out of 50
+train epoch 656 avg loss: 0.16781 (A-MSE: 0.14961) avg lploss: 0.00000
+train epoch 657 avg loss: 0.17668 (A-MSE: 0.15596) avg lploss: 0.00000
+train epoch 658 avg loss: 0.20685 (A-MSE: 0.18204) avg lploss: 0.00000
+train epoch 659 avg loss: 0.18788 (A-MSE: 0.16614) avg lploss: 0.00000
+train epoch 660 avg loss: 0.17038 (A-MSE: 0.14915) avg lploss: 0.00000
+==> val epoch 660 avg loss: 0.51029 (A-MSE: 0.43506) avg lploss: 0.00000
+==> test epoch 660 avg loss: 0.52269 (A-MSE: 0.45011) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 8 out of 50
+train epoch 661 avg loss: 0.23482 (A-MSE: 0.20577) avg lploss: 0.00000
+train epoch 662 avg loss: 0.21885 (A-MSE: 0.18974) avg lploss: 0.00000
+train epoch 663 avg loss: 0.19566 (A-MSE: 0.17450) avg lploss: 0.00000
+train epoch 664 avg loss: 0.19476 (A-MSE: 0.17199) avg lploss: 0.00000
+train epoch 665 avg loss: 0.19205 (A-MSE: 0.16848) avg lploss: 0.00000
+==> val epoch 665 avg loss: 0.55752 (A-MSE: 0.45952) avg lploss: 0.00000
+==> test epoch 665 avg loss: 0.52661 (A-MSE: 0.44246) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 9 out of 50
+train epoch 666 avg loss: 0.19986 (A-MSE: 0.17503) avg lploss: 0.00000
+train epoch 667 avg loss: 0.21173 (A-MSE: 0.18707) avg lploss: 0.00000
+train epoch 668 avg loss: 0.19889 (A-MSE: 0.17266) avg lploss: 0.00000
+train epoch 669 avg loss: 0.22464 (A-MSE: 0.19626) avg lploss: 0.00000
+train epoch 670 avg loss: 0.19759 (A-MSE: 0.17378) avg lploss: 0.00000
+==> val epoch 670 avg loss: 0.44516 (A-MSE: 0.38716) avg lploss: 0.00000
+==> test epoch 670 avg loss: 0.44972 (A-MSE: 0.39443) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 10 out of 50
+train epoch 671 avg loss: 0.20021 (A-MSE: 0.17629) avg lploss: 0.00000
+train epoch 672 avg loss: 0.18480 (A-MSE: 0.16275) avg lploss: 0.00000
+train epoch 673 avg loss: 0.18332 (A-MSE: 0.16207) avg lploss: 0.00000
+train epoch 674 avg loss: 0.17967 (A-MSE: 0.15832) avg lploss: 0.00000
+train epoch 675 avg loss: 0.16213 (A-MSE: 0.14365) avg lploss: 0.00000
+==> val epoch 675 avg loss: 0.43334 (A-MSE: 0.37265) avg lploss: 0.00000
+==> test epoch 675 avg loss: 0.42612 (A-MSE: 0.37454) avg lploss: 0.00000
+*** Best Val Loss: 0.39261 	 Best Test Loss: 0.41524 	 Best epoch 620
+EarlyStopping counter: 11 out of 50
+train epoch 676 avg loss: 0.16906 (A-MSE: 0.14883) avg lploss: 0.00000
+train epoch 677 avg loss: 0.18611 (A-MSE: 0.16364) avg lploss: 0.00000
+train epoch 678 avg loss: 0.18107 (A-MSE: 0.15943) avg lploss: 0.00000
+train epoch 679 avg loss: 0.17314 (A-MSE: 0.15315) avg lploss: 0.00000
+train epoch 680 avg loss: 0.19532 (A-MSE: 0.17249) avg lploss: 0.00000
+==> val epoch 680 avg loss: 0.38950 (A-MSE: 0.34444) avg lploss: 0.00000
+==> test epoch 680 avg loss: 0.43092 (A-MSE: 0.38314) avg lploss: 0.00000
+*** Best Val Loss: 0.38950 	 Best Test Loss: 0.43092 	 Best epoch 680
+Validation loss decreased (0.392607 --> 0.389503).  Saving model ...
+train epoch 681 avg loss: 0.20130 (A-MSE: 0.17726) avg lploss: 0.00000
+train epoch 682 avg loss: 0.19479 (A-MSE: 0.17174) avg lploss: 0.00000
+train epoch 683 avg loss: 0.18813 (A-MSE: 0.16643) avg lploss: 0.00000
+train epoch 684 avg loss: 0.22554 (A-MSE: 0.19746) avg lploss: 0.00000
+train epoch 685 avg loss: 0.21078 (A-MSE: 0.18410) avg lploss: 0.00000
+==> val epoch 685 avg loss: 0.40885 (A-MSE: 0.35391) avg lploss: 0.00000
+==> test epoch 685 avg loss: 0.40453 (A-MSE: 0.35710) avg lploss: 0.00000
+*** Best Val Loss: 0.38950 	 Best Test Loss: 0.43092 	 Best epoch 680
+EarlyStopping counter: 1 out of 50
+train epoch 686 avg loss: 0.18065 (A-MSE: 0.15812) avg lploss: 0.00000
+train epoch 687 avg loss: 0.16359 (A-MSE: 0.14385) avg lploss: 0.00000
+train epoch 688 avg loss: 0.17272 (A-MSE: 0.15211) avg lploss: 0.00000
+train epoch 689 avg loss: 0.18306 (A-MSE: 0.16142) avg lploss: 0.00000
+train epoch 690 avg loss: 0.16680 (A-MSE: 0.14810) avg lploss: 0.00000
+==> val epoch 690 avg loss: 0.39590 (A-MSE: 0.34706) avg lploss: 0.00000
+==> test epoch 690 avg loss: 0.41472 (A-MSE: 0.36203) avg lploss: 0.00000
+*** Best Val Loss: 0.38950 	 Best Test Loss: 0.43092 	 Best epoch 680
+EarlyStopping counter: 2 out of 50
+train epoch 691 avg loss: 0.17193 (A-MSE: 0.15170) avg lploss: 0.00000
+train epoch 692 avg loss: 0.19181 (A-MSE: 0.17009) avg lploss: 0.00000
+train epoch 693 avg loss: 0.18907 (A-MSE: 0.16549) avg lploss: 0.00000
+train epoch 694 avg loss: 0.19514 (A-MSE: 0.17123) avg lploss: 0.00000
+train epoch 695 avg loss: 0.18002 (A-MSE: 0.15896) avg lploss: 0.00000
+==> val epoch 695 avg loss: 0.47217 (A-MSE: 0.41413) avg lploss: 0.00000
+==> test epoch 695 avg loss: 0.43835 (A-MSE: 0.38630) avg lploss: 0.00000
+*** Best Val Loss: 0.38950 	 Best Test Loss: 0.43092 	 Best epoch 680
+EarlyStopping counter: 3 out of 50
+train epoch 696 avg loss: 0.17656 (A-MSE: 0.15643) avg lploss: 0.00000
+train epoch 697 avg loss: 0.17428 (A-MSE: 0.15343) avg lploss: 0.00000
+train epoch 698 avg loss: 0.18664 (A-MSE: 0.16322) avg lploss: 0.00000
+train epoch 699 avg loss: 0.19385 (A-MSE: 0.17005) avg lploss: 0.00000
+train epoch 700 avg loss: 0.15788 (A-MSE: 0.13969) avg lploss: 0.00000
+==> val epoch 700 avg loss: 0.38677 (A-MSE: 0.34069) avg lploss: 0.00000
+==> test epoch 700 avg loss: 0.39967 (A-MSE: 0.35445) avg lploss: 0.00000
+*** Best Val Loss: 0.38677 	 Best Test Loss: 0.39967 	 Best epoch 700
+Validation loss decreased (0.389503 --> 0.386768).  Saving model ...
+train epoch 701 avg loss: 0.16850 (A-MSE: 0.14914) avg lploss: 0.00000
+train epoch 702 avg loss: 0.16212 (A-MSE: 0.14331) avg lploss: 0.00000
+train epoch 703 avg loss: 0.16605 (A-MSE: 0.14672) avg lploss: 0.00000
+train epoch 704 avg loss: 0.17859 (A-MSE: 0.15771) avg lploss: 0.00000
+train epoch 705 avg loss: 0.16608 (A-MSE: 0.14604) avg lploss: 0.00000
+==> val epoch 705 avg loss: 0.37243 (A-MSE: 0.32643) avg lploss: 0.00000
+==> test epoch 705 avg loss: 0.38783 (A-MSE: 0.34305) avg lploss: 0.00000
+*** Best Val Loss: 0.37243 	 Best Test Loss: 0.38783 	 Best epoch 705
+Validation loss decreased (0.386768 --> 0.372430).  Saving model ...
+train epoch 706 avg loss: 0.16685 (A-MSE: 0.14711) avg lploss: 0.00000
+train epoch 707 avg loss: 0.19641 (A-MSE: 0.17245) avg lploss: 0.00000
+train epoch 708 avg loss: 0.23675 (A-MSE: 0.20890) avg lploss: 0.00000
+train epoch 709 avg loss: 0.27150 (A-MSE: 0.23692) avg lploss: 0.00000
+train epoch 710 avg loss: 0.19475 (A-MSE: 0.17017) avg lploss: 0.00000
+==> val epoch 710 avg loss: 0.41290 (A-MSE: 0.35670) avg lploss: 0.00000
+==> test epoch 710 avg loss: 0.43149 (A-MSE: 0.38013) avg lploss: 0.00000
+*** Best Val Loss: 0.37243 	 Best Test Loss: 0.38783 	 Best epoch 705
+EarlyStopping counter: 1 out of 50
+train epoch 711 avg loss: 0.16523 (A-MSE: 0.14589) avg lploss: 0.00000
+train epoch 712 avg loss: 0.17909 (A-MSE: 0.15820) avg lploss: 0.00000
+train epoch 713 avg loss: 0.17345 (A-MSE: 0.15380) avg lploss: 0.00000
+train epoch 714 avg loss: 0.17782 (A-MSE: 0.15660) avg lploss: 0.00000
+train epoch 715 avg loss: 0.18739 (A-MSE: 0.16615) avg lploss: 0.00000
+==> val epoch 715 avg loss: 0.47855 (A-MSE: 0.41948) avg lploss: 0.00000
+==> test epoch 715 avg loss: 0.50260 (A-MSE: 0.44305) avg lploss: 0.00000
+*** Best Val Loss: 0.37243 	 Best Test Loss: 0.38783 	 Best epoch 705
+EarlyStopping counter: 2 out of 50
+train epoch 716 avg loss: 0.19578 (A-MSE: 0.17398) avg lploss: 0.00000
+train epoch 717 avg loss: 0.19147 (A-MSE: 0.16786) avg lploss: 0.00000
+train epoch 718 avg loss: 0.18370 (A-MSE: 0.16214) avg lploss: 0.00000
+train epoch 719 avg loss: 0.19471 (A-MSE: 0.17071) avg lploss: 0.00000
+train epoch 720 avg loss: 0.21954 (A-MSE: 0.19160) avg lploss: 0.00000
+==> val epoch 720 avg loss: 0.36975 (A-MSE: 0.32311) avg lploss: 0.00000
+==> test epoch 720 avg loss: 0.40577 (A-MSE: 0.36795) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+Validation loss decreased (0.372430 --> 0.369754).  Saving model ...
+train epoch 721 avg loss: 0.18378 (A-MSE: 0.16354) avg lploss: 0.00000
+train epoch 722 avg loss: 0.18754 (A-MSE: 0.16368) avg lploss: 0.00000
+train epoch 723 avg loss: 0.18198 (A-MSE: 0.15974) avg lploss: 0.00000
+train epoch 724 avg loss: 0.18440 (A-MSE: 0.16255) avg lploss: 0.00000
+train epoch 725 avg loss: 0.17360 (A-MSE: 0.15352) avg lploss: 0.00000
+==> val epoch 725 avg loss: 0.42010 (A-MSE: 0.35921) avg lploss: 0.00000
+==> test epoch 725 avg loss: 0.40779 (A-MSE: 0.36010) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 1 out of 50
+train epoch 726 avg loss: 0.17909 (A-MSE: 0.15589) avg lploss: 0.00000
+train epoch 727 avg loss: 0.15956 (A-MSE: 0.14113) avg lploss: 0.00000
+train epoch 728 avg loss: 0.15479 (A-MSE: 0.13767) avg lploss: 0.00000
+train epoch 729 avg loss: 0.17546 (A-MSE: 0.15332) avg lploss: 0.00000
+train epoch 730 avg loss: 0.21941 (A-MSE: 0.19315) avg lploss: 0.00000
+==> val epoch 730 avg loss: 0.51084 (A-MSE: 0.44642) avg lploss: 0.00000
+==> test epoch 730 avg loss: 0.48456 (A-MSE: 0.42449) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 2 out of 50
+train epoch 731 avg loss: 0.22110 (A-MSE: 0.19427) avg lploss: 0.00000
+train epoch 732 avg loss: 0.15826 (A-MSE: 0.13980) avg lploss: 0.00000
+train epoch 733 avg loss: 0.17062 (A-MSE: 0.14994) avg lploss: 0.00000
+train epoch 734 avg loss: 0.17651 (A-MSE: 0.15477) avg lploss: 0.00000
+train epoch 735 avg loss: 0.15280 (A-MSE: 0.13497) avg lploss: 0.00000
+==> val epoch 735 avg loss: 0.38771 (A-MSE: 0.34686) avg lploss: 0.00000
+==> test epoch 735 avg loss: 0.40375 (A-MSE: 0.36123) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 3 out of 50
+train epoch 736 avg loss: 0.18154 (A-MSE: 0.15898) avg lploss: 0.00000
+train epoch 737 avg loss: 0.19583 (A-MSE: 0.17156) avg lploss: 0.00000
+train epoch 738 avg loss: 0.17311 (A-MSE: 0.15116) avg lploss: 0.00000
+train epoch 739 avg loss: 0.17503 (A-MSE: 0.15459) avg lploss: 0.00000
+train epoch 740 avg loss: 0.19652 (A-MSE: 0.17279) avg lploss: 0.00000
+==> val epoch 740 avg loss: 0.53399 (A-MSE: 0.43801) avg lploss: 0.00000
+==> test epoch 740 avg loss: 0.48669 (A-MSE: 0.40884) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 4 out of 50
+train epoch 741 avg loss: 0.20667 (A-MSE: 0.18164) avg lploss: 0.00000
+train epoch 742 avg loss: 0.20656 (A-MSE: 0.18166) avg lploss: 0.00000
+train epoch 743 avg loss: 0.22437 (A-MSE: 0.19813) avg lploss: 0.00000
+train epoch 744 avg loss: 0.17813 (A-MSE: 0.15629) avg lploss: 0.00000
+train epoch 745 avg loss: 0.15643 (A-MSE: 0.13777) avg lploss: 0.00000
+==> val epoch 745 avg loss: 0.42811 (A-MSE: 0.37631) avg lploss: 0.00000
+==> test epoch 745 avg loss: 0.42576 (A-MSE: 0.37682) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 5 out of 50
+train epoch 746 avg loss: 0.16883 (A-MSE: 0.14808) avg lploss: 0.00000
+train epoch 747 avg loss: 0.16775 (A-MSE: 0.14916) avg lploss: 0.00000
+train epoch 748 avg loss: 0.18880 (A-MSE: 0.16517) avg lploss: 0.00000
+train epoch 749 avg loss: 0.19086 (A-MSE: 0.16797) avg lploss: 0.00000
+train epoch 750 avg loss: 0.20770 (A-MSE: 0.18325) avg lploss: 0.00000
+==> val epoch 750 avg loss: 0.40014 (A-MSE: 0.35215) avg lploss: 0.00000
+==> test epoch 750 avg loss: 0.39776 (A-MSE: 0.35569) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 6 out of 50
+train epoch 751 avg loss: 0.17551 (A-MSE: 0.15332) avg lploss: 0.00000
+train epoch 752 avg loss: 0.16160 (A-MSE: 0.14270) avg lploss: 0.00000
+train epoch 753 avg loss: 0.15327 (A-MSE: 0.13474) avg lploss: 0.00000
+train epoch 754 avg loss: 0.14752 (A-MSE: 0.12957) avg lploss: 0.00000
+train epoch 755 avg loss: 0.13833 (A-MSE: 0.12137) avg lploss: 0.00000
+==> val epoch 755 avg loss: 0.46597 (A-MSE: 0.40920) avg lploss: 0.00000
+==> test epoch 755 avg loss: 0.44325 (A-MSE: 0.38846) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 7 out of 50
+train epoch 756 avg loss: 0.15705 (A-MSE: 0.13874) avg lploss: 0.00000
+train epoch 757 avg loss: 0.13582 (A-MSE: 0.12095) avg lploss: 0.00000
+train epoch 758 avg loss: 0.15824 (A-MSE: 0.13948) avg lploss: 0.00000
+train epoch 759 avg loss: 0.15979 (A-MSE: 0.14074) avg lploss: 0.00000
+train epoch 760 avg loss: 0.15751 (A-MSE: 0.13890) avg lploss: 0.00000
+==> val epoch 760 avg loss: 0.38320 (A-MSE: 0.33892) avg lploss: 0.00000
+==> test epoch 760 avg loss: 0.41125 (A-MSE: 0.36403) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 8 out of 50
+train epoch 761 avg loss: 0.18152 (A-MSE: 0.16033) avg lploss: 0.00000
+train epoch 762 avg loss: 0.15727 (A-MSE: 0.13944) avg lploss: 0.00000
+train epoch 763 avg loss: 0.16380 (A-MSE: 0.14268) avg lploss: 0.00000
+train epoch 764 avg loss: 0.16121 (A-MSE: 0.14160) avg lploss: 0.00000
+train epoch 765 avg loss: 0.17254 (A-MSE: 0.15295) avg lploss: 0.00000
+==> val epoch 765 avg loss: 0.39830 (A-MSE: 0.35287) avg lploss: 0.00000
+==> test epoch 765 avg loss: 0.39931 (A-MSE: 0.35561) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 9 out of 50
+train epoch 766 avg loss: 0.15507 (A-MSE: 0.13620) avg lploss: 0.00000
+train epoch 767 avg loss: 0.14184 (A-MSE: 0.12540) avg lploss: 0.00000
+train epoch 768 avg loss: 0.14470 (A-MSE: 0.12815) avg lploss: 0.00000
+train epoch 769 avg loss: 0.16194 (A-MSE: 0.14389) avg lploss: 0.00000
+train epoch 770 avg loss: 0.20931 (A-MSE: 0.18333) avg lploss: 0.00000
+==> val epoch 770 avg loss: 0.43155 (A-MSE: 0.37298) avg lploss: 0.00000
+==> test epoch 770 avg loss: 0.43829 (A-MSE: 0.38619) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 10 out of 50
+train epoch 771 avg loss: 0.17527 (A-MSE: 0.15547) avg lploss: 0.00000
+train epoch 772 avg loss: 0.15524 (A-MSE: 0.13656) avg lploss: 0.00000
+train epoch 773 avg loss: 0.14203 (A-MSE: 0.12675) avg lploss: 0.00000
+train epoch 774 avg loss: 0.14547 (A-MSE: 0.12799) avg lploss: 0.00000
+train epoch 775 avg loss: 0.17574 (A-MSE: 0.15537) avg lploss: 0.00000
+==> val epoch 775 avg loss: 0.51842 (A-MSE: 0.43907) avg lploss: 0.00000
+==> test epoch 775 avg loss: 0.49389 (A-MSE: 0.42157) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 11 out of 50
+train epoch 776 avg loss: 0.17968 (A-MSE: 0.15815) avg lploss: 0.00000
+train epoch 777 avg loss: 0.15575 (A-MSE: 0.13718) avg lploss: 0.00000
+train epoch 778 avg loss: 0.16257 (A-MSE: 0.14415) avg lploss: 0.00000
+train epoch 779 avg loss: 0.14997 (A-MSE: 0.13199) avg lploss: 0.00000
+train epoch 780 avg loss: 0.16331 (A-MSE: 0.14424) avg lploss: 0.00000
+==> val epoch 780 avg loss: 0.49256 (A-MSE: 0.42129) avg lploss: 0.00000
+==> test epoch 780 avg loss: 0.46508 (A-MSE: 0.40411) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 12 out of 50
+train epoch 781 avg loss: 0.15578 (A-MSE: 0.13681) avg lploss: 0.00000
+train epoch 782 avg loss: 0.14533 (A-MSE: 0.12760) avg lploss: 0.00000
+train epoch 783 avg loss: 0.14778 (A-MSE: 0.13010) avg lploss: 0.00000
+train epoch 784 avg loss: 0.13130 (A-MSE: 0.11629) avg lploss: 0.00000
+train epoch 785 avg loss: 0.14245 (A-MSE: 0.12513) avg lploss: 0.00000
+==> val epoch 785 avg loss: 0.41581 (A-MSE: 0.35627) avg lploss: 0.00000
+==> test epoch 785 avg loss: 0.38727 (A-MSE: 0.33935) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 13 out of 50
+train epoch 786 avg loss: 0.14460 (A-MSE: 0.12713) avg lploss: 0.00000
+train epoch 787 avg loss: 0.14475 (A-MSE: 0.12749) avg lploss: 0.00000
+train epoch 788 avg loss: 0.13932 (A-MSE: 0.12361) avg lploss: 0.00000
+train epoch 789 avg loss: 0.14239 (A-MSE: 0.12604) avg lploss: 0.00000
+train epoch 790 avg loss: 0.13374 (A-MSE: 0.11762) avg lploss: 0.00000
+==> val epoch 790 avg loss: 0.41602 (A-MSE: 0.36586) avg lploss: 0.00000
+==> test epoch 790 avg loss: 0.40490 (A-MSE: 0.36311) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 14 out of 50
+train epoch 791 avg loss: 0.14043 (A-MSE: 0.12436) avg lploss: 0.00000
+train epoch 792 avg loss: 0.15626 (A-MSE: 0.13788) avg lploss: 0.00000
+train epoch 793 avg loss: 0.16646 (A-MSE: 0.14772) avg lploss: 0.00000
+train epoch 794 avg loss: 0.15175 (A-MSE: 0.13438) avg lploss: 0.00000
+train epoch 795 avg loss: 0.15717 (A-MSE: 0.13715) avg lploss: 0.00000
+==> val epoch 795 avg loss: 0.37031 (A-MSE: 0.32921) avg lploss: 0.00000
+==> test epoch 795 avg loss: 0.37893 (A-MSE: 0.34120) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 15 out of 50
+train epoch 796 avg loss: 0.17561 (A-MSE: 0.15712) avg lploss: 0.00000
+train epoch 797 avg loss: 0.17759 (A-MSE: 0.15592) avg lploss: 0.00000
+train epoch 798 avg loss: 0.14966 (A-MSE: 0.13157) avg lploss: 0.00000
+train epoch 799 avg loss: 0.15806 (A-MSE: 0.14043) avg lploss: 0.00000
+train epoch 800 avg loss: 0.15674 (A-MSE: 0.13774) avg lploss: 0.00000
+==> val epoch 800 avg loss: 0.37773 (A-MSE: 0.33114) avg lploss: 0.00000
+==> test epoch 800 avg loss: 0.39955 (A-MSE: 0.35866) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 16 out of 50
+train epoch 801 avg loss: 0.16297 (A-MSE: 0.14411) avg lploss: 0.00000
+train epoch 802 avg loss: 0.16717 (A-MSE: 0.14698) avg lploss: 0.00000
+train epoch 803 avg loss: 0.14348 (A-MSE: 0.12719) avg lploss: 0.00000
+train epoch 804 avg loss: 0.15014 (A-MSE: 0.13276) avg lploss: 0.00000
+train epoch 805 avg loss: 0.14978 (A-MSE: 0.13283) avg lploss: 0.00000
+==> val epoch 805 avg loss: 0.39514 (A-MSE: 0.34473) avg lploss: 0.00000
+==> test epoch 805 avg loss: 0.38730 (A-MSE: 0.33898) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 17 out of 50
+train epoch 806 avg loss: 0.15484 (A-MSE: 0.13734) avg lploss: 0.00000
+train epoch 807 avg loss: 0.14078 (A-MSE: 0.12406) avg lploss: 0.00000
+train epoch 808 avg loss: 0.14740 (A-MSE: 0.13060) avg lploss: 0.00000
+train epoch 809 avg loss: 0.16487 (A-MSE: 0.14541) avg lploss: 0.00000
+train epoch 810 avg loss: 0.20281 (A-MSE: 0.17887) avg lploss: 0.00000
+==> val epoch 810 avg loss: 0.42253 (A-MSE: 0.37440) avg lploss: 0.00000
+==> test epoch 810 avg loss: 0.44899 (A-MSE: 0.39869) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 18 out of 50
+train epoch 811 avg loss: 0.16845 (A-MSE: 0.14663) avg lploss: 0.00000
+train epoch 812 avg loss: 0.16403 (A-MSE: 0.14394) avg lploss: 0.00000
+train epoch 813 avg loss: 0.14453 (A-MSE: 0.12724) avg lploss: 0.00000
+train epoch 814 avg loss: 0.14578 (A-MSE: 0.12790) avg lploss: 0.00000
+train epoch 815 avg loss: 0.15175 (A-MSE: 0.13353) avg lploss: 0.00000
+==> val epoch 815 avg loss: 0.51194 (A-MSE: 0.43727) avg lploss: 0.00000
+==> test epoch 815 avg loss: 0.48769 (A-MSE: 0.41844) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 19 out of 50
+train epoch 816 avg loss: 0.17061 (A-MSE: 0.14966) avg lploss: 0.00000
+train epoch 817 avg loss: 0.14835 (A-MSE: 0.13113) avg lploss: 0.00000
+train epoch 818 avg loss: 0.14302 (A-MSE: 0.12611) avg lploss: 0.00000
+train epoch 819 avg loss: 0.13535 (A-MSE: 0.11968) avg lploss: 0.00000
+train epoch 820 avg loss: 0.13623 (A-MSE: 0.12016) avg lploss: 0.00000
+==> val epoch 820 avg loss: 0.42858 (A-MSE: 0.37358) avg lploss: 0.00000
+==> test epoch 820 avg loss: 0.40745 (A-MSE: 0.35726) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 20 out of 50
+train epoch 821 avg loss: 0.17710 (A-MSE: 0.15694) avg lploss: 0.00000
+train epoch 822 avg loss: 0.18392 (A-MSE: 0.16393) avg lploss: 0.00000
+train epoch 823 avg loss: 0.16593 (A-MSE: 0.14782) avg lploss: 0.00000
+train epoch 824 avg loss: 0.16424 (A-MSE: 0.14416) avg lploss: 0.00000
+train epoch 825 avg loss: 0.17020 (A-MSE: 0.15062) avg lploss: 0.00000
+==> val epoch 825 avg loss: 0.41046 (A-MSE: 0.37355) avg lploss: 0.00000
+==> test epoch 825 avg loss: 0.39916 (A-MSE: 0.36020) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 21 out of 50
+train epoch 826 avg loss: 0.13569 (A-MSE: 0.11951) avg lploss: 0.00000
+train epoch 827 avg loss: 0.15673 (A-MSE: 0.13806) avg lploss: 0.00000
+train epoch 828 avg loss: 0.16813 (A-MSE: 0.14889) avg lploss: 0.00000
+train epoch 829 avg loss: 0.15395 (A-MSE: 0.13622) avg lploss: 0.00000
+train epoch 830 avg loss: 0.14460 (A-MSE: 0.12680) avg lploss: 0.00000
+==> val epoch 830 avg loss: 0.40465 (A-MSE: 0.35876) avg lploss: 0.00000
+==> test epoch 830 avg loss: 0.39980 (A-MSE: 0.35701) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 22 out of 50
+train epoch 831 avg loss: 0.15199 (A-MSE: 0.13467) avg lploss: 0.00000
+train epoch 832 avg loss: 0.16216 (A-MSE: 0.14423) avg lploss: 0.00000
+train epoch 833 avg loss: 0.15092 (A-MSE: 0.13395) avg lploss: 0.00000
+train epoch 834 avg loss: 0.14989 (A-MSE: 0.13235) avg lploss: 0.00000
+train epoch 835 avg loss: 0.14137 (A-MSE: 0.12325) avg lploss: 0.00000
+==> val epoch 835 avg loss: 0.42163 (A-MSE: 0.35759) avg lploss: 0.00000
+==> test epoch 835 avg loss: 0.40397 (A-MSE: 0.34696) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 23 out of 50
+train epoch 836 avg loss: 0.12715 (A-MSE: 0.11154) avg lploss: 0.00000
+train epoch 837 avg loss: 0.12797 (A-MSE: 0.11395) avg lploss: 0.00000
+train epoch 838 avg loss: 0.12804 (A-MSE: 0.11324) avg lploss: 0.00000
+train epoch 839 avg loss: 0.12827 (A-MSE: 0.11310) avg lploss: 0.00000
+train epoch 840 avg loss: 0.12513 (A-MSE: 0.11104) avg lploss: 0.00000
+==> val epoch 840 avg loss: 0.38182 (A-MSE: 0.33730) avg lploss: 0.00000
+==> test epoch 840 avg loss: 0.36823 (A-MSE: 0.32516) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 24 out of 50
+train epoch 841 avg loss: 0.12162 (A-MSE: 0.10704) avg lploss: 0.00000
+train epoch 842 avg loss: 0.13223 (A-MSE: 0.11651) avg lploss: 0.00000
+train epoch 843 avg loss: 0.12514 (A-MSE: 0.10986) avg lploss: 0.00000
+train epoch 844 avg loss: 0.13248 (A-MSE: 0.11694) avg lploss: 0.00000
+train epoch 845 avg loss: 0.13306 (A-MSE: 0.11695) avg lploss: 0.00000
+==> val epoch 845 avg loss: 0.38462 (A-MSE: 0.34092) avg lploss: 0.00000
+==> test epoch 845 avg loss: 0.36369 (A-MSE: 0.32236) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 25 out of 50
+train epoch 846 avg loss: 0.11383 (A-MSE: 0.10023) avg lploss: 0.00000
+train epoch 847 avg loss: 0.14325 (A-MSE: 0.12644) avg lploss: 0.00000
+train epoch 848 avg loss: 0.15327 (A-MSE: 0.13409) avg lploss: 0.00000
+train epoch 849 avg loss: 0.13609 (A-MSE: 0.12073) avg lploss: 0.00000
+train epoch 850 avg loss: 0.13102 (A-MSE: 0.11615) avg lploss: 0.00000
+==> val epoch 850 avg loss: 0.47642 (A-MSE: 0.42297) avg lploss: 0.00000
+==> test epoch 850 avg loss: 0.44195 (A-MSE: 0.39194) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 26 out of 50
+train epoch 851 avg loss: 0.14379 (A-MSE: 0.12721) avg lploss: 0.00000
+train epoch 852 avg loss: 0.15827 (A-MSE: 0.14000) avg lploss: 0.00000
+train epoch 853 avg loss: 0.14612 (A-MSE: 0.12957) avg lploss: 0.00000
+train epoch 854 avg loss: 0.13774 (A-MSE: 0.12162) avg lploss: 0.00000
+train epoch 855 avg loss: 0.14647 (A-MSE: 0.13030) avg lploss: 0.00000
+==> val epoch 855 avg loss: 0.39749 (A-MSE: 0.34115) avg lploss: 0.00000
+==> test epoch 855 avg loss: 0.38889 (A-MSE: 0.33737) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 27 out of 50
+train epoch 856 avg loss: 0.15430 (A-MSE: 0.13501) avg lploss: 0.00000
+train epoch 857 avg loss: 0.14445 (A-MSE: 0.12646) avg lploss: 0.00000
+train epoch 858 avg loss: 0.14629 (A-MSE: 0.12997) avg lploss: 0.00000
+train epoch 859 avg loss: 0.14876 (A-MSE: 0.13201) avg lploss: 0.00000
+train epoch 860 avg loss: 0.16250 (A-MSE: 0.14354) avg lploss: 0.00000
+==> val epoch 860 avg loss: 0.42363 (A-MSE: 0.37880) avg lploss: 0.00000
+==> test epoch 860 avg loss: 0.42507 (A-MSE: 0.37778) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 28 out of 50
+train epoch 861 avg loss: 0.14615 (A-MSE: 0.12775) avg lploss: 0.00000
+train epoch 862 avg loss: 0.15513 (A-MSE: 0.13773) avg lploss: 0.00000
+train epoch 863 avg loss: 0.13634 (A-MSE: 0.11957) avg lploss: 0.00000
+train epoch 864 avg loss: 0.12788 (A-MSE: 0.11359) avg lploss: 0.00000
+train epoch 865 avg loss: 0.14545 (A-MSE: 0.12755) avg lploss: 0.00000
+==> val epoch 865 avg loss: 0.39235 (A-MSE: 0.34361) avg lploss: 0.00000
+==> test epoch 865 avg loss: 0.38856 (A-MSE: 0.34166) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 29 out of 50
+train epoch 866 avg loss: 0.12893 (A-MSE: 0.11287) avg lploss: 0.00000
+train epoch 867 avg loss: 0.12898 (A-MSE: 0.11400) avg lploss: 0.00000
+train epoch 868 avg loss: 0.12551 (A-MSE: 0.11097) avg lploss: 0.00000
+train epoch 869 avg loss: 0.12368 (A-MSE: 0.10891) avg lploss: 0.00000
+train epoch 870 avg loss: 0.12192 (A-MSE: 0.10871) avg lploss: 0.00000
+==> val epoch 870 avg loss: 0.38389 (A-MSE: 0.33109) avg lploss: 0.00000
+==> test epoch 870 avg loss: 0.37013 (A-MSE: 0.32539) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 30 out of 50
+train epoch 871 avg loss: 0.11686 (A-MSE: 0.10280) avg lploss: 0.00000
+train epoch 872 avg loss: 0.12090 (A-MSE: 0.10533) avg lploss: 0.00000
+train epoch 873 avg loss: 0.12616 (A-MSE: 0.11129) avg lploss: 0.00000
+train epoch 874 avg loss: 0.13500 (A-MSE: 0.11921) avg lploss: 0.00000
+train epoch 875 avg loss: 0.12128 (A-MSE: 0.10786) avg lploss: 0.00000
+==> val epoch 875 avg loss: 0.40981 (A-MSE: 0.35290) avg lploss: 0.00000
+==> test epoch 875 avg loss: 0.37330 (A-MSE: 0.32322) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 31 out of 50
+train epoch 876 avg loss: 0.12840 (A-MSE: 0.11349) avg lploss: 0.00000
+train epoch 877 avg loss: 0.12727 (A-MSE: 0.11186) avg lploss: 0.00000
+train epoch 878 avg loss: 0.15326 (A-MSE: 0.13474) avg lploss: 0.00000
+train epoch 879 avg loss: 0.12747 (A-MSE: 0.11243) avg lploss: 0.00000
+train epoch 880 avg loss: 0.12724 (A-MSE: 0.11205) avg lploss: 0.00000
+==> val epoch 880 avg loss: 0.36982 (A-MSE: 0.32318) avg lploss: 0.00000
+==> test epoch 880 avg loss: 0.36323 (A-MSE: 0.32597) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 32 out of 50
+train epoch 881 avg loss: 0.18135 (A-MSE: 0.16070) avg lploss: 0.00000
+train epoch 882 avg loss: 0.15043 (A-MSE: 0.13225) avg lploss: 0.00000
+train epoch 883 avg loss: 0.16086 (A-MSE: 0.14318) avg lploss: 0.00000
+train epoch 884 avg loss: 0.13341 (A-MSE: 0.11678) avg lploss: 0.00000
+train epoch 885 avg loss: 0.11910 (A-MSE: 0.10505) avg lploss: 0.00000
+==> val epoch 885 avg loss: 0.38958 (A-MSE: 0.34162) avg lploss: 0.00000
+==> test epoch 885 avg loss: 0.38103 (A-MSE: 0.33653) avg lploss: 0.00000
+*** Best Val Loss: 0.36975 	 Best Test Loss: 0.40577 	 Best epoch 720
+EarlyStopping counter: 33 out of 50
+train epoch 886 avg loss: 0.11587 (A-MSE: 0.10227) avg lploss: 0.00000
+train epoch 887 avg loss: 0.10732 (A-MSE: 0.09604) avg lploss: 0.00000
+train epoch 888 avg loss: 0.10439 (A-MSE: 0.09339) avg lploss: 0.00000
+train epoch 889 avg loss: 0.11108 (A-MSE: 0.09883) avg lploss: 0.00000
+train epoch 890 avg loss: 0.10944 (A-MSE: 0.09735) avg lploss: 0.00000
+==> val epoch 890 avg loss: 0.35810 (A-MSE: 0.31248) avg lploss: 0.00000
+==> test epoch 890 avg loss: 0.34748 (A-MSE: 0.30998) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+Validation loss decreased (0.369754 --> 0.358096).  Saving model ...
+train epoch 891 avg loss: 0.13834 (A-MSE: 0.12145) avg lploss: 0.00000
+train epoch 892 avg loss: 0.12282 (A-MSE: 0.10865) avg lploss: 0.00000
+train epoch 893 avg loss: 0.12108 (A-MSE: 0.10660) avg lploss: 0.00000
+train epoch 894 avg loss: 0.12136 (A-MSE: 0.10742) avg lploss: 0.00000
+train epoch 895 avg loss: 0.16185 (A-MSE: 0.14343) avg lploss: 0.00000
+==> val epoch 895 avg loss: 0.38467 (A-MSE: 0.33318) avg lploss: 0.00000
+==> test epoch 895 avg loss: 0.36922 (A-MSE: 0.32735) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 1 out of 50
+train epoch 896 avg loss: 0.16340 (A-MSE: 0.14475) avg lploss: 0.00000
+train epoch 897 avg loss: 0.16248 (A-MSE: 0.14212) avg lploss: 0.00000
+train epoch 898 avg loss: 0.16187 (A-MSE: 0.14154) avg lploss: 0.00000
+train epoch 899 avg loss: 0.14446 (A-MSE: 0.12761) avg lploss: 0.00000
+train epoch 900 avg loss: 0.11247 (A-MSE: 0.09946) avg lploss: 0.00000
+==> val epoch 900 avg loss: 0.39635 (A-MSE: 0.35683) avg lploss: 0.00000
+==> test epoch 900 avg loss: 0.38208 (A-MSE: 0.34155) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 2 out of 50
+train epoch 901 avg loss: 0.10804 (A-MSE: 0.09545) avg lploss: 0.00000
+train epoch 902 avg loss: 0.11559 (A-MSE: 0.10151) avg lploss: 0.00000
+train epoch 903 avg loss: 0.12387 (A-MSE: 0.10949) avg lploss: 0.00000
+train epoch 904 avg loss: 0.12913 (A-MSE: 0.11533) avg lploss: 0.00000
+train epoch 905 avg loss: 0.13362 (A-MSE: 0.11945) avg lploss: 0.00000
+==> val epoch 905 avg loss: 0.38150 (A-MSE: 0.34075) avg lploss: 0.00000
+==> test epoch 905 avg loss: 0.37188 (A-MSE: 0.33253) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 3 out of 50
+train epoch 906 avg loss: 0.15203 (A-MSE: 0.13405) avg lploss: 0.00000
+train epoch 907 avg loss: 0.13815 (A-MSE: 0.12177) avg lploss: 0.00000
+train epoch 908 avg loss: 0.13592 (A-MSE: 0.11976) avg lploss: 0.00000
+train epoch 909 avg loss: 0.14063 (A-MSE: 0.12285) avg lploss: 0.00000
+train epoch 910 avg loss: 0.12644 (A-MSE: 0.11274) avg lploss: 0.00000
+==> val epoch 910 avg loss: 0.38426 (A-MSE: 0.33246) avg lploss: 0.00000
+==> test epoch 910 avg loss: 0.37476 (A-MSE: 0.32946) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 4 out of 50
+train epoch 911 avg loss: 0.13813 (A-MSE: 0.12185) avg lploss: 0.00000
+train epoch 912 avg loss: 0.13146 (A-MSE: 0.11611) avg lploss: 0.00000
+train epoch 913 avg loss: 0.11871 (A-MSE: 0.10521) avg lploss: 0.00000
+train epoch 914 avg loss: 0.11545 (A-MSE: 0.10260) avg lploss: 0.00000
+train epoch 915 avg loss: 0.12238 (A-MSE: 0.10837) avg lploss: 0.00000
+==> val epoch 915 avg loss: 0.43385 (A-MSE: 0.37531) avg lploss: 0.00000
+==> test epoch 915 avg loss: 0.38247 (A-MSE: 0.33353) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 5 out of 50
+train epoch 916 avg loss: 0.15096 (A-MSE: 0.13421) avg lploss: 0.00000
+train epoch 917 avg loss: 0.15010 (A-MSE: 0.13318) avg lploss: 0.00000
+train epoch 918 avg loss: 0.13091 (A-MSE: 0.11620) avg lploss: 0.00000
+train epoch 919 avg loss: 0.12849 (A-MSE: 0.11360) avg lploss: 0.00000
+train epoch 920 avg loss: 0.12914 (A-MSE: 0.11411) avg lploss: 0.00000
+==> val epoch 920 avg loss: 0.38698 (A-MSE: 0.33814) avg lploss: 0.00000
+==> test epoch 920 avg loss: 0.37756 (A-MSE: 0.33166) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 6 out of 50
+train epoch 921 avg loss: 0.12421 (A-MSE: 0.10910) avg lploss: 0.00000
+train epoch 922 avg loss: 0.12322 (A-MSE: 0.10779) avg lploss: 0.00000
+train epoch 923 avg loss: 0.13987 (A-MSE: 0.12365) avg lploss: 0.00000
+train epoch 924 avg loss: 0.11976 (A-MSE: 0.10648) avg lploss: 0.00000
+train epoch 925 avg loss: 0.11690 (A-MSE: 0.10273) avg lploss: 0.00000
+==> val epoch 925 avg loss: 0.41127 (A-MSE: 0.35150) avg lploss: 0.00000
+==> test epoch 925 avg loss: 0.37325 (A-MSE: 0.32466) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 7 out of 50
+train epoch 926 avg loss: 0.12335 (A-MSE: 0.10921) avg lploss: 0.00000
+train epoch 927 avg loss: 0.12135 (A-MSE: 0.10766) avg lploss: 0.00000
+train epoch 928 avg loss: 0.11314 (A-MSE: 0.10048) avg lploss: 0.00000
+train epoch 929 avg loss: 0.11122 (A-MSE: 0.09887) avg lploss: 0.00000
+train epoch 930 avg loss: 0.10958 (A-MSE: 0.09695) avg lploss: 0.00000
+==> val epoch 930 avg loss: 0.41969 (A-MSE: 0.37141) avg lploss: 0.00000
+==> test epoch 930 avg loss: 0.39746 (A-MSE: 0.34896) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 8 out of 50
+train epoch 931 avg loss: 0.10975 (A-MSE: 0.09723) avg lploss: 0.00000
+train epoch 932 avg loss: 0.11050 (A-MSE: 0.09652) avg lploss: 0.00000
+train epoch 933 avg loss: 0.10740 (A-MSE: 0.09485) avg lploss: 0.00000
+train epoch 934 avg loss: 0.13899 (A-MSE: 0.12392) avg lploss: 0.00000
+train epoch 935 avg loss: 0.12946 (A-MSE: 0.11431) avg lploss: 0.00000
+==> val epoch 935 avg loss: 0.42249 (A-MSE: 0.36880) avg lploss: 0.00000
+==> test epoch 935 avg loss: 0.40704 (A-MSE: 0.35652) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 9 out of 50
+train epoch 936 avg loss: 0.13274 (A-MSE: 0.11724) avg lploss: 0.00000
+train epoch 937 avg loss: 0.13094 (A-MSE: 0.11670) avg lploss: 0.00000
+train epoch 938 avg loss: 0.11769 (A-MSE: 0.10407) avg lploss: 0.00000
+train epoch 939 avg loss: 0.10994 (A-MSE: 0.09645) avg lploss: 0.00000
+train epoch 940 avg loss: 0.11462 (A-MSE: 0.10188) avg lploss: 0.00000
+==> val epoch 940 avg loss: 0.38117 (A-MSE: 0.33793) avg lploss: 0.00000
+==> test epoch 940 avg loss: 0.37791 (A-MSE: 0.34107) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 10 out of 50
+train epoch 941 avg loss: 0.11323 (A-MSE: 0.09984) avg lploss: 0.00000
+train epoch 942 avg loss: 0.11987 (A-MSE: 0.10552) avg lploss: 0.00000
+train epoch 943 avg loss: 0.15854 (A-MSE: 0.13815) avg lploss: 0.00000
+train epoch 944 avg loss: 0.16249 (A-MSE: 0.14497) avg lploss: 0.00000
+train epoch 945 avg loss: 0.15286 (A-MSE: 0.13351) avg lploss: 0.00000
+==> val epoch 945 avg loss: 0.39222 (A-MSE: 0.33104) avg lploss: 0.00000
+==> test epoch 945 avg loss: 0.38779 (A-MSE: 0.33370) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 11 out of 50
+train epoch 946 avg loss: 0.12365 (A-MSE: 0.11026) avg lploss: 0.00000
+train epoch 947 avg loss: 0.10939 (A-MSE: 0.09611) avg lploss: 0.00000
+train epoch 948 avg loss: 0.11655 (A-MSE: 0.10413) avg lploss: 0.00000
+train epoch 949 avg loss: 0.11337 (A-MSE: 0.10061) avg lploss: 0.00000
+train epoch 950 avg loss: 0.12814 (A-MSE: 0.11342) avg lploss: 0.00000
+==> val epoch 950 avg loss: 0.44122 (A-MSE: 0.38980) avg lploss: 0.00000
+==> test epoch 950 avg loss: 0.40447 (A-MSE: 0.35740) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 12 out of 50
+train epoch 951 avg loss: 0.14409 (A-MSE: 0.12667) avg lploss: 0.00000
+train epoch 952 avg loss: 0.11546 (A-MSE: 0.10253) avg lploss: 0.00000
+train epoch 953 avg loss: 0.11727 (A-MSE: 0.10261) avg lploss: 0.00000
+train epoch 954 avg loss: 0.11541 (A-MSE: 0.10342) avg lploss: 0.00000
+train epoch 955 avg loss: 0.14152 (A-MSE: 0.12430) avg lploss: 0.00000
+==> val epoch 955 avg loss: 0.39525 (A-MSE: 0.34648) avg lploss: 0.00000
+==> test epoch 955 avg loss: 0.38769 (A-MSE: 0.34053) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 13 out of 50
+train epoch 956 avg loss: 0.12444 (A-MSE: 0.11019) avg lploss: 0.00000
+train epoch 957 avg loss: 0.11616 (A-MSE: 0.10318) avg lploss: 0.00000
+train epoch 958 avg loss: 0.10217 (A-MSE: 0.09028) avg lploss: 0.00000
+train epoch 959 avg loss: 0.09930 (A-MSE: 0.08898) avg lploss: 0.00000
+train epoch 960 avg loss: 0.10907 (A-MSE: 0.09678) avg lploss: 0.00000
+==> val epoch 960 avg loss: 0.40892 (A-MSE: 0.36309) avg lploss: 0.00000
+==> test epoch 960 avg loss: 0.38587 (A-MSE: 0.34526) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 14 out of 50
+train epoch 961 avg loss: 0.11062 (A-MSE: 0.09848) avg lploss: 0.00000
+train epoch 962 avg loss: 0.10219 (A-MSE: 0.09100) avg lploss: 0.00000
+train epoch 963 avg loss: 0.09393 (A-MSE: 0.08442) avg lploss: 0.00000
+train epoch 964 avg loss: 0.10498 (A-MSE: 0.09279) avg lploss: 0.00000
+train epoch 965 avg loss: 0.10388 (A-MSE: 0.09266) avg lploss: 0.00000
+==> val epoch 965 avg loss: 0.38918 (A-MSE: 0.34000) avg lploss: 0.00000
+==> test epoch 965 avg loss: 0.37232 (A-MSE: 0.32826) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 15 out of 50
+train epoch 966 avg loss: 0.09808 (A-MSE: 0.08691) avg lploss: 0.00000
+train epoch 967 avg loss: 0.10246 (A-MSE: 0.09142) avg lploss: 0.00000
+train epoch 968 avg loss: 0.10362 (A-MSE: 0.09174) avg lploss: 0.00000
+train epoch 969 avg loss: 0.09763 (A-MSE: 0.08724) avg lploss: 0.00000
+train epoch 970 avg loss: 0.09363 (A-MSE: 0.08350) avg lploss: 0.00000
+==> val epoch 970 avg loss: 0.41169 (A-MSE: 0.35447) avg lploss: 0.00000
+==> test epoch 970 avg loss: 0.38357 (A-MSE: 0.33492) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 16 out of 50
+train epoch 971 avg loss: 0.10539 (A-MSE: 0.09387) avg lploss: 0.00000
+train epoch 972 avg loss: 0.12501 (A-MSE: 0.11088) avg lploss: 0.00000
+train epoch 973 avg loss: 0.12328 (A-MSE: 0.10899) avg lploss: 0.00000
+train epoch 974 avg loss: 0.11701 (A-MSE: 0.10317) avg lploss: 0.00000
+train epoch 975 avg loss: 0.14414 (A-MSE: 0.12665) avg lploss: 0.00000
+==> val epoch 975 avg loss: 0.39050 (A-MSE: 0.33829) avg lploss: 0.00000
+==> test epoch 975 avg loss: 0.37457 (A-MSE: 0.33198) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 17 out of 50
+train epoch 976 avg loss: 0.10774 (A-MSE: 0.09598) avg lploss: 0.00000
+train epoch 977 avg loss: 0.11225 (A-MSE: 0.09962) avg lploss: 0.00000
+train epoch 978 avg loss: 0.13235 (A-MSE: 0.11571) avg lploss: 0.00000
+train epoch 979 avg loss: 0.13510 (A-MSE: 0.11890) avg lploss: 0.00000
+train epoch 980 avg loss: 0.11761 (A-MSE: 0.10290) avg lploss: 0.00000
+==> val epoch 980 avg loss: 0.38072 (A-MSE: 0.33571) avg lploss: 0.00000
+==> test epoch 980 avg loss: 0.35402 (A-MSE: 0.31305) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 18 out of 50
+train epoch 981 avg loss: 0.11435 (A-MSE: 0.10052) avg lploss: 0.00000
+train epoch 982 avg loss: 0.11418 (A-MSE: 0.10128) avg lploss: 0.00000
+train epoch 983 avg loss: 0.10089 (A-MSE: 0.08963) avg lploss: 0.00000
+train epoch 984 avg loss: 0.10955 (A-MSE: 0.09706) avg lploss: 0.00000
+train epoch 985 avg loss: 0.10145 (A-MSE: 0.09032) avg lploss: 0.00000
+==> val epoch 985 avg loss: 0.36105 (A-MSE: 0.31584) avg lploss: 0.00000
+==> test epoch 985 avg loss: 0.35058 (A-MSE: 0.30904) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 19 out of 50
+train epoch 986 avg loss: 0.09603 (A-MSE: 0.08460) avg lploss: 0.00000
+train epoch 987 avg loss: 0.09495 (A-MSE: 0.08418) avg lploss: 0.00000
+train epoch 988 avg loss: 0.10416 (A-MSE: 0.09244) avg lploss: 0.00000
+train epoch 989 avg loss: 0.11343 (A-MSE: 0.10094) avg lploss: 0.00000
+train epoch 990 avg loss: 0.09468 (A-MSE: 0.08481) avg lploss: 0.00000
+==> val epoch 990 avg loss: 0.38866 (A-MSE: 0.32980) avg lploss: 0.00000
+==> test epoch 990 avg loss: 0.34631 (A-MSE: 0.29938) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 20 out of 50
+train epoch 991 avg loss: 0.10397 (A-MSE: 0.09221) avg lploss: 0.00000
+train epoch 992 avg loss: 0.12172 (A-MSE: 0.10817) avg lploss: 0.00000
+train epoch 993 avg loss: 0.11538 (A-MSE: 0.10163) avg lploss: 0.00000
+train epoch 994 avg loss: 0.10391 (A-MSE: 0.09245) avg lploss: 0.00000
+train epoch 995 avg loss: 0.09271 (A-MSE: 0.08250) avg lploss: 0.00000
+==> val epoch 995 avg loss: 0.45872 (A-MSE: 0.40449) avg lploss: 0.00000
+==> test epoch 995 avg loss: 0.41803 (A-MSE: 0.36470) avg lploss: 0.00000
+*** Best Val Loss: 0.35810 	 Best Test Loss: 0.34748 	 Best epoch 890
+EarlyStopping counter: 21 out of 50
+train epoch 996 avg loss: 0.10700 (A-MSE: 0.09404) avg lploss: 0.00000
+train epoch 997 avg loss: 0.09582 (A-MSE: 0.08501) avg lploss: 0.00000
+train epoch 998 avg loss: 0.10704 (A-MSE: 0.09571) avg lploss: 0.00000
+train epoch 999 avg loss: 0.11746 (A-MSE: 0.10449) avg lploss: 0.00000
+train epoch 1000 avg loss: 0.10433 (A-MSE: 0.09295) avg lploss: 0.00000
+==> val epoch 1000 avg loss: 0.35165 (A-MSE: 0.30485) avg lploss: 0.00000
+==> test epoch 1000 avg loss: 0.35549 (A-MSE: 0.31551) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+Validation loss decreased (0.358096 --> 0.351652).  Saving model ...
+train epoch 1001 avg loss: 0.11517 (A-MSE: 0.10214) avg lploss: 0.00000
+train epoch 1002 avg loss: 0.12293 (A-MSE: 0.10796) avg lploss: 0.00000
+train epoch 1003 avg loss: 0.13095 (A-MSE: 0.11586) avg lploss: 0.00000
+train epoch 1004 avg loss: 0.09844 (A-MSE: 0.08771) avg lploss: 0.00000
+train epoch 1005 avg loss: 0.10465 (A-MSE: 0.09325) avg lploss: 0.00000
+==> val epoch 1005 avg loss: 0.40129 (A-MSE: 0.35020) avg lploss: 0.00000
+==> test epoch 1005 avg loss: 0.37216 (A-MSE: 0.32503) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 1 out of 50
+train epoch 1006 avg loss: 0.11351 (A-MSE: 0.09977) avg lploss: 0.00000
+train epoch 1007 avg loss: 0.10211 (A-MSE: 0.08981) avg lploss: 0.00000
+train epoch 1008 avg loss: 0.10469 (A-MSE: 0.09280) avg lploss: 0.00000
+train epoch 1009 avg loss: 0.10616 (A-MSE: 0.09383) avg lploss: 0.00000
+train epoch 1010 avg loss: 0.09829 (A-MSE: 0.08778) avg lploss: 0.00000
+==> val epoch 1010 avg loss: 0.36873 (A-MSE: 0.32148) avg lploss: 0.00000
+==> test epoch 1010 avg loss: 0.34684 (A-MSE: 0.30820) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 2 out of 50
+train epoch 1011 avg loss: 0.08615 (A-MSE: 0.07727) avg lploss: 0.00000
+train epoch 1012 avg loss: 0.09300 (A-MSE: 0.08245) avg lploss: 0.00000
+train epoch 1013 avg loss: 0.08609 (A-MSE: 0.07634) avg lploss: 0.00000
+train epoch 1014 avg loss: 0.08666 (A-MSE: 0.07636) avg lploss: 0.00000
+train epoch 1015 avg loss: 0.09744 (A-MSE: 0.08584) avg lploss: 0.00000
+==> val epoch 1015 avg loss: 0.35767 (A-MSE: 0.31332) avg lploss: 0.00000
+==> test epoch 1015 avg loss: 0.34907 (A-MSE: 0.31058) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 3 out of 50
+train epoch 1016 avg loss: 0.09678 (A-MSE: 0.08671) avg lploss: 0.00000
+train epoch 1017 avg loss: 0.09157 (A-MSE: 0.08111) avg lploss: 0.00000
+train epoch 1018 avg loss: 0.09146 (A-MSE: 0.08171) avg lploss: 0.00000
+train epoch 1019 avg loss: 0.11228 (A-MSE: 0.10080) avg lploss: 0.00000
+train epoch 1020 avg loss: 0.11678 (A-MSE: 0.10289) avg lploss: 0.00000
+==> val epoch 1020 avg loss: 0.38511 (A-MSE: 0.33551) avg lploss: 0.00000
+==> test epoch 1020 avg loss: 0.35965 (A-MSE: 0.31429) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 4 out of 50
+train epoch 1021 avg loss: 0.10090 (A-MSE: 0.08920) avg lploss: 0.00000
+train epoch 1022 avg loss: 0.08766 (A-MSE: 0.07853) avg lploss: 0.00000
+train epoch 1023 avg loss: 0.08947 (A-MSE: 0.07947) avg lploss: 0.00000
+train epoch 1024 avg loss: 0.08178 (A-MSE: 0.07267) avg lploss: 0.00000
+train epoch 1025 avg loss: 0.10344 (A-MSE: 0.09205) avg lploss: 0.00000
+==> val epoch 1025 avg loss: 0.42423 (A-MSE: 0.36682) avg lploss: 0.00000
+==> test epoch 1025 avg loss: 0.39053 (A-MSE: 0.34102) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 5 out of 50
+train epoch 1026 avg loss: 0.10976 (A-MSE: 0.09673) avg lploss: 0.00000
+train epoch 1027 avg loss: 0.12332 (A-MSE: 0.10828) avg lploss: 0.00000
+train epoch 1028 avg loss: 0.09791 (A-MSE: 0.08739) avg lploss: 0.00000
+train epoch 1029 avg loss: 0.09554 (A-MSE: 0.08492) avg lploss: 0.00000
+train epoch 1030 avg loss: 0.10476 (A-MSE: 0.09286) avg lploss: 0.00000
+==> val epoch 1030 avg loss: 0.36352 (A-MSE: 0.31930) avg lploss: 0.00000
+==> test epoch 1030 avg loss: 0.35978 (A-MSE: 0.31541) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 6 out of 50
+train epoch 1031 avg loss: 0.11242 (A-MSE: 0.09918) avg lploss: 0.00000
+train epoch 1032 avg loss: 0.13114 (A-MSE: 0.11827) avg lploss: 0.00000
+train epoch 1033 avg loss: 0.10674 (A-MSE: 0.09411) avg lploss: 0.00000
+train epoch 1034 avg loss: 0.11267 (A-MSE: 0.09882) avg lploss: 0.00000
+train epoch 1035 avg loss: 0.11840 (A-MSE: 0.10507) avg lploss: 0.00000
+==> val epoch 1035 avg loss: 0.38638 (A-MSE: 0.33712) avg lploss: 0.00000
+==> test epoch 1035 avg loss: 0.35354 (A-MSE: 0.31166) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 7 out of 50
+train epoch 1036 avg loss: 0.09507 (A-MSE: 0.08531) avg lploss: 0.00000
+train epoch 1037 avg loss: 0.08782 (A-MSE: 0.07864) avg lploss: 0.00000
+train epoch 1038 avg loss: 0.08032 (A-MSE: 0.07127) avg lploss: 0.00000
+train epoch 1039 avg loss: 0.07922 (A-MSE: 0.07105) avg lploss: 0.00000
+train epoch 1040 avg loss: 0.08471 (A-MSE: 0.07573) avg lploss: 0.00000
+==> val epoch 1040 avg loss: 0.43287 (A-MSE: 0.37969) avg lploss: 0.00000
+==> test epoch 1040 avg loss: 0.38765 (A-MSE: 0.33982) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 8 out of 50
+train epoch 1041 avg loss: 0.10779 (A-MSE: 0.09585) avg lploss: 0.00000
+train epoch 1042 avg loss: 0.10743 (A-MSE: 0.09487) avg lploss: 0.00000
+train epoch 1043 avg loss: 0.08540 (A-MSE: 0.07567) avg lploss: 0.00000
+train epoch 1044 avg loss: 0.07896 (A-MSE: 0.07043) avg lploss: 0.00000
+train epoch 1045 avg loss: 0.08192 (A-MSE: 0.07342) avg lploss: 0.00000
+==> val epoch 1045 avg loss: 0.38892 (A-MSE: 0.34445) avg lploss: 0.00000
+==> test epoch 1045 avg loss: 0.36909 (A-MSE: 0.32704) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 9 out of 50
+train epoch 1046 avg loss: 0.09771 (A-MSE: 0.08641) avg lploss: 0.00000
+train epoch 1047 avg loss: 0.10581 (A-MSE: 0.09354) avg lploss: 0.00000
+train epoch 1048 avg loss: 0.12224 (A-MSE: 0.10808) avg lploss: 0.00000
+train epoch 1049 avg loss: 0.10567 (A-MSE: 0.09429) avg lploss: 0.00000
+train epoch 1050 avg loss: 0.10497 (A-MSE: 0.09339) avg lploss: 0.00000
+==> val epoch 1050 avg loss: 0.38186 (A-MSE: 0.33190) avg lploss: 0.00000
+==> test epoch 1050 avg loss: 0.36507 (A-MSE: 0.32176) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 10 out of 50
+train epoch 1051 avg loss: 0.11311 (A-MSE: 0.10023) avg lploss: 0.00000
+train epoch 1052 avg loss: 0.10052 (A-MSE: 0.08920) avg lploss: 0.00000
+train epoch 1053 avg loss: 0.10787 (A-MSE: 0.09508) avg lploss: 0.00000
+train epoch 1054 avg loss: 0.10347 (A-MSE: 0.09278) avg lploss: 0.00000
+train epoch 1055 avg loss: 0.08240 (A-MSE: 0.07362) avg lploss: 0.00000
+==> val epoch 1055 avg loss: 0.38649 (A-MSE: 0.33124) avg lploss: 0.00000
+==> test epoch 1055 avg loss: 0.34893 (A-MSE: 0.30350) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 11 out of 50
+train epoch 1056 avg loss: 0.08587 (A-MSE: 0.07601) avg lploss: 0.00000
+train epoch 1057 avg loss: 0.08346 (A-MSE: 0.07486) avg lploss: 0.00000
+train epoch 1058 avg loss: 0.08671 (A-MSE: 0.07733) avg lploss: 0.00000
+train epoch 1059 avg loss: 0.09939 (A-MSE: 0.08839) avg lploss: 0.00000
+train epoch 1060 avg loss: 0.10733 (A-MSE: 0.09455) avg lploss: 0.00000
+==> val epoch 1060 avg loss: 0.41592 (A-MSE: 0.36797) avg lploss: 0.00000
+==> test epoch 1060 avg loss: 0.38973 (A-MSE: 0.34566) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 12 out of 50
+train epoch 1061 avg loss: 0.09199 (A-MSE: 0.08153) avg lploss: 0.00000
+train epoch 1062 avg loss: 0.08227 (A-MSE: 0.07322) avg lploss: 0.00000
+train epoch 1063 avg loss: 0.08509 (A-MSE: 0.07608) avg lploss: 0.00000
+train epoch 1064 avg loss: 0.09462 (A-MSE: 0.08387) avg lploss: 0.00000
+train epoch 1065 avg loss: 0.09154 (A-MSE: 0.08138) avg lploss: 0.00000
+==> val epoch 1065 avg loss: 0.42210 (A-MSE: 0.36431) avg lploss: 0.00000
+==> test epoch 1065 avg loss: 0.37989 (A-MSE: 0.33023) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 13 out of 50
+train epoch 1066 avg loss: 0.08359 (A-MSE: 0.07508) avg lploss: 0.00000
+train epoch 1067 avg loss: 0.08540 (A-MSE: 0.07568) avg lploss: 0.00000
+train epoch 1068 avg loss: 0.08844 (A-MSE: 0.07869) avg lploss: 0.00000
+train epoch 1069 avg loss: 0.09276 (A-MSE: 0.08219) avg lploss: 0.00000
+train epoch 1070 avg loss: 0.08041 (A-MSE: 0.07184) avg lploss: 0.00000
+==> val epoch 1070 avg loss: 0.35481 (A-MSE: 0.31103) avg lploss: 0.00000
+==> test epoch 1070 avg loss: 0.35465 (A-MSE: 0.31420) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 14 out of 50
+train epoch 1071 avg loss: 0.08153 (A-MSE: 0.07259) avg lploss: 0.00000
+train epoch 1072 avg loss: 0.09128 (A-MSE: 0.08172) avg lploss: 0.00000
+train epoch 1073 avg loss: 0.10042 (A-MSE: 0.08955) avg lploss: 0.00000
+train epoch 1074 avg loss: 0.09238 (A-MSE: 0.08099) avg lploss: 0.00000
+train epoch 1075 avg loss: 0.09402 (A-MSE: 0.08312) avg lploss: 0.00000
+==> val epoch 1075 avg loss: 0.35479 (A-MSE: 0.31416) avg lploss: 0.00000
+==> test epoch 1075 avg loss: 0.35518 (A-MSE: 0.31567) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 15 out of 50
+train epoch 1076 avg loss: 0.09945 (A-MSE: 0.08885) avg lploss: 0.00000
+train epoch 1077 avg loss: 0.12754 (A-MSE: 0.11344) avg lploss: 0.00000
+train epoch 1078 avg loss: 0.10902 (A-MSE: 0.09628) avg lploss: 0.00000
+train epoch 1079 avg loss: 0.11500 (A-MSE: 0.10143) avg lploss: 0.00000
+train epoch 1080 avg loss: 0.10040 (A-MSE: 0.09025) avg lploss: 0.00000
+==> val epoch 1080 avg loss: 0.42103 (A-MSE: 0.36883) avg lploss: 0.00000
+==> test epoch 1080 avg loss: 0.40126 (A-MSE: 0.35406) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.35549 	 Best epoch 1000
+EarlyStopping counter: 16 out of 50
+train epoch 1081 avg loss: 0.09402 (A-MSE: 0.08368) avg lploss: 0.00000
+train epoch 1082 avg loss: 0.12147 (A-MSE: 0.10746) avg lploss: 0.00000
+train epoch 1083 avg loss: 0.11971 (A-MSE: 0.10629) avg lploss: 0.00000
+train epoch 1084 avg loss: 0.11205 (A-MSE: 0.09984) avg lploss: 0.00000
+train epoch 1085 avg loss: 0.08880 (A-MSE: 0.07938) avg lploss: 0.00000
+==> val epoch 1085 avg loss: 0.35165 (A-MSE: 0.30552) avg lploss: 0.00000
+==> test epoch 1085 avg loss: 0.34416 (A-MSE: 0.30565) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+Validation loss decreased (0.351652 --> 0.351646).  Saving model ...
+train epoch 1086 avg loss: 0.08303 (A-MSE: 0.07454) avg lploss: 0.00000
+train epoch 1087 avg loss: 0.07920 (A-MSE: 0.07043) avg lploss: 0.00000
+train epoch 1088 avg loss: 0.07629 (A-MSE: 0.06922) avg lploss: 0.00000
+train epoch 1089 avg loss: 0.08784 (A-MSE: 0.07928) avg lploss: 0.00000
+train epoch 1090 avg loss: 0.13052 (A-MSE: 0.11487) avg lploss: 0.00000
+==> val epoch 1090 avg loss: 0.47519 (A-MSE: 0.40950) avg lploss: 0.00000
+==> test epoch 1090 avg loss: 0.42789 (A-MSE: 0.37554) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 1 out of 50
+train epoch 1091 avg loss: 0.11147 (A-MSE: 0.09791) avg lploss: 0.00000
+train epoch 1092 avg loss: 0.09408 (A-MSE: 0.08360) avg lploss: 0.00000
+train epoch 1093 avg loss: 0.11032 (A-MSE: 0.09811) avg lploss: 0.00000
+train epoch 1094 avg loss: 0.10792 (A-MSE: 0.09529) avg lploss: 0.00000
+train epoch 1095 avg loss: 0.09401 (A-MSE: 0.08390) avg lploss: 0.00000
+==> val epoch 1095 avg loss: 0.41944 (A-MSE: 0.36643) avg lploss: 0.00000
+==> test epoch 1095 avg loss: 0.37031 (A-MSE: 0.32745) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 2 out of 50
+train epoch 1096 avg loss: 0.09003 (A-MSE: 0.08102) avg lploss: 0.00000
+train epoch 1097 avg loss: 0.09673 (A-MSE: 0.08536) avg lploss: 0.00000
+train epoch 1098 avg loss: 0.11453 (A-MSE: 0.10169) avg lploss: 0.00000
+train epoch 1099 avg loss: 0.11700 (A-MSE: 0.10405) avg lploss: 0.00000
+train epoch 1100 avg loss: 0.12610 (A-MSE: 0.11225) avg lploss: 0.00000
+==> val epoch 1100 avg loss: 0.41172 (A-MSE: 0.35932) avg lploss: 0.00000
+==> test epoch 1100 avg loss: 0.37906 (A-MSE: 0.33610) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 3 out of 50
+train epoch 1101 avg loss: 0.10174 (A-MSE: 0.09037) avg lploss: 0.00000
+train epoch 1102 avg loss: 0.08956 (A-MSE: 0.08049) avg lploss: 0.00000
+train epoch 1103 avg loss: 0.09294 (A-MSE: 0.08245) avg lploss: 0.00000
+train epoch 1104 avg loss: 0.08870 (A-MSE: 0.07817) avg lploss: 0.00000
+train epoch 1105 avg loss: 0.07522 (A-MSE: 0.06679) avg lploss: 0.00000
+==> val epoch 1105 avg loss: 0.36514 (A-MSE: 0.32180) avg lploss: 0.00000
+==> test epoch 1105 avg loss: 0.34742 (A-MSE: 0.30628) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 4 out of 50
+train epoch 1106 avg loss: 0.08559 (A-MSE: 0.07623) avg lploss: 0.00000
+train epoch 1107 avg loss: 0.08482 (A-MSE: 0.07547) avg lploss: 0.00000
+train epoch 1108 avg loss: 0.11721 (A-MSE: 0.10423) avg lploss: 0.00000
+train epoch 1109 avg loss: 0.11551 (A-MSE: 0.10250) avg lploss: 0.00000
+train epoch 1110 avg loss: 0.09433 (A-MSE: 0.08383) avg lploss: 0.00000
+==> val epoch 1110 avg loss: 0.39191 (A-MSE: 0.34490) avg lploss: 0.00000
+==> test epoch 1110 avg loss: 0.36023 (A-MSE: 0.31920) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 5 out of 50
+train epoch 1111 avg loss: 0.08842 (A-MSE: 0.07811) avg lploss: 0.00000
+train epoch 1112 avg loss: 0.08346 (A-MSE: 0.07541) avg lploss: 0.00000
+train epoch 1113 avg loss: 0.08618 (A-MSE: 0.07712) avg lploss: 0.00000
+train epoch 1114 avg loss: 0.08723 (A-MSE: 0.07731) avg lploss: 0.00000
+train epoch 1115 avg loss: 0.09784 (A-MSE: 0.08804) avg lploss: 0.00000
+==> val epoch 1115 avg loss: 0.38695 (A-MSE: 0.34018) avg lploss: 0.00000
+==> test epoch 1115 avg loss: 0.38328 (A-MSE: 0.33483) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 6 out of 50
+train epoch 1116 avg loss: 0.09547 (A-MSE: 0.08513) avg lploss: 0.00000
+train epoch 1117 avg loss: 0.09773 (A-MSE: 0.08713) avg lploss: 0.00000
+train epoch 1118 avg loss: 0.09126 (A-MSE: 0.08109) avg lploss: 0.00000
+train epoch 1119 avg loss: 0.08040 (A-MSE: 0.07136) avg lploss: 0.00000
+train epoch 1120 avg loss: 0.07208 (A-MSE: 0.06402) avg lploss: 0.00000
+==> val epoch 1120 avg loss: 0.38198 (A-MSE: 0.33703) avg lploss: 0.00000
+==> test epoch 1120 avg loss: 0.35538 (A-MSE: 0.31215) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 7 out of 50
+train epoch 1121 avg loss: 0.07594 (A-MSE: 0.06723) avg lploss: 0.00000
+train epoch 1122 avg loss: 0.08613 (A-MSE: 0.07535) avg lploss: 0.00000
+train epoch 1123 avg loss: 0.10708 (A-MSE: 0.09431) avg lploss: 0.00000
+train epoch 1124 avg loss: 0.11731 (A-MSE: 0.10372) avg lploss: 0.00000
+train epoch 1125 avg loss: 0.10661 (A-MSE: 0.09440) avg lploss: 0.00000
+==> val epoch 1125 avg loss: 0.44807 (A-MSE: 0.38969) avg lploss: 0.00000
+==> test epoch 1125 avg loss: 0.39547 (A-MSE: 0.34768) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 8 out of 50
+train epoch 1126 avg loss: 0.09108 (A-MSE: 0.08078) avg lploss: 0.00000
+train epoch 1127 avg loss: 0.07537 (A-MSE: 0.06726) avg lploss: 0.00000
+train epoch 1128 avg loss: 0.07521 (A-MSE: 0.06778) avg lploss: 0.00000
+train epoch 1129 avg loss: 0.08806 (A-MSE: 0.07898) avg lploss: 0.00000
+train epoch 1130 avg loss: 0.08797 (A-MSE: 0.07846) avg lploss: 0.00000
+==> val epoch 1130 avg loss: 0.36193 (A-MSE: 0.31927) avg lploss: 0.00000
+==> test epoch 1130 avg loss: 0.34923 (A-MSE: 0.31010) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 9 out of 50
+train epoch 1131 avg loss: 0.07635 (A-MSE: 0.06833) avg lploss: 0.00000
+train epoch 1132 avg loss: 0.07252 (A-MSE: 0.06525) avg lploss: 0.00000
+train epoch 1133 avg loss: 0.07581 (A-MSE: 0.06747) avg lploss: 0.00000
+train epoch 1134 avg loss: 0.06835 (A-MSE: 0.06096) avg lploss: 0.00000
+train epoch 1135 avg loss: 0.06325 (A-MSE: 0.05672) avg lploss: 0.00000
+==> val epoch 1135 avg loss: 0.35576 (A-MSE: 0.31345) avg lploss: 0.00000
+==> test epoch 1135 avg loss: 0.33644 (A-MSE: 0.29819) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 10 out of 50
+train epoch 1136 avg loss: 0.07761 (A-MSE: 0.06905) avg lploss: 0.00000
+train epoch 1137 avg loss: 0.08075 (A-MSE: 0.07308) avg lploss: 0.00000
+train epoch 1138 avg loss: 0.07500 (A-MSE: 0.06693) avg lploss: 0.00000
+train epoch 1139 avg loss: 0.07239 (A-MSE: 0.06492) avg lploss: 0.00000
+train epoch 1140 avg loss: 0.07846 (A-MSE: 0.06975) avg lploss: 0.00000
+==> val epoch 1140 avg loss: 0.38534 (A-MSE: 0.33327) avg lploss: 0.00000
+==> test epoch 1140 avg loss: 0.35099 (A-MSE: 0.30767) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 11 out of 50
+train epoch 1141 avg loss: 0.07053 (A-MSE: 0.06334) avg lploss: 0.00000
+train epoch 1142 avg loss: 0.06486 (A-MSE: 0.05854) avg lploss: 0.00000
+train epoch 1143 avg loss: 0.06826 (A-MSE: 0.06073) avg lploss: 0.00000
+train epoch 1144 avg loss: 0.06948 (A-MSE: 0.06215) avg lploss: 0.00000
+train epoch 1145 avg loss: 0.07009 (A-MSE: 0.06255) avg lploss: 0.00000
+==> val epoch 1145 avg loss: 0.39009 (A-MSE: 0.34412) avg lploss: 0.00000
+==> test epoch 1145 avg loss: 0.35559 (A-MSE: 0.31430) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 12 out of 50
+train epoch 1146 avg loss: 0.07847 (A-MSE: 0.06994) avg lploss: 0.00000
+train epoch 1147 avg loss: 0.07945 (A-MSE: 0.07123) avg lploss: 0.00000
+train epoch 1148 avg loss: 0.08203 (A-MSE: 0.07345) avg lploss: 0.00000
+train epoch 1149 avg loss: 0.09773 (A-MSE: 0.08712) avg lploss: 0.00000
+train epoch 1150 avg loss: 0.08770 (A-MSE: 0.07778) avg lploss: 0.00000
+==> val epoch 1150 avg loss: 0.40061 (A-MSE: 0.35783) avg lploss: 0.00000
+==> test epoch 1150 avg loss: 0.35577 (A-MSE: 0.31643) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 13 out of 50
+train epoch 1151 avg loss: 0.07951 (A-MSE: 0.07053) avg lploss: 0.00000
+train epoch 1152 avg loss: 0.07509 (A-MSE: 0.06656) avg lploss: 0.00000
+train epoch 1153 avg loss: 0.07723 (A-MSE: 0.06932) avg lploss: 0.00000
+train epoch 1154 avg loss: 0.07839 (A-MSE: 0.07018) avg lploss: 0.00000
+train epoch 1155 avg loss: 0.07575 (A-MSE: 0.06718) avg lploss: 0.00000
+==> val epoch 1155 avg loss: 0.38462 (A-MSE: 0.33574) avg lploss: 0.00000
+==> test epoch 1155 avg loss: 0.37021 (A-MSE: 0.32625) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 14 out of 50
+train epoch 1156 avg loss: 0.06788 (A-MSE: 0.06060) avg lploss: 0.00000
+train epoch 1157 avg loss: 0.07812 (A-MSE: 0.06974) avg lploss: 0.00000
+train epoch 1158 avg loss: 0.07754 (A-MSE: 0.06923) avg lploss: 0.00000
+train epoch 1159 avg loss: 0.08087 (A-MSE: 0.07178) avg lploss: 0.00000
+train epoch 1160 avg loss: 0.07110 (A-MSE: 0.06374) avg lploss: 0.00000
+==> val epoch 1160 avg loss: 0.36806 (A-MSE: 0.32182) avg lploss: 0.00000
+==> test epoch 1160 avg loss: 0.33620 (A-MSE: 0.29829) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 15 out of 50
+train epoch 1161 avg loss: 0.07362 (A-MSE: 0.06548) avg lploss: 0.00000
+train epoch 1162 avg loss: 0.08424 (A-MSE: 0.07500) avg lploss: 0.00000
+train epoch 1163 avg loss: 0.10027 (A-MSE: 0.08944) avg lploss: 0.00000
+train epoch 1164 avg loss: 0.09547 (A-MSE: 0.08411) avg lploss: 0.00000
+train epoch 1165 avg loss: 0.09023 (A-MSE: 0.08062) avg lploss: 0.00000
+==> val epoch 1165 avg loss: 0.38809 (A-MSE: 0.33459) avg lploss: 0.00000
+==> test epoch 1165 avg loss: 0.35432 (A-MSE: 0.30837) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 16 out of 50
+train epoch 1166 avg loss: 0.08482 (A-MSE: 0.07527) avg lploss: 0.00000
+train epoch 1167 avg loss: 0.08877 (A-MSE: 0.07869) avg lploss: 0.00000
+train epoch 1168 avg loss: 0.08252 (A-MSE: 0.07381) avg lploss: 0.00000
+train epoch 1169 avg loss: 0.08164 (A-MSE: 0.07251) avg lploss: 0.00000
+train epoch 1170 avg loss: 0.08471 (A-MSE: 0.07565) avg lploss: 0.00000
+==> val epoch 1170 avg loss: 0.37870 (A-MSE: 0.33232) avg lploss: 0.00000
+==> test epoch 1170 avg loss: 0.33844 (A-MSE: 0.29993) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 17 out of 50
+train epoch 1171 avg loss: 0.07780 (A-MSE: 0.06937) avg lploss: 0.00000
+train epoch 1172 avg loss: 0.08688 (A-MSE: 0.07729) avg lploss: 0.00000
+train epoch 1173 avg loss: 0.10609 (A-MSE: 0.09385) avg lploss: 0.00000
+train epoch 1174 avg loss: 0.10697 (A-MSE: 0.09522) avg lploss: 0.00000
+train epoch 1175 avg loss: 0.13899 (A-MSE: 0.12341) avg lploss: 0.00000
+==> val epoch 1175 avg loss: 0.40575 (A-MSE: 0.36278) avg lploss: 0.00000
+==> test epoch 1175 avg loss: 0.41192 (A-MSE: 0.37125) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 18 out of 50
+train epoch 1176 avg loss: 0.15450 (A-MSE: 0.13589) avg lploss: 0.00000
+train epoch 1177 avg loss: 0.11094 (A-MSE: 0.09868) avg lploss: 0.00000
+train epoch 1178 avg loss: 0.08100 (A-MSE: 0.07236) avg lploss: 0.00000
+train epoch 1179 avg loss: 0.07642 (A-MSE: 0.06818) avg lploss: 0.00000
+train epoch 1180 avg loss: 0.08218 (A-MSE: 0.07279) avg lploss: 0.00000
+==> val epoch 1180 avg loss: 0.37061 (A-MSE: 0.32980) avg lploss: 0.00000
+==> test epoch 1180 avg loss: 0.35233 (A-MSE: 0.31178) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 19 out of 50
+train epoch 1181 avg loss: 0.07684 (A-MSE: 0.06752) avg lploss: 0.00000
+train epoch 1182 avg loss: 0.07204 (A-MSE: 0.06503) avg lploss: 0.00000
+train epoch 1183 avg loss: 0.07733 (A-MSE: 0.06910) avg lploss: 0.00000
+train epoch 1184 avg loss: 0.07464 (A-MSE: 0.06683) avg lploss: 0.00000
+train epoch 1185 avg loss: 0.07289 (A-MSE: 0.06594) avg lploss: 0.00000
+==> val epoch 1185 avg loss: 0.36300 (A-MSE: 0.31885) avg lploss: 0.00000
+==> test epoch 1185 avg loss: 0.32942 (A-MSE: 0.29137) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 20 out of 50
+train epoch 1186 avg loss: 0.06478 (A-MSE: 0.05783) avg lploss: 0.00000
+train epoch 1187 avg loss: 0.06367 (A-MSE: 0.05672) avg lploss: 0.00000
+train epoch 1188 avg loss: 0.05613 (A-MSE: 0.04997) avg lploss: 0.00000
+train epoch 1189 avg loss: 0.06479 (A-MSE: 0.05806) avg lploss: 0.00000
+train epoch 1190 avg loss: 0.07698 (A-MSE: 0.06867) avg lploss: 0.00000
+==> val epoch 1190 avg loss: 0.35355 (A-MSE: 0.30853) avg lploss: 0.00000
+==> test epoch 1190 avg loss: 0.35603 (A-MSE: 0.31396) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 21 out of 50
+train epoch 1191 avg loss: 0.08036 (A-MSE: 0.07183) avg lploss: 0.00000
+train epoch 1192 avg loss: 0.07854 (A-MSE: 0.07003) avg lploss: 0.00000
+train epoch 1193 avg loss: 0.07507 (A-MSE: 0.06700) avg lploss: 0.00000
+train epoch 1194 avg loss: 0.07485 (A-MSE: 0.06682) avg lploss: 0.00000
+train epoch 1195 avg loss: 0.07989 (A-MSE: 0.07104) avg lploss: 0.00000
+==> val epoch 1195 avg loss: 0.41590 (A-MSE: 0.36784) avg lploss: 0.00000
+==> test epoch 1195 avg loss: 0.36654 (A-MSE: 0.32379) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 22 out of 50
+train epoch 1196 avg loss: 0.10740 (A-MSE: 0.09508) avg lploss: 0.00000
+train epoch 1197 avg loss: 0.11524 (A-MSE: 0.10220) avg lploss: 0.00000
+train epoch 1198 avg loss: 0.10776 (A-MSE: 0.09726) avg lploss: 0.00000
+train epoch 1199 avg loss: 0.12280 (A-MSE: 0.11130) avg lploss: 0.00000
+train epoch 1200 avg loss: 0.10223 (A-MSE: 0.09134) avg lploss: 0.00000
+==> val epoch 1200 avg loss: 0.38712 (A-MSE: 0.33513) avg lploss: 0.00000
+==> test epoch 1200 avg loss: 0.37071 (A-MSE: 0.32741) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 23 out of 50
+train epoch 1201 avg loss: 0.10245 (A-MSE: 0.09092) avg lploss: 0.00000
+train epoch 1202 avg loss: 0.09585 (A-MSE: 0.08554) avg lploss: 0.00000
+train epoch 1203 avg loss: 0.09186 (A-MSE: 0.08060) avg lploss: 0.00000
+train epoch 1204 avg loss: 0.08538 (A-MSE: 0.07627) avg lploss: 0.00000
+train epoch 1205 avg loss: 0.08039 (A-MSE: 0.07156) avg lploss: 0.00000
+==> val epoch 1205 avg loss: 0.35839 (A-MSE: 0.31567) avg lploss: 0.00000
+==> test epoch 1205 avg loss: 0.33953 (A-MSE: 0.30025) avg lploss: 0.00000
+*** Best Val Loss: 0.35165 	 Best Test Loss: 0.34416 	 Best epoch 1085
+EarlyStopping counter: 24 out of 50
+train epoch 1206 avg loss: 0.08181 (A-MSE: 0.07292) avg lploss: 0.00000
+train epoch 1207 avg loss: 0.07515 (A-MSE: 0.06690) avg lploss: 0.00000
+train epoch 1208 avg loss: 0.07001 (A-MSE: 0.06246) avg lploss: 0.00000
+train epoch 1209 avg loss: 0.06751 (A-MSE: 0.06042) avg lploss: 0.00000
+train epoch 1210 avg loss: 0.06378 (A-MSE: 0.05631) avg lploss: 0.00000
+==> val epoch 1210 avg loss: 0.34979 (A-MSE: 0.30743) avg lploss: 0.00000
+==> test epoch 1210 avg loss: 0.33926 (A-MSE: 0.30065) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+Validation loss decreased (0.351646 --> 0.349794).  Saving model ...
+train epoch 1211 avg loss: 0.06782 (A-MSE: 0.06052) avg lploss: 0.00000
+train epoch 1212 avg loss: 0.06674 (A-MSE: 0.05963) avg lploss: 0.00000
+train epoch 1213 avg loss: 0.06953 (A-MSE: 0.06267) avg lploss: 0.00000
+train epoch 1214 avg loss: 0.06703 (A-MSE: 0.06025) avg lploss: 0.00000
+train epoch 1215 avg loss: 0.06951 (A-MSE: 0.06161) avg lploss: 0.00000
+==> val epoch 1215 avg loss: 0.37145 (A-MSE: 0.32528) avg lploss: 0.00000
+==> test epoch 1215 avg loss: 0.34697 (A-MSE: 0.30579) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 1 out of 50
+train epoch 1216 avg loss: 0.07166 (A-MSE: 0.06375) avg lploss: 0.00000
+train epoch 1217 avg loss: 0.06643 (A-MSE: 0.06024) avg lploss: 0.00000
+train epoch 1218 avg loss: 0.06574 (A-MSE: 0.05936) avg lploss: 0.00000
+train epoch 1219 avg loss: 0.06738 (A-MSE: 0.06039) avg lploss: 0.00000
+train epoch 1220 avg loss: 0.08065 (A-MSE: 0.07181) avg lploss: 0.00000
+==> val epoch 1220 avg loss: 0.38580 (A-MSE: 0.33653) avg lploss: 0.00000
+==> test epoch 1220 avg loss: 0.35752 (A-MSE: 0.31440) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 2 out of 50
+train epoch 1221 avg loss: 0.07033 (A-MSE: 0.06307) avg lploss: 0.00000
+train epoch 1222 avg loss: 0.07131 (A-MSE: 0.06335) avg lploss: 0.00000
+train epoch 1223 avg loss: 0.06381 (A-MSE: 0.05701) avg lploss: 0.00000
+train epoch 1224 avg loss: 0.06985 (A-MSE: 0.06210) avg lploss: 0.00000
+train epoch 1225 avg loss: 0.06858 (A-MSE: 0.06107) avg lploss: 0.00000
+==> val epoch 1225 avg loss: 0.41417 (A-MSE: 0.36493) avg lploss: 0.00000
+==> test epoch 1225 avg loss: 0.38646 (A-MSE: 0.34068) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 3 out of 50
+train epoch 1226 avg loss: 0.07049 (A-MSE: 0.06335) avg lploss: 0.00000
+train epoch 1227 avg loss: 0.08863 (A-MSE: 0.07886) avg lploss: 0.00000
+train epoch 1228 avg loss: 0.09730 (A-MSE: 0.08776) avg lploss: 0.00000
+train epoch 1229 avg loss: 0.08747 (A-MSE: 0.07649) avg lploss: 0.00000
+train epoch 1230 avg loss: 0.07482 (A-MSE: 0.06696) avg lploss: 0.00000
+==> val epoch 1230 avg loss: 0.38207 (A-MSE: 0.33239) avg lploss: 0.00000
+==> test epoch 1230 avg loss: 0.35795 (A-MSE: 0.31310) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 4 out of 50
+train epoch 1231 avg loss: 0.08171 (A-MSE: 0.07288) avg lploss: 0.00000
+train epoch 1232 avg loss: 0.07325 (A-MSE: 0.06549) avg lploss: 0.00000
+train epoch 1233 avg loss: 0.07371 (A-MSE: 0.06589) avg lploss: 0.00000
+train epoch 1234 avg loss: 0.07218 (A-MSE: 0.06429) avg lploss: 0.00000
+train epoch 1235 avg loss: 0.07188 (A-MSE: 0.06414) avg lploss: 0.00000
+==> val epoch 1235 avg loss: 0.39713 (A-MSE: 0.34767) avg lploss: 0.00000
+==> test epoch 1235 avg loss: 0.37551 (A-MSE: 0.32958) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 5 out of 50
+train epoch 1236 avg loss: 0.06626 (A-MSE: 0.05915) avg lploss: 0.00000
+train epoch 1237 avg loss: 0.08127 (A-MSE: 0.07278) avg lploss: 0.00000
+train epoch 1238 avg loss: 0.08206 (A-MSE: 0.07369) avg lploss: 0.00000
+train epoch 1239 avg loss: 0.08586 (A-MSE: 0.07629) avg lploss: 0.00000
+train epoch 1240 avg loss: 0.08345 (A-MSE: 0.07481) avg lploss: 0.00000
+==> val epoch 1240 avg loss: 0.40910 (A-MSE: 0.35914) avg lploss: 0.00000
+==> test epoch 1240 avg loss: 0.38344 (A-MSE: 0.33873) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 6 out of 50
+train epoch 1241 avg loss: 0.07994 (A-MSE: 0.07176) avg lploss: 0.00000
+train epoch 1242 avg loss: 0.08549 (A-MSE: 0.07639) avg lploss: 0.00000
+train epoch 1243 avg loss: 0.07030 (A-MSE: 0.06301) avg lploss: 0.00000
+train epoch 1244 avg loss: 0.07442 (A-MSE: 0.06581) avg lploss: 0.00000
+train epoch 1245 avg loss: 0.07703 (A-MSE: 0.06853) avg lploss: 0.00000
+==> val epoch 1245 avg loss: 0.38615 (A-MSE: 0.33445) avg lploss: 0.00000
+==> test epoch 1245 avg loss: 0.35132 (A-MSE: 0.30574) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 7 out of 50
+train epoch 1246 avg loss: 0.08309 (A-MSE: 0.07379) avg lploss: 0.00000
+train epoch 1247 avg loss: 0.07622 (A-MSE: 0.06815) avg lploss: 0.00000
+train epoch 1248 avg loss: 0.07762 (A-MSE: 0.06919) avg lploss: 0.00000
+train epoch 1249 avg loss: 0.07267 (A-MSE: 0.06475) avg lploss: 0.00000
+train epoch 1250 avg loss: 0.06798 (A-MSE: 0.06088) avg lploss: 0.00000
+==> val epoch 1250 avg loss: 0.35638 (A-MSE: 0.31113) avg lploss: 0.00000
+==> test epoch 1250 avg loss: 0.32979 (A-MSE: 0.29054) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 8 out of 50
+train epoch 1251 avg loss: 0.07778 (A-MSE: 0.06888) avg lploss: 0.00000
+train epoch 1252 avg loss: 0.07277 (A-MSE: 0.06497) avg lploss: 0.00000
+train epoch 1253 avg loss: 0.07217 (A-MSE: 0.06446) avg lploss: 0.00000
+train epoch 1254 avg loss: 0.06490 (A-MSE: 0.05759) avg lploss: 0.00000
+train epoch 1255 avg loss: 0.06613 (A-MSE: 0.05902) avg lploss: 0.00000
+==> val epoch 1255 avg loss: 0.37329 (A-MSE: 0.32807) avg lploss: 0.00000
+==> test epoch 1255 avg loss: 0.35832 (A-MSE: 0.31587) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 9 out of 50
+train epoch 1256 avg loss: 0.06608 (A-MSE: 0.05873) avg lploss: 0.00000
+train epoch 1257 avg loss: 0.07043 (A-MSE: 0.06382) avg lploss: 0.00000
+train epoch 1258 avg loss: 0.07240 (A-MSE: 0.06551) avg lploss: 0.00000
+train epoch 1259 avg loss: 0.07991 (A-MSE: 0.07010) avg lploss: 0.00000
+train epoch 1260 avg loss: 0.07668 (A-MSE: 0.06860) avg lploss: 0.00000
+==> val epoch 1260 avg loss: 0.35963 (A-MSE: 0.31406) avg lploss: 0.00000
+==> test epoch 1260 avg loss: 0.35497 (A-MSE: 0.31131) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 10 out of 50
+train epoch 1261 avg loss: 0.06983 (A-MSE: 0.06228) avg lploss: 0.00000
+train epoch 1262 avg loss: 0.06803 (A-MSE: 0.06008) avg lploss: 0.00000
+train epoch 1263 avg loss: 0.07403 (A-MSE: 0.06597) avg lploss: 0.00000
+train epoch 1264 avg loss: 0.06942 (A-MSE: 0.06179) avg lploss: 0.00000
+train epoch 1265 avg loss: 0.06081 (A-MSE: 0.05423) avg lploss: 0.00000
+==> val epoch 1265 avg loss: 0.39733 (A-MSE: 0.34688) avg lploss: 0.00000
+==> test epoch 1265 avg loss: 0.35089 (A-MSE: 0.30731) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 11 out of 50
+train epoch 1266 avg loss: 0.06762 (A-MSE: 0.06046) avg lploss: 0.00000
+train epoch 1267 avg loss: 0.08289 (A-MSE: 0.07481) avg lploss: 0.00000
+train epoch 1268 avg loss: 0.07656 (A-MSE: 0.06870) avg lploss: 0.00000
+train epoch 1269 avg loss: 0.07323 (A-MSE: 0.06455) avg lploss: 0.00000
+train epoch 1270 avg loss: 0.07824 (A-MSE: 0.06983) avg lploss: 0.00000
+==> val epoch 1270 avg loss: 0.40935 (A-MSE: 0.35102) avg lploss: 0.00000
+==> test epoch 1270 avg loss: 0.35738 (A-MSE: 0.30994) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 12 out of 50
+train epoch 1271 avg loss: 0.07079 (A-MSE: 0.06270) avg lploss: 0.00000
+train epoch 1272 avg loss: 0.06516 (A-MSE: 0.05882) avg lploss: 0.00000
+train epoch 1273 avg loss: 0.05710 (A-MSE: 0.05107) avg lploss: 0.00000
+train epoch 1274 avg loss: 0.05382 (A-MSE: 0.04847) avg lploss: 0.00000
+train epoch 1275 avg loss: 0.06456 (A-MSE: 0.05812) avg lploss: 0.00000
+==> val epoch 1275 avg loss: 0.37025 (A-MSE: 0.32175) avg lploss: 0.00000
+==> test epoch 1275 avg loss: 0.34307 (A-MSE: 0.30323) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 13 out of 50
+train epoch 1276 avg loss: 0.06470 (A-MSE: 0.05802) avg lploss: 0.00000
+train epoch 1277 avg loss: 0.08786 (A-MSE: 0.07861) avg lploss: 0.00000
+train epoch 1278 avg loss: 0.09857 (A-MSE: 0.08802) avg lploss: 0.00000
+train epoch 1279 avg loss: 0.08426 (A-MSE: 0.07572) avg lploss: 0.00000
+train epoch 1280 avg loss: 0.07474 (A-MSE: 0.06705) avg lploss: 0.00000
+==> val epoch 1280 avg loss: 0.36835 (A-MSE: 0.32490) avg lploss: 0.00000
+==> test epoch 1280 avg loss: 0.34545 (A-MSE: 0.30663) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 14 out of 50
+train epoch 1281 avg loss: 0.06639 (A-MSE: 0.05871) avg lploss: 0.00000
+train epoch 1282 avg loss: 0.07402 (A-MSE: 0.06691) avg lploss: 0.00000
+train epoch 1283 avg loss: 0.08263 (A-MSE: 0.07353) avg lploss: 0.00000
+train epoch 1284 avg loss: 0.07880 (A-MSE: 0.07057) avg lploss: 0.00000
+train epoch 1285 avg loss: 0.07552 (A-MSE: 0.06732) avg lploss: 0.00000
+==> val epoch 1285 avg loss: 0.37099 (A-MSE: 0.32121) avg lploss: 0.00000
+==> test epoch 1285 avg loss: 0.36844 (A-MSE: 0.32333) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 15 out of 50
+train epoch 1286 avg loss: 0.06889 (A-MSE: 0.06019) avg lploss: 0.00000
+train epoch 1287 avg loss: 0.07728 (A-MSE: 0.06914) avg lploss: 0.00000
+train epoch 1288 avg loss: 0.06996 (A-MSE: 0.06241) avg lploss: 0.00000
+train epoch 1289 avg loss: 0.05969 (A-MSE: 0.05362) avg lploss: 0.00000
+train epoch 1290 avg loss: 0.06472 (A-MSE: 0.05796) avg lploss: 0.00000
+==> val epoch 1290 avg loss: 0.40317 (A-MSE: 0.35198) avg lploss: 0.00000
+==> test epoch 1290 avg loss: 0.36988 (A-MSE: 0.32589) avg lploss: 0.00000
+*** Best Val Loss: 0.34979 	 Best Test Loss: 0.33926 	 Best epoch 1210
+EarlyStopping counter: 16 out of 50
+train epoch 1291 avg loss: 0.08557 (A-MSE: 0.07574) avg lploss: 0.00000
+train epoch 1292 avg loss: 0.07264 (A-MSE: 0.06436) avg lploss: 0.00000
+train epoch 1293 avg loss: 0.07482 (A-MSE: 0.06628) avg lploss: 0.00000
+train epoch 1294 avg loss: 0.07401 (A-MSE: 0.06553) avg lploss: 0.00000
+train epoch 1295 avg loss: 0.08033 (A-MSE: 0.07136) avg lploss: 0.00000
+==> val epoch 1295 avg loss: 0.33964 (A-MSE: 0.29744) avg lploss: 0.00000
+==> test epoch 1295 avg loss: 0.33144 (A-MSE: 0.29353) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+Validation loss decreased (0.349794 --> 0.339642).  Saving model ...
+train epoch 1296 avg loss: 0.08176 (A-MSE: 0.07304) avg lploss: 0.00000
+train epoch 1297 avg loss: 0.11945 (A-MSE: 0.10403) avg lploss: 0.00000
+train epoch 1298 avg loss: 0.11720 (A-MSE: 0.10509) avg lploss: 0.00000
+train epoch 1299 avg loss: 0.10485 (A-MSE: 0.09328) avg lploss: 0.00000
+train epoch 1300 avg loss: 0.09068 (A-MSE: 0.08055) avg lploss: 0.00000
+==> val epoch 1300 avg loss: 0.38022 (A-MSE: 0.33537) avg lploss: 0.00000
+==> test epoch 1300 avg loss: 0.36568 (A-MSE: 0.32313) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 1 out of 50
+train epoch 1301 avg loss: 0.07686 (A-MSE: 0.06931) avg lploss: 0.00000
+train epoch 1302 avg loss: 0.06040 (A-MSE: 0.05376) avg lploss: 0.00000
+train epoch 1303 avg loss: 0.05497 (A-MSE: 0.04909) avg lploss: 0.00000
+train epoch 1304 avg loss: 0.06873 (A-MSE: 0.06179) avg lploss: 0.00000
+train epoch 1305 avg loss: 0.06250 (A-MSE: 0.05581) avg lploss: 0.00000
+==> val epoch 1305 avg loss: 0.39305 (A-MSE: 0.34522) avg lploss: 0.00000
+==> test epoch 1305 avg loss: 0.35714 (A-MSE: 0.31548) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 2 out of 50
+train epoch 1306 avg loss: 0.06499 (A-MSE: 0.05824) avg lploss: 0.00000
+train epoch 1307 avg loss: 0.06681 (A-MSE: 0.05940) avg lploss: 0.00000
+train epoch 1308 avg loss: 0.06813 (A-MSE: 0.06044) avg lploss: 0.00000
+train epoch 1309 avg loss: 0.07308 (A-MSE: 0.06471) avg lploss: 0.00000
+train epoch 1310 avg loss: 0.07339 (A-MSE: 0.06557) avg lploss: 0.00000
+==> val epoch 1310 avg loss: 0.37332 (A-MSE: 0.32774) avg lploss: 0.00000
+==> test epoch 1310 avg loss: 0.34361 (A-MSE: 0.30310) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 3 out of 50
+train epoch 1311 avg loss: 0.07955 (A-MSE: 0.07066) avg lploss: 0.00000
+train epoch 1312 avg loss: 0.09429 (A-MSE: 0.08401) avg lploss: 0.00000
+train epoch 1313 avg loss: 0.07793 (A-MSE: 0.06973) avg lploss: 0.00000
+train epoch 1314 avg loss: 0.08468 (A-MSE: 0.07565) avg lploss: 0.00000
+train epoch 1315 avg loss: 0.07471 (A-MSE: 0.06619) avg lploss: 0.00000
+==> val epoch 1315 avg loss: 0.43983 (A-MSE: 0.38312) avg lploss: 0.00000
+==> test epoch 1315 avg loss: 0.38849 (A-MSE: 0.34092) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 4 out of 50
+train epoch 1316 avg loss: 0.06240 (A-MSE: 0.05612) avg lploss: 0.00000
+train epoch 1317 avg loss: 0.05625 (A-MSE: 0.05036) avg lploss: 0.00000
+train epoch 1318 avg loss: 0.05801 (A-MSE: 0.05179) avg lploss: 0.00000
+train epoch 1319 avg loss: 0.05891 (A-MSE: 0.05242) avg lploss: 0.00000
+train epoch 1320 avg loss: 0.08096 (A-MSE: 0.07175) avg lploss: 0.00000
+==> val epoch 1320 avg loss: 0.39122 (A-MSE: 0.34697) avg lploss: 0.00000
+==> test epoch 1320 avg loss: 0.37076 (A-MSE: 0.33152) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 5 out of 50
+train epoch 1321 avg loss: 0.07216 (A-MSE: 0.06426) avg lploss: 0.00000
+train epoch 1322 avg loss: 0.06879 (A-MSE: 0.06093) avg lploss: 0.00000
+train epoch 1323 avg loss: 0.06118 (A-MSE: 0.05478) avg lploss: 0.00000
+train epoch 1324 avg loss: 0.06121 (A-MSE: 0.05513) avg lploss: 0.00000
+train epoch 1325 avg loss: 0.05756 (A-MSE: 0.05171) avg lploss: 0.00000
+==> val epoch 1325 avg loss: 0.38304 (A-MSE: 0.33433) avg lploss: 0.00000
+==> test epoch 1325 avg loss: 0.35618 (A-MSE: 0.31355) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 6 out of 50
+train epoch 1326 avg loss: 0.05686 (A-MSE: 0.05107) avg lploss: 0.00000
+train epoch 1327 avg loss: 0.06100 (A-MSE: 0.05481) avg lploss: 0.00000
+train epoch 1328 avg loss: 0.06929 (A-MSE: 0.06200) avg lploss: 0.00000
+train epoch 1329 avg loss: 0.08012 (A-MSE: 0.07222) avg lploss: 0.00000
+train epoch 1330 avg loss: 0.06565 (A-MSE: 0.05888) avg lploss: 0.00000
+==> val epoch 1330 avg loss: 0.36370 (A-MSE: 0.31707) avg lploss: 0.00000
+==> test epoch 1330 avg loss: 0.34498 (A-MSE: 0.30525) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 7 out of 50
+train epoch 1331 avg loss: 0.06361 (A-MSE: 0.05737) avg lploss: 0.00000
+train epoch 1332 avg loss: 0.06452 (A-MSE: 0.05680) avg lploss: 0.00000
+train epoch 1333 avg loss: 0.06169 (A-MSE: 0.05511) avg lploss: 0.00000
+train epoch 1334 avg loss: 0.05690 (A-MSE: 0.05118) avg lploss: 0.00000
+train epoch 1335 avg loss: 0.06839 (A-MSE: 0.06116) avg lploss: 0.00000
+==> val epoch 1335 avg loss: 0.42369 (A-MSE: 0.37060) avg lploss: 0.00000
+==> test epoch 1335 avg loss: 0.37067 (A-MSE: 0.32518) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 8 out of 50
+train epoch 1336 avg loss: 0.06644 (A-MSE: 0.05912) avg lploss: 0.00000
+train epoch 1337 avg loss: 0.06122 (A-MSE: 0.05516) avg lploss: 0.00000
+train epoch 1338 avg loss: 0.06615 (A-MSE: 0.05988) avg lploss: 0.00000
+train epoch 1339 avg loss: 0.06355 (A-MSE: 0.05753) avg lploss: 0.00000
+train epoch 1340 avg loss: 0.06421 (A-MSE: 0.05729) avg lploss: 0.00000
+==> val epoch 1340 avg loss: 0.39019 (A-MSE: 0.34416) avg lploss: 0.00000
+==> test epoch 1340 avg loss: 0.36798 (A-MSE: 0.32117) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 9 out of 50
+train epoch 1341 avg loss: 0.06635 (A-MSE: 0.05953) avg lploss: 0.00000
+train epoch 1342 avg loss: 0.05740 (A-MSE: 0.05204) avg lploss: 0.00000
+train epoch 1343 avg loss: 0.06957 (A-MSE: 0.06203) avg lploss: 0.00000
+train epoch 1344 avg loss: 0.05932 (A-MSE: 0.05254) avg lploss: 0.00000
+train epoch 1345 avg loss: 0.05664 (A-MSE: 0.05065) avg lploss: 0.00000
+==> val epoch 1345 avg loss: 0.36044 (A-MSE: 0.31399) avg lploss: 0.00000
+==> test epoch 1345 avg loss: 0.33840 (A-MSE: 0.29812) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 10 out of 50
+train epoch 1346 avg loss: 0.05330 (A-MSE: 0.04750) avg lploss: 0.00000
+train epoch 1347 avg loss: 0.06855 (A-MSE: 0.06063) avg lploss: 0.00000
+train epoch 1348 avg loss: 0.09177 (A-MSE: 0.08155) avg lploss: 0.00000
+train epoch 1349 avg loss: 0.07409 (A-MSE: 0.06696) avg lploss: 0.00000
+train epoch 1350 avg loss: 0.07098 (A-MSE: 0.06324) avg lploss: 0.00000
+==> val epoch 1350 avg loss: 0.40973 (A-MSE: 0.36221) avg lploss: 0.00000
+==> test epoch 1350 avg loss: 0.36720 (A-MSE: 0.32753) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 11 out of 50
+train epoch 1351 avg loss: 0.06842 (A-MSE: 0.06131) avg lploss: 0.00000
+train epoch 1352 avg loss: 0.05690 (A-MSE: 0.05068) avg lploss: 0.00000
+train epoch 1353 avg loss: 0.06541 (A-MSE: 0.05881) avg lploss: 0.00000
+train epoch 1354 avg loss: 0.07539 (A-MSE: 0.06739) avg lploss: 0.00000
+train epoch 1355 avg loss: 0.06573 (A-MSE: 0.05830) avg lploss: 0.00000
+==> val epoch 1355 avg loss: 0.37334 (A-MSE: 0.31918) avg lploss: 0.00000
+==> test epoch 1355 avg loss: 0.34090 (A-MSE: 0.29816) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 12 out of 50
+train epoch 1356 avg loss: 0.06835 (A-MSE: 0.06054) avg lploss: 0.00000
+train epoch 1357 avg loss: 0.05401 (A-MSE: 0.04825) avg lploss: 0.00000
+train epoch 1358 avg loss: 0.05219 (A-MSE: 0.04626) avg lploss: 0.00000
+train epoch 1359 avg loss: 0.05241 (A-MSE: 0.04622) avg lploss: 0.00000
+train epoch 1360 avg loss: 0.04976 (A-MSE: 0.04472) avg lploss: 0.00000
+==> val epoch 1360 avg loss: 0.40011 (A-MSE: 0.34625) avg lploss: 0.00000
+==> test epoch 1360 avg loss: 0.35110 (A-MSE: 0.30720) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 13 out of 50
+train epoch 1361 avg loss: 0.05518 (A-MSE: 0.04895) avg lploss: 0.00000
+train epoch 1362 avg loss: 0.05208 (A-MSE: 0.04668) avg lploss: 0.00000
+train epoch 1363 avg loss: 0.05092 (A-MSE: 0.04555) avg lploss: 0.00000
+train epoch 1364 avg loss: 0.05006 (A-MSE: 0.04436) avg lploss: 0.00000
+train epoch 1365 avg loss: 0.05067 (A-MSE: 0.04555) avg lploss: 0.00000
+==> val epoch 1365 avg loss: 0.36552 (A-MSE: 0.31930) avg lploss: 0.00000
+==> test epoch 1365 avg loss: 0.33416 (A-MSE: 0.29544) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 14 out of 50
+train epoch 1366 avg loss: 0.05507 (A-MSE: 0.04982) avg lploss: 0.00000
+train epoch 1367 avg loss: 0.04708 (A-MSE: 0.04282) avg lploss: 0.00000
+train epoch 1368 avg loss: 0.05030 (A-MSE: 0.04412) avg lploss: 0.00000
+train epoch 1369 avg loss: 0.06239 (A-MSE: 0.05540) avg lploss: 0.00000
+train epoch 1370 avg loss: 0.06451 (A-MSE: 0.05779) avg lploss: 0.00000
+==> val epoch 1370 avg loss: 0.39220 (A-MSE: 0.34067) avg lploss: 0.00000
+==> test epoch 1370 avg loss: 0.35465 (A-MSE: 0.31146) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 15 out of 50
+train epoch 1371 avg loss: 0.06165 (A-MSE: 0.05476) avg lploss: 0.00000
+train epoch 1372 avg loss: 0.06486 (A-MSE: 0.05750) avg lploss: 0.00000
+train epoch 1373 avg loss: 0.05919 (A-MSE: 0.05295) avg lploss: 0.00000
+train epoch 1374 avg loss: 0.05259 (A-MSE: 0.04661) avg lploss: 0.00000
+train epoch 1375 avg loss: 0.06768 (A-MSE: 0.06021) avg lploss: 0.00000
+==> val epoch 1375 avg loss: 0.38040 (A-MSE: 0.32856) avg lploss: 0.00000
+==> test epoch 1375 avg loss: 0.33788 (A-MSE: 0.29814) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 16 out of 50
+train epoch 1376 avg loss: 0.06133 (A-MSE: 0.05504) avg lploss: 0.00000
+train epoch 1377 avg loss: 0.05135 (A-MSE: 0.04590) avg lploss: 0.00000
+train epoch 1378 avg loss: 0.05170 (A-MSE: 0.04623) avg lploss: 0.00000
+train epoch 1379 avg loss: 0.05363 (A-MSE: 0.04821) avg lploss: 0.00000
+train epoch 1380 avg loss: 0.07353 (A-MSE: 0.06604) avg lploss: 0.00000
+==> val epoch 1380 avg loss: 0.38999 (A-MSE: 0.33729) avg lploss: 0.00000
+==> test epoch 1380 avg loss: 0.36266 (A-MSE: 0.31765) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 17 out of 50
+train epoch 1381 avg loss: 0.05745 (A-MSE: 0.05123) avg lploss: 0.00000
+train epoch 1382 avg loss: 0.06100 (A-MSE: 0.05456) avg lploss: 0.00000
+train epoch 1383 avg loss: 0.05374 (A-MSE: 0.04817) avg lploss: 0.00000
+train epoch 1384 avg loss: 0.05375 (A-MSE: 0.04810) avg lploss: 0.00000
+train epoch 1385 avg loss: 0.04874 (A-MSE: 0.04379) avg lploss: 0.00000
+==> val epoch 1385 avg loss: 0.34407 (A-MSE: 0.30002) avg lploss: 0.00000
+==> test epoch 1385 avg loss: 0.34231 (A-MSE: 0.30231) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 18 out of 50
+train epoch 1386 avg loss: 0.05099 (A-MSE: 0.04580) avg lploss: 0.00000
+train epoch 1387 avg loss: 0.05462 (A-MSE: 0.04912) avg lploss: 0.00000
+train epoch 1388 avg loss: 0.07526 (A-MSE: 0.06798) avg lploss: 0.00000
+train epoch 1389 avg loss: 0.06845 (A-MSE: 0.06092) avg lploss: 0.00000
+train epoch 1390 avg loss: 0.06929 (A-MSE: 0.06078) avg lploss: 0.00000
+==> val epoch 1390 avg loss: 0.36933 (A-MSE: 0.32144) avg lploss: 0.00000
+==> test epoch 1390 avg loss: 0.34417 (A-MSE: 0.30400) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 19 out of 50
+train epoch 1391 avg loss: 0.06995 (A-MSE: 0.06249) avg lploss: 0.00000
+train epoch 1392 avg loss: 0.09362 (A-MSE: 0.08337) avg lploss: 0.00000
+train epoch 1393 avg loss: 0.08349 (A-MSE: 0.07388) avg lploss: 0.00000
+train epoch 1394 avg loss: 0.06517 (A-MSE: 0.05806) avg lploss: 0.00000
+train epoch 1395 avg loss: 0.06051 (A-MSE: 0.05414) avg lploss: 0.00000
+==> val epoch 1395 avg loss: 0.42305 (A-MSE: 0.36685) avg lploss: 0.00000
+==> test epoch 1395 avg loss: 0.38464 (A-MSE: 0.33791) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 20 out of 50
+train epoch 1396 avg loss: 0.06056 (A-MSE: 0.05380) avg lploss: 0.00000
+train epoch 1397 avg loss: 0.05518 (A-MSE: 0.04934) avg lploss: 0.00000
+train epoch 1398 avg loss: 0.05810 (A-MSE: 0.05174) avg lploss: 0.00000
+train epoch 1399 avg loss: 0.05476 (A-MSE: 0.04931) avg lploss: 0.00000
+train epoch 1400 avg loss: 0.06248 (A-MSE: 0.05504) avg lploss: 0.00000
+==> val epoch 1400 avg loss: 0.39153 (A-MSE: 0.33865) avg lploss: 0.00000
+==> test epoch 1400 avg loss: 0.36025 (A-MSE: 0.31700) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 21 out of 50
+train epoch 1401 avg loss: 0.06132 (A-MSE: 0.05498) avg lploss: 0.00000
+train epoch 1402 avg loss: 0.06348 (A-MSE: 0.05730) avg lploss: 0.00000
+train epoch 1403 avg loss: 0.08318 (A-MSE: 0.07478) avg lploss: 0.00000
+train epoch 1404 avg loss: 0.08169 (A-MSE: 0.07290) avg lploss: 0.00000
+train epoch 1405 avg loss: 0.07707 (A-MSE: 0.06817) avg lploss: 0.00000
+==> val epoch 1405 avg loss: 0.40803 (A-MSE: 0.35548) avg lploss: 0.00000
+==> test epoch 1405 avg loss: 0.36827 (A-MSE: 0.32387) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 22 out of 50
+train epoch 1406 avg loss: 0.06926 (A-MSE: 0.06213) avg lploss: 0.00000
+train epoch 1407 avg loss: 0.06335 (A-MSE: 0.05613) avg lploss: 0.00000
+train epoch 1408 avg loss: 0.06440 (A-MSE: 0.05691) avg lploss: 0.00000
+train epoch 1409 avg loss: 0.06338 (A-MSE: 0.05613) avg lploss: 0.00000
+train epoch 1410 avg loss: 0.06378 (A-MSE: 0.05650) avg lploss: 0.00000
+==> val epoch 1410 avg loss: 0.41462 (A-MSE: 0.35451) avg lploss: 0.00000
+==> test epoch 1410 avg loss: 0.36362 (A-MSE: 0.31593) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 23 out of 50
+train epoch 1411 avg loss: 0.06197 (A-MSE: 0.05559) avg lploss: 0.00000
+train epoch 1412 avg loss: 0.05337 (A-MSE: 0.04760) avg lploss: 0.00000
+train epoch 1413 avg loss: 0.06249 (A-MSE: 0.05525) avg lploss: 0.00000
+train epoch 1414 avg loss: 0.05623 (A-MSE: 0.05026) avg lploss: 0.00000
+train epoch 1415 avg loss: 0.05773 (A-MSE: 0.05117) avg lploss: 0.00000
+==> val epoch 1415 avg loss: 0.35490 (A-MSE: 0.30977) avg lploss: 0.00000
+==> test epoch 1415 avg loss: 0.33666 (A-MSE: 0.29657) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 24 out of 50
+train epoch 1416 avg loss: 0.04845 (A-MSE: 0.04324) avg lploss: 0.00000
+train epoch 1417 avg loss: 0.04880 (A-MSE: 0.04381) avg lploss: 0.00000
+train epoch 1418 avg loss: 0.05114 (A-MSE: 0.04557) avg lploss: 0.00000
+train epoch 1419 avg loss: 0.05402 (A-MSE: 0.04898) avg lploss: 0.00000
+train epoch 1420 avg loss: 0.06220 (A-MSE: 0.05583) avg lploss: 0.00000
+==> val epoch 1420 avg loss: 0.39199 (A-MSE: 0.34120) avg lploss: 0.00000
+==> test epoch 1420 avg loss: 0.35325 (A-MSE: 0.30990) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 25 out of 50
+train epoch 1421 avg loss: 0.05553 (A-MSE: 0.04936) avg lploss: 0.00000
+train epoch 1422 avg loss: 0.05179 (A-MSE: 0.04642) avg lploss: 0.00000
+train epoch 1423 avg loss: 0.05103 (A-MSE: 0.04552) avg lploss: 0.00000
+train epoch 1424 avg loss: 0.05881 (A-MSE: 0.05207) avg lploss: 0.00000
+train epoch 1425 avg loss: 0.05250 (A-MSE: 0.04708) avg lploss: 0.00000
+==> val epoch 1425 avg loss: 0.35917 (A-MSE: 0.31132) avg lploss: 0.00000
+==> test epoch 1425 avg loss: 0.32924 (A-MSE: 0.28900) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 26 out of 50
+train epoch 1426 avg loss: 0.05734 (A-MSE: 0.05131) avg lploss: 0.00000
+train epoch 1427 avg loss: 0.05631 (A-MSE: 0.05005) avg lploss: 0.00000
+train epoch 1428 avg loss: 0.04832 (A-MSE: 0.04345) avg lploss: 0.00000
+train epoch 1429 avg loss: 0.05749 (A-MSE: 0.05171) avg lploss: 0.00000
+train epoch 1430 avg loss: 0.06852 (A-MSE: 0.06132) avg lploss: 0.00000
+==> val epoch 1430 avg loss: 0.38814 (A-MSE: 0.33432) avg lploss: 0.00000
+==> test epoch 1430 avg loss: 0.35471 (A-MSE: 0.30855) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 27 out of 50
+train epoch 1431 avg loss: 0.07224 (A-MSE: 0.06469) avg lploss: 0.00000
+train epoch 1432 avg loss: 0.06232 (A-MSE: 0.05608) avg lploss: 0.00000
+train epoch 1433 avg loss: 0.05561 (A-MSE: 0.04976) avg lploss: 0.00000
+train epoch 1434 avg loss: 0.05424 (A-MSE: 0.04754) avg lploss: 0.00000
+train epoch 1435 avg loss: 0.06376 (A-MSE: 0.05700) avg lploss: 0.00000
+==> val epoch 1435 avg loss: 0.39924 (A-MSE: 0.34242) avg lploss: 0.00000
+==> test epoch 1435 avg loss: 0.35152 (A-MSE: 0.30743) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 28 out of 50
+train epoch 1436 avg loss: 0.05902 (A-MSE: 0.05268) avg lploss: 0.00000
+train epoch 1437 avg loss: 0.05453 (A-MSE: 0.04938) avg lploss: 0.00000
+train epoch 1438 avg loss: 0.05027 (A-MSE: 0.04471) avg lploss: 0.00000
+train epoch 1439 avg loss: 0.04861 (A-MSE: 0.04425) avg lploss: 0.00000
+train epoch 1440 avg loss: 0.04609 (A-MSE: 0.04108) avg lploss: 0.00000
+==> val epoch 1440 avg loss: 0.36075 (A-MSE: 0.31093) avg lploss: 0.00000
+==> test epoch 1440 avg loss: 0.32217 (A-MSE: 0.28426) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 29 out of 50
+train epoch 1441 avg loss: 0.04718 (A-MSE: 0.04185) avg lploss: 0.00000
+train epoch 1442 avg loss: 0.04197 (A-MSE: 0.03745) avg lploss: 0.00000
+train epoch 1443 avg loss: 0.04145 (A-MSE: 0.03728) avg lploss: 0.00000
+train epoch 1444 avg loss: 0.05102 (A-MSE: 0.04562) avg lploss: 0.00000
+train epoch 1445 avg loss: 0.06688 (A-MSE: 0.06018) avg lploss: 0.00000
+==> val epoch 1445 avg loss: 0.36265 (A-MSE: 0.31428) avg lploss: 0.00000
+==> test epoch 1445 avg loss: 0.34182 (A-MSE: 0.30432) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 30 out of 50
+train epoch 1446 avg loss: 0.06542 (A-MSE: 0.05863) avg lploss: 0.00000
+train epoch 1447 avg loss: 0.07084 (A-MSE: 0.06383) avg lploss: 0.00000
+train epoch 1448 avg loss: 0.06464 (A-MSE: 0.05739) avg lploss: 0.00000
+train epoch 1449 avg loss: 0.07514 (A-MSE: 0.06641) avg lploss: 0.00000
+train epoch 1450 avg loss: 0.07831 (A-MSE: 0.07004) avg lploss: 0.00000
+==> val epoch 1450 avg loss: 0.37375 (A-MSE: 0.32294) avg lploss: 0.00000
+==> test epoch 1450 avg loss: 0.35525 (A-MSE: 0.31398) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 31 out of 50
+train epoch 1451 avg loss: 0.06640 (A-MSE: 0.05934) avg lploss: 0.00000
+train epoch 1452 avg loss: 0.06594 (A-MSE: 0.05882) avg lploss: 0.00000
+train epoch 1453 avg loss: 0.06679 (A-MSE: 0.06000) avg lploss: 0.00000
+train epoch 1454 avg loss: 0.07454 (A-MSE: 0.06632) avg lploss: 0.00000
+train epoch 1455 avg loss: 0.07716 (A-MSE: 0.06832) avg lploss: 0.00000
+==> val epoch 1455 avg loss: 0.39189 (A-MSE: 0.34357) avg lploss: 0.00000
+==> test epoch 1455 avg loss: 0.36247 (A-MSE: 0.31780) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 32 out of 50
+train epoch 1456 avg loss: 0.06886 (A-MSE: 0.06129) avg lploss: 0.00000
+train epoch 1457 avg loss: 0.05311 (A-MSE: 0.04738) avg lploss: 0.00000
+train epoch 1458 avg loss: 0.05357 (A-MSE: 0.04772) avg lploss: 0.00000
+train epoch 1459 avg loss: 0.05082 (A-MSE: 0.04596) avg lploss: 0.00000
+train epoch 1460 avg loss: 0.05036 (A-MSE: 0.04461) avg lploss: 0.00000
+==> val epoch 1460 avg loss: 0.37894 (A-MSE: 0.32293) avg lploss: 0.00000
+==> test epoch 1460 avg loss: 0.35041 (A-MSE: 0.30650) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 33 out of 50
+train epoch 1461 avg loss: 0.04869 (A-MSE: 0.04357) avg lploss: 0.00000
+train epoch 1462 avg loss: 0.04604 (A-MSE: 0.04152) avg lploss: 0.00000
+train epoch 1463 avg loss: 0.05332 (A-MSE: 0.04752) avg lploss: 0.00000
+train epoch 1464 avg loss: 0.04961 (A-MSE: 0.04414) avg lploss: 0.00000
+train epoch 1465 avg loss: 0.05538 (A-MSE: 0.04863) avg lploss: 0.00000
+==> val epoch 1465 avg loss: 0.38193 (A-MSE: 0.32867) avg lploss: 0.00000
+==> test epoch 1465 avg loss: 0.33795 (A-MSE: 0.29575) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 34 out of 50
+train epoch 1466 avg loss: 0.05507 (A-MSE: 0.04912) avg lploss: 0.00000
+train epoch 1467 avg loss: 0.05365 (A-MSE: 0.04770) avg lploss: 0.00000
+train epoch 1468 avg loss: 0.06173 (A-MSE: 0.05445) avg lploss: 0.00000
+train epoch 1469 avg loss: 0.07125 (A-MSE: 0.06359) avg lploss: 0.00000
+train epoch 1470 avg loss: 0.07387 (A-MSE: 0.06574) avg lploss: 0.00000
+==> val epoch 1470 avg loss: 0.37634 (A-MSE: 0.32928) avg lploss: 0.00000
+==> test epoch 1470 avg loss: 0.34570 (A-MSE: 0.30681) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 35 out of 50
+train epoch 1471 avg loss: 0.05055 (A-MSE: 0.04504) avg lploss: 0.00000
+train epoch 1472 avg loss: 0.04900 (A-MSE: 0.04368) avg lploss: 0.00000
+train epoch 1473 avg loss: 0.05296 (A-MSE: 0.04790) avg lploss: 0.00000
+train epoch 1474 avg loss: 0.05649 (A-MSE: 0.05052) avg lploss: 0.00000
+train epoch 1475 avg loss: 0.06519 (A-MSE: 0.05965) avg lploss: 0.00000
+==> val epoch 1475 avg loss: 0.37940 (A-MSE: 0.32368) avg lploss: 0.00000
+==> test epoch 1475 avg loss: 0.33990 (A-MSE: 0.29690) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 36 out of 50
+train epoch 1476 avg loss: 0.05958 (A-MSE: 0.05277) avg lploss: 0.00000
+train epoch 1477 avg loss: 0.05403 (A-MSE: 0.04878) avg lploss: 0.00000
+train epoch 1478 avg loss: 0.05382 (A-MSE: 0.04797) avg lploss: 0.00000
+train epoch 1479 avg loss: 0.05745 (A-MSE: 0.05109) avg lploss: 0.00000
+train epoch 1480 avg loss: 0.06513 (A-MSE: 0.05732) avg lploss: 0.00000
+==> val epoch 1480 avg loss: 0.38380 (A-MSE: 0.33489) avg lploss: 0.00000
+==> test epoch 1480 avg loss: 0.35383 (A-MSE: 0.31362) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 37 out of 50
+train epoch 1481 avg loss: 0.05732 (A-MSE: 0.05123) avg lploss: 0.00000
+train epoch 1482 avg loss: 0.04520 (A-MSE: 0.04060) avg lploss: 0.00000
+train epoch 1483 avg loss: 0.04682 (A-MSE: 0.04162) avg lploss: 0.00000
+train epoch 1484 avg loss: 0.05198 (A-MSE: 0.04676) avg lploss: 0.00000
+train epoch 1485 avg loss: 0.04763 (A-MSE: 0.04244) avg lploss: 0.00000
+==> val epoch 1485 avg loss: 0.37386 (A-MSE: 0.32025) avg lploss: 0.00000
+==> test epoch 1485 avg loss: 0.33888 (A-MSE: 0.29968) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 38 out of 50
+train epoch 1486 avg loss: 0.06993 (A-MSE: 0.06267) avg lploss: 0.00000
+train epoch 1487 avg loss: 0.06783 (A-MSE: 0.06040) avg lploss: 0.00000
+train epoch 1488 avg loss: 0.06027 (A-MSE: 0.05400) avg lploss: 0.00000
+train epoch 1489 avg loss: 0.05140 (A-MSE: 0.04587) avg lploss: 0.00000
+train epoch 1490 avg loss: 0.04785 (A-MSE: 0.04301) avg lploss: 0.00000
+==> val epoch 1490 avg loss: 0.37247 (A-MSE: 0.32402) avg lploss: 0.00000
+==> test epoch 1490 avg loss: 0.34821 (A-MSE: 0.30754) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 39 out of 50
+train epoch 1491 avg loss: 0.06508 (A-MSE: 0.05831) avg lploss: 0.00000
+train epoch 1492 avg loss: 0.04963 (A-MSE: 0.04501) avg lploss: 0.00000
+train epoch 1493 avg loss: 0.06064 (A-MSE: 0.05448) avg lploss: 0.00000
+train epoch 1494 avg loss: 0.07917 (A-MSE: 0.07039) avg lploss: 0.00000
+train epoch 1495 avg loss: 0.06834 (A-MSE: 0.06096) avg lploss: 0.00000
+==> val epoch 1495 avg loss: 0.39054 (A-MSE: 0.33428) avg lploss: 0.00000
+==> test epoch 1495 avg loss: 0.36909 (A-MSE: 0.32625) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 40 out of 50
+train epoch 1496 avg loss: 0.06772 (A-MSE: 0.06108) avg lploss: 0.00000
+train epoch 1497 avg loss: 0.07990 (A-MSE: 0.07178) avg lploss: 0.00000
+train epoch 1498 avg loss: 0.08545 (A-MSE: 0.07645) avg lploss: 0.00000
+train epoch 1499 avg loss: 0.06723 (A-MSE: 0.06010) avg lploss: 0.00000
+train epoch 1500 avg loss: 0.06010 (A-MSE: 0.05347) avg lploss: 0.00000
+==> val epoch 1500 avg loss: 0.37469 (A-MSE: 0.32058) avg lploss: 0.00000
+==> test epoch 1500 avg loss: 0.35439 (A-MSE: 0.31144) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 41 out of 50
+train epoch 1501 avg loss: 0.05504 (A-MSE: 0.04901) avg lploss: 0.00000
+train epoch 1502 avg loss: 0.04134 (A-MSE: 0.03703) avg lploss: 0.00000
+train epoch 1503 avg loss: 0.03868 (A-MSE: 0.03440) avg lploss: 0.00000
+train epoch 1504 avg loss: 0.04234 (A-MSE: 0.03741) avg lploss: 0.00000
+train epoch 1505 avg loss: 0.04016 (A-MSE: 0.03629) avg lploss: 0.00000
+==> val epoch 1505 avg loss: 0.37083 (A-MSE: 0.31811) avg lploss: 0.00000
+==> test epoch 1505 avg loss: 0.34635 (A-MSE: 0.30506) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 42 out of 50
+train epoch 1506 avg loss: 0.04087 (A-MSE: 0.03624) avg lploss: 0.00000
+train epoch 1507 avg loss: 0.03644 (A-MSE: 0.03280) avg lploss: 0.00000
+train epoch 1508 avg loss: 0.04142 (A-MSE: 0.03699) avg lploss: 0.00000
+train epoch 1509 avg loss: 0.04460 (A-MSE: 0.04002) avg lploss: 0.00000
+train epoch 1510 avg loss: 0.03390 (A-MSE: 0.03022) avg lploss: 0.00000
+==> val epoch 1510 avg loss: 0.40969 (A-MSE: 0.35025) avg lploss: 0.00000
+==> test epoch 1510 avg loss: 0.36597 (A-MSE: 0.31928) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 43 out of 50
+train epoch 1511 avg loss: 0.03752 (A-MSE: 0.03384) avg lploss: 0.00000
+train epoch 1512 avg loss: 0.04226 (A-MSE: 0.03710) avg lploss: 0.00000
+train epoch 1513 avg loss: 0.04163 (A-MSE: 0.03713) avg lploss: 0.00000
+train epoch 1514 avg loss: 0.04493 (A-MSE: 0.04006) avg lploss: 0.00000
+train epoch 1515 avg loss: 0.05199 (A-MSE: 0.04628) avg lploss: 0.00000
+==> val epoch 1515 avg loss: 0.34492 (A-MSE: 0.29880) avg lploss: 0.00000
+==> test epoch 1515 avg loss: 0.32763 (A-MSE: 0.28951) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 44 out of 50
+train epoch 1516 avg loss: 0.04730 (A-MSE: 0.04200) avg lploss: 0.00000
+train epoch 1517 avg loss: 0.05193 (A-MSE: 0.04611) avg lploss: 0.00000
+train epoch 1518 avg loss: 0.04888 (A-MSE: 0.04321) avg lploss: 0.00000
+train epoch 1519 avg loss: 0.04152 (A-MSE: 0.03732) avg lploss: 0.00000
+train epoch 1520 avg loss: 0.04672 (A-MSE: 0.04200) avg lploss: 0.00000
+==> val epoch 1520 avg loss: 0.39585 (A-MSE: 0.34363) avg lploss: 0.00000
+==> test epoch 1520 avg loss: 0.34108 (A-MSE: 0.30047) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 45 out of 50
+train epoch 1521 avg loss: 0.04927 (A-MSE: 0.04404) avg lploss: 0.00000
+train epoch 1522 avg loss: 0.05064 (A-MSE: 0.04549) avg lploss: 0.00000
+train epoch 1523 avg loss: 0.05256 (A-MSE: 0.04692) avg lploss: 0.00000
+train epoch 1524 avg loss: 0.04657 (A-MSE: 0.04140) avg lploss: 0.00000
+train epoch 1525 avg loss: 0.05934 (A-MSE: 0.05286) avg lploss: 0.00000
+==> val epoch 1525 avg loss: 0.41510 (A-MSE: 0.35539) avg lploss: 0.00000
+==> test epoch 1525 avg loss: 0.36422 (A-MSE: 0.31716) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 46 out of 50
+train epoch 1526 avg loss: 0.07941 (A-MSE: 0.07077) avg lploss: 0.00000
+train epoch 1527 avg loss: 0.06118 (A-MSE: 0.05473) avg lploss: 0.00000
+train epoch 1528 avg loss: 0.05316 (A-MSE: 0.04696) avg lploss: 0.00000
+train epoch 1529 avg loss: 0.05119 (A-MSE: 0.04597) avg lploss: 0.00000
+train epoch 1530 avg loss: 0.05324 (A-MSE: 0.04763) avg lploss: 0.00000
+==> val epoch 1530 avg loss: 0.41080 (A-MSE: 0.35193) avg lploss: 0.00000
+==> test epoch 1530 avg loss: 0.35836 (A-MSE: 0.31237) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 47 out of 50
+train epoch 1531 avg loss: 0.05135 (A-MSE: 0.04573) avg lploss: 0.00000
+train epoch 1532 avg loss: 0.05745 (A-MSE: 0.05123) avg lploss: 0.00000
+train epoch 1533 avg loss: 0.06716 (A-MSE: 0.05999) avg lploss: 0.00000
+train epoch 1534 avg loss: 0.05848 (A-MSE: 0.05223) avg lploss: 0.00000
+train epoch 1535 avg loss: 0.04602 (A-MSE: 0.04124) avg lploss: 0.00000
+==> val epoch 1535 avg loss: 0.40820 (A-MSE: 0.34731) avg lploss: 0.00000
+==> test epoch 1535 avg loss: 0.35431 (A-MSE: 0.31058) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 48 out of 50
+train epoch 1536 avg loss: 0.05142 (A-MSE: 0.04598) avg lploss: 0.00000
+train epoch 1537 avg loss: 0.05420 (A-MSE: 0.04831) avg lploss: 0.00000
+train epoch 1538 avg loss: 0.06561 (A-MSE: 0.05894) avg lploss: 0.00000
+train epoch 1539 avg loss: 0.05179 (A-MSE: 0.04602) avg lploss: 0.00000
+train epoch 1540 avg loss: 0.04822 (A-MSE: 0.04217) avg lploss: 0.00000
+==> val epoch 1540 avg loss: 0.40355 (A-MSE: 0.34632) avg lploss: 0.00000
+==> test epoch 1540 avg loss: 0.37864 (A-MSE: 0.33268) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 49 out of 50
+train epoch 1541 avg loss: 0.05299 (A-MSE: 0.04764) avg lploss: 0.00000
+train epoch 1542 avg loss: 0.04638 (A-MSE: 0.04179) avg lploss: 0.00000
+train epoch 1543 avg loss: 0.05618 (A-MSE: 0.05022) avg lploss: 0.00000
+train epoch 1544 avg loss: 0.04925 (A-MSE: 0.04421) avg lploss: 0.00000
+train epoch 1545 avg loss: 0.05300 (A-MSE: 0.04701) avg lploss: 0.00000
+==> val epoch 1545 avg loss: 0.39677 (A-MSE: 0.33583) avg lploss: 0.00000
+==> test epoch 1545 avg loss: 0.35545 (A-MSE: 0.30864) avg lploss: 0.00000
+*** Best Val Loss: 0.33964 	 Best Test Loss: 0.33144 	 Best epoch 1295
+EarlyStopping counter: 50 out of 50
+Early Stopping.
+best_train = 0.080334
+best_lp = 0.000000
+best_val = 0.339642
+best_test = 0.331436
+best_epoch = 1295
+best_train = 0.080334, best_lp = 0.000000, best_val = 0.339642, best_test = 0.331436, best_epoch = 1295
+Job completed at Mon Dec  8 22:55:50 CET 2025
