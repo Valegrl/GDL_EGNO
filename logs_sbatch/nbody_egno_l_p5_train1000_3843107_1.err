@@ -1,7 +1,0 @@
-/var/spool/parastation/jobs/3843108: line 22: cd: /home/users/u103225/EGNO: Permission denied
-/var/spool/parastation/jobs/3843108: line 25: /home/users/u103225/miniconda3/etc/profile.d/conda.sh: Permission denied
-
-CondaError: Run 'conda init' before 'conda activate'
-
-/mnt/tier2/users/u103229/GDL_EGNO/simulation/dataset_simple.py:59: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /opt/conda/conda-bld/pytorch_1682343962757/work/torch/csrc/utils/tensor_new.cpp:245.)
-  edge_attr = torch.Tensor(edge_attr).transpose(0, 1).unsqueeze(
