@@ -140,24 +140,26 @@ def main():
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
 
-    # Check if physics constraints are enabled
-    use_physics = args.lambda_momentum > 0
+    # Check if physics constraints are enabled for training
+    use_physics_for_training = args.lambda_momentum > 0
+    # Always return velocities for momentum monitoring (even in baseline)
+    return_velocities = True
     
     dataset_train = SimulationDataset(partition='train', max_samples=args.max_training_samples,
                                       data_dir=args.data_dir, num_timesteps=args.num_timesteps,
-                                      return_velocities=use_physics, use_last_snapshots=args.use_last_snapshots)
+                                      return_velocities=return_velocities, use_last_snapshots=args.use_last_snapshots)
     loader_train = torch.utils.data.DataLoader(dataset_train, batch_size=args.batch_size, shuffle=True, drop_last=True,
                                                num_workers=0)
 
     dataset_val = SimulationDataset(partition='val',
                                     data_dir=args.data_dir, num_timesteps=args.num_timesteps,
-                                    return_velocities=use_physics, use_last_snapshots=args.use_last_snapshots)
+                                    return_velocities=return_velocities, use_last_snapshots=args.use_last_snapshots)
     loader_val = torch.utils.data.DataLoader(dataset_val, batch_size=args.batch_size, shuffle=False, drop_last=False,
                                              num_workers=0)
 
     dataset_test = SimulationDataset(partition='test',
                                      data_dir=args.data_dir, num_timesteps=args.num_timesteps,
-                                     return_velocities=use_physics, use_last_snapshots=args.use_last_snapshots)
+                                     return_velocities=return_velocities, use_last_snapshots=args.use_last_snapshots)
     loader_test = torch.utils.data.DataLoader(dataset_test, batch_size=args.batch_size, shuffle=False, drop_last=False,
                                               num_workers=0)
 
@@ -168,19 +170,22 @@ def main():
     else:
         raise NotImplementedError('Unknown model:', args.model)
 
-    # Initialize physics-informed loss if enabled
-    physics_loss_fn = None
-    if use_physics:
-        physics_loss_fn = PhysicsInformedLoss(
-            lambda_momentum=args.lambda_momentum,
-            warmup_epochs=args.physics_warmup_epochs,
-            max_physics_loss=args.max_physics_loss
-        )
+    # Initialize physics-informed loss (always for monitoring, optionally for training)
+    # Use lambda=1 for computing the raw momentum loss value for monitoring
+    physics_loss_fn = PhysicsInformedLoss(
+        lambda_momentum=1.0,  # Always compute with weight 1 for monitoring
+        warmup_epochs=0,
+        max_physics_loss=float('inf')  # No capping for monitoring
+    )
+    
+    if use_physics_for_training:
         print(f"Physics-informed training enabled:")
         print(f"  - Momentum conservation weight: {args.lambda_momentum}")
         print(f"  - Max physics loss: {args.max_physics_loss}")
         if args.physics_warmup_epochs > 0:
             print(f"  - Warmup epochs: {args.physics_warmup_epochs}")
+    else:
+        print(f"Momentum loss monitoring enabled (not used for training)")
 
     print(model)
     optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
@@ -191,9 +196,8 @@ def main():
 
     results = {'eval epoch': [], 'val loss': [], 'test loss': [], 'train loss': [],
                'val loss amse': [], 'test loss amse': [], 'train loss amse': []}
-    # Add physics loss tracking if enabled
-    if use_physics:
-        results['momentum_loss'] = []
+    # Always track momentum loss for monitoring
+    results['momentum_loss'] = []
     
     best_val_loss = 1e8
     best_test_loss = 1e8
@@ -201,19 +205,24 @@ def main():
     best_train_loss = 1e8
     best_test_amse = 1e8
     for epoch in range(0, args.epochs):
-        # Update physics loss warmup
-        if physics_loss_fn is not None:
+        # Update physics loss warmup (only relevant when training with physics)
+        if use_physics_for_training:
             physics_loss_fn.set_epoch(epoch)
         
-        train_loss, train_loss_amse, physics_losses = train(model, optimizer, epoch, loader_train, physics_loss_fn=physics_loss_fn)
+        train_loss, train_loss_amse, physics_losses = train(
+            model, optimizer, epoch, loader_train, 
+            physics_loss_fn=physics_loss_fn,
+            use_physics_for_training=use_physics_for_training,
+            lambda_momentum=args.lambda_momentum,
+            max_physics_loss=args.max_physics_loss
+        )
         results['train loss'].append(train_loss)
         results['train loss amse'].append(train_loss_amse)
-        if use_physics and physics_losses:
-            results['momentum_loss'].append(physics_losses.get('momentum', 0))
+        results['momentum_loss'].append(physics_losses.get('momentum', 0))
             
         if epoch % args.test_interval == 0:
-            val_loss, val_loss_amse, _ = train(model, optimizer, epoch, loader_val, backprop=False, physics_loss_fn=physics_loss_fn)
-            test_loss, test_loss_amse, _ = train(model, optimizer, epoch, loader_test, backprop=False, physics_loss_fn=physics_loss_fn)
+            val_loss, val_loss_amse, _ = train(model, optimizer, epoch, loader_val, backprop=False, physics_loss_fn=physics_loss_fn, use_physics_for_training=False, lambda_momentum=0, max_physics_loss=0)
+            test_loss, test_loss_amse, _ = train(model, optimizer, epoch, loader_test, backprop=False, physics_loss_fn=physics_loss_fn, use_physics_for_training=False, lambda_momentum=0, max_physics_loss=0)
 
             results['eval epoch'].append(epoch)
             results['val loss'].append(val_loss)
@@ -240,7 +249,8 @@ def main():
     return best_train_loss, best_val_loss, best_test_loss, best_test_amse, best_epoch
 
 
-def train(model, optimizer, epoch, loader, backprop=True, physics_loss_fn=None):
+def train(model, optimizer, epoch, loader, backprop=True, physics_loss_fn=None, 
+          use_physics_for_training=False, lambda_momentum=0.0, max_physics_loss=10.0):
     if backprop:
         model.train()
     else:
@@ -248,16 +258,12 @@ def train(model, optimizer, epoch, loader, backprop=True, physics_loss_fn=None):
 
     res = {'epoch': epoch, 'loss': 0, 'counter': 0, 'lp_loss': 0, 'loss_amse': 0}
     physics_res = {'momentum': 0, 'count': 0}
-    use_physics = physics_loss_fn is not None
 
     for batch_idx, data in enumerate(loader):
         data = [d.to(device) for d in data]
         
-        # Unpack data - now includes target velocities if physics constraints enabled
-        if use_physics:
-            loc, vel, edge_attr, charges, loc_end, _ = data
-        else:
-            loc, vel, edge_attr, charges, loc_end = data
+        # Unpack data - always includes target velocities for momentum monitoring
+        loc, vel, edge_attr, charges, loc_end, _ = data
             
         n_nodes = 5
         loc_mean = loc.mean(dim=1, keepdim=True).repeat(1, n_nodes, 1).view(-1, loc.size(2))  # [BN, 3]
@@ -294,9 +300,9 @@ def train(model, optimizer, epoch, loader, backprop=True, physics_loss_fn=None):
         f_mse = losses[-1]  # Final MSE
         a_mse = loss  # Average MSE
         
-        # Add physics-informed losses if enabled
+        # Always compute momentum loss for monitoring
         physics_losses = {}
-        if use_physics and backprop:
+        if physics_loss_fn is not None:
             # Get the final timestep predictions for physics loss computation
             # vel_pred is [T * B * N, 3], we want the last timestep
             vel_pred_final = vel_pred.view(args.num_timesteps, batch_size * n_nodes, 3)[-1]  # [B*N, 3]
@@ -304,16 +310,22 @@ def train(model, optimizer, epoch, loader, backprop=True, physics_loss_fn=None):
             # Flatten initial velocities
             vel_init_flat = vel_init.view(-1, 3)
             
-            physics_loss, physics_losses = physics_loss_fn.compute_physics_losses(
+            # Compute raw momentum loss (for monitoring)
+            _, physics_losses = physics_loss_fn.compute_physics_losses(
                 vel_init=vel_init_flat,
                 vel_pred=vel_pred_final,
                 n_nodes=n_nodes,
                 batch_size=batch_size
             )
             
-            loss = loss + physics_loss
+            # Only add to training loss if physics training is enabled
+            if use_physics_for_training and backprop and lambda_momentum > 0:
+                # Scale the momentum loss by lambda and apply max cap
+                momentum_loss = physics_losses.get('momentum', 0) * lambda_momentum
+                momentum_loss = min(momentum_loss, max_physics_loss)
+                loss = loss + momentum_loss
             
-            # Track physics losses
+            # Always track physics losses for monitoring
             physics_res['momentum'] += physics_losses.get('momentum', 0) * batch_size
             physics_res['count'] += batch_size
 
@@ -336,12 +348,12 @@ def train(model, optimizer, epoch, loader, backprop=True, physics_loss_fn=None):
     else:
         prefix = ""
     
-    # Print physics losses if enabled
+    # Always print momentum loss for monitoring
     physics_log = ""
     avg_physics_losses = {}
-    if use_physics and physics_res['count'] > 0:
+    if physics_res['count'] > 0:
         avg_momentum = physics_res['momentum'] / physics_res['count']
-        physics_log = f" | P_loss: {avg_momentum:.5f}"
+        physics_log = f" | Mom_loss: {avg_momentum:.6f}"
         avg_physics_losses = {
             'momentum': avg_momentum
         }
